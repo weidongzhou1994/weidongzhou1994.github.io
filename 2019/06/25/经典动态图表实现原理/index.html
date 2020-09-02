@@ -142,18 +142,18 @@
 
 
 
-<meta name="description" content="1. 定义表格区域的名称    在制作动态图表之前，首先需要学习如何定义表格区域的名称，方便后面的引用。方法是：公式 - 定义的名称：定义名称，填写名称和引用位置，引用位置可以使用公式。">
+<meta name="description" content="1. 定义表格区域的名称    在制作动态图表之前，首先需要学习如何定义表格区域的名称，方便后面的引用。方法是：公式 - 定义的名称：定义名称，填写名称和引用位置，引用位置可以使用公式。">
 <meta name="keywords" content="Excel,王佩丰,Excle1800分钟,入门">
 <meta property="og:type" content="article">
 <meta property="og:title" content="第二十一讲 经典动态图表实现原理">
 <meta property="og:url" content="http：//zhouweidong.ml/2019/06/25/经典动态图表实现原理/index.html">
 <meta property="og:site_name" content="周卫东的博客">
-<meta property="og:description" content="1. 定义表格区域的名称    在制作动态图表之前，首先需要学习如何定义表格区域的名称，方便后面的引用。方法是：公式 - 定义的名称：定义名称，填写名称和引用位置，引用位置可以使用公式。">
+<meta property="og:description" content="1. 定义表格区域的名称    在制作动态图表之前，首先需要学习如何定义表格区域的名称，方便后面的引用。方法是：公式 - 定义的名称：定义名称，填写名称和引用位置，引用位置可以使用公式。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2019-06-25T08:05:45.550Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="第二十一讲 经典动态图表实现原理">
-<meta name="twitter:description" content="1. 定义表格区域的名称    在制作动态图表之前，首先需要学习如何定义表格区域的名称，方便后面的引用。方法是：公式 - 定义的名称：定义名称，填写名称和引用位置，引用位置可以使用公式。">
+<meta name="twitter:description" content="1. 定义表格区域的名称    在制作动态图表之前，首先需要学习如何定义表格区域的名称，方便后面的引用。方法是：公式 - 定义的名称：定义名称，填写名称和引用位置，引用位置可以使用公式。">
 
 
 
@@ -521,17 +521,8 @@
       
 
       
-        <h1 id="1-ding-yi-biao-ge-qu-yu-de-ming-cheng">1. 定义表格区域的名称</h1>
-<p>   在制作动态图表之前，首先需要学习如何定义表格区域的名称，方便后面的引用。方法是：公式 - 定义的名称：定义名称，填写名称和引用位置，引用位置可以使用公式。</p>
-<a id="more"></a>
-<h1 id="2-biao-dan-kong-jian">2. 表单控件</h1>
-<p>   动态图表的实现首先可能用到的工具是表单控件，打开文件 - 选项：自定义功能区 - 右侧：主选项卡 - 勾选开发工具，添加开发工具到 Excel 选项卡中。<br>
-   动态图表可能用到的表单控件有两个：复选框和滚动条，选择开发工具 - 控件：插入：复选框 / 滚动条。<br>
-   复选框的用法是：定义名称:=IF (复选框要链接的单元格，要选择的数据区域，空白数据区域)，插入一个复选框，然后右键：设置控件格式 - 控制：值：已选择：单元格链接，单元格链接选择一个空单元格即可。<br>
-   滚动条的用法是：插入一个滚动条，然后右键：设置控件格式 - 控制：最小值 &amp; 最大值，单元格链接选择一个空单元格即可。</p>
-<h1 id="3-offset-han-shu-he-counta-han-shu">3. OFFSET 函数和 COUNTA 函数</h1>
-<p>  OFFSET 函数的用法是：=OFFSET (基准格，向左偏移几行，向下偏移几列，区域有几行，区域有几列)，作用是选择表格区域；COUNTA 函数的用法是：=COUNTA (表格区域)，作用是计算表格区域内非空单元格的数量。<br>
-  OFFSET 函数内嵌 COUNTA 函数可以实现表格区域的动态选择，如:=OFFSET (基准格，COUNTA (基准格所在的列)-10,0,10,1), 作用是始终选中基准格所在列的最后 10 个数据。</p>
+        <h1 id="定义表格区域的名称">1. 定义表格区域的名称</h1>
+<p>   在制作动态图表之前，首先需要学习如何定义表格区域的名称，方便后面的引用。方法是：公式 - 定义的名称：定义名称，填写名称和引用位置，引用位置可以使用公式。 <a id="more"></a> # 2. 表单控件    动态图表的实现首先可能用到的工具是表单控件，打开文件 - 选项：自定义功能区 - 右侧：主选项卡 - 勾选开发工具，添加开发工具到 Excel 选项卡中。    动态图表可能用到的表单控件有两个：复选框和滚动条，选择开发工具 - 控件：插入：复选框 / 滚动条。    复选框的用法是：定义名称:=IF (复选框要链接的单元格，要选择的数据区域，空白数据区域)，插入一个复选框，然后右键：设置控件格式 - 控制：值：已选择：单元格链接，单元格链接选择一个空单元格即可。    滚动条的用法是：插入一个滚动条，然后右键：设置控件格式 - 控制：最小值 &amp; 最大值，单元格链接选择一个空单元格即可。 # 3. OFFSET 函数和 COUNTA 函数   OFFSET 函数的用法是：=OFFSET (基准格，向左偏移几行，向下偏移几列，区域有几行，区域有几列)，作用是选择表格区域；COUNTA 函数的用法是：=COUNTA (表格区域)，作用是计算表格区域内非空单元格的数量。   OFFSET 函数内嵌 COUNTA 函数可以实现表格区域的动态选择，如:=OFFSET (基准格，COUNTA (基准格所在的列)-10,0,10,1), 作用是始终选中基准格所在列的最后 10 个数据。</p>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">
       
     </div>
@@ -744,7 +735,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">119</span>
+                  <span class="site-state-item-count">120</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -766,7 +757,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">63</span>
+                  <span class="site-state-item-count">65</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -852,7 +843,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-ding-yi-biao-ge-qu-yu-de-ming-cheng"><span class="nav-text">1. 定义表格区域的名称</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-biao-dan-kong-jian"><span class="nav-text">2. 表单控件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-offset-han-shu-he-counta-han-shu"><span class="nav-text">3. OFFSET 函数和 COUNTA 函数</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#定义表格区域的名称"><span class="nav-text">1. 定义表格区域的名称</span></a></li></ol></div>
             
 
           </div>
@@ -893,7 +884,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">74.9k</span>
+    <span title="Site words total count">75.3k</span>
   
 </div>
 
@@ -1573,7 +1564,7 @@
         }
       });
     </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config("");
 </script>

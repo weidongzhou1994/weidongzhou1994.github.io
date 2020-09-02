@@ -521,13 +521,7 @@
       
 
       
-        <p>   数组就是一组数，既可以是一行的，也可以是一列的。</p>
-<a id="more"></a>
-<h1 id="1-ren-shi-he-ying-yong-shu-zu">1. 认识和应用数组</h1>
-<p>   多条件求和既可以使用 SUMIFS (), 也可以通过数组公式利用 SUM () 函数完成，如 = SUM (($A$2:$A$22=K15)*($B$2:$B$22=L15)*$E$2:$E$22), 但是数组公式不能直接使用，必须在完成数组公式的书写后按着 ctrl+shift, 然后按 enter 键。</p>
-<h1 id="2-lookup-han-shu">2. LOOKUP 函数</h1>
-<p>  LOOKUP 函数的基本形式是：=lookup (查找值，查找行，结果行)，同 VLOOKUP 函数相比没有精确查找的选项。但是，LOOKUP 函数可以变相地实行精确查找，基本形似为：=LOOKUP (1,0 / 条件，结果列)，但是值得注意的是，不能选择一整列，只能用绝对引用选择一个区域。<br>
-  LOOKUP 函数的精确查找的原理是：满足条件会呈现 TRUE=1，否则会呈现 FALSE=0，0/0 会出错，LOOKUP 会跳过出错的地方，因此就实现了精确查找。</p>
+        <p>   数组就是一组数，既可以是一行的，也可以是一列的。 <a id="more"></a> # 1. 认识和应用数组    多条件求和既可以使用 SUMIFS (), 也可以通过数组公式利用 SUM () 函数完成，如 = SUM (($A<span class="math inline">\(2:\)</span>A<span class="math inline">\(22=K15)\*(\)</span>B<span class="math inline">\(2:\)</span>B<span class="math inline">\(22=L15)\*\)</span>E<span class="math inline">\(2:\)</span>E$22), 但是数组公式不能直接使用，必须在完成数组公式的书写后按着 ctrl+shift, 然后按 enter 键。 # 2. LOOKUP 函数   LOOKUP 函数的基本形式是：=lookup (查找值，查找行，结果行)，同 VLOOKUP 函数相比没有精确查找的选项。但是，LOOKUP 函数可以变相地实行精确查找，基本形似为：=LOOKUP (1,0 / 条件，结果列)，但是值得注意的是，不能选择一整列，只能用绝对引用选择一个区域。   LOOKUP 函数的精确查找的原理是：满足条件会呈现 TRUE=1，否则会呈现 FALSE=0，0/0 会出错，LOOKUP 会跳过出错的地方，因此就实现了精确查找。</p>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">
       
     </div>
@@ -713,17 +707,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -740,7 +725,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">119</span>
+                  <span class="site-state-item-count">120</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -762,7 +747,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">63</span>
+                  <span class="site-state-item-count">65</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -839,22 +824,6 @@
       </section>
 
       
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-ren-shi-he-ying-yong-shu-zu"><span class="nav-text">1. 认识和应用数组</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-lookup-han-shu"><span class="nav-text">2. LOOKUP 函数</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
-      
 
       
         <div class="back-to-top">
@@ -889,7 +858,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">74.9k</span>
+    <span title="Site words total count">75.3k</span>
   
 </div>
 
@@ -1569,7 +1538,7 @@
         }
       });
     </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config("");
 </script>

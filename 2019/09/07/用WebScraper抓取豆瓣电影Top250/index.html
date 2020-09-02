@@ -521,9 +521,7 @@
       
 
       
-        <p>导入设置：</p>
-<a id="more"></a>
-<p>{&quot;_id&quot;:“dbmovie_top250”,“startUrl”:[“<a href="https://movie.douban.com/top250?start=%5B0-225:25%5D&amp;filter=%22%5D,%22selectors%22:%5B%7B%22id%22:%22Movie_Info%22,%22type%22:%22SelectorElement%22,%22parentSelectors%22:%5B%22_root%22%5D,%22selector%22:%22.grid_view" target="_blank" rel="noopener">https://movie.douban.com/top250?start=[0-225:25]&amp;filter=&quot;],“selectors”:[{“id”:“Movie_Info”,“type”:“SelectorElement”,“parentSelectors”:[&quot;_root&quot;],“selector”:&quot;.grid_view</a> li”,“multiple”:true,“delay”:0},{“id”:“电影排名”,“type”:“SelectorText”,“parentSelectors”:[“Movie_Info”],“selector”:“em”,“multiple”:false,“regex”:&quot;&quot;,“delay”:0},{“id”:&quot; 电影名 “,“type”:“SelectorText”,“parentSelectors”:[“Movie_Info”],“selector”:“span.title:nth-of-type (1)”,“multiple”:false,“regex”:”&quot;,“delay”:0},{“id”:“电影导演”,“type”:“SelectorText”,“parentSelectors”:[“Movie_Info”],“selector”:“p:nth-of-type (1)”,“multiple”:false,“regex”:&quot;(?&lt;= 导演: )(.<em>)(?= 主)&quot;,“delay”:0},{“id”:“评价分数”,“type”:“SelectorText”,“parentSelectors”:[“Movie_Info”],“selector”:“span.rating_num”,“multiple”:false,“regex”:&quot;&quot;,“delay”:0},{“id”:&quot; 评价人数 “,“type”:“SelectorText”,“parentSelectors”:[“Movie_Info”],“selector”:“span:nth-of-type (4)”,“multiple”:false,“regex”:”^.</em>?(?= 人)&quot;,“delay”:0},{“id”:&quot; 上映日期 “,“type”:“SelectorText”,“parentSelectors”:[“Movie_Info”],“selector”:“p:nth-of-type (1)”,“multiple”:false,“regex”:”[0-9]+&quot;,“delay”:0},{“id”:&quot; 电影出品国家 “,“type”:“SelectorText”,“parentSelectors”:[“Movie_Info”],“selector”:“p:nth-of-type (1)”,“multiple”:false,“regex”:”(?&lt;=/)(.*)(?=/)&quot;,“delay”:0},{“id”:&quot; 电影评论 “,“type”:“SelectorText”,“parentSelectors”:[“Movie_Info”],“selector”:“span.inq”,“multiple”:false,“regex”:”&quot;,“delay”:0}]}</p>
+        <p>导入设置： <a id="more"></a> {&quot;_id&quot;:&quot;dbmovie_top250&quot;,&quot;startUrl&quot;:[&quot;https://movie.douban.com/top250?start=[0-225:25]&amp;filter=&quot;],&quot;selectors&quot;:[{&quot;id&quot;:&quot;Movie_Info&quot;,&quot;type&quot;:&quot;SelectorElement&quot;,&quot;parentSelectors&quot;:[&quot;_root&quot;],&quot;selector&quot;:&quot;.grid_view li&quot;,&quot;multiple&quot;:true,&quot;delay&quot;:0},{&quot;id&quot;:&quot;电影排名&quot;,&quot;type&quot;:&quot;SelectorText&quot;,&quot;parentSelectors&quot;:[&quot;Movie_Info&quot;],&quot;selector&quot;:&quot;em&quot;,&quot;multiple&quot;:false,&quot;regex&quot;:&quot;&quot;,&quot;delay&quot;:0},{&quot;id&quot;:&quot; 电影名 &quot;,&quot;type&quot;:&quot;SelectorText&quot;,&quot;parentSelectors&quot;:[&quot;Movie_Info&quot;],&quot;selector&quot;:&quot;span.title:nth-of-type (1)&quot;,&quot;multiple&quot;:false,&quot;regex&quot;:&quot;&quot;,&quot;delay&quot;:0},{&quot;id&quot;:&quot;电影导演&quot;,&quot;type&quot;:&quot;SelectorText&quot;,&quot;parentSelectors&quot;:[&quot;Movie_Info&quot;],&quot;selector&quot;:&quot;p:nth-of-type (1)&quot;,&quot;multiple&quot;:false,&quot;regex&quot;:&quot;(?&lt;= 导演: )(.<em>)(?= 主)&quot;,&quot;delay&quot;:0},{&quot;id&quot;:&quot;评价分数&quot;,&quot;type&quot;:&quot;SelectorText&quot;,&quot;parentSelectors&quot;:[&quot;Movie_Info&quot;],&quot;selector&quot;:&quot;span.rating_num&quot;,&quot;multiple&quot;:false,&quot;regex&quot;:&quot;&quot;,&quot;delay&quot;:0},{&quot;id&quot;:&quot; 评价人数 &quot;,&quot;type&quot;:&quot;SelectorText&quot;,&quot;parentSelectors&quot;:[&quot;Movie_Info&quot;],&quot;selector&quot;:&quot;span:nth-of-type (4)&quot;,&quot;multiple&quot;:false,&quot;regex&quot;:&quot;^.</em>?(?= 人)&quot;,&quot;delay&quot;:0},{&quot;id&quot;:&quot; 上映日期 &quot;,&quot;type&quot;:&quot;SelectorText&quot;,&quot;parentSelectors&quot;:[&quot;Movie_Info&quot;],&quot;selector&quot;:&quot;p:nth-of-type (1)&quot;,&quot;multiple&quot;:false,&quot;regex&quot;:&quot;[0-9]+&quot;,&quot;delay&quot;:0},{&quot;id&quot;:&quot; 电影出品国家 &quot;,&quot;type&quot;:&quot;SelectorText&quot;,&quot;parentSelectors&quot;:[&quot;Movie_Info&quot;],&quot;selector&quot;:&quot;p:nth-of-type (1)&quot;,&quot;multiple&quot;:false,&quot;regex&quot;:&quot;(?&lt;=/)(.*)(?=/)&quot;,&quot;delay&quot;:0},{&quot;id&quot;:&quot; 电影评论 &quot;,&quot;type&quot;:&quot;SelectorText&quot;,&quot;parentSelectors&quot;:[&quot;Movie_Info&quot;],&quot;selector&quot;:&quot;span.inq&quot;,&quot;multiple&quot;:false,&quot;regex&quot;:&quot;&quot;,&quot;delay&quot;:0}]}</p>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">
       
     </div>
@@ -725,7 +723,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">119</span>
+                  <span class="site-state-item-count">120</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -747,7 +745,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">63</span>
+                  <span class="site-state-item-count">65</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -858,7 +856,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">74.9k</span>
+    <span title="Site words total count">75.3k</span>
   
 </div>
 
@@ -1538,7 +1536,7 @@
         }
       });
     </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config("");
 </script>

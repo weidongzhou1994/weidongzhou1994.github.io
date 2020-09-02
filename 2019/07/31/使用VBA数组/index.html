@@ -521,15 +521,12 @@
       
 
       
-        <p>   数组的使用会大幅度提升 VBA 代码的运行速度，所谓 VBA 数组是指存储一组数据的数据空间，有行有列。</p>
-<a id="more"></a>
-<h1 id="1-sheng-ming-shu-zu">1. 声明数组</h1>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&apos; 定义一维数组并赋值 </span><br><span class="line">Dim 数组名 ([下界 to] 上界)</span><br><span class="line">&apos; 定义二维数组并赋值 </span><br><span class="line">dim 数组名 (第一维下界 to 第一维上界，第二维下界 to 第二维上界)</span><br><span class="line">&apos; 将区域的值赋给数组 </span><br><span class="line">Dim arr ()</span><br><span class="line">arr = Range (&quot;a1:a5&quot;)</span><br><span class="line">&apos; 动态数组的创建：ReDim</span><br><span class="line">Dim arr ()</span><br><span class="line">j = Range (&quot;a65536&quot;).End (xlUp).Row - 1</span><br><span class="line">ReDim arr (1 To j)</span><br></pre></td></tr></table></figure>
-<h1 id="2-shu-chu-shu-zu-de-zhi">2. 输出数组的值</h1>
+        <p>   数组的使用会大幅度提升 VBA 代码的运行速度，所谓 VBA 数组是指存储一组数据的数据空间，有行有列。 <a id="more"></a> # 1. 声明数组 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&apos; 定义一维数组并赋值 </span><br><span class="line">Dim 数组名 ([下界 to] 上界)</span><br><span class="line">&apos; 定义二维数组并赋值 </span><br><span class="line">dim 数组名 (第一维下界 to 第一维上界，第二维下界 to 第二维上界)</span><br><span class="line">&apos; 将区域的值赋给数组 </span><br><span class="line">Dim arr ()</span><br><span class="line">arr = Range (&quot;a1:a5&quot;)</span><br><span class="line">&apos; 动态数组的创建：ReDim</span><br><span class="line">Dim arr ()</span><br><span class="line">j = Range (&quot;a65536&quot;).End (xlUp).Row - 1</span><br><span class="line">ReDim arr (1 To j)</span><br></pre></td></tr></table></figure></p>
+<h1 id="输出数组的值">2. 输出数组的值</h1>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&apos; 输出一维数组中的值 </span><br><span class="line">Range (&quot;#[:#]&quot;) = arr (#)</span><br><span class="line">&apos; 输出二维数组中的值 </span><br><span class="line">Range (&quot;#[:#]&quot;) = arr (行，列)</span><br></pre></td></tr></table></figure>
-<h1 id="3-shi-yong-shu-zu-ti-dai-range-ti-gao-dai-ma-yun-xing-su-du">3. 使用数组替代 range () 提高代码运行速度</h1>
-<p>   在 For 循环中，range () 函数的使用会大大拖累代码的运行速度，使用使用数组替代 range () 能够明显地提高代码运行速度。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&apos; 查看代码运行时间 </span><br><span class="line">t = Timer</span><br><span class="line">MsgBox Timer - t</span><br><span class="line">&apos;</span><br><span class="line">Sub test ()</span><br><span class="line">Dim i, j, k, l As Integer</span><br><span class="line">Dim arr ()</span><br><span class="line">t = Timer</span><br><span class="line">arr = Range (&quot;a1:a80&quot;)</span><br><span class="line">For i = 2 To 80</span><br><span class="line">    For j = 2 To 80</span><br><span class="line">        For k = 2 To 80</span><br><span class="line">            For l = 2 To 80</span><br><span class="line">            </span><br><span class="line">                If arr (i, 1) + arr (j, 1) + arr (k, 1) + arr (l, 1) = 124704 Then</span><br><span class="line">                    Range (&quot;f3&quot;) = arr (i, 1)</span><br><span class="line">                    Range (&quot;g3&quot;) = arr (j, 1)</span><br><span class="line">                    Range (&quot;h3&quot;) = arr (k, 1)</span><br><span class="line">                    Range (&quot;i3&quot;) = arr (l, 1)</span><br><span class="line">                    GoTo 100</span><br><span class="line">                End If</span><br><span class="line">            Next</span><br><span class="line">        Next</span><br><span class="line">    Next</span><br><span class="line">Next</span><br><span class="line">100</span><br><span class="line">MsgBox Format (Timer - t, &quot;0.00000&quot;)</span><br><span class="line">End Sub</span><br></pre></td></tr></table></figure><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">
+<h1 id="使用数组替代-range-提高代码运行速度">3. 使用数组替代 range () 提高代码运行速度</h1>
+<p>   在 For 循环中，range () 函数的使用会大大拖累代码的运行速度，使用使用数组替代 range () 能够明显地提高代码运行速度。 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&apos; 查看代码运行时间 </span><br><span class="line">t = Timer</span><br><span class="line">MsgBox Timer - t</span><br><span class="line">&apos;</span><br><span class="line">Sub test ()</span><br><span class="line">Dim i, j, k, l As Integer</span><br><span class="line">Dim arr ()</span><br><span class="line">t = Timer</span><br><span class="line">arr = Range (&quot;a1:a80&quot;)</span><br><span class="line">For i = 2 To 80</span><br><span class="line">    For j = 2 To 80</span><br><span class="line">        For k = 2 To 80</span><br><span class="line">            For l = 2 To 80</span><br><span class="line">            </span><br><span class="line">                If arr (i, 1) + arr (j, 1) + arr (k, 1) + arr (l, 1) = 124704 Then</span><br><span class="line">                    Range (&quot;f3&quot;) = arr (i, 1)</span><br><span class="line">                    Range (&quot;g3&quot;) = arr (j, 1)</span><br><span class="line">                    Range (&quot;h3&quot;) = arr (k, 1)</span><br><span class="line">                    Range (&quot;i3&quot;) = arr (l, 1)</span><br><span class="line">                    GoTo 100</span><br><span class="line">                End If</span><br><span class="line">            Next</span><br><span class="line">        Next</span><br><span class="line">    Next</span><br><span class="line">Next</span><br><span class="line">100</span><br><span class="line">MsgBox Format (Timer - t, &quot;0.00000&quot;)</span><br><span class="line">End Sub</span><br></pre></td></tr></table></figure></p>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">
       
     </div>
 
@@ -739,7 +736,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">119</span>
+                  <span class="site-state-item-count">120</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -761,7 +758,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">63</span>
+                  <span class="site-state-item-count">65</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -847,7 +844,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-sheng-ming-shu-zu"><span class="nav-text">1. 声明数组</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-shu-chu-shu-zu-de-zhi"><span class="nav-text">2. 输出数组的值</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-shi-yong-shu-zu-ti-dai-range-ti-gao-dai-ma-yun-xing-su-du"><span class="nav-text">3. 使用数组替代 range () 提高代码运行速度</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#输出数组的值"><span class="nav-text">2. 输出数组的值</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用数组替代-range-提高代码运行速度"><span class="nav-text">3. 使用数组替代 range () 提高代码运行速度</span></a></li></ol></div>
             
 
           </div>
@@ -888,7 +885,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">74.9k</span>
+    <span title="Site words total count">75.3k</span>
   
 </div>
 
@@ -1568,7 +1565,7 @@
         }
       });
     </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config("");
 </script>

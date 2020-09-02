@@ -523,33 +523,33 @@
       
         <p>   第四天：</p>
 <a id="more"></a>
-<h2 id="197-rising-temperature">197. Rising Temperature</h2>
-<p>  Given a Weather table, write a SQL query to find all dates’ Ids with higher temperature compared to its previous (yesterday’s) dates.</p>
+<h2 id="rising-temperature">197. Rising Temperature</h2>
+<p>  Given a Weather table, write a SQL query to find all dates' Ids with higher temperature compared to its previous (yesterday's) dates.</p>
 <table>
 <thead>
-<tr>
+<tr class="header">
 <th>Id (INT)</th>
 <th>RecordDate (DATE)</th>
 <th>Temperature (INT)</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td>1</td>
 <td>2015-01-01</td>
 <td>10</td>
 </tr>
-<tr>
+<tr class="even">
 <td>2</td>
 <td>2015-01-02</td>
 <td>25</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>3</td>
 <td>2015-01-03</td>
 <td>20</td>
 </tr>
-<tr>
+<tr class="even">
 <td>4</td>
 <td>2015-01-04</td>
 <td>30</td>
@@ -559,27 +559,27 @@
 <p>  For example, return the following Ids for the above Weather table:title: LeetCode MySql Day4</p>
 <table>
 <thead>
-<tr>
-<th style="text-align:left">Id</th>
+<tr class="header">
+<th style="text-align: left;">Id</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:left">2</td>
+<tr class="odd">
+<td style="text-align: left;">2</td>
 </tr>
-<tr>
-<td style="text-align:left">4</td>
+<tr class="even">
+<td style="text-align: left;">4</td>
 </tr>
 </tbody>
 </table>
 <p>   解决方法：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> w1.Id <span class="keyword">from</span> Weather w1, Weather w2 <span class="keyword">where</span> w1.Temperature &gt; w2.Temperature <span class="keyword">and</span> <span class="keyword">DateDiff</span>(w1. RecordDate, w2.RecordDate) = <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
 <p>   知识点：时间类型的处理 - DataDiff (d1, d2)：计算日期 d1-&gt;d2 之间相隔的天数。</p>
-<h2 id="595-big-countries">595. Big Countries</h2>
+<h2 id="big-countries">595. Big Countries</h2>
 <p>  There is a table World：</p>
 <table>
 <thead>
-<tr>
+<tr class="header">
 <th>name</th>
 <th>continent</th>
 <th>area</th>
@@ -588,35 +588,35 @@
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td>Afghanistan</td>
 <td>Asia</td>
 <td>652230</td>
 <td>25500100</td>
 <td>20343000</td>
 </tr>
-<tr>
+<tr class="even">
 <td>Albania</td>
 <td>Europe</td>
 <td>28748</td>
 <td>2831741</td>
 <td>12960000</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>Algeria</td>
 <td>Africa</td>
 <td>2381741</td>
 <td>37100000</td>
 <td>1.89E+08</td>
 </tr>
-<tr>
+<tr class="even">
 <td>Andorra</td>
 <td>Europe</td>
 <td>468</td>
 <td>78115</td>
 <td>3712000</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>Angola</td>
 <td>Africa</td>
 <td>1246700</td>
@@ -626,23 +626,23 @@
 </tbody>
 </table>
 <p>  A country is big if it has an area of bigger than 3 million square km or a population of more than 25 million.</p>
-<p>  Write a SQL solution to output big countries’ name, population and area.</p>
+<p>  Write a SQL solution to output big countries' name, population and area.</p>
 <p>  For example, according to the above table, we should output:</p>
 <table>
 <thead>
-<tr>
+<tr class="header">
 <th>name</th>
 <th>population</th>
 <th>area</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td>Afghanistan</td>
 <td>25500100</td>
 <td>652230</td>
 </tr>
-<tr>
+<tr class="even">
 <td>Algeria</td>
 <td>37100000</td>
 <td>2381741</td>
@@ -861,7 +861,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">119</span>
+                  <span class="site-state-item-count">120</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -883,7 +883,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">63</span>
+                  <span class="site-state-item-count">65</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -969,7 +969,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#197-rising-temperature"><span class="nav-text">197. Rising Temperature</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#595-big-countries"><span class="nav-text">595. Big Countries</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#rising-temperature"><span class="nav-text">197. Rising Temperature</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#big-countries"><span class="nav-text">595. Big Countries</span></a></li></ol></div>
             
 
           </div>
@@ -1010,7 +1010,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">74.9k</span>
+    <span title="Site words total count">75.3k</span>
   
 </div>
 
@@ -1690,7 +1690,7 @@
         }
       });
     </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config("");
 </script>

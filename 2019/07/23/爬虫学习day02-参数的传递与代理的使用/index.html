@@ -142,18 +142,18 @@
 
 
 
-<meta name="description" content="1. 中文参数的传递    在 Python 的 urllib 库中，有专门用来处理中文参数的模块：parse。">
+<meta name="description" content="1. 中文参数的传递    在 Python 的 urllib 库中，有专门用来处理中文参数的模块：parse。">
 <meta name="keywords" content="Python,爬虫,基础知识">
 <meta property="og:type" content="article">
 <meta property="og:title" content="爬虫学习 day02 - 参数的传递与代理的使用">
 <meta property="og:url" content="http：//zhouweidong.ml/2019/07/23/爬虫学习day02-参数的传递与代理的使用/index.html">
 <meta property="og:site_name" content="周卫东的博客">
-<meta property="og:description" content="1. 中文参数的传递    在 Python 的 urllib 库中，有专门用来处理中文参数的模块：parse。">
+<meta property="og:description" content="1. 中文参数的传递    在 Python 的 urllib 库中，有专门用来处理中文参数的模块：parse。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2019-07-23T12:19:30.481Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="爬虫学习 day02 - 参数的传递与代理的使用">
-<meta name="twitter:description" content="1. 中文参数的传递    在 Python 的 urllib 库中，有专门用来处理中文参数的模块：parse。">
+<meta name="twitter:description" content="1. 中文参数的传递    在 Python 的 urllib 库中，有专门用来处理中文参数的模块：parse。">
 
 
 
@@ -521,25 +521,15 @@
       
 
       
-        <h1 id="1-zhong-wen-can-shu-de-chuan-di">1. 中文参数的传递</h1>
-<p>   在 Python 的 urllib 库中，有专门用来处理中文参数的模块：parse。</p>
-<a id="more"></a>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import urllib.parse</span><br></pre></td></tr></table></figure>
-<p>   一个实例：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">import urllib.request</span><br><span class="line">import urllib.parse</span><br><span class="line">import string</span><br><span class="line"></span><br><span class="line">def get_parmas ():</span><br><span class="line">    url = &quot;http://www.baidu.com/s?wd=&quot;</span><br><span class="line"></span><br><span class="line">    parmas = &#123;</span><br><span class="line">        &quot;wd&quot;: &quot; 中文 & quot;,</span><br><span class="line">        &quot;key&quot;: &quot;zhang&quot;,</span><br><span class="line">        &quot;value&quot;: &quot;San&quot;</span><br><span class="line">    &#125;</span><br><span class="line">    str_parmas = urllib.parse.urlencode (parmas)                      // 使用 urlencode 模块将 dict 转换为 url 编码后的字符串 </span><br><span class="line">    print (str_parmas)</span><br><span class="line">    final_url = url + str_parmas</span><br><span class="line">    end_url = urllib.parse.quote (final_url, safe=string.printable)   // 将中文转换为 URL 编码格式 </span><br><span class="line">    response = urllib.request.urlopen (end_url)</span><br><span class="line">    data = response.read ().decode (&quot;utf-8&quot;)</span><br><span class="line">    print (data)</span><br><span class="line"></span><br><span class="line">get_parmas ()</span><br></pre></td></tr></table></figure>
-<p>   从上述实例中可以看出，主要分为两步：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import urllib.parse</span><br><span class="line">import string</span><br><span class="line"> 新变量名 = urllib.parse.urlencode (包含中文的 dict)</span><br><span class="line"> 最终变量名 = urllib.parse.quote (+ 链接前缀 + 新变量名，safe=string.printable)</span><br></pre></td></tr></table></figure>
-<h1 id="2-qing-qiu-tou-headers">2. 请求头：headers</h1>
+        <h1 id="中文参数的传递">1. 中文参数的传递</h1>
+<p>   在 Python 的 urllib 库中，有专门用来处理中文参数的模块：parse。 <a id="more"></a> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import urllib.parse</span><br></pre></td></tr></table></figure></p>
+<p>   一个实例： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">import urllib.request</span><br><span class="line">import urllib.parse</span><br><span class="line">import string</span><br><span class="line"></span><br><span class="line">def get_parmas ():</span><br><span class="line">    url = &quot;http://www.baidu.com/s?wd=&quot;</span><br><span class="line"></span><br><span class="line">    parmas = &#123;</span><br><span class="line">        &quot;wd&quot;: &quot; 中文 & quot;,</span><br><span class="line">        &quot;key&quot;: &quot;zhang&quot;,</span><br><span class="line">        &quot;value&quot;: &quot;San&quot;</span><br><span class="line">    &#125;</span><br><span class="line">    str_parmas = urllib.parse.urlencode (parmas)                      // 使用 urlencode 模块将 dict 转换为 url 编码后的字符串 </span><br><span class="line">    print (str_parmas)</span><br><span class="line">    final_url = url + str_parmas</span><br><span class="line">    end_url = urllib.parse.quote (final_url, safe=string.printable)   // 将中文转换为 URL 编码格式 </span><br><span class="line">    response = urllib.request.urlopen (end_url)</span><br><span class="line">    data = response.read ().decode (&quot;utf-8&quot;)</span><br><span class="line">    print (data)</span><br><span class="line"></span><br><span class="line">get_parmas ()</span><br></pre></td></tr></table></figure></p>
+<p>   从上述实例中可以看出，主要分为两步： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import urllib.parse</span><br><span class="line">import string</span><br><span class="line"> 新变量名 = urllib.parse.urlencode (包含中文的 dict)</span><br><span class="line"> 最终变量名 = urllib.parse.quote (+ 链接前缀 + 新变量名，safe=string.printable)</span><br></pre></td></tr></table></figure></p>
+<h1 id="请求头headers">2. 请求头：headers</h1>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">import urllib.request</span><br><span class="line"># 获取所有请求头的信息 </span><br><span class="line"> 新变量名 = request.headers</span><br><span class="line"># 获取指定请求头的信息 </span><br><span class="line">request.add_header (&quot; 请求头名 & quot;: &quot; 请求头内容 & quot;)                             # 添加请求头信息 </span><br><span class="line"> 新变量名 = request_headers = request.get_heade (&quot; 请求头名 & quot;)      # 注意：首字母必须大写，其他字母必须是小写 </span><br><span class="line"># 添加请求列表并实现随机获取 </span><br><span class="line"> 新变量名 =[ </span><br><span class="line">    &quot;&quot;,</span><br><span class="line">    &quot;&quot;,</span><br><span class="line">    &quot;&quot;</span><br><span class="line">]</span><br><span class="line"> 新变量名 1 = random.choice (新变量名)</span><br><span class="line">request.add_header (&quot; 请求头名 & quot;, 新变量名 1)</span><br></pre></td></tr></table></figure>
-<p>   常用的请求头是：<a href="https://www.jianshu.com/p/da6a44d0791e" target="_blank" rel="noopener">User-Agent</a>。</p>
-<h1 id="3-she-zhi-dai-li-ip">3. 设置代理 IP</h1>
-<h2 id="3-1-zi-ding-yi-tian-jia-dai-li-de-gong-neng">3.1 自定义添加代理的功能</h2>
-<p>   在 urlopen 函数中，没有添加代理的选项，因此需要自己添加代理。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 创建自己的代理处理器 </span><br><span class="line"> 新变量名 = urllib.request.ProxyHandler (代理 IP)   </span><br><span class="line"># 创建自己的 opener</span><br><span class="line"> 新变量名 1 = urllib.request.build_opener (新变量名)</span><br></pre></td></tr></table></figure>
-<p>   代理 IP 可以在网上查找，既有免费的 IP 也有付费的 IP：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># 免费 IP</span><br><span class="line"> 新变量名 = &#123;</span><br><span class="line">    &quot;http&quot;:&quot;http://IP 地址：端口 & quot;</span><br><span class="line">&#125;</span><br><span class="line"># 付费 IP</span><br><span class="line"> 新变量名 = &#123;</span><br><span class="line">    &quot;http&quot;:&quot; 账号 & quot;:&quot; 密码 & quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>   一个代理 IP，尤其是免费代理 IP，时常会失效，一个解决方法是以数量提升质量：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"># 定义 proxy_list</span><br><span class="line">proxy_list = [</span><br><span class="line">    &#123;&#125;,</span><br><span class="line">    &#123;&#125;,</span><br><span class="line">    &#123;&#125;,</span><br><span class="line">    &#123;&#125;,</span><br><span class="line">    &#123;&#125;</span><br><span class="line">]</span><br><span class="line">for proxy in proxy_list:</span><br><span class="line">    proxy_handler = urllib.request.ProxyHandler (proxy)</span><br><span class="line">    opener = urllib.request.build_opener (proxy_handler)</span><br><span class="line">    response = opener.open (url)</span><br><span class="line">    data = response.read ()</span><br><span class="line">    print (data)</span><br><span class="line"># 避免错误导致程序运行停止 </span><br><span class="line">try:</span><br><span class="line">    opener.open (&quot;url&quot;, timeout=1)  # timeout 设置响应时间，超过响应时间就报错 </span><br><span class="line">except Exception as e:</span><br><span class="line">    print (e)</span><br></pre></td></tr></table></figure>
+<p>   常用的请求头是：<a href="https://www.jianshu.com/p/da6a44d0791e" target="_blank" rel="noopener">User-Agent</a>。 # 3. 设置代理 IP ## 3.1 自定义添加代理的功能    在 urlopen 函数中，没有添加代理的选项，因此需要自己添加代理。 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 创建自己的代理处理器 </span><br><span class="line"> 新变量名 = urllib.request.ProxyHandler (代理 IP)   </span><br><span class="line"># 创建自己的 opener</span><br><span class="line"> 新变量名 1 = urllib.request.build_opener (新变量名)</span><br></pre></td></tr></table></figure></p>
+<p>   代理 IP 可以在网上查找，既有免费的 IP 也有付费的 IP： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># 免费 IP</span><br><span class="line"> 新变量名 = &#123;</span><br><span class="line">    &quot;http&quot;:&quot;http://IP 地址：端口 & quot;</span><br><span class="line">&#125;</span><br><span class="line"># 付费 IP</span><br><span class="line"> 新变量名 = &#123;</span><br><span class="line">    &quot;http&quot;:&quot; 账号 & quot;:&quot; 密码 & quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>   一个代理 IP，尤其是免费代理 IP，时常会失效，一个解决方法是以数量提升质量： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"># 定义 proxy_list</span><br><span class="line">proxy_list = [</span><br><span class="line">    &#123;&#125;,</span><br><span class="line">    &#123;&#125;,</span><br><span class="line">    &#123;&#125;,</span><br><span class="line">    &#123;&#125;,</span><br><span class="line">    &#123;&#125;</span><br><span class="line">]</span><br><span class="line">for proxy in proxy_list:</span><br><span class="line">    proxy_handler = urllib.request.ProxyHandler (proxy)</span><br><span class="line">    opener = urllib.request.build_opener (proxy_handler)</span><br><span class="line">    response = opener.open (url)</span><br><span class="line">    data = response.read ()</span><br><span class="line">    print (data)</span><br><span class="line"># 避免错误导致程序运行停止 </span><br><span class="line">try:</span><br><span class="line">    opener.open (&quot;url&quot;, timeout=1)  # timeout 设置响应时间，超过响应时间就报错 </span><br><span class="line">except Exception as e:</span><br><span class="line">    print (e)</span><br></pre></td></tr></table></figure></p>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">
       
     </div>
@@ -750,7 +740,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">119</span>
+                  <span class="site-state-item-count">120</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -772,7 +762,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">63</span>
+                  <span class="site-state-item-count">65</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -858,7 +848,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-zhong-wen-can-shu-de-chuan-di"><span class="nav-text">1. 中文参数的传递</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-qing-qiu-tou-headers"><span class="nav-text">2. 请求头：headers</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-she-zhi-dai-li-ip"><span class="nav-text">3. 设置代理 IP</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-zi-ding-yi-tian-jia-dai-li-de-gong-neng"><span class="nav-text">3.1 自定义添加代理的功能</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#中文参数的传递"><span class="nav-text">1. 中文参数的传递</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#请求头headers"><span class="nav-text">2. 请求头：headers</span></a></li></ol></div>
             
 
           </div>
@@ -899,7 +889,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">74.9k</span>
+    <span title="Site words total count">75.3k</span>
   
 </div>
 
@@ -1579,7 +1569,7 @@
         }
       });
     </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config("");
 </script>

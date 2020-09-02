@@ -521,182 +521,171 @@
       
 
       
-        <h1 id="1-dan-yuan-ge-ge-shi-she-zhi-with-yu-ju">1. 单元格格式设置：with 语句</h1>
+        <h1 id="单元格格式设置with-语句">1. 单元格格式设置：with 语句</h1>
 <a id="more"></a>
-<p>   在 VBA 中，可以使用 with 语句方便地进行单元格格式的设置：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">With 对象名称 </span><br><span class="line">    . 语句 1</span><br><span class="line">    . 语句 2</span><br><span class="line">End With</span><br></pre></td></tr></table></figure>
-<p>   上述语句等同于：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"> 对象名称。语句 1</span><br><span class="line"> 对象名称。语句 2</span><br></pre></td></tr></table></figure>
-<h1 id="2-vba-zhong-de-shi-jian">2. VBA 中的事件</h1>
-<h2 id="2-1-gong-zuo-bo-de-shi-jian">2.1 工作簿的事件</h2>
+<p>   在 VBA 中，可以使用 with 语句方便地进行单元格格式的设置： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">With 对象名称 </span><br><span class="line">    . 语句 1</span><br><span class="line">    . 语句 2</span><br><span class="line">End With</span><br></pre></td></tr></table></figure></p>
+<p>   上述语句等同于： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"> 对象名称。语句 1</span><br><span class="line"> 对象名称。语句 2</span><br></pre></td></tr></table></figure></p>
+<h1 id="vba-中的事件">2. VBA 中的事件</h1>
+<h2 id="工作簿的事件">2.1 工作簿的事件</h2>
 <p>   工作簿的事件列表如下：</p>
 <table>
 <thead>
-<tr>
+<tr class="header">
 <th>事件</th>
 <th>说明</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td>Activate</td>
 <td>激活工作薄时</td>
 </tr>
-<tr>
+<tr class="even">
 <td>AddinInstall</td>
 <td>当工作簿作为加载宏安装时</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>AddinUninstall</td>
 <td>工作簿作为加载宏卸载时</td>
 </tr>
-<tr>
+<tr class="even">
 <td>BeforeClose</td>
 <td>关闭工作薄前</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>BeforePrint</td>
 <td>打印工作薄 (或其中任何内容) 之前</td>
 </tr>
-<tr>
+<tr class="even">
 <td>BeforeSave</td>
 <td>保存工作薄前</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>Deactivate</td>
 <td>工作簿从活动状态转为非活动状态时</td>
 </tr>
-<tr>
+<tr class="even">
 <td>NewSheet</td>
 <td>在工作簿中新建工作表时</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>Open</td>
 <td>打开工作簿时</td>
 </tr>
-<tr>
+<tr class="even">
 <td>PivotTableCloseConnection</td>
 <td>在数据透视表关闭与其数据源的连接之后</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>PivotTableOpenConnection</td>
 <td>在数据透视表打开与其数据源的连接之后</td>
 </tr>
-<tr>
+<tr class="even">
 <td>SheetActivate</td>
 <td>激活任何一张表时</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>SheetBeforeDoubleClick</td>
 <td>双击任何工作表时</td>
 </tr>
-<tr>
+<tr class="even">
 <td>SheetBeforeRightClick</td>
 <td>鼠标右键单击任一工作表时</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>SheetCalculate</td>
 <td>工作表重新计算时</td>
 </tr>
-<tr>
+<tr class="even">
 <td>SheetChange</td>
 <td>更改工作表中的单元格时</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>SheetDeactivate</td>
 <td>任一工作表由活动状态转为非活动状态时</td>
 </tr>
-<tr>
+<tr class="even">
 <td>SheetFollowHyperlink</td>
 <td>单击 Microsoft Excel 中的任意超链接时</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>SheetPivotTableUpdate</td>
 <td>数据透视表的工作表更新之后</td>
 </tr>
-<tr>
+<tr class="even">
 <td>SheetSelectionChange</td>
 <td>工作簿中的数据透视表更新之后</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>WindowActivate</td>
 <td>工作簿的窗口激活时</td>
 </tr>
-<tr>
+<tr class="even">
 <td>WindowDeactivate</td>
 <td>工作簿的窗口变为非活动状态时</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>WindowResize</td>
 <td>工作簿窗口调整大小时</td>
 </tr>
 </tbody>
 </table>
-<h2 id="2-2-gong-zuo-biao-de-shi-jian">2.2 工作表的事件</h2>
+<h2 id="工作表的事件">2.2 工作表的事件</h2>
 <p>   工作表的事件列表如下：</p>
 <table>
 <thead>
-<tr>
-<th style="text-align:center">事件</th>
-<th style="text-align:center">说明</th>
+<tr class="header">
+<th style="text-align: center;">事件</th>
+<th style="text-align: center;">说明</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:center">Activate</td>
-<td style="text-align:center">激活工作表时</td>
+<tr class="odd">
+<td style="text-align: center;">Activate</td>
+<td style="text-align: center;">激活工作表时</td>
 </tr>
-<tr>
-<td style="text-align:center">Deactivate</td>
-<td style="text-align:center">工作表从活动状态转为非活动状态时</td>
+<tr class="even">
+<td style="text-align: center;">Deactivate</td>
+<td style="text-align: center;">工作表从活动状态转为非活动状态时</td>
 </tr>
-<tr>
-<td style="text-align:center">BeforeDoubleClick</td>
-<td style="text-align:center">双击工作表前</td>
+<tr class="odd">
+<td style="text-align: center;">BeforeDoubleClick</td>
+<td style="text-align: center;">双击工作表前</td>
 </tr>
-<tr>
-<td style="text-align:center">BeforeRightClick</td>
-<td style="text-align:center">右键单击工作表时</td>
+<tr class="even">
+<td style="text-align: center;">BeforeRightClick</td>
+<td style="text-align: center;">右键单击工作表时</td>
 </tr>
-<tr>
-<td style="text-align:center">Calculate</td>
-<td style="text-align:center">对工作表进行重新计算之后</td>
+<tr class="odd">
+<td style="text-align: center;">Calculate</td>
+<td style="text-align: center;">对工作表进行重新计算之后</td>
 </tr>
-<tr>
-<td style="text-align:center">Change</td>
-<td style="text-align:center">更改工作表中的单元格，或外部链接引起单元格时</td>
+<tr class="even">
+<td style="text-align: center;">Change</td>
+<td style="text-align: center;">更改工作表中的单元格，或外部链接引起单元格时</td>
 </tr>
-<tr>
-<td style="text-align:center">FollowHyperlink</td>
-<td style="text-align:center">单击工作表上的任意超链接时</td>
+<tr class="odd">
+<td style="text-align: center;">FollowHyperlink</td>
+<td style="text-align: center;">单击工作表上的任意超链接时</td>
 </tr>
-<tr>
-<td style="text-align:center">PivotTableUpdate</td>
-<td style="text-align:center">在工作簿中的数据透视表更新之后</td>
+<tr class="even">
+<td style="text-align: center;">PivotTableUpdate</td>
+<td style="text-align: center;">在工作簿中的数据透视表更新之后</td>
 </tr>
-<tr>
-<td style="text-align:center">SelectionChange</td>
-<td style="text-align:center">工作表上的选定区域发生改变时</td>
+<tr class="odd">
+<td style="text-align: center;">SelectionChange</td>
+<td style="text-align: center;">工作表上的选定区域发生改变时</td>
 </tr>
 </tbody>
 </table>
-<h2 id="2-3-active-x-kong-jian-de-shi-jian">2.3 ActiveX 控件的事件</h2>
-<p>  ActiveX 控件的事件就是编写宏，不同于表单控件指定现成的宏。</p>
-<h1 id="3-you-yong-de-cao-zuo-shi-li">3. 有用的操作实例</h1>
-<h2 id="3-1-gao-liang-xian-shi-dang-qian-dan-yuan-ge-suo-zai-de-zheng-xing-shu-ju">3.1 高亮显示当前单元格所在的整行数据</h2>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Sub 高亮 ()</span><br><span class="line">Cells.Interior.Pattern = xlNone</span><br><span class="line">Selection.EntireRow.Interior.Color = 65535</span><br><span class="line">End Sub</span><br></pre></td></tr></table></figure>
-<p>   添加到工作表的事件当中：(1) 在 VBA 中选中需要操作的工作表，在顶部左栏选中 Worksheet，在顶部右栏选中工作表事件：SelectionChange。(2) 复制上述 VBA 代码到此。</p>
-<h2 id="3-2-shu-ru-tiao-jian-hou-zi-dong-wan-cheng-shai-xuan">3.2 输入条件后自动完成筛选</h2>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Sub 自动筛选 ()</span><br><span class="line">Range (&quot; 筛选后数据所在区域 & quot;).ClearContents</span><br><span class="line">Range (&quot; 原始数据所在区域 & quot;).AutoFilter Field:=4, Criteria1:=Range (&quot;i2&quot;)</span><br><span class="line">Range (&quot; 原始数据所在区域 & quot;).Copy Range (&quot;l1&quot;)</span><br><span class="line">Range (&quot; 原始数据所在区域 & quot;).AutoFilter</span><br><span class="line">End Sub</span><br></pre></td></tr></table></figure>
-<p>   添加到工作表的事件当中：(1) 在 VBA 中选中需要操作的工作表，在顶部左栏选中 Worksheet，在顶部右栏选中工作表事件：Change。(2) 复制上述 VBA 代码到此。<br>
-   但是，上述代码运行时会出错，因为工作表事件：change 会导致代码的循环运行，因此必须在原代码前后添加控制事件的代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Application.EnableEvents = False</span><br><span class="line"> 原代码 </span><br><span class="line">Application.EnableEvents = True</span><br></pre></td></tr></table></figure>
-<h2 id="3-3-zi-dong-geng-xin">3.3 自动更新</h2>
-<p>   在 VBA 中选中需要操作的工作表，在顶部左栏选中 Worksheet，在顶部右栏选中工作表事件：Activate, 然后添加下述代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ActiveWorkbook.RefreshAll</span><br></pre></td></tr></table></figure>
-<h2 id="3-5-zi-dong-bei-fen">3.5 自动备份</h2>
-<p>   在 VBA 中选中 ThisWorkbook，在顶部左栏选中 Workbook，在顶部右栏选中工作簿事件：BeforeSave, 然后添加下述代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ThisWorkbook.SaveCopyAs &quot; 存储路径 & quot; &amp; Format (Now (), &quot;yyyymmddhhmmss&quot;) &amp; &quot;.xlsx&quot;</span><br></pre></td></tr></table></figure>
+<h2 id="activex-控件的事件">2.3 ActiveX 控件的事件</h2>
+<p>  ActiveX 控件的事件就是编写宏，不同于表单控件指定现成的宏。 # 3. 有用的操作实例 ## 3.1 高亮显示当前单元格所在的整行数据 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Sub 高亮 ()</span><br><span class="line">Cells.Interior.Pattern = xlNone</span><br><span class="line">Selection.EntireRow.Interior.Color = 65535</span><br><span class="line">End Sub</span><br></pre></td></tr></table></figure></p>
+<p>   添加到工作表的事件当中：(1) 在 VBA 中选中需要操作的工作表，在顶部左栏选中 Worksheet，在顶部右栏选中工作表事件：SelectionChange。(2) 复制上述 VBA 代码到此。 ## 3.2 输入条件后自动完成筛选 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Sub 自动筛选 ()</span><br><span class="line">Range (&quot; 筛选后数据所在区域 & quot;).ClearContents</span><br><span class="line">Range (&quot; 原始数据所在区域 & quot;).AutoFilter Field:=4, Criteria1:=Range (&quot;i2&quot;)</span><br><span class="line">Range (&quot; 原始数据所在区域 & quot;).Copy Range (&quot;l1&quot;)</span><br><span class="line">Range (&quot; 原始数据所在区域 & quot;).AutoFilter</span><br><span class="line">End Sub</span><br></pre></td></tr></table></figure></p>
+<p>   添加到工作表的事件当中：(1) 在 VBA 中选中需要操作的工作表，在顶部左栏选中 Worksheet，在顶部右栏选中工作表事件：Change。(2) 复制上述 VBA 代码到此。    但是，上述代码运行时会出错，因为工作表事件：change 会导致代码的循环运行，因此必须在原代码前后添加控制事件的代码： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Application.EnableEvents = False</span><br><span class="line"> 原代码 </span><br><span class="line">Application.EnableEvents = True</span><br></pre></td></tr></table></figure></p>
+<h2 id="自动更新">3.3 自动更新</h2>
+<p>   在 VBA 中选中需要操作的工作表，在顶部左栏选中 Worksheet，在顶部右栏选中工作表事件：Activate, 然后添加下述代码： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ActiveWorkbook.RefreshAll</span><br></pre></td></tr></table></figure></p>
+<h2 id="自动备份">3.5 自动备份</h2>
+<p>   在 VBA 中选中 ThisWorkbook，在顶部左栏选中 Workbook，在顶部右栏选中工作簿事件：BeforeSave, 然后添加下述代码： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ThisWorkbook.SaveCopyAs &quot; 存储路径 & quot; &amp; Format (Now (), &quot;yyyymmddhhmmss&quot;) &amp; &quot;.xlsx&quot;</span><br></pre></td></tr></table></figure></p>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">
       
     </div>
@@ -907,7 +896,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">119</span>
+                  <span class="site-state-item-count">120</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -929,7 +918,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">63</span>
+                  <span class="site-state-item-count">65</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -1015,7 +1004,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-dan-yuan-ge-ge-shi-she-zhi-with-yu-ju"><span class="nav-text">1. 单元格格式设置：with 语句</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-vba-zhong-de-shi-jian"><span class="nav-text">2. VBA 中的事件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-gong-zuo-bo-de-shi-jian"><span class="nav-text">2.1 工作簿的事件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-gong-zuo-biao-de-shi-jian"><span class="nav-text">2.2 工作表的事件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-active-x-kong-jian-de-shi-jian"><span class="nav-text">2.3 ActiveX 控件的事件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-you-yong-de-cao-zuo-shi-li"><span class="nav-text">3. 有用的操作实例</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-gao-liang-xian-shi-dang-qian-dan-yuan-ge-suo-zai-de-zheng-xing-shu-ju"><span class="nav-text">3.1 高亮显示当前单元格所在的整行数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-shu-ru-tiao-jian-hou-zi-dong-wan-cheng-shai-xuan"><span class="nav-text">3.2 输入条件后自动完成筛选</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-3-zi-dong-geng-xin"><span class="nav-text">3.3 自动更新</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-5-zi-dong-bei-fen"><span class="nav-text">3.5 自动备份</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#单元格格式设置with-语句"><span class="nav-text">1. 单元格格式设置：with 语句</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#vba-中的事件"><span class="nav-text">2. VBA 中的事件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#工作簿的事件"><span class="nav-text">2.1 工作簿的事件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#工作表的事件"><span class="nav-text">2.2 工作表的事件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#activex-控件的事件"><span class="nav-text">2.3 ActiveX 控件的事件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自动更新"><span class="nav-text">3.3 自动更新</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自动备份"><span class="nav-text">3.5 自动备份</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -1056,7 +1045,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">74.9k</span>
+    <span title="Site words total count">75.3k</span>
   
 </div>
 
@@ -1736,7 +1725,7 @@
         }
       });
     </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config("");
 </script>

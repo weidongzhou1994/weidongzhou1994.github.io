@@ -521,16 +521,12 @@
       
 
       
-        <p>   在 VBA 中，可以使用 ADO 方便的操纵外部数据。</p>
-<a id="more"></a>
-<h1 id="1-shi-yong-ado-lian-jie-wai-bu-excel-shu-ju-yuan">1. 使用 ADO 连接外部 Excel 数据源</h1>
-<p>   在 Excel 中，要想使用 ADO 链接外部数据前，必须在 VBA 界面中点击工具：引用，勾选 Microsoft ActiveX Data Object x.x Library。值得注意的是，Microsoft ActiveX Data Object x.x Library 有多个版本，尽量选择比较高的版本。<br>
-   勾选之后，就可以在 VBA 中调用相应的方法来操作外部数据，基本的代码如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&apos;Excel 文件 </span><br><span class="line">Dim conn As New ADODB.Connection</span><br><span class="line">conn.Open &quot;Provider = Microsoft.ACE.OLEDB.12.0;Data Source=D:\data\Edata.xlsx;extended properties=&quot;&quot;excel 12.0;HDR=YES&quot;&quot;&quot;</span><br><span class="line">conn.Close</span><br><span class="line">&apos;ACCESS 文件 </span><br><span class="line">conn.Open &quot;Provider=Microsoft.ACE.OLEDB.12.0;Data Source=D:\data\Adata.accdb&quot;</span><br><span class="line">&apos;Mysql 数据库 </span><br><span class="line">conn.Open  &quot;Provider=SQLOLEDB;DataSource=&quot; &amp; Path &amp; &quot;;Initial Catolog=&quot; &amp; strDataName</span><br><span class="line">&apos;MSSQL 数据库 </span><br><span class="line">conn.Open  &quot;Provider=MSDASQL;Driver=&#123;SQL Server&#125;;Server=&quot; &amp; Path &amp; &quot;;Database=&quot; &amp; strDataName</span><br><span class="line">&apos;Oracle 数据库 </span><br><span class="line">conn.Open  &quot;Provider=madaora;Data Source=MyOracleDB; User Id=UserID; Password=Password&quot;</span><br></pre></td></tr></table></figure>
-<h1 id="2-chang-yong-de-sql-yu-ju">2. 常用的 sql 语句</h1>
+        <p>   在 VBA 中，可以使用 ADO 方便的操纵外部数据。 <a id="more"></a> # 1. 使用 ADO 连接外部 Excel 数据源    在 Excel 中，要想使用 ADO 链接外部数据前，必须在 VBA 界面中点击工具：引用，勾选 Microsoft ActiveX Data Object x.x Library。值得注意的是，Microsoft ActiveX Data Object x.x Library 有多个版本，尽量选择比较高的版本。    勾选之后，就可以在 VBA 中调用相应的方法来操作外部数据，基本的代码如下： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&apos;Excel 文件 </span><br><span class="line">Dim conn As New ADODB.Connection</span><br><span class="line">conn.Open &quot;Provider = Microsoft.ACE.OLEDB.12.0;Data Source=D:\data\Edata.xlsx;extended properties=&quot;&quot;excel 12.0;HDR=YES&quot;&quot;&quot;</span><br><span class="line">conn.Close</span><br><span class="line">&apos;ACCESS 文件 </span><br><span class="line">conn.Open &quot;Provider=Microsoft.ACE.OLEDB.12.0;Data Source=D:\data\Adata.accdb&quot;</span><br><span class="line">&apos;Mysql 数据库 </span><br><span class="line">conn.Open  &quot;Provider=SQLOLEDB;DataSource=&quot; &amp; Path &amp; &quot;;Initial Catolog=&quot; &amp; strDataName</span><br><span class="line">&apos;MSSQL 数据库 </span><br><span class="line">conn.Open  &quot;Provider=MSDASQL;Driver=&#123;SQL Server&#125;;Server=&quot; &amp; Path &amp; &quot;;Database=&quot; &amp; strDataName</span><br><span class="line">&apos;Oracle 数据库 </span><br><span class="line">conn.Open  &quot;Provider=madaora;Data Source=MyOracleDB; User Id=UserID; Password=Password&quot;</span><br></pre></td></tr></table></figure></p>
+<h1 id="常用的-sql-语句">2. 常用的 sql 语句</h1>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&apos; 抓取数据 </span><br><span class="line">Range (“a1”).CopyFromRecordset conn.Execute (“select * from [data$]”）</span><br><span class="line">&apos; 查询某几个字段 </span><br><span class="line">select 姓名，年龄 from [data$]</span><br><span class="line">&apos; 带条件的查询 </span><br><span class="line">select * from [data$] where 性别 = &quot; 男 “</span><br><span class="line">&apos; 合并两个表的数据 </span><br><span class="line">select * from [data$] union all select * from [data2$]</span><br><span class="line">&apos; 插入新记录 </span><br><span class="line">insert into [data$] (姓名，性别，年龄) values (&apos;AA&apos;,&apos; 男 & apos;,33) </span><br><span class="line">&apos; 修改一条数据 </span><br><span class="line">update [data$] set 性别 =‘男’, 年龄 = 16 where 姓名 =‘张三‘</span><br><span class="line">&apos; 删除一条数据 </span><br><span class="line">delete from [data$]  where 姓名 =&apos; 张三 & apos;</span><br><span class="line">&apos; 使用 LEFT JOIN …ON…  (类似于 VLOOKUP）</span><br><span class="line">select [data3$]. 姓名，性别，年龄，月薪 from [data$] left join [data3$] on [data$]. 姓名 =[data3$]. 姓名 </span><br><span class="line">&apos; 先 UNION ALL 再 LEFT JOIN</span><br><span class="line">select * from (select * from [data$] union all select * from [data2$]) a left join [data3$] on a. 姓名 =[data3$]. 姓名 </span><br><span class="line">&apos; 将查询结果赋值到数组 </span><br><span class="line">arr = Application.WorksheetFunction.Transpose (conn.Execute (&quot;select * from [data$]&quot;).GetRows)</span><br></pre></td></tr></table></figure>
-<h1 id="3-yi-ge-jian-dan-de-an-li">3. 一个简单的案例</h1>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&apos; 使用前请确认是否勾选了 Microsoft ActiveX Data Object  x.x  Library！！！</span><br><span class="line">Sub test ()</span><br><span class="line">Dim conn As New ADODB.Connection</span><br><span class="line">Dim sql As String</span><br><span class="line">&apos; 注意这个链接文件的路径！！！需要把 Adata 文件放入 d:\data 文件夹！！</span><br><span class="line">Range (&quot;a2:z1000&quot;).ClearContents</span><br><span class="line">conn.Open &quot;Provider = Microsoft.ACE.OLEDB.12.0;Data Source=D:\data\Adata.accdb&quot;</span><br><span class="line">sql = &quot;select 客户 ID, 公司名称，日期，产品类别，数量，金额，成本 from [客户信息表] left join [交易记录] on [客户信息表].ID=[交易记录]. 客户 ID&quot;</span><br><span class="line">Range (&quot;a2&quot;).CopyFromRecordset conn.Execute (sql)</span><br><span class="line">conn.Close</span><br><span class="line">End Sub</span><br></pre></td></tr></table></figure><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">
+<h1 id="一个简单的案例">3. 一个简单的案例</h1>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&apos; 使用前请确认是否勾选了 Microsoft ActiveX Data Object  x.x  Library！！！</span><br><span class="line">Sub test ()</span><br><span class="line">Dim conn As New ADODB.Connection</span><br><span class="line">Dim sql As String</span><br><span class="line">&apos; 注意这个链接文件的路径！！！需要把 Adata 文件放入 d:\data 文件夹！！</span><br><span class="line">Range (&quot;a2:z1000&quot;).ClearContents</span><br><span class="line">conn.Open &quot;Provider = Microsoft.ACE.OLEDB.12.0;Data Source=D:\data\Adata.accdb&quot;</span><br><span class="line">sql = &quot;select 客户 ID, 公司名称，日期，产品类别，数量，金额，成本 from [客户信息表] left join [交易记录] on [客户信息表].ID=[交易记录]. 客户 ID&quot;</span><br><span class="line">Range (&quot;a2&quot;).CopyFromRecordset conn.Execute (sql)</span><br><span class="line">conn.Close</span><br><span class="line">End Sub</span><br></pre></td></tr></table></figure>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">
       
     </div>
 
@@ -740,7 +736,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">119</span>
+                  <span class="site-state-item-count">120</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -762,7 +758,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">63</span>
+                  <span class="site-state-item-count">65</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -848,7 +844,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-shi-yong-ado-lian-jie-wai-bu-excel-shu-ju-yuan"><span class="nav-text">1. 使用 ADO 连接外部 Excel 数据源</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-chang-yong-de-sql-yu-ju"><span class="nav-text">2. 常用的 sql 语句</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-yi-ge-jian-dan-de-an-li"><span class="nav-text">3. 一个简单的案例</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#常用的-sql-语句"><span class="nav-text">2. 常用的 sql 语句</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#一个简单的案例"><span class="nav-text">3. 一个简单的案例</span></a></li></ol></div>
             
 
           </div>
@@ -889,7 +885,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">74.9k</span>
+    <span title="Site words total count">75.3k</span>
   
 </div>
 
@@ -1569,7 +1565,7 @@
         }
       });
     </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config("");
 </script>

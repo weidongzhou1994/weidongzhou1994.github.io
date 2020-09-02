@@ -523,51 +523,51 @@
       
         <p>   第五天：</p>
 <a id="more"></a>
-<h2 id="596-classes-more-than-5-students">596. Classes More Than 5 Students</h2>
+<h2 id="classes-more-than-5-students">596. Classes More Than 5 Students</h2>
 <p>  There is a table <code>courses</code> with columns: <strong>student</strong> and <strong>class</strong></p>
 <p>  Please list out all classes which have more than or equal to 5 students.</p>
 <p>  For example, the table:</p>
 <table>
 <thead>
-<tr>
+<tr class="header">
 <th>student</th>
 <th>class</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td>A</td>
 <td>Math</td>
 </tr>
-<tr>
+<tr class="even">
 <td>B</td>
 <td>English</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>C</td>
 <td>Math</td>
 </tr>
-<tr>
+<tr class="even">
 <td>D</td>
 <td>Biology</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>E</td>
 <td>Math</td>
 </tr>
-<tr>
+<tr class="even">
 <td>F</td>
 <td>Computer</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>G</td>
 <td>Math</td>
 </tr>
-<tr>
+<tr class="even">
 <td>H</td>
 <td>Math</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>I</td>
 <td>Math</td>
 </tr>
@@ -576,12 +576,12 @@
 <p>  Should output:</p>
 <table>
 <thead>
-<tr>
+<tr class="header">
 <th>class</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td>Math</td>
 </tr>
 </tbody>
@@ -590,13 +590,13 @@
 <p>  The students should not be counted duplicate in each course.</p>
 <p>   解决方法：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">class</span> <span class="keyword">from</span> courses <span class="keyword">group</span> <span class="keyword">by</span> <span class="keyword">class</span> <span class="keyword">having</span> <span class="keyword">count</span>(<span class="keyword">distinct</span> student) &gt;= <span class="number">5</span>;</span><br></pre></td></tr></table></figure>
-<h2 id="620-not-boring-movies">620. Not Boring Movies</h2>
+<h2 id="not-boring-movies">620. Not Boring Movies</h2>
 <p>  X city opened a new cinema, many people would like to go to this cinema. The cinema also gives out a poster indicating the movies’ ratings and descriptions.</p>
-<p>  Please write a SQL query to output movies with an odd numbered ID and a description that is not ‘boring’. Order the result by rating.</p>
+<p>  Please write a SQL query to output movies with an odd numbered ID and a description that is not 'boring'. Order the result by rating.</p>
 <p>  For example, table <code>cinema</code>:</p>
 <table>
 <thead>
-<tr>
+<tr class="header">
 <th>id</th>
 <th>movie</th>
 <th>description</th>
@@ -604,31 +604,31 @@
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td>1</td>
 <td>War</td>
 <td>great 3D</td>
 <td>8.9</td>
 </tr>
-<tr>
+<tr class="even">
 <td>2</td>
 <td>Science</td>
 <td>fiction</td>
 <td>8.5</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>3</td>
 <td>irish</td>
 <td>boring</td>
 <td>6.2</td>
 </tr>
-<tr>
+<tr class="even">
 <td>4</td>
 <td>Ice song</td>
 <td>Fantacy</td>
 <td>8.6</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>5</td>
 <td>House card</td>
 <td>Interesting</td>
@@ -639,7 +639,7 @@
 <p>  For the example above, the output should be:</p>
 <table>
 <thead>
-<tr>
+<tr class="header">
 <th>id</th>
 <th>movie</th>
 <th>description</th>
@@ -647,13 +647,13 @@
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td>5</td>
 <td>House card</td>
 <td>Interesting</td>
 <td>9.1</td>
 </tr>
-<tr>
+<tr class="even">
 <td>1</td>
 <td>War</td>
 <td>great 3D</td>
@@ -664,7 +664,7 @@
 <p>   解决方法：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> cinema <span class="keyword">where</span> <span class="keyword">mod</span>(<span class="keyword">id</span>, <span class="number">2</span>) != <span class="number">0</span> <span class="keyword">and</span> description <span class="keyword">not</span> <span class="keyword">like</span> <span class="string">'boring'</span> <span class="keyword">order</span> <span class="keyword">by</span> rating <span class="keyword">DESC</span>;</span><br></pre></td></tr></table></figure>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> cinema <span class="keyword">where</span> description &lt;&gt; <span class="string">'boring'</span> <span class="keyword">and</span> <span class="keyword">id</span> &amp; <span class="number">1</span> = <span class="number">1</span> <span class="keyword">order</span> <span class="keyword">by</span> rating <span class="keyword">DESC</span></span><br></pre></td></tr></table></figure>
-<p>   两个知识点：对于字符串 not like 是模糊查询，&lt;&gt; 则是完整查询，二者的区别是前者要求数据里面不包含某个字段，后者要求数据不是某个字段；&amp; 是位运算符，可以用于判断对 $2^n$ 取余，是一个取巧的办法，加快了运算速度。</p>
+<p>   两个知识点：对于字符串 not like 是模糊查询，&lt;&gt; 则是完整查询，二者的区别是前者要求数据里面不包含某个字段，后者要求数据不是某个字段；&amp; 是位运算符，可以用于判断对 <span class="math inline">\(2^n\)</span> 取余，是一个取巧的办法，加快了运算速度。</p>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">
       
     </div>
@@ -873,7 +873,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">119</span>
+                  <span class="site-state-item-count">120</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -895,7 +895,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">63</span>
+                  <span class="site-state-item-count">65</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -981,7 +981,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#596-classes-more-than-5-students"><span class="nav-text">596. Classes More Than 5 Students</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#620-not-boring-movies"><span class="nav-text">620. Not Boring Movies</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#classes-more-than-5-students"><span class="nav-text">596. Classes More Than 5 Students</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#not-boring-movies"><span class="nav-text">620. Not Boring Movies</span></a></li></ol></div>
             
 
           </div>
@@ -1022,7 +1022,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">74.9k</span>
+    <span title="Site words total count">75.3k</span>
   
 </div>
 
@@ -1702,7 +1702,7 @@
         }
       });
     </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config("");
 </script>

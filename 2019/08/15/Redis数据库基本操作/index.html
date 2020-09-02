@@ -521,28 +521,23 @@
       
 
       
-        <p>  Redis 是完全开源免费的，遵守 BSD 协议，是一个高性能的 key-value 数据库。Redis 支持五种数据类型：string（字符串），hash（哈希），list（列表），set（集合）及 zset (sorted set：有序集合)。</p>
-<a id="more"></a>
-<h1 id="1-zi-fu-chuan">1. 字符串</h1>
-<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"> 命令 键值          // 基本语法 </span><br><span class="line"><span class="built_in">SET</span> key "value"     // 增加一个数据 </span><br><span class="line">MSET key1 "value1" key2 "value2"  // 增加多个数据 </span><br><span class="line">SETEX key seconds value  // 将值 value 关联到 key ，并将 key 的过期时间设为 seconds (以秒为单位)。</span><br><span class="line">GET key             // 获取指定 key 的值。</span><br><span class="line">MGET key1 [key2..]  // 获取所有 (一个或多个) 给定 key 的值。</span><br><span class="line"><span class="built_in">APPEND</span> key value    // 如果 key 已经存在并且是一个字符串， <span class="built_in">APPEND</span> 命令将指定的 value 追加到该 key 原来值（value）的末尾。</span><br></pre></td></tr></table></figure>
-<h1 id="2-ha-xi">2. 哈希</h1>
+        <p>  Redis 是完全开源免费的，遵守 BSD 协议，是一个高性能的 key-value 数据库。Redis 支持五种数据类型：string（字符串），hash（哈希），list（列表），set（集合）及 zset (sorted set：有序集合)。 <a id="more"></a> # 1. 字符串 <figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"> 命令 键值          // 基本语法 </span><br><span class="line"><span class="built_in">SET</span> key "value"     // 增加一个数据 </span><br><span class="line">MSET key1 "value1" key2 "value2"  // 增加多个数据 </span><br><span class="line">SETEX key seconds value  // 将值 value 关联到 key ，并将 key 的过期时间设为 seconds (以秒为单位)。</span><br><span class="line">GET key             // 获取指定 key 的值。</span><br><span class="line">MGET key1 [key2..]  // 获取所有 (一个或多个) 给定 key 的值。</span><br><span class="line"><span class="built_in">APPEND</span> key value    // 如果 key 已经存在并且是一个字符串， <span class="built_in">APPEND</span> 命令将指定的 value 追加到该 key 原来值（value）的末尾。</span><br></pre></td></tr></table></figure></p>
+<h1 id="哈希">2. 哈希</h1>
 <figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">HSET key field value   // 将哈希表 key 中的字段 field 的值设为 value </span><br><span class="line">HKEYS key              // 获取所有哈希表中的字段 </span><br><span class="line">HGET key field         // 获取存储在哈希表中指定字段的值 </span><br><span class="line">HMGET key field1 [field2]   // 获取所有给定字段的值 </span><br><span class="line">HVALS key                   // 获取哈希表中所有值 </span><br><span class="line">HDEL key field1 [field2]    // 删除一个或多个哈希表字段 </span><br></pre></td></tr></table></figure>
-<h1 id="3-lie-biao">3. 列表</h1>
+<h1 id="列表">3. 列表</h1>
 <figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">LPUSH key value1 [value2]  // 将一个或多个值插入到列表头部 </span><br><span class="line">RPUSH key value1 [value2]  // 在列表中添加一个或多个值 </span><br><span class="line">LPOP key                   // 移出并获取列表的第一个元素 </span><br><span class="line">RPOP key                   // 移除列表的最后一个元素，返回值为移除的元素。</span><br><span class="line">LRANGE key <span class="built_in">start</span> stop      // 根据范围取出 </span><br><span class="line">LINSERT key BEFORE|AFTER pivot value // 在 pivot 前 | 后插入 </span><br><span class="line">LSET key index value      // 通过索引设置列表元素的值 </span><br><span class="line">LREM key count value      // 移除列表元素:count &gt;<span class="number">0</span> 从头删；count &lt; <span class="number">0</span> 从尾删除；count = <span class="number">0</span> 符合条件的所有删除。</span><br></pre></td></tr></table></figure>
-<h1 id="4-ji-he">4. 集合</h1>
-<p>  Redis 的 Set 是 String 类型的无序集合。集合成员是唯一的，这就意味着集合中不能出现重复的数据。</p>
-<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SADD key member1 [member2]      // 向集合添加一个或多个成员 </span><br><span class="line">SMEMBERS key                    // 查看所有元素 </span><br><span class="line">SREM key member1 [member2]      // 移除集合中一个或多个成员 </span><br><span class="line">SISMEMBER key member            // 判断 member 元素是否是集合 key 的成员:<span class="number">1</span>- 是；<span class="number">0</span>- 否。</span><br></pre></td></tr></table></figure>
-<h1 id="5-you-xu-ji-he">5. 有序集合</h1>
+<h1 id="集合">4. 集合</h1>
+<p>  Redis 的 Set 是 String 类型的无序集合。集合成员是唯一的，这就意味着集合中不能出现重复的数据。 <figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SADD key member1 [member2]      // 向集合添加一个或多个成员 </span><br><span class="line">SMEMBERS key                    // 查看所有元素 </span><br><span class="line">SREM key member1 [member2]      // 移除集合中一个或多个成员 </span><br><span class="line">SISMEMBER key member            // 判断 member 元素是否是集合 key 的成员:<span class="number">1</span>- 是；<span class="number">0</span>- 否。</span><br></pre></td></tr></table></figure></p>
+<h1 id="有序集合">5. 有序集合</h1>
 <figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ZADD key score1 member1 [score2 member2]        // 向有序集合添加一个或多个成员，或者更新已存在成员的分数 </span><br><span class="line">ZRANGE key <span class="built_in">start</span> stop [WITHSCORES]              // 查看指定范围内的元素 </span><br><span class="line">ZRANGEBYSCORE key min max [WITHSCORES] [LIMIT offset count]  // 通过分数返回有序集合指定区间内的成员 </span><br><span class="line">ZSCORE key member                               // 返回有序集中，成员的分数值 </span><br><span class="line">ZREM key member [member ...]                    // 移除有序集合中的一个或多个成员 </span><br><span class="line">ZREMRANGEBYSCORE key min max                    // 移除有序集合中给定的分数区间的所有成员 </span><br></pre></td></tr></table></figure>
-<h1 id="6-cao-zuo-key">6. 操作 key</h1>
+<h1 id="操作-key">6. 操作 key</h1>
 <figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">KEYS pattern              // 根据 pattern 返回 key</span><br><span class="line">EXISTS key                // 检查给定 key 是否存在 </span><br><span class="line"><span class="built_in">TYPE</span> key                  // 返回 key 所储存的值的类型 </span><br><span class="line"><span class="built_in">DEL</span> key                   // 该命令用于在 key 存在时删除 key</span><br><span class="line">EXPIRE key seconds        // 为给定 key 设置过期时间，以秒计 </span><br></pre></td></tr></table></figure>
-<h1 id="7-zai-python-zhong-cao-zuo-redis-shu-ju-ku">7. 在 python 中操作 Redis 数据库</h1>
+<h1 id="在-python-中操作-redis-数据库">7. 在 python 中操作 Redis 数据库</h1>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> redis</span><br><span class="line">r = redis.StricRedis (host=<span class="string">'localhost'</span>, port=<span class="number">6379</span>, db=<span class="number">0</span>)</span><br><span class="line">r.set (<span class="string">' 键名 '</span>, <span class="string">' 值 '</span>)    // 设置值：不存在 - 创建；存在 - 修改 </span><br><span class="line">r.delete (<span class="string">' 键名 '</span>)      //  删除值 </span><br><span class="line">r.get (<span class="string">' 键名 '</span>)         //  获取值 </span><br><span class="line">r.keys ()             //   获取所有 key 和数据 </span><br></pre></td></tr></table></figure>
-<h1 id="8-qing-chu-shu-ju">8. 清除数据</h1>
+<h1 id="清除数据">8. 清除数据</h1>
 <figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">flushdb    // 清除当前的数据库 </span><br><span class="line">FLUSHALL   // 清空 < span class="number">0</span>-<span class="number">16</span> 个数据库 <br></pre></td></tr></table></figure>
 <hr>
-<p><a href="https://www.runoob.com/redis/redis-conf.html" target="_blank" rel="noopener">Redis 配置</a><br>
-<a href="https://www.jianshu.com/p/e2aab25d19f5" target="_blank" rel="noopener">主从服务器</a></p>
+<p><a href="https://www.runoob.com/redis/redis-conf.html" target="_blank" rel="noopener">Redis 配置</a> <a href="https://www.jianshu.com/p/e2aab25d19f5" target="_blank" rel="noopener">主从服务器</a></p>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">
       
     </div>
@@ -755,7 +750,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">119</span>
+                  <span class="site-state-item-count">120</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -777,7 +772,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">63</span>
+                  <span class="site-state-item-count">65</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -863,7 +858,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-zi-fu-chuan"><span class="nav-text">1. 字符串</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-ha-xi"><span class="nav-text">2. 哈希</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-lie-biao"><span class="nav-text">3. 列表</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-ji-he"><span class="nav-text">4. 集合</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-you-xu-ji-he"><span class="nav-text">5. 有序集合</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6-cao-zuo-key"><span class="nav-text">6. 操作 key</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7-zai-python-zhong-cao-zuo-redis-shu-ju-ku"><span class="nav-text">7. 在 python 中操作 Redis 数据库</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#8-qing-chu-shu-ju"><span class="nav-text">8. 清除数据</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#哈希"><span class="nav-text">2. 哈希</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#列表"><span class="nav-text">3. 列表</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#集合"><span class="nav-text">4. 集合</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#有序集合"><span class="nav-text">5. 有序集合</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#操作-key"><span class="nav-text">6. 操作 key</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#在-python-中操作-redis-数据库"><span class="nav-text">7. 在 python 中操作 Redis 数据库</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#清除数据"><span class="nav-text">8. 清除数据</span></a></li></ol></div>
             
 
           </div>
@@ -904,7 +899,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">74.9k</span>
+    <span title="Site words total count">75.3k</span>
   
 </div>
 
@@ -1584,7 +1579,7 @@
         }
       });
     </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config("");
 </script>

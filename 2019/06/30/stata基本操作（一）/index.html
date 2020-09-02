@@ -486,7 +486,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,671
+                  1,613
                 </span>
               
 
@@ -523,186 +523,156 @@
       
 
       
-        <h1 id="1-shu-ju-de-diao-ru-he-diao-chu">1. 数据的调入和调出</h1>
+        <h1 id="数据的调入和调出">1. 数据的调入和调出</h1>
 <a id="more"></a>
-<h2 id="1-1-shu-ju-de-diao-ru">1.1 数据的调入</h2>
-<p>   在 stata 中，数据的调入意味着从本地或网络中将数据放置在 stata 在内存中分配的空间，除非使用 save 命令将其保存到硬盘上，硬盘中数据文件是不受任何影响的。</p>
-<h3 id="1-1-1-diao-ru-ben-di-shu-ju">1.1.1 调入本地数据</h3>
-<p>   本地数据的格式包括标准化的数据文件、ASCII 数据和 Excel 数据</p>
-<h4 id="1-1-1-1-diao-ru-ben-di-stata-ge-shi-shu-ju">1.1.1.1 调入本地 stata 格式数据</h4>
-<p>   命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use [varlist] [if] [in] using filename [, clear nolabel ]</span><br></pre></td></tr></table></figure>
-<p>   调入全部数据：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use &quot;D:\stata15\auto.dta&quot;, clear</span><br></pre></td></tr></table></figure>
-<p>   调入数据文件中的部分变量：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use make price using &quot;D:\stata15\auto.dta&quot;, clear</span><br></pre></td></tr></table></figure>
-<p>   调入数据中的部分样本：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use &quot;D:\stata15\auto.dta&quot; in 5/10 // 不能添加 clear 选项，否则会报错 </span><br></pre></td></tr></table></figure>
-<p>   调入数据文件中具有某些特征的样本：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use &quot;D:\stata15\auto.dta&quot; if foreign==1, clear</span><br></pre></td></tr></table></figure>
-<h4 id="1-1-1-2-diao-yong-stata-nei-zhi-shu-ju-ji">1.1.1.2 调用 stata 内置数据集</h4>
-<p>   查看 stata 内置数据集的完整列表：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">help dta_examples</span><br></pre></td></tr></table></figure>
-<p>   调用数据：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sysuse &quot;cancer.dta&quot;, clear</span><br></pre></td></tr></table></figure>
-<h4 id="1-1-1-3-insheet-ming-ling-du-qu-ascii-ge-shi-de-shu-ju">1.1.1.3 insheet 命令 —— 读取 ASCII 格式的数据</h4>
-<p>   基本命令如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">insheet [varlsit] using filename [,options]</span><br></pre></td></tr></table></figure>
-<h4 id="1-1-1-4-infile-ming-ling-du-qu-wu-gu-ding-ge-shi-de-shu-ju-wen-jian">1.1.1.4 infile 命令 —— 读取无固定格式的数据文件</h4>
-<p>   基本命令如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">infile str18 make price mpg rep78 str8 foreign using myout，clear</span><br></pre></td></tr></table></figure>
-<h4 id="1-1-1-5-infix-ming-ling-du-qu-gu-ding-ge-shi-shu-ju">1.1.1.5 infix 命令 —— 读取固定格式数据</h4>
-<p>   对于下面的数据：<br>
-<img src="https://blog-1258437747.cos.ap-chengdu.myqcloud.com/20190630174511.png" alt=""><br>
-   基本命令如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">infix gender 1 number 3-5 math 7-8 english 10-11 using 文件路径 + 文件名，clear</span><br></pre></td></tr></table></figure>
-<h4 id="1-1-1-6-diao-ru-excel-shu-ju-import-excel-amp-xls-2-dta">1.1.1.6 调入 excel 数据 —— import excel &amp; xls2dta</h4>
-<p>  stata 官方提供了导入 excel 数据的命令：import excel，基本语句如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import excel [using] filename [, import_excel_options] //sheetname - 导入哪个工作表； cellrange（[start][:end]）- 数据区域；firstrow - 表头作为变量名。</span><br></pre></td></tr></table></figure>
+<h2 id="数据的调入">1.1 数据的调入</h2>
+<p>   在 stata 中，数据的调入意味着从本地或网络中将数据放置在 stata 在内存中分配的空间，除非使用 save 命令将其保存到硬盘上，硬盘中数据文件是不受任何影响的。 ### 1.1.1 调入本地数据    本地数据的格式包括标准化的数据文件、ASCII 数据和 Excel 数据 #### 1.1.1.1 调入本地 stata 格式数据    命令： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use [varlist] [if] [in] using filename [, clear nolabel ]</span><br></pre></td></tr></table></figure></p>
+<p>   调入全部数据： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use &quot;D:\stata15\auto.dta&quot;, clear</span><br></pre></td></tr></table></figure></p>
+<p>   调入数据文件中的部分变量： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use make price using &quot;D:\stata15\auto.dta&quot;, clear</span><br></pre></td></tr></table></figure></p>
+<p>   调入数据中的部分样本： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use &quot;D:\stata15\auto.dta&quot; in 5/10 // 不能添加 clear 选项，否则会报错 </span><br></pre></td></tr></table></figure></p>
+<p>   调入数据文件中具有某些特征的样本： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use &quot;D:\stata15\auto.dta&quot; if foreign==1, clear</span><br></pre></td></tr></table></figure></p>
+<h4 id="调用-stata-内置数据集">1.1.1.2 调用 stata 内置数据集</h4>
+<p>   查看 stata 内置数据集的完整列表： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">help dta_examples</span><br></pre></td></tr></table></figure></p>
+<p>   调用数据： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sysuse &quot;cancer.dta&quot;, clear</span><br></pre></td></tr></table></figure></p>
+<h4 id="insheet-命令-读取-ascii-格式的数据">1.1.1.3 insheet 命令 —— 读取 ASCII 格式的数据</h4>
+<p>   基本命令如下： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">insheet [varlsit] using filename [,options]</span><br></pre></td></tr></table></figure></p>
+<h4 id="infile-命令-读取无固定格式的数据文件">1.1.1.4 infile 命令 —— 读取无固定格式的数据文件</h4>
+<p>   基本命令如下： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">infile str18 make price mpg rep78 str8 foreign using myout，clear</span><br></pre></td></tr></table></figure></p>
+<h4 id="infix-命令-读取固定格式数据">1.1.1.5 infix 命令 —— 读取固定格式数据</h4>
+<p>   对于下面的数据： <img src="https://blog-1258437747.cos.ap-chengdu.myqcloud.com/20190630174511.png">    基本命令如下： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">infix gender 1 number 3-5 math 7-8 english 10-11 using 文件路径 + 文件名，clear</span><br></pre></td></tr></table></figure></p>
+<h4 id="调入-excel-数据-import-excel-xls2dta">1.1.1.6 调入 excel 数据 —— import excel &amp; xls2dta</h4>
+<p>  stata 官方提供了导入 excel 数据的命令：import excel，基本语句如下： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import excel [using] filename [, import_excel_options] //sheetname - 导入哪个工作表； cellrange（[start][:end]）- 数据区域；firstrow - 表头作为变量名。</span><br></pre></td></tr></table></figure></p>
 <p>   对于多个 excel 文件的读取，可以使用 <a href="https://stata-club.github.io/stata_article/2017-02-09.html" title="xls2dta 命令" target="_blank" rel="noopener">xls2dta 命令</a></p>
-<h3 id="1-1-2-diao-ru-zai-xian-shu-ju">1.1.2 调入在线数据</h3>
-<h4 id="1-1-2-1-diao-ru-stata-guan-wang-de-shou-ce">1.1.2.1 调入 stata 官网的手册</h4>
-<p>   查看 stata 官网的手册列表：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">help dta_manuals</span><br></pre></td></tr></table></figure>
-<p>   查看 stata 官网的手册：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">webuse lifeexp, clear</span><br></pre></td></tr></table></figure>
-<p>  webuse 也可以更改下载的网络地址，下载其 stata 格式的数据：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">webuse set 网址 </span><br><span class="line">webuse 数据文件名 </span><br></pre></td></tr></table></figure>
-<h4 id="1-1-2-2-diao-yong-bo-shi-dun-xue-yuan-economics-shi-yan-shi-ti-gong-de-shu-ju">1.1.2.2 调用波士顿学院 Economics 实验室提供的数据</h4>
-<p>   查看能下载的数据集列表：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">view browse &quot;http://fmwww.bc.edu/ec-p/data/wooldridge/datasets.list.html&quot;</span><br></pre></td></tr></table></figure>
-<p>   下载数据：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bcuse 数据文件名，clear // 如果有些命令是以 zip 保存的，只需再文件名后面加上.zip 即可 </span><br></pre></td></tr></table></figure>
-<h4 id="1-1-2-3-diao-yong-lian-bang-chu-bei-jing-ji-shu-ju-ku">1.1.2.3 调用联邦储备经济数据库</h4>
-<p>   命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import fred series_list [, options]  //or   import fred, serieslist (filename) [options]</span><br></pre></td></tr></table></figure>
-<h3 id="1-1-3-da-sha-qi-copy-ming-ling">1.1.3 大杀器 copy 命令</h3>
-<p>   基本命令如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">copy filename1 filename2 [, options]</span><br></pre></td></tr></table></figure>
-<h2 id="1-2-shu-ju-de-diao-chu">1.2 数据的调出</h2>
-<p>   数据在调出之前首先需要存储，命令如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">save 文件名.dta, replace</span><br></pre></td></tr></table></figure>
-<h3 id="1-2-1-dao-chu-wei-raw-wen-ben-ge-shi">1.2.1 导出为 .raw 文本格式</h3>
+<h3 id="调入在线数据">1.1.2 调入在线数据</h3>
+<h4 id="调入-stata-官网的手册">1.1.2.1 调入 stata 官网的手册</h4>
+<p>   查看 stata 官网的手册列表： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">help dta_manuals</span><br></pre></td></tr></table></figure></p>
+<p>   查看 stata 官网的手册： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">webuse lifeexp, clear</span><br></pre></td></tr></table></figure></p>
+<p>  webuse 也可以更改下载的网络地址，下载其 stata 格式的数据： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">webuse set 网址 </span><br><span class="line">webuse 数据文件名 </span><br></pre></td></tr></table></figure></p>
+<h4 id="调用波士顿学院-economics-实验室提供的数据">1.1.2.2 调用波士顿学院 Economics 实验室提供的数据</h4>
+<p>   查看能下载的数据集列表： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">view browse &quot;http://fmwww.bc.edu/ec-p/data/wooldridge/datasets.list.html&quot;</span><br></pre></td></tr></table></figure></p>
+<p>   下载数据： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bcuse 数据文件名，clear // 如果有些命令是以 zip 保存的，只需再文件名后面加上.zip 即可 </span><br></pre></td></tr></table></figure></p>
+<h4 id="调用联邦储备经济数据库">1.1.2.3 调用联邦储备经济数据库</h4>
+<p>   命令： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import fred series_list [, options]  //or   import fred, serieslist (filename) [options]</span><br></pre></td></tr></table></figure></p>
+<h3 id="大杀器-copy-命令">1.1.3 大杀器 copy 命令</h3>
+<p>   基本命令如下： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">copy filename1 filename2 [, options]</span><br></pre></td></tr></table></figure></p>
+<h2 id="数据的调出">1.2 数据的调出</h2>
+<p>   数据在调出之前首先需要存储，命令如下： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">save 文件名.dta, replace</span><br></pre></td></tr></table></figure></p>
+<h3 id="导出为-.raw-文本格式">1.2.1 导出为 .raw 文本格式</h3>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">outfile [varlist] using filename [if] [in] [, options]</span><br></pre></td></tr></table></figure>
-<h3 id="1-2-2-dao-chu-wei-tab-fen-ge-de-wen-ben-wen-jian">1.2.2 导出为 -Tab- 分隔的文本文件</h3>
+<h3 id="导出为--tab--分隔的文本文件">1.2.2 导出为 -Tab- 分隔的文本文件</h3>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">outsheet [varlist] using filename [if] [in] [, options]</span><br></pre></td></tr></table></figure>
-<h3 id="1-2-3-dao-chu-wei-xml-ge-shi">1.2.3 导出为 XML 格式</h3>
+<h3 id="导出为-xml-格式">1.2.3 导出为 XML 格式</h3>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xmlsave filename [if] [in] [, xmlsave_options]</span><br></pre></td></tr></table></figure>
-<h3 id="1-2-4-dao-chu-wei-word-excel-tex">1.2.4 导出为 Word,Excel,Tex</h3>
+<h3 id="导出为-wordexceltex">1.2.4 导出为 Word,Excel,Tex</h3>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dataout &lt;using filename&gt; [, options]</span><br></pre></td></tr></table></figure>
-<h3 id="1-2-5-dao-chu-wei-spss-rats-limdep-ge-shi">1.2.5 导出为 .spss, .rats, .limdep 格式</h3>
+<h3 id="导出为-.spss-.rats-.limdep-格式">1.2.5 导出为 .spss, .rats, .limdep 格式</h3>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">outdat [varlist] using filename [, replace type (packagelist)] nostring listwise</span><br></pre></td></tr></table></figure>
-<h1 id="2-shu-ju-wen-jian-de-liu-lan">2. 数据文件的浏览</h1>
-<h2 id="2-1-bian-liang-de-ming-ming">2.1 变量的命名</h2>
-<p>   变量命名的 stata 基本命令是：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rename old_varname new_varname</span><br></pre></td></tr></table></figure>
-<p>   变量命名的基本规则是：（1）首字母必须为 字母；（2）由英文字母、数字或 _ 组成，至多不超过 32 个；（3）英文字母的大写和小写具有不同的含义。</p>
-<h2 id="2-1-cha-kan-shu-ju-zi-liao-de-jie-gou">2.1 查看数据资料的结构</h2>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">describe</span><br></pre></td></tr></table></figure>
-<h2 id="2-2-geng-gai-bian-liang-de-cun-chu-lei-xing">2.2 更改变量的存储类型</h2>
+<h1 id="数据文件的浏览">2. 数据文件的浏览</h1>
+<h2 id="变量的命名">2.1 变量的命名</h2>
+<p>   变量命名的 stata 基本命令是： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rename old_varname new_varname</span><br></pre></td></tr></table></figure></p>
+<p>   变量命名的基本规则是：（1）首字母必须为 字母；（2）由英文字母、数字或 _ 组成，至多不超过 32 个；（3）英文字母的大写和小写具有不同的含义。 ## 2.1 查看数据资料的结构 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">describe</span><br></pre></td></tr></table></figure></p>
+<h2 id="更改变量的存储类型">2.2 更改变量的存储类型</h2>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">recast 修改为的变量类型 变量名称，force</span><br></pre></td></tr></table></figure>
-<h2 id="2-3-geng-gai-bian-liang-de-xian-shi-ge-shi">2.3 更改变量的显示格式</h2>
+<h2 id="更改变量的显示格式">2.3 更改变量的显示格式</h2>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">format 变量名 格式 </span><br></pre></td></tr></table></figure>
-<p>常用的格式：（1）%-18s - 靠左列印于屏幕上；%~18s - 居中；%18s - 靠右。（2）%6.2f - 总共占 6 个空格，小数位占两个空格。</p>
-<h2 id="2-4-gei-shu-ju-wen-jian-huo-zhe-bian-liang-tian-jia-biao-qian">2.4 给数据文件或者变量添加标签</h2>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">label data 数据文件标签名 // 中文要用 & quot;&quot; 包裹 </span><br><span class="line">label var 变量名 变量标签名 </span><br></pre></td></tr></table></figure>
-<p>   还可以给类别变量进行赋值：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">label define 标签名  数字 &quot; 文字 & quot;  // 数字名和文字名一一对应 </span><br><span class="line">label values 变量名 标签名  // 将变量值和标签联系起来 </span><br></pre></td></tr></table></figure>
-<p>   注：在 stata 中，数据显示为红颜色表明是文字，显示为蓝颜色表明是文字 - 数字对应。<br>
-   还可以对标签进行管理：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">labelbook  // 列出所有数字 - 文字对应的标签 </span><br></pre></td></tr></table></figure>
-<p>   进一步，还可以添加说明：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">note 变量名：说明内容 // 省略变量名时表示为整个数据添加说明 </span><br><span class="line">notes   // 查看说明内容 </span><br></pre></td></tr></table></figure>
-<p>   当数据比较大，尤其是变量比较多是，可以使用如下命令搜索变量：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lookfor 变量名 // 中文需加 & quot;&quot;</span><br></pre></td></tr></table></figure>
-<h1 id="3-shu-ju-de-ji-ben-tong-ji-liang">3. 数据的基本统计量</h1>
-<h2 id="3-1-summarize-ming-ling">3.1 summarize 命令</h2>
+<p>常用的格式：（1）%-18s - 靠左列印于屏幕上；%~18s - 居中；%18s - 靠右。（2）%6.2f - 总共占 6 个空格，小数位占两个空格。 ## 2.4 给数据文件或者变量添加标签 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">label data 数据文件标签名 // 中文要用 & quot;&quot; 包裹 </span><br><span class="line">label var 变量名 变量标签名 </span><br></pre></td></tr></table></figure></p>
+<p>   还可以给类别变量进行赋值： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">label define 标签名  数字 &quot; 文字 & quot;  // 数字名和文字名一一对应 </span><br><span class="line">label values 变量名 标签名  // 将变量值和标签联系起来 </span><br></pre></td></tr></table></figure></p>
+<p>   注：在 stata 中，数据显示为红颜色表明是文字，显示为蓝颜色表明是文字 - 数字对应。    还可以对标签进行管理： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">labelbook  // 列出所有数字 - 文字对应的标签 </span><br></pre></td></tr></table></figure></p>
+<p>   进一步，还可以添加说明： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">note 变量名：说明内容 // 省略变量名时表示为整个数据添加说明 </span><br><span class="line">notes   // 查看说明内容 </span><br></pre></td></tr></table></figure></p>
+<p>   当数据比较大，尤其是变量比较多是，可以使用如下命令搜索变量： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lookfor 变量名 // 中文需加 & quot;&quot;</span><br></pre></td></tr></table></figure></p>
+<h1 id="数据的基本统计量">3. 数据的基本统计量</h1>
+<h2 id="summarize-命令">3.1 summarize 命令</h2>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">summarize [varlist] [if] [in] [weight] [, options]</span><br></pre></td></tr></table></figure>
-<h2 id="3-2-lun-wen-ge-shi-de-tong-ji-biao-ge">3.2 论文格式的统计表格</h2>
+<h2 id="论文格式的统计表格">3.2 论文格式的统计表格</h2>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tabstat varlist [if] [in] [weight] [, options]</span><br></pre></td></tr></table></figure>
 <table>
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
 <thead>
-<tr>
-<th style="text-align:center">选项（options)</th>
-<th style="text-align:center">描述</th>
+<tr class="header">
+<th style="text-align: center;">选项（options)</th>
+<th style="text-align: center;">描述</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:center">by (varname)</td>
-<td style="text-align:center">通过类别变量进行分组</td>
+<tr class="odd">
+<td style="text-align: center;">by (varname)</td>
+<td style="text-align: center;">通过类别变量进行分组</td>
 </tr>
-<tr>
-<td style="text-align:center">statistics (statname […])</td>
-<td style="text-align:center">制定要输出的统计值，如:mean - 均值，min - 最小值，max - 最大值，p25-med-p75 - 分位数，sd - 标准差</td>
+<tr class="even">
+<td style="text-align: center;">statistics (statname [...])</td>
+<td style="text-align: center;">制定要输出的统计值，如:mean - 均值，min - 最小值，max - 最大值，p25-med-p75 - 分位数，sd - 标准差</td>
 </tr>
-<tr>
-<td style="text-align:center">columns (statistics)</td>
-<td style="text-align:center">以统计值作为列</td>
+<tr class="odd">
+<td style="text-align: center;">columns (statistics)</td>
+<td style="text-align: center;">以统计值作为列</td>
 </tr>
-<tr>
-<td style="text-align:center">columns (variables)</td>
-<td style="text-align:center">以变量作为列</td>
+<tr class="even">
+<td style="text-align: center;">columns (variables)</td>
+<td style="text-align: center;">以变量作为列</td>
 </tr>
-<tr>
-<td style="text-align:center">format [(% fmt)]</td>
-<td style="text-align:center">设置显示格式，默认为 %9.0g</td>
+<tr class="odd">
+<td style="text-align: center;">format [(% fmt)]</td>
+<td style="text-align: center;">设置显示格式，默认为 %9.0g</td>
 </tr>
 </tbody>
 </table>
-<h2 id="3-3-shu-chu-tong-ji-biao-ge">3.3 输出统计表格</h2>
-<h3 id="3-3-1-jiang-tong-ji-jie-guo-shu-chu-dao-txt-wen-dang-zhong">3.3.1 将统计结果输出到 txt 文档中</h3>
+<h2 id="输出统计表格">3.3 输出统计表格</h2>
+<h3 id="将统计结果输出到-txt-文档中">3.3.1 将统计结果输出到 txt 文档中</h3>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tabexport varlist [if exp] [in range] [weight] using filename , statistics (statistics_list) [ list (list_options) format (format (s)) by (varlist) cw total noreshape variableorder outfile out_options ]</span><br></pre></td></tr></table></figure>
-<p>   实例如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sysuse auto, clear</span><br><span class="line">tabexport turn trunk length using results.txt, s (mean sd) by (foreign) total replace format (%9.1f)</span><br></pre></td></tr></table></figure>
-<h3 id="3-3-2-jiang-tong-ji-jie-guo-shu-ru-word-wen-dang-zhong-a-href-https-github-com-arlionn-stata-blogs-blob-master-25-https-github-com-arlionn-stata-blogs-blob-master-a-e-5-90-9-b-e-7-94-9-f-e-6-88-91-e-6-9-c-aa-e-7-94-9-f-ef-bc-81-stata-e-8-ae-ba-e-6-96-87-e-5-9-b-9-b-e-8-a-1-a-8-e-4-b-8-80-e-9-94-ae-e-5-87-a-href-http-ba-md-ba-md-a-jiang-tong-ji-jie-guo-shu-ru-word-wen-dang-zhong">3.3.2 [将统计结果输入 word 文档中](<a href="https://github.com/arlionn/Stata_Blogs/blob/master/%25" target="_blank" rel="noopener">https://github.com/arlionn/Stata_Blogs/blob/master/%</a> E5%90%9B% E7%94%9F% E6%88%91% E6%9C% AA% E7%94%9F% EF% BC%81Stata—% E8% AE% BA% E6%96%87% E5%9B%9B% E8% A1% A8% E4% B8%80% E9%94% AE% E5%87% <a href="http://BA.md" target="_blank" rel="noopener">BA.md</a> “将统计结果输入 word 文档中”)</h3>
+<p>   实例如下： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sysuse auto, clear</span><br><span class="line">tabexport turn trunk length using results.txt, s (mean sd) by (foreign) total replace format (%9.1f)</span><br></pre></td></tr></table></figure></p>
+<h3 id="将统计结果输入-word-文档中">3.3.2 <a href="https://github.com/arlionn/Stata_Blogs/blob/master/%%20E5%90%9B%%20E7%94%9F%%20E6%88%91%%20E6%9C%%20AA%%20E7%94%9F%%20EF%%20BC%81Stata---%%20E8%%20AE%%20BA%%20E6%96%87%%20E5%9B%9B%%20E8%%20A1%%20A8%%20E4%%20B8%80%%20E9%94%%20AE%%20E5%87%%20BA.md" title="将统计结果输入 word 文档中" target="_blank" rel="noopener">将统计结果输入 word 文档中</a></h3>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sum2docx varlist [if] [in] [weight] using filename , [options]</span><br></pre></td></tr></table></figure>
 <table>
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th>选项</th>
 <th>描述</th>
 <th>用法</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td>replace</td>
 <td>覆盖现有的文档</td>
 <td></td>
 </tr>
-<tr>
+<tr class="even">
 <td>append</td>
 <td>在现有的文档中添加</td>
 <td>必须有这个文档</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>title</td>
 <td>指定标题</td>
-<td>title (“标题名”)</td>
+<td>title (&quot;标题名&quot;)</td>
 </tr>
-<tr>
+<tr class="even">
 <td>font</td>
 <td>指定字体</td>
 <td>fontname[, size [, color]]</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>stats ()</td>
 <td>指定输出的统计值</td>
 <td>包括 N, mean (fmt), var (fmt), sd (fmt), skewness (fmt), kurtosis (fmt), sum (fmt), sum_w (fmt), min (fmt), median (fmt), max (fmt), p1 (fmt), p5 (fmt), p10 (fmt), p25 (fmt), p75 (fmt), p90 (fmt), p95 (fmt),p99 (fmt)</td>
 </tr>
 </tbody>
 </table>
-<h1 id="4-ji-ben-de-tu-xing-fen-xi">4. 基本的图形分析</h1>
-<h2 id="4-1-zhi-fang-tu">4.1 直方图</h2>
+<h1 id="基本的图形分析">4. 基本的图形分析</h1>
+<h2 id="直方图">4.1 直方图</h2>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">histogram varname [if] [in] [weight] [, [continuous_opts | discrete_opts] options]</span><br></pre></td></tr></table></figure>
-<p>   常用的 options 有：frequency - 添加频数；normal - 添加正态分布的线条。<br>
-  ps: 离散变量必须添加 discrete 选项。</p>
-<h2 id="4-2-mi-du-han-shu-tu">4.2 密度函数图</h2>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kdensity varname [if] [in] [weight] [, options]</span><br></pre></td></tr></table></figure>
-<h2 id="4-3-san-dian-tu">4.3 散点图</h2>
+<p>   常用的 options 有：frequency - 添加频数；normal - 添加正态分布的线条。   ps: 离散变量必须添加 discrete 选项。 ## 4.2 密度函数图 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kdensity varname [if] [in] [weight] [, options]</span><br></pre></td></tr></table></figure></p>
+<h2 id="散点图">4.3 散点图</h2>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[twoway] scatter varlist [if] [in] [weight] [, options]</span><br></pre></td></tr></table></figure>
-<h2 id="4-4-xiang-guan-xi-shu-ju-zhen">4.4 相关系数矩阵</h2>
+<h2 id="相关系数矩阵">4.4 相关系数矩阵</h2>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">graph matrix varlist [if] [in] [weight] [, options]</span><br></pre></td></tr></table></figure>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">
       
@@ -914,7 +884,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">119</span>
+                  <span class="site-state-item-count">120</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -936,7 +906,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">63</span>
+                  <span class="site-state-item-count">65</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -1022,7 +992,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-shu-ju-de-diao-ru-he-diao-chu"><span class="nav-text">1. 数据的调入和调出</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-shu-ju-de-diao-ru"><span class="nav-text">1.1 数据的调入</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-1-diao-ru-ben-di-shu-ju"><span class="nav-text">1.1.1 调入本地数据</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-1-1-diao-ru-ben-di-stata-ge-shi-shu-ju"><span class="nav-text">1.1.1.1 调入本地 stata 格式数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-1-2-diao-yong-stata-nei-zhi-shu-ju-ji"><span class="nav-text">1.1.1.2 调用 stata 内置数据集</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-1-3-insheet-ming-ling-du-qu-ascii-ge-shi-de-shu-ju"><span class="nav-text">1.1.1.3 insheet 命令 —— 读取 ASCII 格式的数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-1-4-infile-ming-ling-du-qu-wu-gu-ding-ge-shi-de-shu-ju-wen-jian"><span class="nav-text">1.1.1.4 infile 命令 —— 读取无固定格式的数据文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-1-5-infix-ming-ling-du-qu-gu-ding-ge-shi-shu-ju"><span class="nav-text">1.1.1.5 infix 命令 —— 读取固定格式数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-1-6-diao-ru-excel-shu-ju-import-excel-amp-xls-2-dta"><span class="nav-text">1.1.1.6 调入 excel 数据 —— import excel &amp; xls2dta</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-2-diao-ru-zai-xian-shu-ju"><span class="nav-text">1.1.2 调入在线数据</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-2-1-diao-ru-stata-guan-wang-de-shou-ce"><span class="nav-text">1.1.2.1 调入 stata 官网的手册</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-2-2-diao-yong-bo-shi-dun-xue-yuan-economics-shi-yan-shi-ti-gong-de-shu-ju"><span class="nav-text">1.1.2.2 调用波士顿学院 Economics 实验室提供的数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-2-3-diao-yong-lian-bang-chu-bei-jing-ji-shu-ju-ku"><span class="nav-text">1.1.2.3 调用联邦储备经济数据库</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-3-da-sha-qi-copy-ming-ling"><span class="nav-text">1.1.3 大杀器 copy 命令</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-shu-ju-de-diao-chu"><span class="nav-text">1.2 数据的调出</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-1-dao-chu-wei-raw-wen-ben-ge-shi"><span class="nav-text">1.2.1 导出为 .raw 文本格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-2-dao-chu-wei-tab-fen-ge-de-wen-ben-wen-jian"><span class="nav-text">1.2.2 导出为 -Tab- 分隔的文本文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-3-dao-chu-wei-xml-ge-shi"><span class="nav-text">1.2.3 导出为 XML 格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-4-dao-chu-wei-word-excel-tex"><span class="nav-text">1.2.4 导出为 Word,Excel,Tex</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-5-dao-chu-wei-spss-rats-limdep-ge-shi"><span class="nav-text">1.2.5 导出为 .spss, .rats, .limdep 格式</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-shu-ju-wen-jian-de-liu-lan"><span class="nav-text">2. 数据文件的浏览</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-bian-liang-de-ming-ming"><span class="nav-text">2.1 变量的命名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-cha-kan-shu-ju-zi-liao-de-jie-gou"><span class="nav-text">2.1 查看数据资料的结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-geng-gai-bian-liang-de-cun-chu-lei-xing"><span class="nav-text">2.2 更改变量的存储类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-geng-gai-bian-liang-de-xian-shi-ge-shi"><span class="nav-text">2.3 更改变量的显示格式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4-gei-shu-ju-wen-jian-huo-zhe-bian-liang-tian-jia-biao-qian"><span class="nav-text">2.4 给数据文件或者变量添加标签</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-shu-ju-de-ji-ben-tong-ji-liang"><span class="nav-text">3. 数据的基本统计量</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-summarize-ming-ling"><span class="nav-text">3.1 summarize 命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-lun-wen-ge-shi-de-tong-ji-biao-ge"><span class="nav-text">3.2 论文格式的统计表格</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-3-shu-chu-tong-ji-biao-ge"><span class="nav-text">3.3 输出统计表格</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-1-jiang-tong-ji-jie-guo-shu-chu-dao-txt-wen-dang-zhong"><span class="nav-text">3.3.1 将统计结果输出到 txt 文档中</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-2-jiang-tong-ji-jie-guo-shu-ru-word-wen-dang-zhong-a-href-https-github-com-arlionn-stata-blogs-blob-master-25-https-github-com-arlionn-stata-blogs-blob-master-a-e-5-90-9-b-e-7-94-9-f-e-6-88-91-e-6-9-c-aa-e-7-94-9-f-ef-bc-81-stata-e-8-ae-ba-e-6-96-87-e-5-9-b-9-b-e-8-a-1-a-8-e-4-b-8-80-e-9-94-ae-e-5-87-a-href-http-ba-md-ba-md-a-jiang-tong-ji-jie-guo-shu-ru-word-wen-dang-zhong"><span class="nav-text">3.3.2 [将统计结果输入 word 文档中](https://github.com/arlionn/Stata_Blogs/blob/master/% E5%90%9B% E7%94%9F% E6%88%91% E6%9C% AA% E7%94%9F% EF% BC%81Stata—% E8% AE% BA% E6%96%87% E5%9B%9B% E8% A1% A8% E4% B8%80% E9%94% AE% E5%87% BA.md “将统计结果输入 word 文档中”)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-ji-ben-de-tu-xing-fen-xi"><span class="nav-text">4. 基本的图形分析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#4-1-zhi-fang-tu"><span class="nav-text">4.1 直方图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-2-mi-du-han-shu-tu"><span class="nav-text">4.2 密度函数图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-3-san-dian-tu"><span class="nav-text">4.3 散点图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-4-xiang-guan-xi-shu-ju-zhen"><span class="nav-text">4.4 相关系数矩阵</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#数据的调入和调出"><span class="nav-text">1. 数据的调入和调出</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据的调入"><span class="nav-text">1.1 数据的调入</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#调用-stata-内置数据集"><span class="nav-text">1.1.1.2 调用 stata 内置数据集</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#insheet-命令-读取-ascii-格式的数据"><span class="nav-text">1.1.1.3 insheet 命令 —— 读取 ASCII 格式的数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#infile-命令-读取无固定格式的数据文件"><span class="nav-text">1.1.1.4 infile 命令 —— 读取无固定格式的数据文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#infix-命令-读取固定格式数据"><span class="nav-text">1.1.1.5 infix 命令 —— 读取固定格式数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#调入-excel-数据-import-excel-xls2dta"><span class="nav-text">1.1.1.6 调入 excel 数据 —— import excel &amp; xls2dta</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#调入在线数据"><span class="nav-text">1.1.2 调入在线数据</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#调入-stata-官网的手册"><span class="nav-text">1.1.2.1 调入 stata 官网的手册</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#调用波士顿学院-economics-实验室提供的数据"><span class="nav-text">1.1.2.2 调用波士顿学院 Economics 实验室提供的数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#调用联邦储备经济数据库"><span class="nav-text">1.1.2.3 调用联邦储备经济数据库</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#大杀器-copy-命令"><span class="nav-text">1.1.3 大杀器 copy 命令</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据的调出"><span class="nav-text">1.2 数据的调出</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#导出为-.raw-文本格式"><span class="nav-text">1.2.1 导出为 .raw 文本格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#导出为--tab--分隔的文本文件"><span class="nav-text">1.2.2 导出为 -Tab- 分隔的文本文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#导出为-xml-格式"><span class="nav-text">1.2.3 导出为 XML 格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#导出为-wordexceltex"><span class="nav-text">1.2.4 导出为 Word,Excel,Tex</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#导出为-.spss-.rats-.limdep-格式"><span class="nav-text">1.2.5 导出为 .spss, .rats, .limdep 格式</span></a></li></ol></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#数据文件的浏览"><span class="nav-text">2. 数据文件的浏览</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#变量的命名"><span class="nav-text">2.1 变量的命名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更改变量的存储类型"><span class="nav-text">2.2 更改变量的存储类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更改变量的显示格式"><span class="nav-text">2.3 更改变量的显示格式</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据的基本统计量"><span class="nav-text">3. 数据的基本统计量</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#summarize-命令"><span class="nav-text">3.1 summarize 命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#论文格式的统计表格"><span class="nav-text">3.2 论文格式的统计表格</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输出统计表格"><span class="nav-text">3.3 输出统计表格</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#将统计结果输出到-txt-文档中"><span class="nav-text">3.3.1 将统计结果输出到 txt 文档中</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#将统计结果输入-word-文档中"><span class="nav-text">3.3.2 将统计结果输入 word 文档中</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基本的图形分析"><span class="nav-text">4. 基本的图形分析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#直方图"><span class="nav-text">4.1 直方图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#散点图"><span class="nav-text">4.3 散点图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#相关系数矩阵"><span class="nav-text">4.4 相关系数矩阵</span></a></li></ol></li></div>
             
 
           </div>
@@ -1063,7 +1033,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">74.9k</span>
+    <span title="Site words total count">75.3k</span>
   
 </div>
 
@@ -1743,7 +1713,7 @@
         }
       });
     </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config("");
 </script>
