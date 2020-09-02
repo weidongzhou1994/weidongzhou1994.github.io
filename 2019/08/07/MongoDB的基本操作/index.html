@@ -1,0 +1,1648 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/vendors/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/vendors/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="https://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Noto Serif SC:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|Noto Serif SC:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+  
+
+<link href="https://cdn.bootcss.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Python,爬虫,数据库,基础知识,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="周卫东的博客" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="MangoDB 数据库的类型是非关系型数据库，存储方式比较灵活。[1]">
+<meta name="keywords" content="Python,爬虫,数据库,基础知识">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MangoDB 的基本操作">
+<meta property="og:url" content="http：//zhouweidong.ml/2019/08/07/MongoDB的基本操作/index.html">
+<meta property="og:site_name" content="周卫东的博客">
+<meta property="og:description" content="MangoDB 数据库的类型是非关系型数据库，存储方式比较灵活。[1]">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://blog-1258437747.cos.ap-chengdu.myqcloud.com/20190815190923.png">
+<meta property="og:updated_time" content="2019-08-15T14:36:57.865Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MangoDB 的基本操作">
+<meta name="twitter:description" content="MangoDB 数据库的类型是非关系型数据库，存储方式比较灵活。[1]">
+<meta name="twitter:image" content="https://blog-1258437747.cos.ap-chengdu.myqcloud.com/20190815190923.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http：//zhouweidong.ml/2019/08/07/MongoDB的基本操作/">
+
+
+
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "2981e3b3"
+    });
+  daovoice('update');
+  </script>
+
+  <title>MangoDB 的基本操作 | 周卫东的博客</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">周卫东的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-categories" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http：//zhouweidong.ml/2019/08/07/MongoDB的基本操作/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="周卫东">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://blog-1258437747.cos.ap-chengdu.myqcloud.com/IMG_9432===_美艺达证件照.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="周卫东的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">MangoDB 的基本操作</h1>
+        
+
+        <div class="post-meta">
+        
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-07T19:10:07+08:00">
+                2019-08-07
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-08-15T22:36:57+08:00">
+                2019-08-15
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2019/08/07/MongoDB的基本操作/" class="leancloud_visitors" data-flag-title="MangoDB 的基本操作">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,357
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  6
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>  MangoDB 数据库的类型是非关系型数据库，存储方式比较灵活。<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup></p>
+<a id="more"></a>
+<h1 id="1-a-href-https-www-mongodb-org-cn-tutorial-59-html-qi-dong-he-lian-jie-mongodb-fu-wu-a">1. <a href="https://www.mongodb.org.cn/tutorial/59.html" target="_blank" rel="noopener">启动和连接 Mongodb 服务</a></h1>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">net</span> <span class="built_in">start</span> mongodb  // 启动服务 </span><br><span class="line"><span class="built_in">net</span> stop mongodb    // 关闭服务 </span><br></pre></td></tr></table></figure>
+<p>   连接 MongoDB 服务：mongo。</p>
+<h1 id="2-she-zhi-yong-hu-quan-xian">2. 设置用户权限</h1>
+<p>   添加管理员权限：</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">use admin</span><br><span class="line">db.createUser (</span><br><span class="line">    &#123;</span><br><span class="line"><span class="function">        user:"<span class="title">root</span>",</span></span><br><span class="line"><span class="function">        <span class="title">pwd</span>:"<span class="title">pwd</span>",</span></span><br><span class="line"><span class="function">        <span class="title">roles</span>:["<span class="title">root</span>"]</span></span><br><span class="line"><span class="function">    &#125;</span></span><br><span class="line"><span class="function">)</span></span><br></pre></td></tr></table></figure>
+<p>   添加一个业务数据库的管理员权限：</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">db.auth ('username','pwd')</span><br><span class="line">db.createUser (&#123;</span><br><span class="line"><span class="function">    user:"<span class="title">user001</span>",</span></span><br><span class="line"><span class="function">    <span class="title">pwd</span>:"123456",</span></span><br><span class="line"><span class="function">    <span class="title">customData</span>:&#123;</span></span><br><span class="line"><span class="function">        <span class="title">name</span>:'<span class="title">jim</span>',</span></span><br><span class="line"><span class="function">        <span class="title">email</span>:'<span class="title">jim</span>@<span class="title">qq.com</span>',</span></span><br><span class="line"><span class="function">        <span class="title">age</span>:18,</span></span><br><span class="line"><span class="function">    &#125;,</span></span><br><span class="line"><span class="function">    <span class="title">roles</span>:[</span></span><br><span class="line"><span class="function">        &#123;<span class="title">role</span>:"<span class="title">readWrite</span>",<span class="title">db</span>:"<span class="title">db001</span>"&#125;,</span></span><br><span class="line"><span class="function">        &#123;<span class="title">role</span>:"<span class="title">readWrite</span>",<span class="title">db</span>:"<span class="title">db002</span>"&#125;,</span></span><br><span class="line"><span class="function">        '<span class="title">read</span>'// 对其他数据库有只读权限，对 < span class="title">db001</span>、<span class="title">db002</span> 是读写权限 </span><br><span class="line"><span class="function">    ]</span></span><br><span class="line"><span class="function">&#125;)</span></span><br></pre></td></tr></table></figure>
+<p>   修改密码：</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">use admin</span><br><span class="line">db.changeUserPassword ("用户名", "新密码")</span><br></pre></td></tr></table></figure>
+<p>   查看和删除用户：</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">use admin</span><br><span class="line">db.auth ('username','pwd')</span><br><span class="line">show users</span><br><span class="line">db.dropUser (' 用户名 ')</span><br></pre></td></tr></table></figure>
+<h1 id="3-cao-zuo-shu-ju-ku">3. 操作数据库</h1>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">use 数据库名             // 创建数据库 </span><br><span class="line">show dbs                // 查看所有数据库 </span><br><span class="line">db                      // 查看当前数据库 </span><br><span class="line">db.dropDatabase ()       // 删除当前数据库 </span><br></pre></td></tr></table></figure>
+<h1 id="4-cao-zuo-ji-he">4. 操作集合</h1>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">show collections        // 查看所有集合 </span><br><span class="line">db.createCollection ()   // 创建集合 </span><br><span class="line">db. 集合名.drop ()        // 删除集合 </span><br></pre></td></tr></table></figure>
+<h1 id="5-cao-zuo-wen-dang-nei-rong">5. 操作文档内容</h1>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">db. 集合的名字.insert (&#123;&#125;)    // 增减内容 </span><br><span class="line">db. 集合.remove (&#123;&#125;)         // 删除所有内容 </span><br><span class="line">db. 集合名字.remove (&#123; 删除条件 &#125;)   // 删除符合条件的所有内容 </span><br><span class="line">db. 集合.remove (&#123; 删除条件 &#125;,&#123;justOne:true&#125;)  // 仅删除符合条件的一个内容 </span><br></pre></td></tr></table></figure>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">db.collection.update (    </span><br><span class="line">    &lt;query&gt;,                           //query : update 的查询条件。</span><br><span class="line">    &lt;update&gt;,                          //update : update 的对象和一些更新的操作符（如 $,$inc...）等。</span><br><span class="line">    &#123;       </span><br><span class="line"><span class="function">        upsert: &lt;<span class="title">boolean</span>&gt;,             // <span class="title">upsert</span> : 可选，这个参数的意思是，如果不存在 < span class="title">update</span> 的记录，是否插入 < span class="title">objNew</span>,<span class="title">true</span> 为插入，默认是 < span class="title">false，不插入。<br><span class="line"><span class="function">        <span class="title">multi</span>: &lt;<span class="title">boolean</span>&gt;,              // <span class="title">multi</span> : 可选，<span class="title">mongodb</span> 默认是 < span class="title">false</span>, 只更新找到的第一条记录，如果这个参数为 < span class="title">true</span>, 就把按条件查出来多条记录全部更新。<br><span class="line"><span class="function">        <span class="title">writeConcern</span>: &lt;<span class="title">document</span>&gt;       // <span class="title">writeConcern</span> : 可选，抛出异常的级别。</span></span><br><span class="line"><span class="function">    &#125;</span></span><br><span class="line"><span class="function">)</span></span><br></pre></td></tr></table></figure>
+<p>   基本查询：</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">db. 集合名字.<span class="built_in">find</span>(&#123; 条件 &#125;) // 查询符合条件的数据，省略条件则查询所有数据 </span><br><span class="line">db. 集合名字.findOne (&#123; 条件 &#125;)  // 查询符合条件的第一个数据 </span><br><span class="line">db. 集合名字.<span class="built_in">find</span>(&#123; 条件 < span class="number">1</span>, 条件 < span class="number">2&#125;)  // 多条件查询 <br><span class="line">db. 集合名字.<span class="built_in">find</span>(&#123;$or:[&#123;key1: value1&#125;, &#123;key2:value2&#125;]&#125;)   //or 语句 </span><br><span class="line">db. 集合名字.<span class="built_in">find</span>(&#123; 条件，$or: [&#123; 条件 < span class="number">1</span>&#125;,&#123; 条件 < span class="number">2&#125;]&#125;)           // 混合使用 <br><span class="line">db. 集合名字.<span class="built_in">find</span>(&#123;age:&#123;$<span class="keyword">in</span>:[<span class="number">18</span>,<span class="number">28</span>]&#125;&#125;)                     // 范围运算符 </span><br><span class="line">db. 集合名字.<span class="built_in">find</span>(&#123;age:&#123;$nin:[<span class="number">18</span>,<span class="number">28</span>]&#125;&#125;)</span><br></pre></td></tr></table></figure>
+<p>   条件操作符：$gt - 大于、$lt - 小于、$gte - 大于等于和 $lte - 小于等于，使用示例如下</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.col.<span class="built_in">find</span>(&#123;likes : &#123;$lt :<span class="number">200</span>, $gt : <span class="number">100</span>&#125;&#125;)   // 获取 "col" 集合中 "likes" 大于 < span class="number">100</span> 小于 < span class="number">200 的数据 <br></pre></td></tr></table></figure>
+<p>   支持正则表达式：</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">db.stu.<span class="built_in">find</span>(&#123;name:/^ 黄 /&#125;)</span><br><span class="line">db.stu.<span class="built_in">find</span>(&#123;name:&#123;$regex:"^ 黄"&#125;&#125;)   // 两种表达方式 </span><br><span class="line">db.stu.<span class="built_in">find</span>(&#123;name:/^ 黄 /i&#125;)</span><br><span class="line"> db.stu.<span class="built_in">find</span>(&#123;name:&#123;$regex:"^ 黄",$options:"$i"&#125;&#125;)  // 不区分大小写 </span><br></pre></td></tr></table></figure>
+<p>   自定义函数：</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db. 集合名字.<span class="built_in">find</span>(&#123;$where:function ()&#123;return this.age&gt;<span class="number">30</span>;&#125;&#125;)</span><br></pre></td></tr></table></figure>
+<p>   查询结果的显示：</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">db. 集合名字.<span class="built_in">find</span>().limit (显示数).skip (跳过数)</span><br><span class="line">db. 集合名字.<span class="built_in">find</span>().sort (&#123;KEY:<span class="number">1</span>&#125;)   // <span class="number">1</span>- 升序排列；-<span class="number">1</span>- 降序排列。</span><br><span class="line">db. 集合名字.<span class="built_in">find</span>().count ()</span><br><span class="line">db. 集合名字.count (&#123; 条件 &#125;)         // 统计符合条件的个数       </span><br><span class="line">db. 集合名字.distinct (' 字段 ',&#123; 条件 &#125;)   // 去重查询 </span><br><span class="line">db.emp.<span class="built_in">find</span>(&#123;&#125;,&#123;ename:<span class="number">1</span>, _id:<span class="number">0</span>, sal:<span class="number">1</span>&#125;    // 投影：<span class="number">1</span>- 显示；<span class="number">0</span>- 不显示 </span><br></pre></td></tr></table></figure>
+<p>   复合查询：</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">db. 集合名字.aggregate (</span><br><span class="line">    [</span><br><span class="line">    &#123;$match:&#123;score:&#123; $gt:<span class="number">70</span>, $lte:<span class="number">90</span>&#125;&#125;&#125;,                  //match: 筛选数据 </span><br><span class="line">    &#123;$group:&#123;_id:"$ 字段"&#125;&#125;,                               //group: 按字段分组 </span><br><span class="line">    &#123;$project：&#123;&#125;&#125;,                                       // <span class="number">1</span>- 显示；<span class="number">0</span>- 不显示 </span><br><span class="line">    &#123;$sort：&#123; 字段：<span class="number">1</span>&#125;&#125;,                                   // <span class="number">1</span>- 正序；-<span class="number">1</span>- 逆序 </span><br><span class="line">    &#123;$skip：跳过数 &#125;,</span><br><span class="line">    &#123;$limit: 限制数 &#125;,</span><br><span class="line">    &#123;$unwind:"$ 字段"&#125;                                          // 拆分文档 </span><br><span class="line">    ]</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p><img src="https://blog-1258437747.cos.ap-chengdu.myqcloud.com/20190815190923.png" alt="group 的细分选项"><br>
+   索引查询：</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">db. 集合名字.createIndex (keys, options)  //keys - 字段：<span class="number">1</span> 为指定按升序创建索引，-<span class="number">1</span> 为指定按降序创建索引。</span><br><span class="line">db. 集合名字.createIndex (&#123;"<span class="built_in">title</span>":<span class="number">1</span>,"description":-<span class="number">1</span>&#125;)  // 多字段创建索引 </span><br><span class="line">db. 集合名字.dropIndexes ()           // 删除所有索引 </span><br><span class="line">db. 集合名字.dropIndex ("索引名称")   //  删除指定索引 </span><br><span class="line">db. 集合名字.getIndexes ()            // 查看索引 </span><br><span class="line">db. 集合名字.totalIndexSize ()        // 查看索引大小 </span><br></pre></td></tr></table></figure>
+<p>   备份和恢复：</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mongodump -h IP 地址：端口 -d 数据库名 -o 备份的数据存放位置                            // 备份数据 </span><br><span class="line">mongorestore -h &lt;hostname&gt;&lt;:port&gt; -d 需要恢复的数据库名字 需要恢复的数据所在的位置     // 恢复数据 </span><br></pre></td></tr></table></figure>
+<h1 id="6-shi-yong-python-cao-zuo-mongo-db">6. 使用 Python 操作 MongoDB</h1>
+<p>   首先，必须开启 MongoDB 服务，其次必须安装 Pymongo 模块。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pymongo</span><br><span class="line">myclient = pymongo.MongoClient (<span class="string">"mongodb://localhost:27017/"</span>)  <span class="comment"># 连接数据库 </span></span><br><span class="line">mydb = myclient [<span class="string">"数据库名"</span>]                                    <span class="comment"># 创建数据库 </span></span><br><span class="line">mycol = mydb [<span class="string">"集合名"</span>]                                         <span class="comment"># 创建集合 </span></span><br><span class="line">mydict = &#123; <span class="string">"name"</span>: <span class="string">"Google"</span>, <span class="string">"alexa"</span>: <span class="string">"1"</span>, <span class="string">"url"</span>: <span class="string">"https://www.google.com"</span> &#125;</span><br><span class="line">x = mycol.insert_one (mydict)                                   <span class="comment"># 插入一条数据 </span></span><br><span class="line">mylist = [</span><br><span class="line">  &#123; <span class="string">"name"</span>: <span class="string">"Taobao"</span>, <span class="string">"alexa"</span>: <span class="string">"100"</span>, <span class="string">"url"</span>: <span class="string">"https://www.taobao.com"</span> &#125;,</span><br><span class="line">  &#123; <span class="string">"name"</span>: <span class="string">"QQ"</span>, <span class="string">"alexa"</span>: <span class="string">"101"</span>, <span class="string">"url"</span>: <span class="string">"https://www.qq.com"</span> &#125;,</span><br><span class="line">  &#123; <span class="string">"name"</span>: <span class="string">"Facebook"</span>, <span class="string">"alexa"</span>: <span class="string">"10"</span>, <span class="string">"url"</span>: <span class="string">"https://www.facebook.com"</span> &#125;,</span><br><span class="line">  &#123; <span class="string">"name"</span>: <span class="string">"知乎"</span>, <span class="string">"alexa"</span>: <span class="string">"103"</span>, <span class="string">"url"</span>: <span class="string">"https://www.zhihu.com"</span> &#125;,</span><br><span class="line">  &#123; <span class="string">"name"</span>: <span class="string">"Github"</span>, <span class="string">"alexa"</span>: <span class="string">"109"</span>, <span class="string">"url"</span>: <span class="string">"https://www.github.com"</span> &#125;</span><br><span class="line">]</span><br><span class="line">y = mycol.insert_many (mylist)                                   <span class="comment"># 插入多条数据 </span></span><br><span class="line">myquery = &#123;<span class="string">"name"</span>: <span class="string">"Taobao"</span>&#125; </span><br><span class="line">mycol.delete_one (myquery)                                       <span class="comment"># 删除一条数据 </span></span><br><span class="line">myquery_list = &#123; <span class="string">"name"</span>: &#123;<span class="string">"$regex"</span>: <span class="string">"^F"</span>&#125; &#125;</span><br><span class="line">m = mycol.delete_many (myquery)                                  <span class="comment"># 删除符合条件的多条数据 </span></span><br><span class="line">myquery_update = &#123; <span class="string">"alexa"</span>: <span class="string">"10000"</span> &#125;</span><br><span class="line">newvalues = &#123; <span class="string">"$set"</span>: &#123; <span class="string">"alexa"</span>: <span class="string">"12345"</span> &#125; &#125;  </span><br><span class="line">mycol.update_one (myquery_update, newvalues)                     <span class="comment"># 修改一条数据 </span></span><br><span class="line">myquery_update_list = &#123; <span class="string">"name"</span>: &#123; <span class="string">"$regex"</span>: <span class="string">"^F"</span> &#125; &#125;</span><br><span class="line">newvalues_list = &#123; <span class="string">"$set"</span>: &#123; <span class="string">"alexa"</span>: <span class="string">"123"</span> &#125; &#125;</span><br><span class="line">n = mycol.update_many (myquery_update_list, newvalues_list)      <span class="comment"># 修改多条数据 </span></span><br><span class="line">a = mycol.find_one ()                           <span class="comment"># 查询符合条件的第一个数据                           </span></span><br><span class="line">b = mycol.find ()                               <span class="comment"># 查询符合条件所有数据 </span></span><br></pre></td></tr></table></figure>
+<hr class="footnotes-sep">
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p><a href="https://www.jianshu.com/p/b32fe4fe45a3" target="_blank" rel="noopener">SQL 和 NoSQL 的区别</a> <a href="#fnref1" class="footnote-backref">↩</a></p>
+</li>
+</ol>
+</section>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">
+      
+    </div>
+
+    <div>
+        
+        <div>
+    
+        <div style="text-align:center;color: #666699;font-size:14px;">------ 本文已经结束，感谢您的阅读！------</div>
+    
+</div>
+        
+    </div> 
+     
+            <h3> 相关文章：</h3><ul class="related-posts"><li><a href="/2019/08/16/MySQL基本用法/">MySQL 基本用法</a></li><li><a href="/2019/08/15/Redis数据库基本操作/">Redis 数据库基本操作</a></li><li><a href="/2019/09/12/线程和进程/">线程和进程</a></li><li><a href="/2019/07/31/Python中的正则表达式/">Python 中的正则表达式</a></li><li><a href="/2019/07/27/爬虫学习day04-cookies/">爬虫学习 day04-cookies&requests 库简介</a></li><li><a href="/2019/07/24/爬虫学习day03-设置付费代理/">爬虫学习 day03 - 设置付费代理</a></li><li><a href="/2019/07/23/爬虫学习day02-参数的传递与代理的使用/">爬虫学习 day02 - 参数的传递与代理的使用</a></li><li><a href="/2019/07/22/爬虫学习day01-爬虫的工作原理/">爬虫学习 day01: 爬虫的工作原理</a></li><li><a href="/2019/08/29/scrapy学习（二）/">scrapy 学习（二）</a></li><li><a href="/2019/08/28/scrapy学习（一）/">scrapy 学习（一）</a></li></ul> 
+    
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>最喜欢你一言不合就打赏的样子了~~~么么！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="https://blog-1258437747.cos.ap-chengdu.myqcloud.com/wechatpay.jpg" alt="周卫东 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="https://blog-1258437747.cos.ap-chengdu.myqcloud.com/alipay.jpg" alt="周卫东 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    周卫东
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http：//zhouweidong.ml/2019/08/07/MongoDB的基本操作/" title="MangoDB 的基本操作">http：//zhouweidong.ml/2019/08/07/MongoDB的基本操作/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Python/" rel="tag"><i class="fa fa-tag"></i> Python</a>
+          
+            <a href="/tags/爬虫/" rel="tag"><i class="fa fa-tag"></i> 爬虫</a>
+          
+            <a href="/tags/数据库/" rel="tag"><i class="fa fa-tag"></i> 数据库</a>
+          
+            <a href="/tags/基础知识/" rel="tag"><i class="fa fa-tag"></i> 基础知识</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+          <div class="wp_rating">
+            <div id="wpac-rating"></div>
+          </div>
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/08/07/VBA中的用户信息交互/" rel="next" title="VBA 中的用户信息交互">
+                <i class="fa fa-chevron-left"></i> VBA 中的用户信息交互
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/08/09/使用ADO操纵外部数据/" rel="prev" title="使用 ADO 操纵外部数据">
+                使用 ADO 操纵外部数据 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zNzYwOC8xNDEzOQ=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="298" height="52" src="//music.163.com/outchain/player?type=0&id=2660247525&auto=1&height=32"></iframe>
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://blog-1258437747.cos.ap-chengdu.myqcloud.com/IMG_9432===_美艺达证件照.jpg" alt="周卫东">
+            
+              <p class="site-author-name" itemprop="name">周卫东</p>
+              <p class="site-description motion-element" itemprop="description">行到水穷处，坐看云起时。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">119</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">63</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/weidongzhou1994" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:sirzhouchn@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://twitter.com/SirzhouchnZhou" target="_blank" title="Twitter">
+                      
+                        <i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.zhihu.com/people/your-user-name" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-globe"></i>知乎</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://google.com/" title="google" target="_blank">google</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://wiki.com/" title="wiki" target="_blank">wiki</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-a-href-https-www-mongodb-org-cn-tutorial-59-html-qi-dong-he-lian-jie-mongodb-fu-wu-a"><span class="nav-text">1. 启动和连接 Mongodb 服务</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-she-zhi-yong-hu-quan-xian"><span class="nav-text">2. 设置用户权限</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-cao-zuo-shu-ju-ku"><span class="nav-text">3. 操作数据库</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-cao-zuo-ji-he"><span class="nav-text">4. 操作集合</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-cao-zuo-wen-dang-nei-rong"><span class="nav-text">5. 操作文档内容</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6-shi-yong-python-cao-zuo-mongo-db"><span class="nav-text">6. 使用 Python 操作 MongoDB</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">周卫东</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">75.0k</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/2.1.3/jquery.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="https://cdn.bootcss.com/velocity/1.2.1/velocity.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="https://cdn.bootcss.com/velocity/1.2.1/velocity.ui.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="https://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="https://cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("V4gz8O6rLgpERkSPQNtWOes7-gzGzoHsz", "tjlRL7JN4yhCaHjFTE9aVhws");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="/vendors/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/vendors/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "box";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Pinterest,Facebook,GooglePlus,Reddit,Linkedin,Tumblr,Evernote";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+  </script>
+
+  
+  <script type="text/javascript">
+  wpac_init = window.wpac_init || [];
+  wpac_init.push({widget: 'Rating', id: 18587,
+    el: 'wpac-rating',
+    color: 'fc6423'
+  });
+  (function() {
+    if ('WIDGETPACK_LOADED' in window) return;
+    WIDGETPACK_LOADED = true;
+    var mc = document.createElement('script');
+    mc.type = 'text/javascript';
+    mc.async = true;
+    mc.src = '//embed.widgetpack.com/widget.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+  })();
+  </script>
+
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="custom_mathjax_source">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+  
+
+
+  
+
+  
+
+ </body>
+</html>
+
+<!--崩溃欺骗-->
+<script type="text/javascript" src="/js/src/crash_cheat.js"></script>
+
+<!-- 代码块复制功能 -->
+<script type="text/javascript" src="/js/src/clipboard.min.js"></script>  
+<script type="text/javascript" src="/js/src/clipboard-use.js"></script>

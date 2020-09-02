@@ -1,0 +1,1575 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/vendors/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/vendors/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="https://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Noto Serif SC:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|Noto Serif SC:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+  
+
+<link href="https://cdn.bootcss.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="周卫东的博客" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="矩阵是数学运算中的一个重要部分，stata 也可以对矩阵进行相应的操作。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用 stata 操作矩阵">
+<meta property="og:url" content="http：//zhouweidong.ml/2019/08/04/用stata操作矩阵/index.html">
+<meta property="og:site_name" content="周卫东的博客">
+<meta property="og:description" content="矩阵是数学运算中的一个重要部分，stata 也可以对矩阵进行相应的操作。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-08-26T05:03:05.663Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="用 stata 操作矩阵">
+<meta name="twitter:description" content="矩阵是数学运算中的一个重要部分，stata 也可以对矩阵进行相应的操作。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http：//zhouweidong.ml/2019/08/04/用stata操作矩阵/">
+
+
+
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "2981e3b3"
+    });
+  daovoice('update');
+  </script>
+
+  <title>用 stata 操作矩阵 | 周卫东的博客</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">周卫东的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-categories" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http：//zhouweidong.ml/2019/08/04/用stata操作矩阵/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="周卫东">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://blog-1258437747.cos.ap-chengdu.myqcloud.com/IMG_9432===_美艺达证件照.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="周卫东的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">用 stata 操作矩阵</h1>
+        
+
+        <div class="post-meta">
+        
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-04T12:37:50+08:00">
+                2019-08-04
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-08-26T13:03:05+08:00">
+                2019-08-26
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2019/08/04/用stata操作矩阵/" class="leancloud_visitors" data-flag-title="用 stata 操作矩阵">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,648
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  8
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>   矩阵是数学运算中的一个重要部分，stata 也可以对矩阵进行相应的操作。</p>
+<a id="more"></a>
+<h1 id="1-ju-zhen-de-ji-ben-cao-zuo">1. 矩阵的基本操作</h1>
+<h2 id="1-1-ding-yi-ju-zhen">1.1 定义矩阵</h2>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">matrix</span> 矩阵名 = (1,2,3 \ 4,5,6)  <span class="comment">// 规则：逗号分列；反斜线分行 </span></span><br></pre></td></tr></table></figure>
+<h2 id="1-2-guan-li-ju-zhen">1.2 管理矩阵</h2>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">matrix</span> <span class="keyword">list</span> 矩阵名 [, noblank nohalf noheader nonames <span class="keyword">format</span>(% fmt) title (string) nodotz]               <span class="comment">// 列示矩阵 </span></span><br><span class="line"><span class="comment">* 更为细致地列示矩阵 </span></span><br><span class="line">#delimit ;</span><br><span class="line"><span class="keyword">matrix</span> Htest = ( 12.30,  2,  .00044642  \ </span><br><span class="line">                  2.17,  1,  .35332874  \                    </span><br><span class="line">                  8.81,  3,  .04022625  \ </span><br><span class="line">                 20.05,  6,  .00106763  ) ;</span><br><span class="line">#delimit cr</span><br><span class="line"><span class="keyword">matrix</span> rownames Htest = trunk length weight overall  <span class="comment">// 定义行名 </span></span><br><span class="line"><span class="keyword">matrix</span> colnames Htest = chi2 df p                    <span class="comment">// 定义列名 </span></span><br><span class="line"><span class="keyword">matlist</span> Htest                                        <span class="comment">// 添加边框 </span></span><br><span class="line"><span class="keyword">matrix</span> <span class="keyword">rename</span> 原矩阵名 新矩阵名    <span class="comment">// 矩阵更名  </span></span><br><span class="line"><span class="comment">* 矩阵的行数和列数 </span></span><br><span class="line"><span class="keyword">matrix</span> 矩阵名 = (1,2,3 \ 4,5,6)</span><br><span class="line"><span class="keyword">scalar</span> ra = <span class="built_in">rowsof</span>(矩阵名)</span><br><span class="line"><span class="keyword">scalar</span> <span class="keyword">ca</span> = <span class="built_in">colsof</span>(矩阵名)</span><br><span class="line"><span class="keyword">dis</span> <span class="keyword">in</span> <span class="keyword">g</span> <span class="string">"矩阵 矩阵名 的行数是:"</span> <span class="keyword">in</span> y ra </span><br><span class="line"><span class="keyword">dis</span> <span class="keyword">in</span> <span class="keyword">g</span> <span class="string">"矩阵 矩阵名 的列数是:"</span> <span class="keyword">in</span> y <span class="keyword">ca</span>  </span><br><span class="line"><span class="keyword">matrix</span> <span class="keyword">dir</span>                   <span class="comment">// 查找矩阵 </span></span><br><span class="line"><span class="keyword">matrix</span> <span class="keyword">drop</span> 矩阵名           <span class="comment">// 删除矩阵       </span></span><br><span class="line"><span class="keyword">display</span> <span class="built_in">matmissing</span>(矩阵名)   <span class="comment">// 显示矩阵缺漏值个数 </span></span><br><span class="line"><span class="comment">* 矩阵的行名和列名 </span></span><br><span class="line"><span class="keyword">matrix</span> rownames 矩阵名 = 行名 (空格分隔)       <span class="comment">// 行名 </span></span><br><span class="line"><span class="keyword">matrix</span> colnames 矩阵名 = 列名 (空格分隔)       <span class="comment">// 列名 </span></span><br><span class="line"><span class="comment">* 矩阵的选择 </span></span><br><span class="line"><span class="keyword">matrix</span> 新矩阵名 = 矩阵名 [行索引，列索引]        <span class="comment">// 中间省略：.. 全部省略：.... 尾部省略：...</span></span><br><span class="line"><span class="keyword">matrix</span> 矩阵中想要修改的元素 = 修改值           <span class="comment">// 如果想要修改区域，只需在等号左侧填入修改区域左上角的元素位置即可 </span></span><br><span class="line"><span class="comment">* 矩阵的合并 </span></span><br><span class="line"><span class="keyword">matrix</span> aa  = [a1, a2]   <span class="comment">// 横向合并两个矩阵 </span></span><br><span class="line"><span class="keyword">matrix</span> aaa = [a1 \ a2]  <span class="comment">// 纵向追加两个矩阵 </span></span><br><span class="line"><span class="comment">* 常用矩阵的定义 </span></span><br><span class="line"><span class="keyword">matrix</span> I = <span class="built_in">I</span>(<span class="keyword">n</span>)         <span class="comment">// 单位矩阵 </span></span><br><span class="line"><span class="keyword">matrix</span> 矩阵名 = <span class="built_in">J</span>(行数，列数，常数)</span><br><span class="line"><span class="keyword">matrix</span> r3 = <span class="built_in">matuniform</span>(10,4)  <span class="comment">// 生成一个 10*4 的随机数矩阵，随机数区间为 (0,1)</span></span><br><span class="line"><span class="comment">* 将一维矩阵转换成对角矩阵 </span></span><br><span class="line"><span class="keyword">mat</span> <span class="keyword">u</span> = <span class="built_in">J</span>(5,1,-0.5)</span><br><span class="line"><span class="keyword">mat</span> du = <span class="built_in">diag</span>(<span class="keyword">u</span>)  <span class="comment">// 取出对角元素 </span></span><br><span class="line"><span class="comment">* 将变量转换为矩阵 </span></span><br><span class="line"><span class="keyword">mkmat</span> <span class="keyword">varlist</span> [<span class="keyword">if</span>] [<span class="keyword">in</span>] [, <span class="built_in">matrix</span>(<span class="keyword">matname</span>) nomissing   <span class="comment">// 单变量：矩阵名默认为变量名，选项 nomissing 表示仅包含非缺漏值 </span></span><br><span class="line"><span class="comment">* 将矩阵转化为变量 </span></span><br><span class="line">xsvmat 矩阵名，<span class="keyword">list</span>(,)                                 <span class="comment">// 以变量方式列示矩阵的内容 </span></span><br><span class="line"><span class="comment">* 用矩阵存储统计结果 </span></span><br><span class="line"> makematrix [matrix_name], from (results_list) [production_options] [list_options]:[<span class="string">"] command ["</span>] [<span class="keyword">varlist</span>] ... [, options ]</span><br><span class="line"><span class="comment"> * 矩阵运算 </span></span><br><span class="line"> mgen exprlist , <span class="keyword">in</span>(<span class="keyword">matname</span>) <span class="keyword">out</span>(<span class="keyword">matname</span>) [ common (term) ]   <span class="comment">//in - 进行操作的矩阵 out - 新矩阵 exprlist：数学表达式 </span></span><br><span class="line"><span class="comment"> * 保存矩阵 </span></span><br><span class="line"> matsave <span class="keyword">matrix</span> [, <span class="keyword">replace</span> saving dropall path (path) <span class="keyword">type</span>(<span class="keyword">type</span>) ]  <span class="comment">// 保存到 dta 中 </span></span><br><span class="line"> mat2txt , <span class="built_in">matrix</span>(matrixname) saving (filename) [ title (text) <span class="keyword">note</span>(text) <span class="keyword">format</span>(formatlist) <span class="keyword">replace</span> <span class="keyword">append</span> ] <span class="comment">// 保存为 txt 格式 </span></span><br><span class="line"> dataout &lt;using filename&gt; [, options]   <span class="comment">//word: 转成 rtf 格式的 word 文档 excel: 转成 xml 格式的 excel 文档 </span></span><br></pre></td></tr></table></figure>
+<h2 id="1-3-cao-zuo-ju-zhen">1.3 操作矩阵</h2>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">* 基本运算 </span></span><br><span class="line"><span class="keyword">matrix</span> A = (1,2\3,4)</span><br><span class="line"><span class="keyword">matrix</span> B = (5,7\9,2)</span><br><span class="line"><span class="keyword">matrix</span> C = A+B             <span class="comment">// 加法 </span></span><br><span class="line"><span class="keyword">matrix</span> B = A-B             <span class="comment">// 减法 </span></span><br><span class="line"><span class="keyword">matrix</span> X = (1,1\2,5\8,0\4,5)</span><br><span class="line"><span class="keyword">matrix</span> C = 3*X*A'*B        <span class="comment">// 乘法 </span></span><br><span class="line"><span class="keyword">matrix</span> <span class="keyword">D</span> = (X'*X - A'*A)/4</span><br><span class="line"><span class="keyword">matrix</span> <span class="keyword">D</span> = A#<span class="keyword">D</span>               <span class="comment">// 直乘 </span></span><br><span class="line"><span class="keyword">matrix</span> <span class="keyword">E</span> = <span class="built_in">hadamard</span>(A,B)     <span class="comment">// Hadamard 乘法 </span></span><br><span class="line"><span class="comment">* 矩阵元素的数学变换 </span></span><br><span class="line">math B = function (A)         <span class="comment">// 可供调用的 function： help math functions</span></span><br><span class="line">mgen exprlist , <span class="keyword">in</span>(<span class="keyword">matname</span>) <span class="keyword">out</span>(<span class="keyword">matname</span>) [ common (term) ]  <span class="comment">// 分列变换："v1=ln (c1)" 不可以写为 "v1 = ln (c1)"</span></span><br><span class="line"><span class="comment">* 矩阵与单值的运算 </span></span><br><span class="line"><span class="keyword">scalar</span> c = 5                 <span class="comment">// 单值 c</span></span><br><span class="line"><span class="keyword">mat</span> <span class="keyword">D</span> = <span class="built_in">J</span>(4,4,1)             <span class="comment">// 矩阵 D</span></span><br><span class="line"><span class="keyword">mat</span> Dc = <span class="keyword">D</span>*c                 <span class="comment">//mat cD = c*D   矩阵与单值相乘 </span></span><br><span class="line"><span class="keyword">mat</span> D_c = <span class="keyword">D</span>/c                <span class="comment">// 矩阵与单值相除 </span></span><br><span class="line"><span class="comment">* 矩阵的转置：行列互换 </span></span><br><span class="line"><span class="keyword">matrix</span> A = (-1, 2 \ 3, 4 )</span><br><span class="line"><span class="keyword">mat</span> At = A'                  <span class="comment">// 转置运算优先于乘法运算 </span></span><br><span class="line"><span class="comment">* 矩阵的逆矩阵 </span></span><br><span class="line"><span class="keyword">scalar</span> detA = <span class="built_in">det</span>(A)         <span class="comment">// 矩阵的行列式 </span></span><br><span class="line"><span class="keyword">dis</span> <span class="built_in">issym</span>(A)                 <span class="comment">// 判断一个矩阵是否为对称矩阵 </span></span><br><span class="line"><span class="keyword">mat</span> invA = <span class="built_in">inv</span>(A)            <span class="comment">// 求矩阵的逆矩阵 </span></span><br><span class="line"><span class="comment">* 矩阵的向量化 </span></span><br><span class="line"><span class="keyword">mat</span> vA = <span class="built_in">vec</span>(A)</span><br><span class="line"><span class="keyword">mat</span> dA = <span class="built_in">vecdiag</span>(A)          <span class="comment">// 向量化方阵的对角元素 </span></span><br><span class="line"><span class="comment">* 矩阵的对角值 (trace)</span></span><br><span class="line"><span class="keyword">matrix</span> Atr = <span class="built_in">trace</span>(A)        <span class="comment">// 方阵的对角元素之和 </span></span><br></pre></td></tr></table></figure>
+<h1 id="2-ju-zhen-de-jin-jie-cao-zuo">2. 矩阵的进阶操作</h1>
+<h2 id="2-1-jiao-cheng-ju-zhen">2.1 交乘矩阵</h2>
+<p>  matrix accum 的定义：atrix accum (A) = A’*A，其中，A = (x1,x2,x3……)；matrix vecaccum 的定义：matrix vecaccum (A) = x1’*X,  其中，X = (x2,x3,……)。</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">matrix</span> accum A = <span class="keyword">varlist</span> [<span class="keyword">if</span>] [<span class="keyword">in</span>] [weight] [, noconstant deviations <span class="keyword">means</span>(<span class="keyword">M</span>) absorb (varname)]  <span class="comment">//matrix accum 语法 </span></span><br><span class="line"><span class="keyword">matrix</span> vecaccum a = <span class="keyword">varlist</span> [<span class="keyword">if</span>] [<span class="keyword">in</span>] [weight] [, noconstant]                                   <span class="comment">//matrix vecaccum 语法 </span></span><br><span class="line"><span class="comment">*- 几个重要选项：</span></span><br><span class="line"><span class="comment">*  (1) noconstant 不在 X 矩阵中自动附加常数项；</span></span><br><span class="line"><span class="comment">*  (2) deviation  采用离差的形式 </span></span><br><span class="line"></span><br><span class="line"><span class="comment">*-eg1- 线性模型的 OLS 估计 </span></span><br><span class="line"><span class="comment">*- 目的：求取 b = inv (X'X)*X'y</span></span><br><span class="line"><span class="comment">* 其中，y = price, </span></span><br><span class="line"><span class="comment">*       X =(weight,mpg,Cons)</span></span><br><span class="line"><span class="keyword">sysuse</span> auto, <span class="keyword">clear</span></span><br><span class="line"><span class="comment">* 方法 1：仅使用 matrix accum 命令 </span></span><br><span class="line"><span class="comment">* 思路：若 A = (y, X)， 则 </span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">*                                       [ y'y  y'X ]</span></span><br><span class="line"><span class="comment">*   mat accum (A) = S = (y, X)'(y, X) = [          ]</span></span><br><span class="line"><span class="comment">*                                       [ X'y  X'X ]</span></span><br><span class="line"><span class="keyword">matrix</span> accum S = price weight mpg  <span class="comment">//y=price, X=[weight mpg]</span></span><br><span class="line"><span class="keyword">mat</span> <span class="keyword">list</span> <span class="built_in">S</span></span><br><span class="line"><span class="keyword">matrix</span> XX = S [2..., 2...] </span><br><span class="line"><span class="keyword">matrix</span> Xy = S [2..., 1]</span><br><span class="line"><span class="keyword">mat</span> b = <span class="built_in">inv</span>(XX)*Xy</span><br><span class="line"><span class="keyword">mat</span> <span class="keyword">list</span> b</span><br><span class="line"><span class="keyword">reg</span> price weight mpg,nohead       <span class="comment">// 检验上述结果 </span></span><br><span class="line"><span class="comment">* 方法 2：结合使用 matrix accum 和 matrix vecaccum</span></span><br><span class="line"><span class="keyword">mat</span> accum XX = weight mpg</span><br><span class="line"><span class="keyword">mat</span> vecaccum <span class="keyword">yX</span> = price weight mpg</span><br><span class="line"><span class="keyword">mat</span> Xy = <span class="keyword">yX</span>'</span><br><span class="line"><span class="keyword">mat</span> b = <span class="built_in">inv</span>(XX)*Xy</span><br><span class="line"><span class="keyword">mat</span> <span class="keyword">list</span> b</span><br><span class="line"><span class="keyword">reg</span> price weight mpg, noheader   <span class="comment">// 检验上述结果 </span></span><br><span class="line"><span class="comment">* -eg2- 获取变量的相关系数矩阵 </span></span><br><span class="line"><span class="keyword">sysuse</span> auto, <span class="keyword">clear</span></span><br><span class="line"><span class="keyword">corr</span> price weight mpg <span class="built_in">length</span></span><br><span class="line"><span class="comment">* 加权交乘矩阵   -mat glsaccum-</span></span><br><span class="line"><span class="keyword">matrix</span> glsaccum A = <span class="keyword">varlist</span> [<span class="keyword">if</span>] [<span class="keyword">in</span>] [weight], <span class="built_in">group</span>(groupvar) glsmat (W|stringvar) row (rowvar) [noconstant]   <span class="comment">// 基本语法 </span></span><br><span class="line"><span class="comment">*-mat glsaccum 的定义：mat glsaccum (X) = S = X'BX</span></span><br><span class="line"><span class="comment">* 其中，B 为权重矩阵，定义如下：</span></span><br><span class="line"><span class="comment">*       [ W_1   0   ...   0  ]</span></span><br><span class="line"><span class="comment">*       |  0   W_2  ...   0  |</span></span><br><span class="line"><span class="comment">*   B = |  .    .    .    .  |    W_k (k=1,2,...,K) 表示第 k 组观察值的权重矩阵，是一个方阵 </span></span><br><span class="line"><span class="comment">*       |  .    .     .   .  |</span></span><br><span class="line"><span class="comment">*       [  0    0   ...  W_k ]</span></span><br><span class="line"><span class="comment">*  若 X 也根据组别定义，则可表示为：</span></span><br><span class="line"><span class="comment">*        [ X_1 ]</span></span><br><span class="line"><span class="comment">*        | X_2 | </span></span><br><span class="line"><span class="comment">*    X = |  .  |</span></span><br><span class="line"><span class="comment">*        |  .  | </span></span><br><span class="line"><span class="comment">*        [ X_k ]</span></span><br><span class="line"><span class="comment">*  由此可以更为细致的了解到 glsaccum 的定义方式：X'BX = X1'W1X1 + X2'W2X2 + ... + X_k'*W_k*X_k </span></span><br><span class="line"><span class="comment">*- 应用举例：White (1980) 异方差稳健性标准误的计算 </span></span><br><span class="line"><span class="comment">*  </span></span><br><span class="line"><span class="comment">*  Var (b) = inv (X'X)*(X'WX)*inv (X'X)  // White (1980) 稳健性方差 - 协方差矩阵 </span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">*  其中，</span></span><br><span class="line"><span class="comment">*  </span></span><br><span class="line"><span class="comment">*       [ e1^2   0    ...    0  ]</span></span><br><span class="line"><span class="comment">*       |  0    e2^2  ...    0  |</span></span><br><span class="line"><span class="comment">*   W = |  .     .     .     .  |</span></span><br><span class="line"><span class="comment">*       |  .     .     .     .  |</span></span><br><span class="line"><span class="comment">*       [  0     0    ...  eN^2 ]  NXN 矩阵 </span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">*  ei 表示第 i 个观察值对应的残差 </span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">*  问题的关键：求得 (X'WX) 矩阵即可，可采用 -mat glsaccum- 命令  </span></span><br><span class="line"><span class="keyword">sysuse</span> auto, <span class="keyword">clear</span></span><br><span class="line"><span class="comment">*-1 获得 OLS 估计值 </span></span><br><span class="line"><span class="keyword">mat</span> accum XX = weight mpg</span><br><span class="line"><span class="keyword">mat</span> vecaccum <span class="keyword">yX</span> = price weight mpg</span><br><span class="line"><span class="keyword">mat</span> Xy = <span class="keyword">yX</span>'</span><br><span class="line"><span class="keyword">mat</span> b = <span class="built_in">inv</span>(XX)*Xy</span><br><span class="line"><span class="keyword">mat</span> <span class="keyword">list</span> b</span><br><span class="line"><span class="comment">*-2 求取残差之平方向量：e2</span></span><br><span class="line"><span class="keyword">mkmat</span> price, <span class="keyword">mat</span>(y)</span><br><span class="line"><span class="keyword">gen</span> <span class="keyword">cons</span> = 1</span><br><span class="line"><span class="keyword">mkmat</span> wei len mpg <span class="keyword">cons</span>, <span class="keyword">mat</span>(X) <span class="comment">// 注意附加常数项 </span></span><br><span class="line"><span class="keyword">mat</span> <span class="keyword">e</span> = y - X*b                <span class="comment">// 残差向量 </span></span><br></pre></td></tr></table></figure><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">
+      
+    </div>
+
+    <div>
+        
+        <div>
+    
+        <div style="text-align:center;color: #666699;font-size:14px;">------ 本文已经结束，感谢您的阅读！------</div>
+    
+</div>
+        
+    </div> 
+     
+             
+    
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>最喜欢你一言不合就打赏的样子了~~~么么！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="https://blog-1258437747.cos.ap-chengdu.myqcloud.com/wechatpay.jpg" alt="周卫东 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="https://blog-1258437747.cos.ap-chengdu.myqcloud.com/alipay.jpg" alt="周卫东 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    周卫东
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http：//zhouweidong.ml/2019/08/04/用stata操作矩阵/" title="用 stata 操作矩阵">http：//zhouweidong.ml/2019/08/04/用stata操作矩阵/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+        <div class="post-widgets">
+        
+          <div class="wp_rating">
+            <div id="wpac-rating"></div>
+          </div>
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/08/02/相对重要性分析：domin命令/" rel="next" title="相对重要性分析：domin 命令">
+                <i class="fa fa-chevron-left"></i> 相对重要性分析：domin 命令
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/08/06/窗体与控件/" rel="prev" title="窗体与控件">
+                窗体与控件 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zNzYwOC8xNDEzOQ=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="298" height="52" src="//music.163.com/outchain/player?type=0&id=2660247525&auto=1&height=32"></iframe>
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://blog-1258437747.cos.ap-chengdu.myqcloud.com/IMG_9432===_美艺达证件照.jpg" alt="周卫东">
+            
+              <p class="site-author-name" itemprop="name">周卫东</p>
+              <p class="site-description motion-element" itemprop="description">行到水穷处，坐看云起时。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">119</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">63</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/weidongzhou1994" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:sirzhouchn@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://twitter.com/SirzhouchnZhou" target="_blank" title="Twitter">
+                      
+                        <i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.zhihu.com/people/your-user-name" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-globe"></i>知乎</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://google.com/" title="google" target="_blank">google</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://wiki.com/" title="wiki" target="_blank">wiki</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-ju-zhen-de-ji-ben-cao-zuo"><span class="nav-text">1. 矩阵的基本操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-ding-yi-ju-zhen"><span class="nav-text">1.1 定义矩阵</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-guan-li-ju-zhen"><span class="nav-text">1.2 管理矩阵</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-cao-zuo-ju-zhen"><span class="nav-text">1.3 操作矩阵</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-ju-zhen-de-jin-jie-cao-zuo"><span class="nav-text">2. 矩阵的进阶操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-jiao-cheng-ju-zhen"><span class="nav-text">2.1 交乘矩阵</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">周卫东</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">75.0k</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/2.1.3/jquery.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="https://cdn.bootcss.com/velocity/1.2.1/velocity.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="https://cdn.bootcss.com/velocity/1.2.1/velocity.ui.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="https://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="https://cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("V4gz8O6rLgpERkSPQNtWOes7-gzGzoHsz", "tjlRL7JN4yhCaHjFTE9aVhws");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="/vendors/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/vendors/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "box";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Pinterest,Facebook,GooglePlus,Reddit,Linkedin,Tumblr,Evernote";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+  </script>
+
+  
+  <script type="text/javascript">
+  wpac_init = window.wpac_init || [];
+  wpac_init.push({widget: 'Rating', id: 18587,
+    el: 'wpac-rating',
+    color: 'fc6423'
+  });
+  (function() {
+    if ('WIDGETPACK_LOADED' in window) return;
+    WIDGETPACK_LOADED = true;
+    var mc = document.createElement('script');
+    mc.type = 'text/javascript';
+    mc.async = true;
+    mc.src = '//embed.widgetpack.com/widget.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+  })();
+  </script>
+
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="custom_mathjax_source">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+  
+
+
+  
+
+  
+
+ </body>
+</html>
+
+<!--崩溃欺骗-->
+<script type="text/javascript" src="/js/src/crash_cheat.js"></script>
+
+<!-- 代码块复制功能 -->
+<script type="text/javascript" src="/js/src/clipboard.min.js"></script>  
+<script type="text/javascript" src="/js/src/clipboard-use.js"></script>

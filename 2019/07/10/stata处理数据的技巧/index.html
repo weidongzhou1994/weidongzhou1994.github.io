@@ -1,0 +1,1709 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/vendors/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/vendors/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="https://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Noto Serif SC:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|Noto Serif SC:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+  
+
+<link href="https://cdn.bootcss.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="基础,Stata,数据,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="周卫东的博客" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="1. 创建数据的技巧">
+<meta name="keywords" content="基础,Stata,数据">
+<meta property="og:type" content="article">
+<meta property="og:title" content="stata 处理数据的技巧">
+<meta property="og:url" content="http：//zhouweidong.ml/2019/07/10/stata处理数据的技巧/index.html">
+<meta property="og:site_name" content="周卫东的博客">
+<meta property="og:description" content="1. 创建数据的技巧">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-08-02T02:31:27.045Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="stata 处理数据的技巧">
+<meta name="twitter:description" content="1. 创建数据的技巧">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http：//zhouweidong.ml/2019/07/10/stata处理数据的技巧/">
+
+
+
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "2981e3b3"
+    });
+  daovoice('update');
+  </script>
+
+  <title>stata 处理数据的技巧 | 周卫东的博客</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">周卫东的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-categories" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http：//zhouweidong.ml/2019/07/10/stata处理数据的技巧/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="周卫东">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://blog-1258437747.cos.ap-chengdu.myqcloud.com/IMG_9432===_美艺达证件照.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="周卫东的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">stata 处理数据的技巧</h1>
+        
+
+        <div class="post-meta">
+        
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-10T11:30:24+08:00">
+                2019-07-10
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-08-02T10:31:27+08:00">
+                2019-08-02
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/stata/" itemprop="url" rel="index">
+                    <span itemprop="name">stata</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2019/07/10/stata处理数据的技巧/" class="leancloud_visitors" data-flag-title="stata 处理数据的技巧">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  4,593
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  20
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="1-chuang-jian-shu-ju-de-ji-qiao">1. 创建数据的技巧</h1>
+<a id="more"></a>
+<h1 id="1-1-n-he-n">1.1 _n 和 _N</h1>
+<p>  _n 是数据左侧 stata 自动提供的编号，是一个没有变量名的特殊变量，不能通过 list 方法进行列示，也会随着样本排序的变化而变化； _N 则是样本数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">sysuse sp500.dta, clear  // 导入数据 </span><br><span class="line">sort open</span><br><span class="line">gen open_max = open [_N]  // 利用排序和 _N 得到最大值 </span><br><span class="line">gen open_diff = open [_n] - open [_N]  // 计算每个数据和最大值之间的差 </span><br><span class="line">gen open_range = open [_N] - open [1]  // 计算数据之间的最大差异 </span><br><span class="line">sort date</span><br><span class="line">gen date_diff = open [_n] - open [_n-1] // 先对时间变量进行排序， 然后计算 open 变量的差分 </span><br><span class="line">gen ln_date_diff = ln (open [_n]) - ln (open [_n-1]) // 计算对数差分 </span><br><span class="line">gen mv3_open = (open [_n-1] + open [_n] + open [_n+1]) / 3   // 计算移动平均 </span><br><span class="line">* 时间序列 </span><br><span class="line">* 滞后项、前推项、差分 </span><br><span class="line">qui tsset date // 声明数据为时间序列：对时间进行排序 qui 表示不再屏幕上显示结果，只在后台运行命令 </span><br><span class="line">gen open_lag  = L.open   // 滞后一期，以日期而非序号作为前推量，如 2019-07-02，前推 1 期为 2019-07-01，如果 2019-07-01 的数据不存在，则无法计算。  </span><br><span class="line">gen open_lag2 = L2.open  // 滞后两期 </span><br><span class="line">gen open_forward         // 前推一期 </span><br><span class="line">gen open_diff  = D.open  // 一期差分 </span><br><span class="line">gen open_diff2 = D2.open// 两期差分 </span><br><span class="line">reg close L (1/3).(close open)  // L (close open) 表示对 close 和 open 变量做滞后期，(1/3) 则表示滞后 1 期、2 期和 3 期。</span><br><span class="line">* 增长率 </span><br><span class="line">qui tsset date</span><br><span class="line">gen r1 = D.close/L.close// 第一种计算方法 </span><br><span class="line">gen ln_close = ln (close)</span><br><span class="line">gen r2 = D.ln_close      // 第二种计算方法：文献中常用的方法，与第一种方法略有差距。</span><br><span class="line">* 分组计算 </span><br><span class="line">bysort industry: gen gid = _n  // 根据 _n 产生新变量 gid, gid 中的数字序号是分组的。</span><br></pre></td></tr></table></figure>
+<h2 id="1-2-chuang-jian-xu-ni-bian-liang">1.2 创建虚拟变量</h2>
+<p>   所谓虚拟变量，就是把原来的一个多分类变量转化为多个二分变量，总的来说就是，如果多分类变量有 k 个类别，则可以转化为 k-1 个二分变量。如变量 x 为赋值 1、2、3、4 的四分类变量，就可以转换为 3 个赋值为 0 和 1 的二分类变量。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">sysuse nlsw88.dta, clear // 导入数据 </span><br><span class="line">* 产生虚拟变量 </span><br><span class="line">gen dum_race = 0                       </span><br><span class="line">    replace dum_race = 1 if race = 2</span><br><span class="line">gen dum_race3 = 0</span><br><span class="line">        replace dum_race3=1 if race==3</span><br><span class="line">* 基于类别变量直接生成虚拟变量：tab 命令 </span><br><span class="line">tab race, gen (dum_r) //  tab 类别变量名，gen (虚拟变量名)：此命令会产生 k 个变量，其中 k 为类别变量的类别数。</span><br><span class="line">* 基于类别变量自定义生成虚拟变量：recode 命令 </span><br><span class="line">recode race (1 = 0) (2 3 = 1), gen (dum_r)  // 此命令只会基于 rule 产生一个虚拟变量：recode varlist (rule) [(rule) ...] [, generate (newvar)]</span><br><span class="line">* 自定义规则生成虚拟变量：cond</span><br><span class="line">gen dum_r = cond (race &gt; 1, 0, 1) //cond (x,a,b [,c]): x 是条件，表示等于时符号为 ==； a 为条件 x 成立时返回的值，b 为条件 x 不成立时返回的值，c 为条件 x 中变量出现缺失值时返回的值。</span><br><span class="line">* 通过 todummy 创建虚拟变量 </span><br><span class="line">todummy race, values (1 \ 2 3) generate (dum_r1 dum_r2) //race=1 则 dum_r1=1; race=2 或 race3 则 dum_r2=1。</span><br><span class="line">* 基于类别变量生成虚拟变量: xi 命令 </span><br><span class="line">xi i.race, prefix (dum_) noomit // 为了避免再次使用 xi 命令时以前创建的虚拟变量被覆盖，可以使用 prefix () 自定义前缀；为了生成 k 个虚拟变量，也需要使用 noomit 选项。</span><br></pre></td></tr></table></figure>
+<h2 id="1-3-chuang-jian-yin-zi-bian-liang">1.3 创建因子变量</h2>
+<p>   因子变量（Factor Variable）是对现有变量的延伸，是从类别变量中生成虚拟变量、设定类别变量之间的交乘项、类别变量与连续型变量之间的交乘项或连续变量之间的交乘项（或多项式）。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">reg wage i.race#i.occupation  // 两个类别变量的交乘项 </span><br><span class="line">reg wage i.race##i.occupation// 虚拟变量 + 两个类别变量的交乘项 </span><br><span class="line">reg wage i.race#c.hours       // 类别变量与连续变量的交乘项 </span><br><span class="line">reg wage c.age##c.age         // 连续变量与连续变量的交乘项（高次项）- 三次方：c.age##c.age##c.age</span><br></pre></td></tr></table></figure>
+<p>   对照组的设定：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">reg wage ib3.race  //ib - 设定对照组；3 代表将 race=3 的类别变量作为对照组 </span><br><span class="line">fvset base 3 race  // 在后续使用 i.race 过程中，race=3 都是对照组 </span><br></pre></td></tr></table></figure>
+<h1 id="2-egen-ming-ling">2. egen 命令</h1>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">egen [type] newvar = fcn (arguments) [if] [in] [, options]</span><br></pre></td></tr></table></figure>
+<h2 id="2-1-egen-yu-gen-de-qu-bie">2.1 egen 与 gen 的区别</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">* sum 命令的含义不同 </span><br><span class="line">sysuse sp500, clear</span><br><span class="line">gen  sum_close0 = sum (close)  // 累加 </span><br><span class="line">egen sum_close1 = sum (close)  // 全部加总 </span><br><span class="line">* 对缺漏值的处理方法不同 </span><br><span class="line">clear</span><br><span class="line">input v1  v2</span><br><span class="line">    1   5</span><br><span class="line">    2   .</span><br><span class="line">    .   3</span><br><span class="line">    2   4</span><br><span class="line">    4   . </span><br><span class="line">    .   6</span><br><span class="line">end</span><br><span class="line">gen mean       = (v1+v2)/2     // 遇到缺漏值会停止计算，显示为缺漏值 </span><br><span class="line">egen mean_egen = rmean (v1 v2)  // 遇到缺漏值会直接忽略，继续计算。如 rmean (2 .) = 2/1 = 2</span><br><span class="line">list</span><br></pre></td></tr></table></figure>
+<h2 id="2-2-chan-sheng-deng-chai-shu-lie-seq-han-shu">2.2 产生等差数列：seq () 函数</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">clear </span><br><span class="line">set obs 100 // 设定数据量 </span><br><span class="line">egen 变量名 = seq (), from (起始值) to (结束值) block (重复次数)</span><br></pre></td></tr></table></figure>
+<h2 id="2-3-tian-chong-shu-ju-fill-han-shu">2.3 填充数据：fill () 函数</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">egen 变量名 =  fill (numlist) // 对于 numlist 的用法，可以使用 help numlist 命令进行查看。</span><br></pre></td></tr></table></figure>
+<h2 id="2-4-chan-sheng-zu-nei-jun-zhi-he-zhong-wei-shu">2.4 产生组内均值和中位数</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">egen 变量名 = mean (变量名), by (类别变量名)    // 分组产生组内均值 </span><br><span class="line">egen 变量名 = median (变量名), by (类别变量名)  // 分组产生中位数 </span><br></pre></td></tr></table></figure>
+<h2 id="2-5-bian-liang-de-biao-zhun-hua-he-ping-hua-hua">2.5 变量的标准化和平滑化</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">egen 变量名 = std (变量名), mean (平均值) std (标准差)  // 将变量呈现为（平均值，标准差）的正态分布 </span><br><span class="line">egen 变量名 = ma (open), t (几期) nomiss // 数据的平滑意味着移动平局，t () 设定期数，nomiss 表示没有缺漏值，强制移动平均。</span><br></pre></td></tr></table></figure>
+<h1 id="3-fen-wei-shu">3. 分位数</h1>
+<p>   分位数指的就是连续分布函数中的一个点，这个点对应概率 p。</p>
+<h2 id="3-1-ming-ling-pctitle">3.1 命令：pctitle</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">* 命令结构 </span><br><span class="line">pctile [type] newvar = exp [if] [in] [weight] [, pctile_options]</span><br><span class="line">* 实例 </span><br><span class="line">sysuse auto, clear</span><br><span class="line">pctile p_price = price, nq (10) gen (percent)   // 指定分 9 个百分位数，把样本切割为 10 组；gen () 选项用于生成对应的百分位标识。</span><br></pre></td></tr></table></figure>
+<h2 id="3-2-ming-ling-xtile">3.2 命令：xtile</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">* 命令结构 </span><br><span class="line">xtile newvar = exp [if] [in] [weight] [, xtile_options] // 根据指定的百分位数将连续变量定义为类别变量 </span><br><span class="line">* 实例 </span><br><span class="line">use bp1.dta, clear</span><br><span class="line">xtile x_bp = bp, nq (4) //nq (4) 的创建规则为： (-OO,x25], (x25,x50], (x50,x75], (x75,+OO)</span><br><span class="line">* cutpiont () 选项：根据指定的分类标准定义类别变量 </span><br><span class="line">input class</span><br><span class="line">    100</span><br><span class="line">    110</span><br><span class="line">    120</span><br><span class="line">    130</span><br><span class="line">end</span><br><span class="line">xtile c_bp = bp, cutpoints (class)</span><br></pre></td></tr></table></figure>
+<h2 id="3-3-ming-ling-pctile">3.3 命令：_pctile</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> _pctile varname [if] [in] [weight] [, _pctile_options] // 计算百分数并将其存储在 r () 中 </span><br><span class="line">* 实例 </span><br><span class="line">sysuse auto, clear</span><br><span class="line">_pctile length, nq (10)  // 指定分 9 个百分位数，把样本切割为 10 组 </span><br><span class="line">_pctile length, p (10, 33.333, 45 50, 55, 66.667, 90)  // 根据 p () 内制定的分位点进行分位 </span><br></pre></td></tr></table></figure>
+<h1 id="4-zhong-fu-yang-ben-zhi-de-chu-li">4. 重复样本值的处理</h1>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">* 检查变量是否是唯一识别码 </span><br><span class="line">isid 变量名 </span><br><span class="line">* 列出重复记录 </span><br><span class="line">duplicates list [varlist] [if] [in] [, options]</span><br><span class="line">* 报告重复记录 </span><br><span class="line">duplicates report [varlist] [if] [in]</span><br><span class="line">* 列出重复值中的一个 </span><br><span class="line">duplicates examples [varlist] [if] [in] [, options]</span><br><span class="line">tab [varlist]     // 详细列出重复值的信息 </span><br><span class="line">* 标记重复值 </span><br><span class="line">egen 变量名 = group ([varlist]), label  //label 表示产生数字 - 文字对应表，之后可以使用 tab 命令创建虚拟变量。 </span><br><span class="line">egen rm_tag = tag ([varlist])  // 第一个非重复样本为 1，其他为零。 </span><br><span class="line"> duplicates tag [varlist] [if] [in] , generate (newvar)</span><br><span class="line">* 删除重复值 </span><br><span class="line">duplicates drop varlist [if] [in] , force</span><br></pre></td></tr></table></figure>
+<h1 id="5-que-lou-zhi-de-chu-li">5. 缺漏值的处理</h1>
+<p>   在 stata 中，缺漏值用 “.” 表示，大于任何自然数。对于缺漏值，有些命令会自动忽略，如 sum, regress, generate 等，但有些命令如 count, keep 等，则会将 “.” 视为一个无穷大的数值。</p>
+<h2 id="5-1-biao-ji-que-lou-zhi">5.1 标记缺漏值</h2>
+<p>   在不同的数据来源中，缺漏值会表现为不同的形式，因此需要统一为 stata 可以识别的缺漏值表示方式：“.”，为此，需要进行处理</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mvdecode varlist [if] [in], mv (numlist | numlist=mvc [\ numlist=mvc...]) // 将 varlist 中的数值型缺漏值转为 stata 可以识别的缺漏值格式 </span><br><span class="line">mvencode _all [if] [in], mv (numlist | numlist=mvc [\ numlist=mvc...])  // 将数据中的所有数值型缺漏值转为 stata 可以识别的缺漏值格式 </span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">replace x1 =&quot;.&quot;  if x1== &quot;N/A&quot;  // 利用 replace 命令将文本型缺漏值转换为 stata 可以识别的缺漏值格式 </span><br><span class="line">gen x1_new = real (x1) // 将文本型的缺漏值转换为数值型的缺漏值 </span><br></pre></td></tr></table></figure>
+<h2 id="5-2-xian-shi-que-lou-zhi-de-xiang-xi-qing-kuang">5.2 显示缺漏值的详细情况</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">misstable summarize [varlist] [if] [in] [, summarize_options] // 对于缺漏值的基本统计 </span><br><span class="line">misstable patterns [varlist] [if] [in] [, patterns_options]   // 显示缺漏值的缺漏模式，即使所有变量都有变量还是只有某个变量有缺漏 </span><br><span class="line">misstable tree [varlist] [if] [in] [, tree_options]           // 以树状形式显示缺漏值的基本统计 </span><br></pre></td></tr></table></figure>
+<h2 id="5-3-shan-chu-que-lou-zhi">5.3 删除缺漏值</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">* 利用 egen 中的 rmiss 选项删除缺漏值 </span><br><span class="line">egen miss = rmiss (varlist)  //miss=0 表示无缺漏值，=n 表示有 n 个缺漏值 </span><br><span class="line">drop if miss != 0    </span><br><span class="line">* 利用 missing () 函数删除缺漏值 </span><br><span class="line">drop if missing (varlist)</span><br><span class="line">* 更为简洁的命令：-dropmiss-</span><br><span class="line">dropmiss [varlist] [if] [in] , obs [force any trim piasm] // 以观察值为单位 </span><br><span class="line">dropmiss, any  // 以变量为单位 </span><br></pre></td></tr></table></figure>
+<h2 id="5-4-tian-bu-que-lou-zhi">5.4 填补缺漏值</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">replace x = x [_n-1] if x==.  // 根据前期数值进行填补 </span><br><span class="line">replace x = x [_n+1] if x==.  // 根据后期数值进行填补 </span><br><span class="line">replace x = （x [_n-1] + x [_n+1]）/2 if x==. // 根据前期和后期数值的平均值进行填充 </span><br></pre></td></tr></table></figure>
+<p>  carryforward 命令也能方便的根据前期数值进行填补：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">carryforward varlist [if exp] [in range], &#123;gen (newvarlist1) | replace&#125; [cfindic (newvarlist2) back carryalong (varlist2) strict nonotes dynamic_condition (dyncond) extmiss] //carryalong 意味着同样进行填充 </span><br></pre></td></tr></table></figure>
+<h2 id="5-5-duo-zhong-bu-lou-fen-xi">5.5 多重补漏分析</h2>
+<p>   缺漏值的产生如果是非随机的，会导致相应的统计推断存在严重的偏误。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">* 声明数据的结构 </span><br><span class="line">mi set wide // 数据格式包括：wide mlong flong flongsep name</span><br><span class="line">mi register &#123;imputed | passive | regular&#125; varlist        // 声明需要插值的变量 </span><br><span class="line">mi impute method ...  [, impute_options ... ]            // 选择插值的方法 </span><br></pre></td></tr></table></figure>
+<h1 id="6-chi-qun-zhi-de-chu-li">6. 离群值的处理</h1>
+<p>   离群值会对回归结果造成巨大的影响，因此必须对它进行适当的处理。</p>
+<h2 id="6-1-cha-zhao-chi-qun-zhi">6.1 查找离群值</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">adjacent varlist [weight] [if exp] [in range] [ , by (varlist) missing ] // 检验数据的上界与下界 </span><br><span class="line">egen 新变量名 = outside (varname) [ , by (byvarlist) factor (#) ]  // 计算出离群值，factor 用于指定界限 </span><br></pre></td></tr></table></figure>
+<h2 id="6-2-chu-li-chi-qun-zhi">6.2 处理离群值</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">* 删除离群值 - egen 命令处理后 </span><br><span class="line">keep if 新变量名 == .</span><br><span class="line">drop if 新变量名！= .</span><br><span class="line">* 截尾处理 </span><br><span class="line">_pctile varname [if] [in] [weight] [, _pctile_options]</span><br><span class="line">drop if varnem 条件 </span><br></pre></td></tr></table></figure>
+<p>   对数转换也能在一定程度上解决离群值问题，也可以进行缩尾处理：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">winsor varname [if exp] [in range] , generate (newvar) &#123; p (#) | h (#) &#125; [ &#123; highonly | lowonly &#125; ]</span><br></pre></td></tr></table></figure>
+<h1 id="7-zi-liao-de-he-bing-he-zhui-jia">7. 资料的合并和追加</h1>
+<h2 id="7-1-heng-xiang-he-bing-zeng-jia-bian-liang">7.1 横向合并：增加变量</h2>
+<p>   在 Stata 中，横向合并一般使用 merge 命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">* 一对一合并 </span><br><span class="line">merge 1:1 varlist using filename [, options] </span><br><span class="line">* 多对一合并 </span><br><span class="line">merge m:1 varlist using filename [, options]</span><br><span class="line">* 一对多合并 </span><br><span class="line">merge 1:m varlist using filename [, options]</span><br><span class="line">* 多对多合并 </span><br><span class="line">merge m:m varlist using filename [, options]</span><br></pre></td></tr></table></figure>
+<h3 id="7-1-1-yi-dui-yi-he-bing">7.1.1 一对一合并</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">use merge_m.dta, clear</span><br><span class="line">merge 1:1 date using merge_u</span><br><span class="line">merge 1:1 date using merge_u, keepusing (close)  //keepusing (varlist) 选项表示仅合并部分数据 </span><br><span class="line">merge 1:1 date using merge_u, gen (m1) //nongenerate 表示不产生 _merge 变量；generate (新变量名) 表示产生 _merge 变量并对其重新命名 </span><br><span class="line">merge 1:1 date using merge_u, update  // 用调用的数据补充原始数据的缺漏值 </span><br><span class="line">merge 1:1 date using merge_u, update replace // 用调用的数据中没有缺漏的数据值来替代原始数据 </span><br></pre></td></tr></table></figure>
+<p>  _merge=1 表示观察值来自于原始数据；_merge=2 表示观察值来自于调用的数据；_merge=3 表示观察值同时来自于两份数据。</p>
+<h3 id="7-1-2-duo-dui-yi-he-bing-shu-ju-duo-de-he-shu-ju-shao-de-he-bing">7.1.2 多对一合并：数据多的和数据少的合并</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">use GTA_FS.dta, clear</span><br><span class="line">erge m:1 id using GTA_basic.dta, nogen</span><br></pre></td></tr></table></figure>
+<h3 id="7-1-3-yi-dui-duo-he-bing-shu-ju-shao-de-he-shu-ju-duo-de-he-bing">7.1.3 一对多合并：数据少的和数据多的合并</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">merge 1:m id using GTA_FS.dta, nogen</span><br></pre></td></tr></table></figure>
+<h2 id="7-2-heng-xiang-guan-lian-joinby">7.2 横向关联：joinby</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">joinby [varlist] using filename [, options]</span><br></pre></td></tr></table></figure>
+<p>   实例如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">use parent.dta, clear</span><br><span class="line">sort family_id                      // 这一步是必要的前置操作 </span><br><span class="line">joinby family_id using child.dta</span><br></pre></td></tr></table></figure>
+<h2 id="7-3-zong-xiang-he-bing-zhui-jia-yang-ben">7.3 纵向合并：追加样本</h2>
+<p>   在 Stata 中，纵向合并一般使用 append 命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">append using filename [filename ...] [, options]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">* generate () 选项 </span><br><span class="line">use append_m.dta, clear</span><br><span class="line">append using append_u.dta, gen (append_id) // 产生新变量来表明前后的不同 </span><br><span class="line">* nolabel &amp; nonotes 选项 用于不产生 label 和 notes</span><br></pre></td></tr></table></figure>
+<h1 id="8-dui-yang-ben-jin-xing-zhong-xin-zu-he">8. 对样本进行重新组合</h1>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">xpose, clear [options]             // 转置 </span><br><span class="line">* 长宽数据相互转换 </span><br><span class="line">reshape long stubnames, i (varlist) [options]   // 将宽数据转换为长数据 </span><br><span class="line">reshape wide stubnames, i (varlist) [options]   // 将长数据转换为宽数据 </span><br><span class="line">reshape long                                   // 退回为长数据 </span><br><span class="line">reshape wide                                   // 退回为宽数据 </span><br><span class="line">reshape error                                  // 当转换失败时报告问题观察值 </span><br><span class="line">* 交叉组合样本 </span><br><span class="line">fillin varlist                                 // 作用是对变量中的观察值进行组合 </span><br><span class="line">* 堆砌样本 </span><br><span class="line">stack varlist [if] [in] , &#123;into (newvars)|group (#)&#125; [options]</span><br></pre></td></tr></table></figure>
+<h1 id="9-chu-li-wen-zi-bian-liang">9. 处理文字变量</h1>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">* 文字变量转为数字变量 </span><br><span class="line">destring [varlist] , &#123;generate (newvarlist)|replace&#125; [destring_options]</span><br><span class="line">* 文字类别变量转为数字变量 </span><br><span class="line">encode varname [if] [in] , generate (newvar) [label (name) noextend]</span><br><span class="line">/*encode 和 destring 的区别是：destring 针对的是数字 “误存” 为文字型变量；encode 针对的是文字型变量。 */</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">* 数字变量转文字变量 </span><br><span class="line">tostring varlist , &#123;generate (newvarlist)|replace&#125; [tostring_options]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">* 分解文字样本值 </span><br><span class="line">split strvar [if] [in] [, options] // 选项 parse (分割符号)</span><br><span class="line">* 其他处理文字的函数 </span><br><span class="line">help string functions</span><br></pre></td></tr></table></figure>
+<h1 id="10-fen-xi-lei-bie-bian-liang">10. 分析类别变量</h1>
+<p>   类别变量是由文字变量转变而来的，也可以成为分类变量。</p>
+<h2 id="10-1-dui-lei-bie-shu-de-tong-ji">10.1 对类别数的统计</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">* 类别数的基本统计 </span><br><span class="line">tabulate varname1 [varname2] [if] [in] [weight] [, options] // 局限：无法直接看到类别数目 </span><br><span class="line">* 汇报类别数目 </span><br><span class="line">distinct [varlist] [if] [in] [, missing abbrev (#) joint minimum (#) maximum (#) ]</span><br></pre></td></tr></table></figure>
+<h2 id="10-2-sheng-cheng-jiao-cha-lei-bie-bian-liang">10.2 生成交叉类别变量</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xgroup varlist [if] [in] , [ generate (varname) saving (filename [, replace]) missing label lname (name) truncate (#) ]</span><br></pre></td></tr></table></figure>
+<h2 id="10-3-gen-ju-lei-bie-bian-liang-fen-zu-tong-ji">10.3 根据类别变量分组统计</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">* 单层分组 </span><br><span class="line">bysort varlist: stata_cmd</span><br><span class="line">tabstat varlist [if] [in] [weight] [, options]                     //by 选项 </span><br><span class="line">tabulate varname1 [varname2] [if] [in] [weight] [, options]        //sort 选项： 按数量从大到小排序 </span><br><span class="line">* 二层次和三层次分组统计量 </span><br><span class="line">bysort varlist: stata_cmd</span><br><span class="line">* 多层次分组统计量 </span><br><span class="line">table var1 var2 var3, by (var4) contents (...)   // 不能超过四个 var</span><br><span class="line">* 根据分组变量的类别计算其他变量的值 </span><br><span class="line">bysort varlist: egen</span><br><span class="line">* 转换原资料为分组统计量：collapse 命令 </span><br><span class="line">collapse clist [if] [in] [weight] [, options]  </span><br><span class="line">collapse (统计量 1) 新变量名 = 原变量名 (统计量 2) ...</span><br></pre></td></tr></table></figure>
+<h2 id="10-4-tu-shi-lei-bie-bian-liang">10.4 图示类别变量</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">* 柱状图 </span><br><span class="line">graph bar  yvars [if] [in] [weight] [, options] //  over (varname [, over_subopts]) 选项表示 categories; option may be repeated</span><br><span class="line">graph hbar yvars [if] [in] [weight] [, options] // 横向柱状图 </span><br><span class="line">* 箱形图 </span><br></pre></td></tr></table></figure>
+<h1 id="11-shi-jian-xu-lie-zi-liao-de-chu-li">11. 时间序列资料的处理</h1>
+<h2 id="11-1-ji-ben-cao-zuo-he-ming-ling">11.1 基本操作和命令</h2>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">* 声明时间序列：tsset 命令 </span></span><br><span class="line"><span class="keyword">tsset</span> timevar [, options] <span class="comment">// 相当于给时间变量进行从小到大的排序 </span></span><br><span class="line"><span class="keyword">tsset</span>, <span class="keyword">clear</span>              <span class="comment">// 清楚时间标示 </span></span><br><span class="line"><span class="comment">* 检查是否有断点：tsreport</span></span><br><span class="line"><span class="keyword">tsreport</span> [<span class="keyword">varlist</span>] [<span class="keyword">if</span>] [<span class="keyword">in</span>] [, options]</span><br><span class="line"><span class="comment">* 填充缺漏的日期 </span></span><br><span class="line"><span class="keyword">tsfill</span> [, full] </span><br><span class="line"><span class="comment">* 追加样本 </span></span><br><span class="line"><span class="keyword">tsappend</span>, &#123; add (#) | last (date|clock) tsfmt (string) &#125; [options]</span><br></pre></td></tr></table></figure>
+<h2 id="11-2-sheng-cheng-shi-xu-bian-liang">11.2 生成时序变量</h2>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">* 生成滞后项 </span></span><br><span class="line"><span class="keyword">L</span>.varname   <span class="comment">// 一阶滞后 </span></span><br><span class="line">L2.vaename  <span class="comment">// 二阶滞后 </span></span><br><span class="line"><span class="comment">* 生成超前向 </span></span><br><span class="line">F.varname   <span class="comment">// 一阶超前 </span></span><br><span class="line">F2.varname  <span class="comment">// 二阶超前 </span></span><br><span class="line"><span class="comment">* 生成差分项 </span></span><br><span class="line"><span class="keyword">D</span>.varname   <span class="comment">// 一阶差分 </span></span><br><span class="line">D2.varname  <span class="comment">// 二阶差分 </span></span><br><span class="line"><span class="comment">* 生成对数差分：近似于增长率 </span></span><br><span class="line"><span class="keyword">gen</span> 对数变量 = <span class="built_in">ln</span>(varname)</span><br><span class="line"><span class="keyword">gen</span> 增长率 = <span class="keyword">D</span>. 对数变量 </span><br></pre></td></tr></table></figure>
+<h1 id="12-mian-ban-zi-liao-de-chu-li">12. 面板资料的处理</h1>
+<h2 id="12-1-ji-ben-cao-zuo-he-ming-ling">12.1 基本操作和命令</h2>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">* 声明面板资料 </span></span><br><span class="line"><span class="keyword">xtset</span> panelvar timevar [, tsoptions] <span class="comment">// 或者为：xtset panelvar</span></span><br><span class="line"><span class="keyword">xtset</span>, <span class="keyword">clear</span> <span class="comment">// 清除对面板资料的声明 </span></span><br><span class="line"><span class="comment">* 处理错误信息：repeated time values within panel</span></span><br><span class="line"><span class="keyword">duplicates</span> <span class="keyword">report</span> panelvar timevar   <span class="comment">// 报告重复值 </span></span><br><span class="line"><span class="keyword">duplicates</span> <span class="keyword">drop</span> panelvar timevar, force <span class="comment">// 删除重复值 </span></span><br><span class="line"><span class="keyword">tsset</span> panelvar timevar</span><br><span class="line"><span class="comment">* 描述面板数据的 pattern</span></span><br><span class="line">xtdescribe [<span class="keyword">if</span>] [<span class="keyword">in</span>] [, options]</span><br><span class="line"><span class="comment">* 记录面板数据的资料形态 </span></span><br><span class="line">xtpattern [<span class="keyword">if</span> exp] , <span class="keyword">generate</span>(newvar)</span><br><span class="line"><span class="comment">* 统计面板变量的数目 </span></span><br><span class="line">panels <span class="keyword">varlist</span> [<span class="keyword">if</span>] [<span class="keyword">in</span>] [weight] [, options ]</span><br><span class="line"><span class="comment">* 产生连续的面板代码 </span></span><br><span class="line"><span class="keyword">egen</span> 新面板变量名 = <span class="built_in">group</span>(面板变量名) </span><br><span class="line"><span class="comment">* 将非平行面板处理为平行面板（面板变量的时序数一样）</span></span><br><span class="line">xtbalance, <span class="keyword">range</span>(<span class="keyword">numlist</span>) [ miss (<span class="keyword">varlist</span>) ]</span><br><span class="line"><span class="comment">* miss () 选项：缺漏值的处理 - 删除缺漏值 </span></span><br><span class="line"><span class="comment">* range () 选项：起始日期 结束日期 </span></span><br></pre></td></tr></table></figure>
+<h2 id="12-2-jin-jie-cao-zuo">12.2 进阶操作</h2>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">* 删除面板资料首尾的缺漏值 </span></span><br><span class="line"><span class="keyword">by</span> panelvar, <span class="keyword">sort</span>: <span class="keyword">egen</span> firstnonmis = <span class="built_in">min</span>(<span class="built_in">cond</span>(!<span class="built_in">missing</span>(x), timevar, .))</span><br><span class="line"><span class="keyword">by</span> panelvar, <span class="keyword">sort</span>: <span class="keyword">egen</span> lastnonmis  = <span class="built_in">max</span>(<span class="built_in">cond</span>(!<span class="built_in">missing</span>(x), timevar, .))</span><br><span class="line"><span class="keyword">drop</span> <span class="keyword">if</span> (timevar&lt;firstnonmis) | (timevar&gt;lastnonmis)</span><br><span class="line"><span class="comment">* 仅保留连续 T 期以上可获得资料的 panelvar</span></span><br><span class="line">xtpattern, <span class="keyword">gen</span>(新变量名) <span class="comment">// 记录每家公司的样本形态 </span></span><br><span class="line"><span class="keyword">gen</span> 新变量名 1 = <span class="built_in">strpos</span>(新变量名，<span class="string">"1111 (T 个 1)"</span>)</span><br><span class="line"><span class="keyword">sort</span> 新变量名 1</span><br><span class="line"><span class="keyword">drop</span> <span class="keyword">if</span> 新变量名 1==0</span><br><span class="line"><span class="comment">* 删除某些期度资料缺失的观察值 </span></span><br><span class="line"> xtpattern, <span class="keyword">gen</span>(新变量名) <span class="comment">// 记录每家公司的样本形态 </span></span><br><span class="line"> <span class="keyword">gen</span> 新变量名 1 = <span class="built_in">strpos</span>(新变量名，<span class="string">"1."</span>)</span><br><span class="line"> <span class="keyword">order</span> panelvar timevar 新变量名 新变量名 1</span><br><span class="line"> <span class="keyword">drop</span> <span class="keyword">if</span> 新变量名 1&gt;0</span><br><span class="line"><span class="comment">* 删除某个间断期度以后的所有数据 </span></span><br><span class="line"><span class="keyword">gen</span> Dtimevar = <span class="keyword">D</span>.timevar</span><br><span class="line"><span class="keyword">bysort</span> panelvar (timevar): <span class="keyword">replace</span> Dtimevar=1 <span class="keyword">if</span> _n==1</span><br><span class="line"><span class="keyword">bysort</span> panelvar: <span class="keyword">egen</span> firsttimevar_mis = <span class="built_in">min</span>(<span class="built_in">cond</span>(<span class="built_in">missing</span>(Dtimevar), timevar, .))</span><br><span class="line"><span class="keyword">bysort</span> id: <span class="keyword">drop</span> <span class="keyword">if</span> timevar&gt;=firsttimevar_mis</span><br></pre></td></tr></table></figure>
+<h2 id="12-3-mian-ban-zi-liao-sou-shen">12.3 面板资料廋身</h2>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">panelthin [<span class="keyword">if</span> exp] [<span class="keyword">in</span> <span class="keyword">range</span>] , <span class="keyword">generate</span>(newvar) minimum (#)</span><br><span class="line"><span class="comment">* 采用 P 年平均值进行估计 </span></span><br><span class="line">paverage <span class="keyword">varlist</span>, p (#) indiv (varname) yr (varname)</span><br></pre></td></tr></table></figure>
+<h2 id="12-4-kuo-chong-mian-ban-que-lou-zhi">12.4 扩充面板缺漏值</h2>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">enlarge variable, <span class="keyword">by</span>(grouping variables)</span><br></pre></td></tr></table></figure>
+<h2 id="12-5-bian-liang-de-qu-jun-zhi-he-biao-zhun-hua">12.5 变量的 “去均值” 和标准化</h2>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">center <span class="keyword">varlist</span> [weight] [<span class="keyword">if</span> exp] [<span class="keyword">in</span> <span class="keyword">range</span>] [, casewise inplace &#123; prefix (prefix) | <span class="keyword">generate</span>(newvar) &#125;theta (#|varname) standardize <span class="keyword">replace</span> double nolabel addtolabel (string) meansave [(prefix|newvar)] sdsave [(prefix|newvar)] ]</span><br><span class="line"><span class="comment">* 应用实例 </span></span><br><span class="line"><span class="keyword">use</span> xtcs.dta, <span class="keyword">clear</span></span><br><span class="line"><span class="keyword">bysort</span> code: center tl fr size ndts tang tobin, prefix (c_)</span><br></pre></td></tr></table></figure>
+<h1 id="13-shu-ju-de-cha-yan-he-bi-jiao">13. 数据的查验和比较</h1>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">count</span> [<span class="keyword">if</span>] [<span class="keyword">in</span>]                             <span class="comment">// 计数 </span></span><br><span class="line"><span class="keyword">assert</span> exp [<span class="keyword">if</span>] [<span class="keyword">in</span>] [, rc0 null fast]      <span class="comment">// 条件确认 </span></span><br><span class="line"><span class="keyword">compare</span> varname1 varname2 [<span class="keyword">if</span>] [<span class="keyword">in</span>]         <span class="comment">// 比较变量的大小 </span></span><br><span class="line"><span class="keyword">cf</span> <span class="keyword">varlist</span> using filename [, all verbose]   <span class="comment">// 查验观察值 </span></span><br><span class="line">cfvars filename1 [filename2]                <span class="comment">// 查验变量 </span></span><br></pre></td></tr></table></figure>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">
+      
+    </div>
+
+    <div>
+        
+        <div>
+    
+        <div style="text-align:center;color: #666699;font-size:14px;">------ 本文已经结束，感谢您的阅读！------</div>
+    
+</div>
+        
+    </div> 
+     
+            <h3> 相关文章：</h3><ul class="related-posts"><li><a href="/2019/07/27/用stata作图/">用 stata 作图</a></li><li><a href="/2019/09/09/ajax：动态加载/">ajax：动态加载</a></li><li><a href="/2019/09/08/scrapy学习（三）/">scrapy 学习（三）</a></li><li><a href="/2019/08/29/scrapy学习（二）/">scrapy 学习（二）</a></li><li><a href="/2019/08/28/scrapy学习（一）/">scrapy 学习（一）</a></li><li><a href="/2019/07/01/面试问题/">面试问题</a></li><li><a href="/2019/08/02/相对重要性分析：domin命令/">相对重要性分析：domin 命令</a></li></ul> 
+    
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>最喜欢你一言不合就打赏的样子了~~~么么！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="https://blog-1258437747.cos.ap-chengdu.myqcloud.com/wechatpay.jpg" alt="周卫东 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="https://blog-1258437747.cos.ap-chengdu.myqcloud.com/alipay.jpg" alt="周卫东 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    周卫东
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http：//zhouweidong.ml/2019/07/10/stata处理数据的技巧/" title="stata 处理数据的技巧">http：//zhouweidong.ml/2019/07/10/stata处理数据的技巧/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/基础/" rel="tag"><i class="fa fa-tag"></i> 基础</a>
+          
+            <a href="/tags/Stata/" rel="tag"><i class="fa fa-tag"></i> Stata</a>
+          
+            <a href="/tags/数据/" rel="tag"><i class="fa fa-tag"></i> 数据</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+          <div class="wp_rating">
+            <div id="wpac-rating"></div>
+          </div>
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/07/10/数据存取/" rel="next" title="数据存取">
+                <i class="fa fa-chevron-left"></i> 数据存取
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/07/14/国合华夏城市规划研究院面试准备/" rel="prev" title="国合华夏城市规划研究院面试准备">
+                国合华夏城市规划研究院面试准备 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zNzYwOC8xNDEzOQ=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="298" height="52" src="//music.163.com/outchain/player?type=0&id=2660247525&auto=1&height=32"></iframe>
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://blog-1258437747.cos.ap-chengdu.myqcloud.com/IMG_9432===_美艺达证件照.jpg" alt="周卫东">
+            
+              <p class="site-author-name" itemprop="name">周卫东</p>
+              <p class="site-description motion-element" itemprop="description">行到水穷处，坐看云起时。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">119</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">63</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/weidongzhou1994" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:sirzhouchn@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://twitter.com/SirzhouchnZhou" target="_blank" title="Twitter">
+                      
+                        <i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.zhihu.com/people/your-user-name" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-globe"></i>知乎</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://google.com/" title="google" target="_blank">google</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://wiki.com/" title="wiki" target="_blank">wiki</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-chuang-jian-shu-ju-de-ji-qiao"><span class="nav-text">1. 创建数据的技巧</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-1-n-he-n"><span class="nav-text">1.1 _n 和 _N</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-chuang-jian-xu-ni-bian-liang"><span class="nav-text">1.2 创建虚拟变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-chuang-jian-yin-zi-bian-liang"><span class="nav-text">1.3 创建因子变量</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-egen-ming-ling"><span class="nav-text">2. egen 命令</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-egen-yu-gen-de-qu-bie"><span class="nav-text">2.1 egen 与 gen 的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-chan-sheng-deng-chai-shu-lie-seq-han-shu"><span class="nav-text">2.2 产生等差数列：seq () 函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-tian-chong-shu-ju-fill-han-shu"><span class="nav-text">2.3 填充数据：fill () 函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4-chan-sheng-zu-nei-jun-zhi-he-zhong-wei-shu"><span class="nav-text">2.4 产生组内均值和中位数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-5-bian-liang-de-biao-zhun-hua-he-ping-hua-hua"><span class="nav-text">2.5 变量的标准化和平滑化</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-fen-wei-shu"><span class="nav-text">3. 分位数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-ming-ling-pctitle"><span class="nav-text">3.1 命令：pctitle</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-ming-ling-xtile"><span class="nav-text">3.2 命令：xtile</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-3-ming-ling-pctile"><span class="nav-text">3.3 命令：_pctile</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-zhong-fu-yang-ben-zhi-de-chu-li"><span class="nav-text">4. 重复样本值的处理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-que-lou-zhi-de-chu-li"><span class="nav-text">5. 缺漏值的处理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#5-1-biao-ji-que-lou-zhi"><span class="nav-text">5.1 标记缺漏值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-2-xian-shi-que-lou-zhi-de-xiang-xi-qing-kuang"><span class="nav-text">5.2 显示缺漏值的详细情况</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-3-shan-chu-que-lou-zhi"><span class="nav-text">5.3 删除缺漏值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-4-tian-bu-que-lou-zhi"><span class="nav-text">5.4 填补缺漏值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-5-duo-zhong-bu-lou-fen-xi"><span class="nav-text">5.5 多重补漏分析</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6-chi-qun-zhi-de-chu-li"><span class="nav-text">6. 离群值的处理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#6-1-cha-zhao-chi-qun-zhi"><span class="nav-text">6.1 查找离群值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-2-chu-li-chi-qun-zhi"><span class="nav-text">6.2 处理离群值</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7-zi-liao-de-he-bing-he-zhui-jia"><span class="nav-text">7. 资料的合并和追加</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#7-1-heng-xiang-he-bing-zeng-jia-bian-liang"><span class="nav-text">7.1 横向合并：增加变量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#7-1-1-yi-dui-yi-he-bing"><span class="nav-text">7.1.1 一对一合并</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-1-2-duo-dui-yi-he-bing-shu-ju-duo-de-he-shu-ju-shao-de-he-bing"><span class="nav-text">7.1.2 多对一合并：数据多的和数据少的合并</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-1-3-yi-dui-duo-he-bing-shu-ju-shao-de-he-shu-ju-duo-de-he-bing"><span class="nav-text">7.1.3 一对多合并：数据少的和数据多的合并</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-2-heng-xiang-guan-lian-joinby"><span class="nav-text">7.2 横向关联：joinby</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-3-zong-xiang-he-bing-zhui-jia-yang-ben"><span class="nav-text">7.3 纵向合并：追加样本</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#8-dui-yang-ben-jin-xing-zhong-xin-zu-he"><span class="nav-text">8. 对样本进行重新组合</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#9-chu-li-wen-zi-bian-liang"><span class="nav-text">9. 处理文字变量</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#10-fen-xi-lei-bie-bian-liang"><span class="nav-text">10. 分析类别变量</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#10-1-dui-lei-bie-shu-de-tong-ji"><span class="nav-text">10.1 对类别数的统计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10-2-sheng-cheng-jiao-cha-lei-bie-bian-liang"><span class="nav-text">10.2 生成交叉类别变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10-3-gen-ju-lei-bie-bian-liang-fen-zu-tong-ji"><span class="nav-text">10.3 根据类别变量分组统计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10-4-tu-shi-lei-bie-bian-liang"><span class="nav-text">10.4 图示类别变量</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#11-shi-jian-xu-lie-zi-liao-de-chu-li"><span class="nav-text">11. 时间序列资料的处理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#11-1-ji-ben-cao-zuo-he-ming-ling"><span class="nav-text">11.1 基本操作和命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#11-2-sheng-cheng-shi-xu-bian-liang"><span class="nav-text">11.2 生成时序变量</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#12-mian-ban-zi-liao-de-chu-li"><span class="nav-text">12. 面板资料的处理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#12-1-ji-ben-cao-zuo-he-ming-ling"><span class="nav-text">12.1 基本操作和命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#12-2-jin-jie-cao-zuo"><span class="nav-text">12.2 进阶操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#12-3-mian-ban-zi-liao-sou-shen"><span class="nav-text">12.3 面板资料廋身</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#12-4-kuo-chong-mian-ban-que-lou-zhi"><span class="nav-text">12.4 扩充面板缺漏值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#12-5-bian-liang-de-qu-jun-zhi-he-biao-zhun-hua"><span class="nav-text">12.5 变量的 “去均值” 和标准化</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#13-shu-ju-de-cha-yan-he-bi-jiao"><span class="nav-text">13. 数据的查验和比较</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">周卫东</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">75.0k</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/2.1.3/jquery.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="https://cdn.bootcss.com/velocity/1.2.1/velocity.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="https://cdn.bootcss.com/velocity/1.2.1/velocity.ui.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="https://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="https://cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("V4gz8O6rLgpERkSPQNtWOes7-gzGzoHsz", "tjlRL7JN4yhCaHjFTE9aVhws");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="/vendors/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/vendors/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "box";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Pinterest,Facebook,GooglePlus,Reddit,Linkedin,Tumblr,Evernote";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+  </script>
+
+  
+  <script type="text/javascript">
+  wpac_init = window.wpac_init || [];
+  wpac_init.push({widget: 'Rating', id: 18587,
+    el: 'wpac-rating',
+    color: 'fc6423'
+  });
+  (function() {
+    if ('WIDGETPACK_LOADED' in window) return;
+    WIDGETPACK_LOADED = true;
+    var mc = document.createElement('script');
+    mc.type = 'text/javascript';
+    mc.async = true;
+    mc.src = '//embed.widgetpack.com/widget.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+  })();
+  </script>
+
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="custom_mathjax_source">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+  
+
+
+  
+
+  
+
+ </body>
+</html>
+
+<!--崩溃欺骗-->
+<script type="text/javascript" src="/js/src/crash_cheat.js"></script>
+
+<!-- 代码块复制功能 -->
+<script type="text/javascript" src="/js/src/clipboard.min.js"></script>  
+<script type="text/javascript" src="/js/src/clipboard-use.js"></script>
