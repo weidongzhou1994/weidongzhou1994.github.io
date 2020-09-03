@@ -150,7 +150,7 @@
 <meta property="og:site_name" content="周卫东的博客">
 <meta property="og:description" content="Redis 是完全开源免费的，遵守 BSD 协议，是一个高性能的 key-value 数据库。Redis 支持五种数据类型：string（字符串），hash（哈希），list（列表），set（集合）及 zset (sorted set：有序集合)。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-16T03:44:33.693Z">
+<meta property="og:updated_time" content="2020-09-03T13:16:01.803Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Redis 数据库基本操作">
 <meta name="twitter:description" content="Redis 是完全开源免费的，遵守 BSD 协议，是一个高性能的 key-value 数据库。Redis 支持五种数据类型：string（字符串），hash（哈希），list（列表），set（集合）及 zset (sorted set：有序集合)。">
@@ -423,8 +423,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-08-16T11:44:33+08:00">
-                2019-08-16
+              <time title="更新于" itemprop="dateModified" datetime="2020-09-03T21:16:01+08:00">
+                2020-09-03
               </time>
             
           </span>
@@ -521,7 +521,9 @@
       
 
       
-        <p>  Redis 是完全开源免费的，遵守 BSD 协议，是一个高性能的 key-value 数据库。Redis 支持五种数据类型：string（字符串），hash（哈希），list（列表），set（集合）及 zset (sorted set：有序集合)。 <a id="more"></a> # 1. 字符串 <figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"> 命令 键值          // 基本语法 </span><br><span class="line"><span class="built_in">SET</span> key "value"     // 增加一个数据 </span><br><span class="line">MSET key1 "value1" key2 "value2"  // 增加多个数据 </span><br><span class="line">SETEX key seconds value  // 将值 value 关联到 key ，并将 key 的过期时间设为 seconds (以秒为单位)。</span><br><span class="line">GET key             // 获取指定 key 的值。</span><br><span class="line">MGET key1 [key2..]  // 获取所有 (一个或多个) 给定 key 的值。</span><br><span class="line"><span class="built_in">APPEND</span> key value    // 如果 key 已经存在并且是一个字符串， <span class="built_in">APPEND</span> 命令将指定的 value 追加到该 key 原来值（value）的末尾。</span><br></pre></td></tr></table></figure></p>
+        <p>  Redis 是完全开源免费的，遵守 BSD 协议，是一个高性能的 key-value 数据库。Redis 支持五种数据类型：string（字符串），hash（哈希），list（列表），set（集合）及 zset (sorted set：有序集合)。 <a id="more"></a></p>
+<h1 id="字符串">1. 字符串</h1>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"> 命令 键值          // 基本语法 </span><br><span class="line"><span class="built_in">SET</span> key "value"     // 增加一个数据 </span><br><span class="line">MSET key1 "value1" key2 "value2"  // 增加多个数据 </span><br><span class="line">SETEX key seconds value  // 将值 value 关联到 key ，并将 key 的过期时间设为 seconds (以秒为单位)。</span><br><span class="line">GET key             // 获取指定 key 的值。</span><br><span class="line">MGET key1 [key2..]  // 获取所有 (一个或多个) 给定 key 的值。</span><br><span class="line"><span class="built_in">APPEND</span> key value    // 如果 key 已经存在并且是一个字符串， <span class="built_in">APPEND</span> 命令将指定的 value 追加到该 key 原来值（value）的末尾。</span><br></pre></td></tr></table></figure>
 <h1 id="哈希">2. 哈希</h1>
 <figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">HSET key field value   // 将哈希表 key 中的字段 field 的值设为 value </span><br><span class="line">HKEYS key              // 获取所有哈希表中的字段 </span><br><span class="line">HGET key field         // 获取存储在哈希表中指定字段的值 </span><br><span class="line">HMGET key field1 [field2]   // 获取所有给定字段的值 </span><br><span class="line">HVALS key                   // 获取哈希表中所有值 </span><br><span class="line">HDEL key field1 [field2]    // 删除一个或多个哈希表字段 </span><br></pre></td></tr></table></figure>
 <h1 id="列表">3. 列表</h1>
@@ -750,7 +752,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">120</span>
+                  <span class="site-state-item-count">117</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -858,7 +860,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#哈希"><span class="nav-text">2. 哈希</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#列表"><span class="nav-text">3. 列表</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#集合"><span class="nav-text">4. 集合</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#有序集合"><span class="nav-text">5. 有序集合</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#操作-key"><span class="nav-text">6. 操作 key</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#在-python-中操作-redis-数据库"><span class="nav-text">7. 在 python 中操作 Redis 数据库</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#清除数据"><span class="nav-text">8. 清除数据</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#字符串"><span class="nav-text">1. 字符串</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#哈希"><span class="nav-text">2. 哈希</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#列表"><span class="nav-text">3. 列表</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#集合"><span class="nav-text">4. 集合</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#有序集合"><span class="nav-text">5. 有序集合</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#操作-key"><span class="nav-text">6. 操作 key</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#在-python-中操作-redis-数据库"><span class="nav-text">7. 在 python 中操作 Redis 数据库</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#清除数据"><span class="nav-text">8. 清除数据</span></a></li></ol></div>
             
 
           </div>
@@ -899,7 +901,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">75.3k</span>
+    <span title="Site words total count">74.8k</span>
   
 </div>
 

@@ -154,7 +154,7 @@
 <meta property="og:image" content="https://blog-1258437747.cos.ap-chengdu.myqcloud.com/20190817190016.png">
 <meta property="og:image" content="https://blog-1258437747.cos.ap-chengdu.myqcloud.com/20190817190041.png">
 <meta property="og:image" content="https://blog-1258437747.cos.ap-chengdu.myqcloud.com/20190817190111.png">
-<meta property="og:updated_time" content="2019-08-17T14:44:32.277Z">
+<meta property="og:updated_time" content="2020-09-03T13:16:08.735Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MySQL 基本用法">
 <meta name="twitter:description" content="MySQL 是关系型数据库，用法相对较为复杂，首要的是设计数据库，即通过 E-R 模型设计实体和关系，包括表表关系，如 1 对 1、1 对多和多对多。">
@@ -428,8 +428,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-08-17T22:44:32+08:00">
-                2019-08-17
+              <time title="更新于" itemprop="dateModified" datetime="2020-09-03T21:16:08+08:00">
+                2020-09-03
               </time>
             
           </span>
@@ -504,7 +504,14 @@
       
 
       
-        <p>  MySQL 是关系型数据库，用法相对较为复杂，首要的是设计数据库，即通过 E-R 模型设计实体和关系，包括表表关系，如 1 对 1、1 对多和多对多。 <a id="more"></a>    除此之外，MySQL 数据库还遵循三范式：列不可拆分、标志唯一和引用主键。 # 1. 数据库的完整性   MySQL 支持多种类型，大致可以分为三类：数值、日期 / 时间和字符串 (字符) 类型。    数值类型主要包括 INT 和 DEC，前者即为整数型，后者则更为强调精度。<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>    字符串类型主要包括 char - 定长字符串、varchar - 变长字符串和 text - 长文本数据。    日期和时间类型主要包括 datetime - 日期，除此之外还有布尔类型的数据 - bit。    完整性约束包括主键、非空、唯一、默认和外键，设置主键的常用语法如下： <figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE stu (</span><br><span class="line">        sid        CHAR (<span class="number">6</span>) PRIMARY KEY,       // 定义列时指定主键：sid</span><br><span class="line">        sname    VARCHAR (<span class="number">20</span>),</span><br><span class="line">        age        INT,</span><br><span class="line">        gender    VARCHAR (<span class="number">10</span>)</span><br><span class="line">);</span><br><span class="line">CREATE TABLE stu (</span><br><span class="line">        sid        CHAR (<span class="number">6</span>),</span><br><span class="line">        sname    VARCHAR (<span class="number">20</span>),</span><br><span class="line">        age        INT,</span><br><span class="line">        gender    VARCHAR (<span class="number">10</span>),</span><br><span class="line">        PRIMARY KEY (sid)                      // 定义列之后独立指定主键：sid</span><br><span class="line">);</span><br><span class="line">ALTER TABLE stu</span><br><span class="line">ADD PRIMARY KEY (sid);                         // 修改表时指定主键：sid</span><br><span class="line">ALTER TABLE stu DROP PRIMARY KEY;             // 删除主键，但不会删除列 </span><br></pre></td></tr></table></figure></p>
+        <p>  MySQL 是关系型数据库，用法相对较为复杂，首要的是设计数据库，即通过 E-R 模型设计实体和关系，包括表表关系，如 1 对 1、1 对多和多对多。 <a id="more"></a>    除此之外，MySQL 数据库还遵循三范式：列不可拆分、标志唯一和引用主键。</p>
+<h1 id="数据库的完整性">1. 数据库的完整性</h1>
+<p>  MySQL 支持多种类型，大致可以分为三类：数值、日期 / 时间和字符串 (字符) 类型。</p>
+<p>   数值类型主要包括 INT 和 DEC，前者即为整数型，后者则更为强调精度。<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
+<p>   字符串类型主要包括 char - 定长字符串、varchar - 变长字符串和 text - 长文本数据。</p>
+<p>   日期和时间类型主要包括 datetime - 日期，除此之外还有布尔类型的数据 - bit。</p>
+<p>   完整性约束包括主键、非空、唯一、默认和外键，设置主键的常用语法如下：</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE stu (</span><br><span class="line">        sid        CHAR (<span class="number">6</span>) PRIMARY KEY,       // 定义列时指定主键：sid</span><br><span class="line">        sname    VARCHAR (<span class="number">20</span>),</span><br><span class="line">        age        INT,</span><br><span class="line">        gender    VARCHAR (<span class="number">10</span>)</span><br><span class="line">);</span><br><span class="line">CREATE TABLE stu (</span><br><span class="line">        sid        CHAR (<span class="number">6</span>),</span><br><span class="line">        sname    VARCHAR (<span class="number">20</span>),</span><br><span class="line">        age        INT,</span><br><span class="line">        gender    VARCHAR (<span class="number">10</span>),</span><br><span class="line">        PRIMARY KEY (sid)                      // 定义列之后独立指定主键：sid</span><br><span class="line">);</span><br><span class="line">ALTER TABLE stu</span><br><span class="line">ADD PRIMARY KEY (sid);                         // 修改表时指定主键：sid</span><br><span class="line">ALTER TABLE stu DROP PRIMARY KEY;             // 删除主键，但不会删除列 </span><br></pre></td></tr></table></figure>
 <p>   设置主键自增长 - AUTO_INCREMENT： <figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE stu (</span><br><span class="line">        sid INT PRIMARY KEY AUTO_INCREMENT,   // 创建表时设置主键自增长（主键必须是整型才可以自增长）</span><br><span class="line">        sname    VARCHAR (<span class="number">20</span>),</span><br><span class="line">        age        INT,</span><br><span class="line">        gender    VARCHAR (<span class="number">10</span>)</span><br><span class="line">);</span><br><span class="line">ALTER TABLE stu CHANGE sid sid INT AUTO_INCREMENT; // 修改表时设置主键自增长 </span><br><span class="line">ALTER TABLE stu CHANGE sid sid INT;           // 修改表时删除主键自增长 </span><br></pre></td></tr></table></figure></p>
 <p>   设置非空约束： <figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE stu (</span><br><span class="line">        sid INT PRIMARY KEY AUTO_INCREMENT,</span><br><span class="line">        sname VARCHAR (<span class="number">10</span>) <span class="keyword">NOT</span> NULL,              // 指定非空约束，指定后在插入记录时必须给该字段指定值 </span><br><span class="line">        age        INT,</span><br><span class="line">        gender    VARCHAR (<span class="number">10</span>)</span><br><span class="line">);</span><br></pre></td></tr></table></figure></p>
 <p>   设置唯一约束： <figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE tab_ab (</span><br><span class="line">    sid INT PRIMARY KEY AUTO_INCREMENT,</span><br><span class="line">    sname VARCHAR (<span class="number">10</span>) UNIQUE                           // 当两次插入相同的名字时，MySQL 会报错！</span><br><span class="line">);</span><br></pre></td></tr></table></figure></p>
@@ -871,7 +878,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">120</span>
+                  <span class="site-state-item-count">117</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -979,7 +986,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#启动数据库"><span class="nav-text">2. 启动数据库</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#操作数据库"><span class="nav-text">3. 操作数据库</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#操作数据表"><span class="nav-text">4. 操作数据表</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#操作数据"><span class="nav-text">5. 操作数据</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#er-模型与关系"><span class="nav-text">6. ER 模型与关系</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#连接查询"><span class="nav-text">7. 连接查询</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#视图"><span class="nav-text">8. 视图</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#事务"><span class="nav-text">9. 事务</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#创建索引---提高查询效率"><span class="nav-text">10. 创建索引 - 提高查询效率</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#在-python-中操作-mysql-数据库"><span class="nav-text">11. 在 python 中操作 MySQL 数据库</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#备份和恢复"><span class="nav-text">12. 备份和恢复</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#数据库的完整性"><span class="nav-text">1. 数据库的完整性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#启动数据库"><span class="nav-text">2. 启动数据库</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#操作数据库"><span class="nav-text">3. 操作数据库</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#操作数据表"><span class="nav-text">4. 操作数据表</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#操作数据"><span class="nav-text">5. 操作数据</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#er-模型与关系"><span class="nav-text">6. ER 模型与关系</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#连接查询"><span class="nav-text">7. 连接查询</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#视图"><span class="nav-text">8. 视图</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#事务"><span class="nav-text">9. 事务</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#创建索引---提高查询效率"><span class="nav-text">10. 创建索引 - 提高查询效率</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#在-python-中操作-mysql-数据库"><span class="nav-text">11. 在 python 中操作 MySQL 数据库</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#备份和恢复"><span class="nav-text">12. 备份和恢复</span></a></li></ol></div>
             
 
           </div>
@@ -1020,7 +1027,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">75.3k</span>
+    <span title="Site words total count">74.8k</span>
   
 </div>
 

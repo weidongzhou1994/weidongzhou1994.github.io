@@ -150,7 +150,7 @@
 <meta property="og:site_name" content="周卫东的博客">
 <meta property="og:description" content="1. range    在 Python3 中，提供了一个 range () 函数，可以用于生成一个整数序列。但是值得注意的是 range () 函数的结果是一个生成器，不是列表，只能通过 list () 函数将其转换成列表，即 list (range ()).1">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-05-31T11:37:22.289Z">
+<meta property="og:updated_time" content="2020-09-03T14:40:39.782Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="循环语句">
 <meta name="twitter:description" content="1. range    在 Python3 中，提供了一个 range () 函数，可以用于生成一个整数序列。但是值得注意的是 range () 函数的结果是一个生成器，不是列表，只能通过 list () 函数将其转换成列表，即 list (range ()).1">
@@ -423,8 +423,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-05-31T19:37:22+08:00">
-                2019-05-31
+              <time title="更新于" itemprop="dateModified" datetime="2020-09-03T22:40:39+08:00">
+                2020-09-03
               </time>
             
           </span>
@@ -522,7 +522,11 @@
 
       
         <h1 id="range">1. range</h1>
-<p>   在 Python3 中，提供了一个 range () 函数，可以用于生成一个整数序列。但是值得注意的是 range () 函数的结果是一个生成器，不是列表，只能通过 list () 函数将其转换成列表，即 list (range ()).<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> <a id="more"></a>   range () 函数的语法结构为：range (start, end, step), 值得注意的是，range () 函数输出的结果包含 start，不包含 end。在 range () 函数中，可以省略 start 和 step，但是不能省略 end，其中，start 默认为 0，step 默认为 1，但是 step 不能是 0。 # 2. while 语句   while 语句的基本结构是： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">while 判断条件：</span><br><span class="line">    执行语句……</span><br></pre></td></tr></table></figure></p>
+<p>   在 Python3 中，提供了一个 range () 函数，可以用于生成一个整数序列。但是值得注意的是 range () 函数的结果是一个生成器，不是列表，只能通过 list () 函数将其转换成列表，即 list (range ()).<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
+<a id="more"></a>
+<p>  range () 函数的语法结构为：range (start, end, step), 值得注意的是，range () 函数输出的结果包含 start，不包含 end。在 range () 函数中，可以省略 start 和 step，但是不能省略 end，其中，start 默认为 0，step 默认为 1，但是 step 不能是 0。</p>
+<h1 id="while-语句">2. while 语句</h1>
+<p>  while 语句的基本结构是： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">while 判断条件：</span><br><span class="line">    执行语句……</span><br></pre></td></tr></table></figure></p>
 <p>   值得注意的是，使用 while 语句必须定义起始值以及执行语句每执行一次起始值都要随之发生变化，否则就成了无限循环。即完整的 while 语句结构是： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">count = 0</span><br><span class="line">while (count &lt; 9):</span><br><span class="line">   print &apos;The count is:&apos;, count</span><br><span class="line">   count = count + 1</span><br></pre></td></tr></table></figure></p>
 <p>   不完整的 while 语句结构会造成无限循环： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var = 1</span><br><span class="line">while var == 1 :  # 该条件永远为 true，循环将无限执行下去 </span><br><span class="line">   num = raw_input (&quot;Enter a number  :&quot;)</span><br><span class="line">   print &quot;You entered: &quot;, num</span><br></pre></td></tr></table></figure></p>
 <h1 id="for-语句">3. for 语句</h1>
@@ -744,7 +748,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">120</span>
+                  <span class="site-state-item-count">117</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -852,7 +856,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#range"><span class="nav-text">1. range</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#for-语句"><span class="nav-text">3. for 语句</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#range"><span class="nav-text">1. range</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#while-语句"><span class="nav-text">2. while 语句</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#for-语句"><span class="nav-text">3. for 语句</span></a></li></ol></div>
             
 
           </div>
@@ -893,7 +897,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">75.3k</span>
+    <span title="Site words total count">74.8k</span>
   
 </div>
 

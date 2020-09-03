@@ -150,7 +150,7 @@
 <meta property="og:site_name" content="周卫东的博客">
 <meta property="og:description" content="DataFrame 是一种表格型数据结构，它包含两列及以上的一组有序的列，DataFrame 大致可看成共享同一个 index 的 Series 集合。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-06-24T07:02:38.303Z">
+<meta property="og:updated_time" content="2020-09-03T14:05:50.211Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="DataFrame">
 <meta name="twitter:description" content="DataFrame 是一种表格型数据结构，它包含两列及以上的一组有序的列，DataFrame 大致可看成共享同一个 index 的 Series 集合。">
@@ -423,8 +423,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-06-24T15:02:38+08:00">
-                2019-06-24
+              <time title="更新于" itemprop="dateModified" datetime="2020-09-03T22:05:50+08:00">
+                2020-09-03
               </time>
             
           </span>
@@ -521,7 +521,10 @@
       
 
       
-        <p>  DataFrame 是一种表格型数据结构，它包含两列及以上的一组有序的列，DataFrame 大致可看成共享同一个 index 的 Series 集合。 <a id="more"></a> # 1. DataFrame 的创建 ## 1.1 直接创建 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;import pandas as pd</span><br><span class="line">&gt;&gt;&gt; import numpy as np</span><br><span class="line">&gt;&gt;&gt;df1 = pd.DataFrame (np.random.randn (4,4),index=list (&apos;ABCD&apos;),columns=list (&apos;ABCD&apos;))</span><br><span class="line">&gt;&gt;&gt;df1</span><br><span class="line">          A         B         C         D</span><br><span class="line">A  1.480797  0.105993  1.821411  2.749214</span><br><span class="line">B  1.088816 -0.614638  0.146795  0.978935</span><br><span class="line">C  0.479352  0.964131 -1.668833  0.910711</span><br><span class="line">D -0.352463  0.077050  2.295399  1.231342</span><br></pre></td></tr></table></figure></p>
+        <p>  DataFrame 是一种表格型数据结构，它包含两列及以上的一组有序的列，DataFrame 大致可看成共享同一个 index 的 Series 集合。 <a id="more"></a></p>
+<h1 id="dataframe-的创建">1. DataFrame 的创建</h1>
+<h2 id="直接创建">1.1 直接创建</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;import pandas as pd</span><br><span class="line">&gt;&gt;&gt; import numpy as np</span><br><span class="line">&gt;&gt;&gt;df1 = pd.DataFrame (np.random.randn (4,4),index=list (&apos;ABCD&apos;),columns=list (&apos;ABCD&apos;))</span><br><span class="line">&gt;&gt;&gt;df1</span><br><span class="line">          A         B         C         D</span><br><span class="line">A  1.480797  0.105993  1.821411  2.749214</span><br><span class="line">B  1.088816 -0.614638  0.146795  0.978935</span><br><span class="line">C  0.479352  0.964131 -1.668833  0.910711</span><br><span class="line">D -0.352463  0.077050  2.295399  1.231342</span><br></pre></td></tr></table></figure>
 <h2 id="根据字典创建">1.2 根据字典创建</h2>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;import pandas as pd</span><br><span class="line">&gt;&gt;&gt;data = &#123;&apos;name&apos;:[&apos;Wangdachui&apos;, &apos;Linling&apos;, &apos;Niuyun&apos;], &apos;pay&apos;:[4000, 5000, 6000]&#125;</span><br><span class="line">&gt;&gt;&gt;frame = pd.DataFrame (data)</span><br><span class="line">&gt;&gt;&gt;frame</span><br><span class="line">        name    pay</span><br><span class="line">0 Wangdachui   4000</span><br><span class="line">1    Linling   5000</span><br><span class="line">2     Niuyun   6000</span><br></pre></td></tr></table></figure>
 <h1 id="dataframe-的基本操作">2. DataFrame 的基本操作</h1>
@@ -743,7 +746,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">120</span>
+                  <span class="site-state-item-count">117</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -851,7 +854,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#根据字典创建"><span class="nav-text">1.2 根据字典创建</span></a></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#dataframe-的基本操作"><span class="nav-text">2. DataFrame 的基本操作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#dataframes-的-name-属性"><span class="nav-text">3. DataFrames 的 name 属性</span></a></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#dataframe-的创建"><span class="nav-text">1. DataFrame 的创建</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#直接创建"><span class="nav-text">1.1 直接创建</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#根据字典创建"><span class="nav-text">1.2 根据字典创建</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#dataframe-的基本操作"><span class="nav-text">2. DataFrame 的基本操作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#dataframes-的-name-属性"><span class="nav-text">3. DataFrames 的 name 属性</span></a></li></ol></div>
             
 
           </div>
@@ -892,7 +895,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">75.3k</span>
+    <span title="Site words total count">74.8k</span>
   
 </div>
 

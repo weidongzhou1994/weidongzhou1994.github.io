@@ -150,7 +150,7 @@
 <meta property="og:site_name" content="周卫东的博客">
 <meta property="og:description" content="1. 单元格格式设置：with 语句">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-07-23T13:41:04.018Z">
+<meta property="og:updated_time" content="2020-09-03T13:46:14.277Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="VBA 事件与典型应用">
 <meta name="twitter:description" content="1. 单元格格式设置：with 语句">
@@ -423,8 +423,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-07-23T21:41:04+08:00">
-                2019-07-23
+              <time title="更新于" itemprop="dateModified" datetime="2020-09-03T21:46:14+08:00">
+                2020-09-03
               </time>
             
           </span>
@@ -679,9 +679,15 @@
 </tbody>
 </table>
 <h2 id="activex-控件的事件">2.3 ActiveX 控件的事件</h2>
-<p>  ActiveX 控件的事件就是编写宏，不同于表单控件指定现成的宏。 # 3. 有用的操作实例 ## 3.1 高亮显示当前单元格所在的整行数据 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Sub 高亮 ()</span><br><span class="line">Cells.Interior.Pattern = xlNone</span><br><span class="line">Selection.EntireRow.Interior.Color = 65535</span><br><span class="line">End Sub</span><br></pre></td></tr></table></figure></p>
-<p>   添加到工作表的事件当中：(1) 在 VBA 中选中需要操作的工作表，在顶部左栏选中 Worksheet，在顶部右栏选中工作表事件：SelectionChange。(2) 复制上述 VBA 代码到此。 ## 3.2 输入条件后自动完成筛选 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Sub 自动筛选 ()</span><br><span class="line">Range (&quot; 筛选后数据所在区域 & quot;).ClearContents</span><br><span class="line">Range (&quot; 原始数据所在区域 & quot;).AutoFilter Field:=4, Criteria1:=Range (&quot;i2&quot;)</span><br><span class="line">Range (&quot; 原始数据所在区域 & quot;).Copy Range (&quot;l1&quot;)</span><br><span class="line">Range (&quot; 原始数据所在区域 & quot;).AutoFilter</span><br><span class="line">End Sub</span><br></pre></td></tr></table></figure></p>
-<p>   添加到工作表的事件当中：(1) 在 VBA 中选中需要操作的工作表，在顶部左栏选中 Worksheet，在顶部右栏选中工作表事件：Change。(2) 复制上述 VBA 代码到此。    但是，上述代码运行时会出错，因为工作表事件：change 会导致代码的循环运行，因此必须在原代码前后添加控制事件的代码： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Application.EnableEvents = False</span><br><span class="line"> 原代码 </span><br><span class="line">Application.EnableEvents = True</span><br></pre></td></tr></table></figure></p>
+<p>  ActiveX 控件的事件就是编写宏，不同于表单控件指定现成的宏。</p>
+<h1 id="有用的操作实例">3. 有用的操作实例</h1>
+<h2 id="高亮显示当前单元格所在的整行数据">3.1 高亮显示当前单元格所在的整行数据</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Sub 高亮 ()</span><br><span class="line">Cells.Interior.Pattern = xlNone</span><br><span class="line">Selection.EntireRow.Interior.Color = 65535</span><br><span class="line">End Sub</span><br></pre></td></tr></table></figure>
+<p>   添加到工作表的事件当中：(1) 在 VBA 中选中需要操作的工作表，在顶部左栏选中 Worksheet，在顶部右栏选中工作表事件：SelectionChange。(2) 复制上述 VBA 代码到此。</p>
+<h2 id="输入条件后自动完成筛选">3.2 输入条件后自动完成筛选</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Sub 自动筛选 ()</span><br><span class="line">Range (&quot; 筛选后数据所在区域 & quot;).ClearContents</span><br><span class="line">Range (&quot; 原始数据所在区域 & quot;).AutoFilter Field:=4, Criteria1:=Range (&quot;i2&quot;)</span><br><span class="line">Range (&quot; 原始数据所在区域 & quot;).Copy Range (&quot;l1&quot;)</span><br><span class="line">Range (&quot; 原始数据所在区域 & quot;).AutoFilter</span><br><span class="line">End Sub</span><br></pre></td></tr></table></figure>
+<p>   添加到工作表的事件当中：(1) 在 VBA 中选中需要操作的工作表，在顶部左栏选中 Worksheet，在顶部右栏选中工作表事件：Change。(2) 复制上述 VBA 代码到此。</p>
+<p>   但是，上述代码运行时会出错，因为工作表事件：change 会导致代码的循环运行，因此必须在原代码前后添加控制事件的代码： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Application.EnableEvents = False</span><br><span class="line"> 原代码 </span><br><span class="line">Application.EnableEvents = True</span><br></pre></td></tr></table></figure></p>
 <h2 id="自动更新">3.3 自动更新</h2>
 <p>   在 VBA 中选中需要操作的工作表，在顶部左栏选中 Worksheet，在顶部右栏选中工作表事件：Activate, 然后添加下述代码： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ActiveWorkbook.RefreshAll</span><br></pre></td></tr></table></figure></p>
 <h2 id="自动备份">3.5 自动备份</h2>
@@ -896,7 +902,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">120</span>
+                  <span class="site-state-item-count">117</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1004,7 +1010,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#单元格格式设置with-语句"><span class="nav-text">1. 单元格格式设置：with 语句</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#vba-中的事件"><span class="nav-text">2. VBA 中的事件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#工作簿的事件"><span class="nav-text">2.1 工作簿的事件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#工作表的事件"><span class="nav-text">2.2 工作表的事件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#activex-控件的事件"><span class="nav-text">2.3 ActiveX 控件的事件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自动更新"><span class="nav-text">3.3 自动更新</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自动备份"><span class="nav-text">3.5 自动备份</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#单元格格式设置with-语句"><span class="nav-text">1. 单元格格式设置：with 语句</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#vba-中的事件"><span class="nav-text">2. VBA 中的事件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#工作簿的事件"><span class="nav-text">2.1 工作簿的事件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#工作表的事件"><span class="nav-text">2.2 工作表的事件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#activex-控件的事件"><span class="nav-text">2.3 ActiveX 控件的事件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#有用的操作实例"><span class="nav-text">3. 有用的操作实例</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#高亮显示当前单元格所在的整行数据"><span class="nav-text">3.1 高亮显示当前单元格所在的整行数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输入条件后自动完成筛选"><span class="nav-text">3.2 输入条件后自动完成筛选</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自动更新"><span class="nav-text">3.3 自动更新</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自动备份"><span class="nav-text">3.5 自动备份</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -1045,7 +1051,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">75.3k</span>
+    <span title="Site words total count">74.8k</span>
   
 </div>
 

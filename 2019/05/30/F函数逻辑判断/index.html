@@ -142,18 +142,18 @@
 
 
 
-<meta name="description" content="1. IF 函数的基本用法   IF 函数的语法是：IF (logical_test,[value_if_true],[value_if_false])。    值得注意的是，所有标点符号（逗号和双引号）都应该是英文半角符号。">
+<meta name="description" content="1. IF 函数的基本用法   IF 函数的语法是：IF (logical_test,[value_if_true],[value_if_false])。    值得注意的是，所有标点符号（逗号和双引号）都应该是英文半角符号。">
 <meta name="keywords" content="Excel,王佩丰,Excle1800分钟,入门">
 <meta property="og:type" content="article">
 <meta property="og:title" content="第八讲 IF 函数逻辑判断">
 <meta property="og:url" content="http：//zhouweidong.ml/2019/05/30/F函数逻辑判断/index.html">
 <meta property="og:site_name" content="周卫东的博客">
-<meta property="og:description" content="1. IF 函数的基本用法   IF 函数的语法是：IF (logical_test,[value_if_true],[value_if_false])。    值得注意的是，所有标点符号（逗号和双引号）都应该是英文半角符号。">
+<meta property="og:description" content="1. IF 函数的基本用法   IF 函数的语法是：IF (logical_test,[value_if_true],[value_if_false])。    值得注意的是，所有标点符号（逗号和双引号）都应该是英文半角符号。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-05-30T11:35:44.951Z">
+<meta property="og:updated_time" content="2020-09-03T14:37:37.347Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="第八讲 IF 函数逻辑判断">
-<meta name="twitter:description" content="1. IF 函数的基本用法   IF 函数的语法是：IF (logical_test,[value_if_true],[value_if_false])。    值得注意的是，所有标点符号（逗号和双引号）都应该是英文半角符号。">
+<meta name="twitter:description" content="1. IF 函数的基本用法   IF 函数的语法是：IF (logical_test,[value_if_true],[value_if_false])。    值得注意的是，所有标点符号（逗号和双引号）都应该是英文半角符号。">
 
 
 
@@ -423,8 +423,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-05-30T19:35:44+08:00">
-                2019-05-30
+              <time title="更新于" itemprop="dateModified" datetime="2020-09-03T22:37:37+08:00">
+                2020-09-03
               </time>
             
           </span>
@@ -522,7 +522,18 @@
 
       
         <h1 id="if-函数的基本用法">1. IF 函数的基本用法</h1>
-<p>  IF 函数的语法是：IF (logical_test,[value_if_true],[value_if_false])。    值得注意的是，所有标点符号（逗号和双引号）都应该是英文半角符号。 <a id="more"></a> # 2. IF 函数的嵌套   IF 函数的嵌套是指在 IF 函数中，继续使用 IF 函数，即对于 IF (logical_test,[value_if_true],[value_if_false])，可以将 [value_if_true] 或 [value_if_false] 换为 IF (logical_test,[value_if_true],[value_if_false])。如 = IF (B7=&quot;理工&quot;, &quot;LG&quot;,IF (B7=&quot;文科&quot;, &quot;WK&quot;, &quot;CJ&quot;))。    但是，要尽量避免 IF 函数的多层嵌套，一般而言不能多于四层，超过四层就要考虑使用其他函数。    对于多层嵌套，也可能使用 +（数值）或 &amp;（文本）进行连接，使得多层嵌套变成多个 IF 函数的连接，即 IF (,(,(,,),),) 变成 IF ()+IF ()+IF () 或 IF ()&amp;IF ()&amp;IF ()。 # 3. 利用 IF 函数处理函数错误    如 IF (ISERROR (D35/C35),,D35/C35)，当 C35 为 0 或空值时，D35/C35 会报错，使用上述 IF 函数能够忽略其错误，显示结果为 0，而非 ISERROR。 # 4. AND 函数和 OR 函数   AND 表示且，两个条件都要满足，OR 表示或，只需满足一个条件即可。    例子：IF (AND (,),,)，IF (OR (,),,)。</p>
+<p>  IF 函数的语法是：IF (logical_test,[value_if_true],[value_if_false])。</p>
+<p>   值得注意的是，所有标点符号（逗号和双引号）都应该是英文半角符号。</p>
+<a id="more"></a>
+<h1 id="if-函数的嵌套">2. IF 函数的嵌套</h1>
+<p>  IF 函数的嵌套是指在 IF 函数中，继续使用 IF 函数，即对于 IF (logical_test,[value_if_true],[value_if_false])，可以将 [value_if_true] 或 [value_if_false] 换为 IF (logical_test,[value_if_true],[value_if_false])。如 = IF (B7=&quot;理工&quot;, &quot;LG&quot;,IF (B7=&quot;文科&quot;, &quot;WK&quot;, &quot;CJ&quot;))。</p>
+<p>   但是，要尽量避免 IF 函数的多层嵌套，一般而言不能多于四层，超过四层就要考虑使用其他函数。</p>
+<p>   对于多层嵌套，也可能使用 +（数值）或 &amp;（文本）进行连接，使得多层嵌套变成多个 IF 函数的连接，即 IF (,(,(,,),),) 变成 IF ()+IF ()+IF () 或 IF ()&amp;IF ()&amp;IF ()。</p>
+<h1 id="利用-if-函数处理函数错误">3. 利用 IF 函数处理函数错误</h1>
+<p>   如 IF (ISERROR (D35/C35),,D35/C35)，当 C35 为 0 或空值时，D35/C35 会报错，使用上述 IF 函数能够忽略其错误，显示结果为 0，而非 ISERROR。</p>
+<h1 id="and-函数和-or-函数">4. AND 函数和 OR 函数</h1>
+<p>  AND 表示且，两个条件都要满足，OR 表示或，只需满足一个条件即可。</p>
+<p>   例子：IF (AND (,),,)，IF (OR (,),,)。</p>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">
       
     </div>
@@ -735,7 +746,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">120</span>
+                  <span class="site-state-item-count">117</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -843,7 +854,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#if-函数的基本用法"><span class="nav-text">1. IF 函数的基本用法</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#if-函数的基本用法"><span class="nav-text">1. IF 函数的基本用法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#if-函数的嵌套"><span class="nav-text">2. IF 函数的嵌套</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#利用-if-函数处理函数错误"><span class="nav-text">3. 利用 IF 函数处理函数错误</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#and-函数和-or-函数"><span class="nav-text">4. AND 函数和 OR 函数</span></a></li></ol></div>
             
 
           </div>
@@ -884,7 +895,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">75.3k</span>
+    <span title="Site words total count">74.8k</span>
   
 </div>
 

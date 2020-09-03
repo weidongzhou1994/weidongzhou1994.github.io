@@ -150,7 +150,7 @@
 <meta property="og:site_name" content="周卫东的博客">
 <meta property="og:description" content="1. MATCH 和 INDEX 函数的语法">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-06-02T14:53:47.859Z">
+<meta property="og:updated_time" content="2020-09-03T14:42:06.506Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="第十二讲 MATCH 和 INDEX 函数">
 <meta name="twitter:description" content="1. MATCH 和 INDEX 函数的语法">
@@ -423,8 +423,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-06-02T22:53:47+08:00">
-                2019-06-02
+              <time title="更新于" itemprop="dateModified" datetime="2020-09-03T22:42:06+08:00">
+                2020-09-03
               </time>
             
           </span>
@@ -524,7 +524,14 @@
         <h1 id="match-和-index-函数的语法">1. MATCH 和 INDEX 函数的语法</h1>
 <a id="more"></a>
 <p>  MATCH 函数的语法是：MATCH (lookup_value,lookup_array,[match_type])，其中 lookup_value 是查找值，lookup_array 是查找区域，match_type 则是查找方式：0 代表精确查找，1 代表模糊查找。</p>
-<p>  INDEX 函数的语法是：INDEX (array,row_num,[column_num])，其中 array 是查找区域，row_num 则是查找行。 # 2. MATCH 和 INDEX 函数的优势   MATCH 和 INDEX 函数可以搭配起来，即 = INDEX (,MATCH (,,))，MATCH 查找数值所在的行，INDEX 负责抓取相应的数据。    相比 VLOOKUP 函数，MATCH 和 INDEX 函数具有更多的灵活性，VLOOKUP 函数只能从左向右查找，不能反过来从右向左查找。 # 3. 返回多列结果   VLOOKUP 函数能够实现连续多列的结果，但不能返回非连续的多列结果，MATCH 函数和 VLOOKUP 函数的搭配则不受该限制。   VLOOKUP 函数可以搭配 COLUMN 函数，因为 COLUMN 函数能够跟随位置的移动提供不同的列数，因此能够解决 VLOOKUP 函数中列的位置固定的缺点，基本语法是：=VLOOKUP (,,COLUMN (),)。   MATCH 函数和 VLOOKUP 函数的搭配能够更好地解决这个问题，基本语法是：=VLOOKUP (,,MATCH (,,),)。</p>
+<p>  INDEX 函数的语法是：INDEX (array,row_num,[column_num])，其中 array 是查找区域，row_num 则是查找行。</p>
+<h1 id="match-和-index-函数的优势">2. MATCH 和 INDEX 函数的优势</h1>
+<p>  MATCH 和 INDEX 函数可以搭配起来，即 = INDEX (,MATCH (,,))，MATCH 查找数值所在的行，INDEX 负责抓取相应的数据。</p>
+<p>   相比 VLOOKUP 函数，MATCH 和 INDEX 函数具有更多的灵活性，VLOOKUP 函数只能从左向右查找，不能反过来从右向左查找。</p>
+<h1 id="返回多列结果">3. 返回多列结果</h1>
+<p>  VLOOKUP 函数能够实现连续多列的结果，但不能返回非连续的多列结果，MATCH 函数和 VLOOKUP 函数的搭配则不受该限制。</p>
+<p>  VLOOKUP 函数可以搭配 COLUMN 函数，因为 COLUMN 函数能够跟随位置的移动提供不同的列数，因此能够解决 VLOOKUP 函数中列的位置固定的缺点，基本语法是：=VLOOKUP (,,COLUMN (),)。</p>
+<p>  MATCH 函数和 VLOOKUP 函数的搭配能够更好地解决这个问题，基本语法是：=VLOOKUP (,,MATCH (,,),)。</p>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">
       
     </div>
@@ -737,7 +744,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">120</span>
+                  <span class="site-state-item-count">117</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -845,7 +852,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#match-和-index-函数的语法"><span class="nav-text">1. MATCH 和 INDEX 函数的语法</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#match-和-index-函数的语法"><span class="nav-text">1. MATCH 和 INDEX 函数的语法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#match-和-index-函数的优势"><span class="nav-text">2. MATCH 和 INDEX 函数的优势</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#返回多列结果"><span class="nav-text">3. 返回多列结果</span></a></li></ol></div>
             
 
           </div>
@@ -886,7 +893,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">75.3k</span>
+    <span title="Site words total count">74.8k</span>
   
 </div>
 

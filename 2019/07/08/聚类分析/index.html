@@ -150,7 +150,7 @@
 <meta property="og:site_name" content="周卫东的博客">
 <meta property="og:description" content="聚类分析是对没有目标变量的数据集根据数据的相似性给出 “自然的” 分组，目标是类内对象相似性尽量大，类间对象相似性尽量小。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-07-09T08:33:32.522Z">
+<meta property="og:updated_time" content="2020-09-03T13:56:09.136Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="聚类分析">
 <meta name="twitter:description" content="聚类分析是对没有目标变量的数据集根据数据的相似性给出 “自然的” 分组，目标是类内对象相似性尽量大，类间对象相似性尽量小。">
@@ -423,8 +423,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-07-09T16:33:32+08:00">
-                2019-07-09
+              <time title="更新于" itemprop="dateModified" datetime="2020-09-03T21:56:09+08:00">
+                2020-09-03
               </time>
             
           </span>
@@ -521,7 +521,15 @@
       
 
       
-        <p>   聚类分析是对没有目标变量的数据集根据数据的相似性给出 “自然的” 分组，目标是类内对象相似性尽量大，类间对象相似性尽量小。 <a id="more"></a> # 1. 聚类分析：K-Means 算法 <a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>   K-Means 算法的主要步骤如下：<br>   1. 选择 K 个对象作为每个类的初始质心，然后计算其它每个对象与每个质心的距离，与距离最小的质心归为一类。<br>   2. 指派到一个质心的对象集合为一个类，更新每个类的质心。<br>   3. 重复上述指派和更新质心的步骤，直至类不发生变化为止。<br> # 2. 用 python 实现聚类分析 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"># encoding: utf-8</span><br><span class="line">import numpy as np</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">from sklearn.cluster import KMeans</span><br><span class="line"></span><br><span class="line"># 读取原始数据 </span><br><span class="line">X = []</span><br><span class="line">f = open (&apos;D:/ 代码 / 数据 / City.txt&apos;)</span><br><span class="line">for v in f:</span><br><span class="line">    X.append ([float (v.split ()[2][2:6]),float (v.split ()[3][2:8])])</span><br><span class="line"></span><br><span class="line"># 转化为 numpy array</span><br><span class="line">X = np.array (X)</span><br><span class="line">print (X)</span><br><span class="line"></span><br><span class="line"># 类簇的数量 </span><br><span class="line">n_clusters = 5</span><br><span class="line"> </span><br><span class="line"># 开始调用函数聚类 </span><br><span class="line">cls = KMeans (n_clusters).fit (X)</span><br><span class="line"> </span><br><span class="line"># 输出 X 中每项所属分类的一个列表 </span><br><span class="line">print (cls.labels_)</span><br><span class="line"> </span><br><span class="line"># 画图 </span><br><span class="line">markers = [&apos;*&apos;,&apos;o&apos;,&apos;+&apos;,&apos;s&apos;,&apos;v&apos;]</span><br><span class="line"> </span><br><span class="line">for i in range (n_clusters):</span><br><span class="line">    members = cls.labels_ == i#members 是布尔数组 </span><br><span class="line">    # array ([False, False, False, False, False, False, False, False, False,</span><br><span class="line">    #    False, False, False, False, False, False, False, False, False,</span><br><span class="line">    #    False, False,  True, False, False, False, False, False, False,</span><br><span class="line">    #    False,  True,  True,  True,  True, False, False,  True,  True,</span><br><span class="line">    #     True, False,  True, False,  True,  True,  True,  True,  True,</span><br><span class="line">    #     True, False, False, False, False,  True,  True,  True, False,</span><br><span class="line">    #    False, False, False,  True,  True,  True,  True,  True,  True,</span><br><span class="line">    #    ...])</span><br><span class="line">    plt.scatter (X [members,0],X [members,1],s = 60,marker = markers [i],c = &apos;b&apos;,alpha=0.5)# 画与 menbers 数组中匹配的点 </span><br><span class="line"> </span><br><span class="line">plt.title (&apos;China&apos;)</span><br><span class="line">plt.show ()</span><br><span class="line">print (X)</span><br></pre></td></tr></table></figure></p>
+        <p>   聚类分析是对没有目标变量的数据集根据数据的相似性给出 “自然的” 分组，目标是类内对象相似性尽量大，类间对象相似性尽量小。</p>
+<a id="more"></a>
+<h1 id="聚类分析k-means-算法-1">1. 聚类分析：K-Means 算法 <a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></h1>
+<p>  K-Means 算法的主要步骤如下：<br></p>
+<p>  1. 选择 K 个对象作为每个类的初始质心，然后计算其它每个对象与每个质心的距离，与距离最小的质心归为一类。<br></p>
+<p>  2. 指派到一个质心的对象集合为一个类，更新每个类的质心。<br></p>
+<p>  3. 重复上述指派和更新质心的步骤，直至类不发生变化为止。<br></p>
+<h1 id="用-python-实现聚类分析">2. 用 python 实现聚类分析</h1>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"># encoding: utf-8</span><br><span class="line">import numpy as np</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">from sklearn.cluster import KMeans</span><br><span class="line"></span><br><span class="line"># 读取原始数据 </span><br><span class="line">X = []</span><br><span class="line">f = open (&apos;D:/ 代码 / 数据 / City.txt&apos;)</span><br><span class="line">for v in f:</span><br><span class="line">    X.append ([float (v.split ()[2][2:6]),float (v.split ()[3][2:8])])</span><br><span class="line"></span><br><span class="line"># 转化为 numpy array</span><br><span class="line">X = np.array (X)</span><br><span class="line">print (X)</span><br><span class="line"></span><br><span class="line"># 类簇的数量 </span><br><span class="line">n_clusters = 5</span><br><span class="line"> </span><br><span class="line"># 开始调用函数聚类 </span><br><span class="line">cls = KMeans (n_clusters).fit (X)</span><br><span class="line"> </span><br><span class="line"># 输出 X 中每项所属分类的一个列表 </span><br><span class="line">print (cls.labels_)</span><br><span class="line"> </span><br><span class="line"># 画图 </span><br><span class="line">markers = [&apos;*&apos;,&apos;o&apos;,&apos;+&apos;,&apos;s&apos;,&apos;v&apos;]</span><br><span class="line"> </span><br><span class="line">for i in range (n_clusters):</span><br><span class="line">    members = cls.labels_ == i#members 是布尔数组 </span><br><span class="line">    # array ([False, False, False, False, False, False, False, False, False,</span><br><span class="line">    #    False, False, False, False, False, False, False, False, False,</span><br><span class="line">    #    False, False,  True, False, False, False, False, False, False,</span><br><span class="line">    #    False,  True,  True,  True,  True, False, False,  True,  True,</span><br><span class="line">    #     True, False,  True, False,  True,  True,  True,  True,  True,</span><br><span class="line">    #     True, False, False, False, False,  True,  True,  True, False,</span><br><span class="line">    #    False, False, False,  True,  True,  True,  True,  True,  True,</span><br><span class="line">    #    ...])</span><br><span class="line">    plt.scatter (X [members,0],X [members,1],s = 60,marker = markers [i],c = &apos;b&apos;,alpha=0.5)# 画与 menbers 数组中匹配的点 </span><br><span class="line"> </span><br><span class="line">plt.title (&apos;China&apos;)</span><br><span class="line">plt.show ()</span><br><span class="line">print (X)</span><br></pre></td></tr></table></figure>
 <section class="footnotes">
 <hr>
 <ol>
@@ -711,8 +719,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -729,7 +746,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">120</span>
+                  <span class="site-state-item-count">117</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -828,6 +845,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#聚类分析k-means-算法-1"><span class="nav-text">1. 聚类分析：K-Means 算法 1</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#用-python-实现聚类分析"><span class="nav-text">2. 用 python 实现聚类分析</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
         <div class="back-to-top">
@@ -862,7 +895,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">75.3k</span>
+    <span title="Site words total count">74.8k</span>
   
 </div>
 

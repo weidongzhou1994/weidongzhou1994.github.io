@@ -151,7 +151,7 @@
 <meta property="og:description" content="MangoDB 数据库的类型是非关系型数据库，存储方式比较灵活。1">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://blog-1258437747.cos.ap-chengdu.myqcloud.com/20190815190923.png">
-<meta property="og:updated_time" content="2019-08-15T14:36:57.865Z">
+<meta property="og:updated_time" content="2020-09-03T13:24:19.193Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MangoDB 的基本操作">
 <meta name="twitter:description" content="MangoDB 数据库的类型是非关系型数据库，存储方式比较灵活。1">
@@ -425,8 +425,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-08-15T22:36:57+08:00">
-                2019-08-15
+              <time title="更新于" itemprop="dateModified" datetime="2020-09-03T21:24:19+08:00">
+                2020-09-03
               </time>
             
           </span>
@@ -523,8 +523,12 @@
       
 
       
-        <p>  MangoDB 数据库的类型是非关系型数据库，存储方式比较灵活。<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> <a id="more"></a> # 1. <a href="https://www.mongodb.org.cn/tutorial/59.html" target="_blank" rel="noopener">启动和连接 Mongodb 服务</a> <figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">net</span> <span class="built_in">start</span> mongodb  // 启动服务 </span><br><span class="line"><span class="built_in">net</span> stop mongodb    // 关闭服务 </span><br></pre></td></tr></table></figure></p>
-<p>   连接 MongoDB 服务：mongo。 # 2. 设置用户权限    添加管理员权限： <figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">use admin</span><br><span class="line">db.createUser (</span><br><span class="line">    &#123;</span><br><span class="line"><span class="function">        user:"<span class="title">root</span>",</span></span><br><span class="line"><span class="function">        <span class="title">pwd</span>:"<span class="title">pwd</span>",</span></span><br><span class="line"><span class="function">        <span class="title">roles</span>:["<span class="title">root</span>"]</span></span><br><span class="line"><span class="function">    &#125;</span></span><br><span class="line"><span class="function">)</span></span><br></pre></td></tr></table></figure></p>
+        <p>  MangoDB 数据库的类型是非关系型数据库，存储方式比较灵活。<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> <a id="more"></a></p>
+<h1 id="启动和连接-mongodb-服务">1. <a href="https://www.mongodb.org.cn/tutorial/59.html" target="_blank" rel="noopener">启动和连接 Mongodb 服务</a></h1>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">net</span> <span class="built_in">start</span> mongodb  // 启动服务 </span><br><span class="line"><span class="built_in">net</span> stop mongodb    // 关闭服务 </span><br></pre></td></tr></table></figure>
+<p>   连接 MongoDB 服务：mongo。</p>
+<h1 id="设置用户权限">2. 设置用户权限</h1>
+<p>   添加管理员权限： <figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">use admin</span><br><span class="line">db.createUser (</span><br><span class="line">    &#123;</span><br><span class="line"><span class="function">        user:"<span class="title">root</span>",</span></span><br><span class="line"><span class="function">        <span class="title">pwd</span>:"<span class="title">pwd</span>",</span></span><br><span class="line"><span class="function">        <span class="title">roles</span>:["<span class="title">root</span>"]</span></span><br><span class="line"><span class="function">    &#125;</span></span><br><span class="line"><span class="function">)</span></span><br></pre></td></tr></table></figure></p>
 <p>   添加一个业务数据库的管理员权限： <figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">db.auth ('username','pwd')</span><br><span class="line">db.createUser (&#123;</span><br><span class="line"><span class="function">    user:"<span class="title">user001</span>",</span></span><br><span class="line"><span class="function">    <span class="title">pwd</span>:"123456",</span></span><br><span class="line"><span class="function">    <span class="title">customData</span>:&#123;</span></span><br><span class="line"><span class="function">        <span class="title">name</span>:'<span class="title">jim</span>',</span></span><br><span class="line"><span class="function">        <span class="title">email</span>:'<span class="title">jim</span>@<span class="title">qq.com</span>',</span></span><br><span class="line"><span class="function">        <span class="title">age</span>:18,</span></span><br><span class="line"><span class="function">    &#125;,</span></span><br><span class="line"><span class="function">    <span class="title">roles</span>:[</span></span><br><span class="line"><span class="function">        &#123;<span class="title">role</span>:"<span class="title">readWrite</span>",<span class="title">db</span>:"<span class="title">db001</span>"&#125;,</span></span><br><span class="line"><span class="function">        &#123;<span class="title">role</span>:"<span class="title">readWrite</span>",<span class="title">db</span>:"<span class="title">db002</span>"&#125;,</span></span><br><span class="line"><span class="function">        '<span class="title">read</span>'// 对其他数据库有只读权限，对 < span class="title">db001</span>、<span class="title">db002</span> 是读写权限 </span><br><span class="line"><span class="function">    ]</span></span><br><span class="line"><span class="function">&#125;)</span></span><br></pre></td></tr></table></figure></p>
 <p>   修改密码： <figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">use admin</span><br><span class="line">db.changeUserPassword ("用户名", "新密码")</span><br></pre></td></tr></table></figure></p>
 <p>   查看和删除用户： <figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">use admin</span><br><span class="line">db.auth ('username','pwd')</span><br><span class="line">show users</span><br><span class="line">db.dropUser (' 用户名 ')</span><br></pre></td></tr></table></figure></p>
@@ -763,7 +767,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">120</span>
+                  <span class="site-state-item-count">117</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -871,7 +875,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#操作数据库"><span class="nav-text">3. 操作数据库</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#操作集合"><span class="nav-text">4. 操作集合</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#操作文档内容"><span class="nav-text">5. 操作文档内容</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用-python-操作-mongodb"><span class="nav-text">6. 使用 Python 操作 MongoDB</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#启动和连接-mongodb-服务"><span class="nav-text">1. 启动和连接 Mongodb 服务</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#设置用户权限"><span class="nav-text">2. 设置用户权限</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#操作数据库"><span class="nav-text">3. 操作数据库</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#操作集合"><span class="nav-text">4. 操作集合</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#操作文档内容"><span class="nav-text">5. 操作文档内容</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用-python-操作-mongodb"><span class="nav-text">6. 使用 Python 操作 MongoDB</span></a></li></ol></div>
             
 
           </div>
@@ -912,7 +916,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">75.3k</span>
+    <span title="Site words total count">74.8k</span>
   
 </div>
 
