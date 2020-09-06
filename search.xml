@@ -79,9 +79,7 @@
 <p>   解决方案：</p>
 <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> score, <span class="keyword">dense_rank</span>() <span class="keyword">over</span>(<span class="keyword">order</span> <span class="keyword">by</span> score <span class="keyword">desc</span>) <span class="keyword">as</span> <span class="string">'Rank'</span> <span class="keyword">from</span> Scores</span><br></pre></td></tr></table></figure>
 <p>   知识点：</p>
-<figure>
-<img src="https://picgo-1258437747.cos.ap-nanjing.myqcloud.com/20200906224250.png" alt="20200906224250"><figcaption>20200906224250</figcaption>
-</figure>
+<p><img src="https://picgo-1258437747.cos.ap-nanjing.myqcloud.com/20200906224250.png"></p>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
   </entry>
   <entry>
