@@ -142,18 +142,18 @@
 
 
 
-<meta name="description" content="1. stata 中的命令 1.1 stata 中的命令结构">
+<meta name="description" content="1. stata 中的命令 1.1 stata 中的命令结构">
 <meta name="keywords" content="基本操作,stata,初级">
 <meta property="og:type" content="article">
 <meta property="og:title" content="stata 基本操作（二）">
 <meta property="og:url" content="http://zhouweidong.ml/2019/07/07/stata基本操作（二）/index.html">
 <meta property="og:site_name" content="周卫东的博客">
-<meta property="og:description" content="1. stata 中的命令 1.1 stata 中的命令结构">
+<meta property="og:description" content="1. stata 中的命令 1.1 stata 中的命令结构">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2020-09-03T13:51:30.984Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="stata 基本操作（二）">
-<meta name="twitter:description" content="1. stata 中的命令 1.1 stata 中的命令结构">
+<meta name="twitter:description" content="1. stata 中的命令 1.1 stata 中的命令结构">
 
 
 
@@ -521,74 +521,106 @@
       
 
       
-        <h1 id="stata-中的命令">1. stata 中的命令</h1>
-<h2 id="stata-中的命令结构">1.1 stata 中的命令结构</h2>
+        <h1 id="1-stata-zhong-de-ming-ling">1. stata 中的命令</h1>
+<h2 id="1-1-stata-zhong-de-ming-ling-jie-gou">1.1 stata 中的命令结构</h2>
 <a id="more"></a>
-<p>  stata 命令的通用格式: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">command varlist [if] [in] [ , options] // 其中，[if] [in] 用于限制样本范围；[options] “可选项”，增加了命令的弹性 </span><br></pre></td></tr></table></figure></p>
+<p>  stata 命令的通用格式:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">command varlist [if] [in] [ , options] // 其中，[if] [in] 用于限制样本范围；[options] “可选项”，增加了命令的弹性 </span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">help command // 对于不熟悉的命令，可以使用此命令查看帮助文件 </span><br></pre></td></tr></table></figure>
 <p>   对于命令的帮助文件，主要是看可选项，因为 if 和 in 是通用的。[] 内的内容是可以省略的，其它内容必须填写。</p>
 <p>   因此，对于命令的帮助文件，可以直接查看 syntax（语法）中的 options 以及 example。</p>
-<h2 id="通配符-和">1.2 通配符：* 和？</h2>
+<h2 id="1-2-tong-pei-fu-he">1.2 通配符：* 和？</h2>
 <p>  * 可以表示任何长度的字母或数字，？只能替代一个长度的字母或数字。</p>
-<h2 id="自定义分行符">1.3 自定义分行符</h2>
-<p>   命令经常过长，因此为了避免自动换行，可以自定义分行符： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#delimit ； // 将；定义为分行符 </span><br><span class="line">#delimit cr</span><br></pre></td></tr></table></figure></p>
-<h1 id="修改数据资料">2. 修改数据资料</h1>
-<h2 id="数学运算">2.1 数学运算</h2>
-<h3 id="关系运算符">2.1.1 关系运算符</h3>
+<h2 id="1-3-zi-ding-yi-fen-xing-fu">1.3 自定义分行符</h2>
+<p>   命令经常过长，因此为了避免自动换行，可以自定义分行符：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#delimit ； // 将；定义为分行符 </span><br><span class="line">#delimit cr</span><br></pre></td></tr></table></figure>
+<h1 id="2-xiu-gai-shu-ju-zi-liao">2. 修改数据资料</h1>
+<h2 id="2-1-shu-xue-yun-suan">2.1 数学运算</h2>
+<h3 id="2-1-1-guan-xi-yun-suan-fu">2.1.1 关系运算符</h3>
 <p>   等于：==; 大于：&gt;; 小于：&lt;; 大于等于：&gt;=; 小于等于：&lt;=; 不等于：!= 和～=。</p>
-<h3 id="逻辑运算符">2.1.2 逻辑运算符</h3>
+<h3 id="2-1-2-luo-ji-yun-suan-fu">2.1.2 逻辑运算符</h3>
 <p>   与：&amp; 和 --&gt;；或：| 和 --&gt;。</p>
-<h3 id="算术运算符">2.1.3 算术运算符</h3>
+<h3 id="2-1-3-suan-zhu-yun-suan-fu">2.1.3 算术运算符</h3>
 <p>  + - * / ^(幂)</p>
-<h1 id="变量的创建和修改">3. 变量的创建和修改</h1>
-<h2 id="变量的类型">3.1 变量的类型</h2>
-<p>   整数的存储类型包括： |byte | 字节型 |(-100,+100)| |--|--|--| |int | 一般整数型 |(-32000,+32000)| |long | 长整数型 |(-2.14<em>10^10,+2.14</em>10^10)，即，正负 21 亿 |    小数的存储类型包括：浮点型（float）和双精度（double）, 前者表示 8 位有效数字，后者表示 16 位有效数字。</p>
+<h1 id="3-bian-liang-de-chuang-jian-he-xiu-gai">3. 变量的创建和修改</h1>
+<h2 id="3-1-bian-liang-de-lei-xing">3.1 变量的类型</h2>
+<p>   整数的存储类型包括：</p>
+<table>
+<thead>
+<tr>
+<th>byte</th>
+<th>字节型</th>
+<th>(-100,+100)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>int</td>
+<td>一般整数型</td>
+<td>(-32000,+32000)</td>
+</tr>
+<tr>
+<td>long</td>
+<td>长整数型</td>
+<td>(-2.14<em>10^10,+2.14</em>10^10)，即，正负 21 亿</td>
+</tr>
+</tbody>
+</table>
+<p>   小数的存储类型包括：浮点型（float）和双精度（double）, 前者表示 8 位有效数字，后者表示 16 位有效数字。</p>
 <p>   字符型变量的存储类型是字符串（str）， 还可以指定字符型变量包含的字符多少，方法是 str#。</p>
-<h2 id="创建新变量">3.2 创建新变量</h2>
+<h2 id="3-2-chuang-jian-xin-bian-liang">3.2 创建新变量</h2>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">generate [type] newvar [:lblname] =exp [if] [in] [, before (varname) | after (varname)]  //exp 是表达式的意思 </span><br></pre></td></tr></table></figure>
-<h2 id="修改旧变量">3.3 修改旧变量</h2>
+<h2 id="3-3-xiu-gai-jiu-bian-liang">3.3 修改旧变量</h2>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">rename old_varname new_varname // 单个变量修改 </span><br><span class="line">renvars [varlist] \ newvarlist [ , display test ]</span><br><span class="line">renvars [varlist] , transformation_option [ display test symbol (str) ] //transformation_option 包括：前缀 - prefix (str)、后缀 - postfix (str) 等 </span><br></pre></td></tr></table></figure>
-<h2 id="修改观察值">3.4 修改观察值</h2>
+<h2 id="3-4-xiu-gai-guan-cha-zhi">3.4 修改观察值</h2>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">replace oldvar =exp [if] [in] [, nopromote]</span><br></pre></td></tr></table></figure>
-<h2 id="删除变量和样本值">3.5 删除变量和样本值</h2>
+<h2 id="3-5-shan-chu-bian-liang-he-yang-ben-zhi">3.5 删除变量和样本值</h2>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">drop varlist</span><br><span class="line">drop if exp</span><br><span class="line">drop in range [if exp]</span><br></pre></td></tr></table></figure>
-<h2 id="移动变量窗口中变量的位置">3.6 移动变量窗口中变量的位置</h2>
+<h2 id="3-6-yi-dong-bian-liang-chuang-kou-zhong-bian-liang-de-wei-zhi">3.6 移动变量窗口中变量的位置</h2>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">order varlist [, options]</span><br></pre></td></tr></table></figure>
-<h2 id="克隆已有变量">3.7 克隆已有变量</h2>
+<h2 id="3-7-ke-long-yi-you-bian-liang">3.7 克隆已有变量</h2>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">clonevar newvar = varname [if] [in]</span><br></pre></td></tr></table></figure>
-<h2 id="拆分变量">3.8 拆分变量</h2>
+<h2 id="3-8-chai-fen-bian-liang">3.8 拆分变量</h2>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">separate varname [if] [in] , by (groupvar | exp) [options]</span><br></pre></td></tr></table></figure>
-<h2 id="样本值排序">3.9 样本值排序</h2>
+<h2 id="3-9-yang-ben-zhi-pai-xu">3.9 样本值排序</h2>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sort varlist [in] [, stable] //stable 很少用，此命令只能正序排列 </span><br><span class="line">gsort [+|-] varname [[+|-] varname ...] [, generate (newvar) mfirst] //- 代表逆序排列 </span><br></pre></td></tr></table></figure>
-<h1 id="log-文件记录分析过程">4. log 文件：记录分析过程</h1>
-<h2 id="使用-log-文件记录分析过程">4.1 使用 log 文件记录分析过程</h2>
+<h1 id="4-log-wen-jian-ji-lu-fen-xi-guo-cheng">4. log 文件：记录分析过程</h1>
+<h2 id="4-1-shi-yong-log-wen-jian-ji-lu-fen-xi-guo-cheng">4.1 使用 log 文件记录分析过程</h2>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">log using filename [, append replace [text|smcl] name (logname) nomsg]</span><br><span class="line">log close [logname | _all]</span><br></pre></td></tr></table></figure>
-<h2 id="将-log-文件转换为网页">4.2 将 log 文件转换为网页</h2>
+<h2 id="4-2-jiang-log-wen-jian-zhuan-huan-wei-wang-ye">4.2 将 log 文件转换为网页</h2>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">log2html smclfile [, replace erase title (string) linesize (#)</span><br><span class="line">                 percentsize (integer) bold</span><br><span class="line">                 scheme (string) css (string)</span><br><span class="line">                 input (string) result (string) error (string) text (string) bg (string) ]</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hyperlog do-file [logfile] [, multipass replace]</span><br></pre></td></tr></table></figure>
-<h1 id="编写-do-文档高效快捷地执行命令">5. 编写 do 文档：高效快捷地执行命令</h1>
-<p>  do 文档的使用使我们的分析工作具有可重复性，基本代码如下： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">doedit [filename]             // 打开 do-editor 或者打开一个已经存在的 do 文档 </span><br><span class="line">&#123;do|run&#125; filename [arguments] [, nostop] // 执行 do 文档，也可以打开 do 文档后选中部分代码执行（快捷键：ctrl+d)</span><br></pre></td></tr></table></figure></p>
-<p>   编写 do 文档时，为了美观和易读性，+ - 前后要有空格， * / 前后无需空格，还必须要有必要的注释以及断行。 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">* 单行注释 </span><br><span class="line">// 行末注释 </span><br><span class="line">/* 行末注释 */</span><br></pre></td></tr></table></figure></p>
+<h1 id="5-bian-xie-do-wen-dang-gao-xiao-kuai-jie-di-zhi-xing-ming-ling">5. 编写 do 文档：高效快捷地执行命令</h1>
+<p>  do 文档的使用使我们的分析工作具有可重复性，基本代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">doedit [filename]             // 打开 do-editor 或者打开一个已经存在的 do 文档 </span><br><span class="line">&#123;do|run&#125; filename [arguments] [, nostop] // 执行 do 文档，也可以打开 do 文档后选中部分代码执行（快捷键：ctrl+d)</span><br></pre></td></tr></table></figure>
+<p>   编写 do 文档时，为了美观和易读性，+ - 前后要有空格， * / 前后无需空格，还必须要有必要的注释以及断行。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">* 单行注释 </span><br><span class="line">// 行末注释 </span><br><span class="line">/* 行末注释 */</span><br></pre></td></tr></table></figure>
 <p>   换行的三种方式：/// 、 /* */ 、 #delimit 命令。</p>
 <p>  tips: 当编写大型 do 文档时，可以先设定一个主文件，然后编写若干个相应的子文件，在主文件里面分别设定执行子文件的命令，将主文件和子文件放置在一个文件夹中。</p>
-<h1 id="输出">6. 输出</h1>
+<h1 id="6-shu-chu">6. 输出</h1>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">logout, [options : command]</span><br></pre></td></tr></table></figure>
-<h2 id="统计表格矩阵的输出">6.1 统计表格、矩阵的输出</h2>
+<h2 id="6-1-tong-ji-biao-ge-ju-zhen-de-shu-chu">6.1 统计表格、矩阵的输出</h2>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sysuse auto, clear </span><br><span class="line">* 输出基本统计量 </span><br><span class="line">tabstat price wei len mpg rep78,        ///</span><br><span class="line">stats (mean sd min p50 max) c (s) f (%6.2f)</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">* 使用 save (文件名) 保存 </span><br><span class="line">* save () word  保存为 word 文档 </span><br><span class="line">* save () excel 保存为 excel 文档 </span><br><span class="line">logout, save (mytable) word replace:       ///</span><br><span class="line">* 输出基本统计量 </span><br><span class="line">    tabstat price wei len mpg rep78,        ///</span><br><span class="line">    stats (mean sd min p50 max) c (s) f (%6.2f)</span><br></pre></td></tr></table></figure>
-<p>   同理，只需更改输出部分，即可将输出部分保存为 word 或 excel 文档。 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">* 输出相关系数矩阵 </span><br><span class="line">pwcorr price wei len mpg rep78 </span><br><span class="line">* 输出矩阵 </span><br><span class="line">mat a = I (10) </span><br><span class="line">mat list a </span><br><span class="line">mat list a, nohalf</span><br></pre></td></tr></table></figure></p>
-<h2 id="估计结果的输出">6.2 估计结果的输出</h2>
-<h3 id="logout-命令">6.2.1 logout 命令</h3>
+<p>   同理，只需更改输出部分，即可将输出部分保存为 word 或 excel 文档。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">* 输出相关系数矩阵 </span><br><span class="line">pwcorr price wei len mpg rep78 </span><br><span class="line">* 输出矩阵 </span><br><span class="line">mat a = I (10) </span><br><span class="line">mat list a </span><br><span class="line">mat list a, nohalf</span><br></pre></td></tr></table></figure>
+<h2 id="6-2-gu-ji-jie-guo-de-shu-chu">6.2 估计结果的输出</h2>
+<h3 id="6-2-1-logout-ming-ling">6.2.1 logout 命令</h3>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">* 输出估计结果 </span><br><span class="line">logout, save (文件名) 文档格式 (excel/word) dec (3) replace:   ///</span><br><span class="line">* 估计结果 </span><br><span class="line">    reg price weight mpg rep78 foreign</span><br></pre></td></tr></table></figure>
-<h3 id="esttab-命令呈现回归结果">6.2.2 esttab 命令：呈现回归结果</h3>
+<h3 id="6-2-2-esttab-ming-ling-cheng-xian-hui-gui-jie-guo">6.2.2 esttab 命令：呈现回归结果</h3>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">esttab [ namelist ] [ using filename ] [ , options ]</span><br></pre></td></tr></table></figure>
-<p>   基本示例： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">* 前期准备 </span><br><span class="line">sysuse auto, clear   </span><br><span class="line">reg price wei</span><br><span class="line">  est store m1</span><br><span class="line">reg price wei len</span><br><span class="line">  est store m2</span><br><span class="line">reg price wei len mpg foreign</span><br><span class="line">  est store m3</span><br><span class="line">* 基本用法 </span><br><span class="line">esttab m1 m2 m3</span><br><span class="line">* 常用的选项 </span><br><span class="line">* 以紧凑的方式呈现结果 </span><br><span class="line">esttab m1 m2 m3, compress nogap</span><br><span class="line">* 修改显著水平 </span><br><span class="line">esttab m1 m2 m3, star (* 0.1 ** 0.05 *** 0.01)</span><br><span class="line">* 呈现 R^2</span><br><span class="line">esttab m1 m2 m3, r2</span><br><span class="line">* 呈现调整后的 R^2</span><br><span class="line">esttab m1 m2 m3, ar2</span><br><span class="line">* 呈现 p 值 </span><br><span class="line">esttab m1 m2 m3, b (%6.3f) brackets p // 在 [] 内呈现 p 值， b (%6.3f) 表示对系数设定占 6 位，保留小数点后三位。 </span><br><span class="line">* 呈现标准化系数 </span><br><span class="line">esttab m1 m2 m3, beta</span><br><span class="line">* 呈现变量的标签， 而非变量名 </span><br><span class="line">label var weight &quot; 汽车重量 & quot;</span><br><span class="line">esttab m1 m2 m3, label</span><br><span class="line">* 呈现弹性系数 </span><br><span class="line">esttab m1 m2 m3, margin         // 默认情况下，略去 Constant</span><br><span class="line">esttab m1 m2 m3, margin constant</span><br></pre></td></tr></table></figure></p>
-<p>   输出估计结果： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">esttab m1 m2 m3 using myout.html, replace // 网页 </span><br><span class="line">esttab m1 m2 m3 using myout.tex, replace  // TeX 文档 </span><br><span class="line">`* 其它输出类型：smcl, fixed, tab, csv, scsv, </span><br><span class="line">*               rtf, html, tex, and booktabs`</span><br></pre></td></tr></table></figure></p>
-<p>   增加估计结果的输出 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">* 前期准备 </span><br><span class="line">reg price wei, robust</span><br><span class="line">    est store rob01</span><br><span class="line">reg price wei len, robust</span><br><span class="line">    est store rob02</span><br><span class="line">reg price wei len mpg foreign, robust</span><br><span class="line">    est store rob03</span><br><span class="line">* 增加估计结果 </span><br><span class="line">esttab rob01 rob02 rob03 using myout.csv, append</span><br></pre></td></tr></table></figure></p>
-<h3 id="专业输出-excel-文档xml_tab">6.2.3 专业输出 Excel 文档：xml_tab</h3>
-<p>   基本的语法结构: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xml_tab [namelist] [, options]</span><br></pre></td></tr></table></figure></p>
-<p>   示例： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">* 前期准备 </span><br><span class="line">sysuse nlsw88, clear   </span><br><span class="line">reg wage hours married</span><br><span class="line">  est store m1</span><br><span class="line">reg wage hours married ttl_exp south</span><br><span class="line">  est store m2</span><br><span class="line">xi:reg wage hours married ttl_exp south i.race</span><br><span class="line">  est store m3</span><br><span class="line">xi:reg wage hours married ttl_exp south i.race i.occupation</span><br><span class="line">  est store m4 </span><br><span class="line">* 基本设定 </span><br><span class="line">xml_tab m1 m2 m3 m4, replace</span><br></pre></td></tr></table></figure></p>
-<h3 id="outreg2">6.2.4 outreg2</h3>
+<p>   基本示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">* 前期准备 </span><br><span class="line">sysuse auto, clear   </span><br><span class="line">reg price wei</span><br><span class="line">  est store m1</span><br><span class="line">reg price wei len</span><br><span class="line">  est store m2</span><br><span class="line">reg price wei len mpg foreign</span><br><span class="line">  est store m3</span><br><span class="line">* 基本用法 </span><br><span class="line">esttab m1 m2 m3</span><br><span class="line">* 常用的选项 </span><br><span class="line">* 以紧凑的方式呈现结果 </span><br><span class="line">esttab m1 m2 m3, compress nogap</span><br><span class="line">* 修改显著水平 </span><br><span class="line">esttab m1 m2 m3, star (* 0.1 ** 0.05 *** 0.01)</span><br><span class="line">* 呈现 R^2</span><br><span class="line">esttab m1 m2 m3, r2</span><br><span class="line">* 呈现调整后的 R^2</span><br><span class="line">esttab m1 m2 m3, ar2</span><br><span class="line">* 呈现 p 值 </span><br><span class="line">esttab m1 m2 m3, b (%6.3f) brackets p // 在 [] 内呈现 p 值， b (%6.3f) 表示对系数设定占 6 位，保留小数点后三位。 </span><br><span class="line">* 呈现标准化系数 </span><br><span class="line">esttab m1 m2 m3, beta</span><br><span class="line">* 呈现变量的标签， 而非变量名 </span><br><span class="line">label var weight &quot; 汽车重量 & quot;</span><br><span class="line">esttab m1 m2 m3, label</span><br><span class="line">* 呈现弹性系数 </span><br><span class="line">esttab m1 m2 m3, margin         // 默认情况下，略去 Constant</span><br><span class="line">esttab m1 m2 m3, margin constant</span><br></pre></td></tr></table></figure>
+<p>   输出估计结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">esttab m1 m2 m3 using myout.html, replace // 网页 </span><br><span class="line">esttab m1 m2 m3 using myout.tex, replace  // TeX 文档 </span><br><span class="line">`* 其它输出类型：smcl, fixed, tab, csv, scsv, </span><br><span class="line">*               rtf, html, tex, and booktabs`</span><br></pre></td></tr></table></figure>
+<p>   增加估计结果的输出</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">* 前期准备 </span><br><span class="line">reg price wei, robust</span><br><span class="line">    est store rob01</span><br><span class="line">reg price wei len, robust</span><br><span class="line">    est store rob02</span><br><span class="line">reg price wei len mpg foreign, robust</span><br><span class="line">    est store rob03</span><br><span class="line">* 增加估计结果 </span><br><span class="line">esttab rob01 rob02 rob03 using myout.csv, append</span><br></pre></td></tr></table></figure>
+<h3 id="6-2-3-zhuan-ye-shu-chu-excel-wen-dang-xml-tab">6.2.3 专业输出 Excel 文档：xml_tab</h3>
+<p>   基本的语法结构:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xml_tab [namelist] [, options]</span><br></pre></td></tr></table></figure>
+<p>   示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">* 前期准备 </span><br><span class="line">sysuse nlsw88, clear   </span><br><span class="line">reg wage hours married</span><br><span class="line">  est store m1</span><br><span class="line">reg wage hours married ttl_exp south</span><br><span class="line">  est store m2</span><br><span class="line">xi:reg wage hours married ttl_exp south i.race</span><br><span class="line">  est store m3</span><br><span class="line">xi:reg wage hours married ttl_exp south i.race i.occupation</span><br><span class="line">  est store m4 </span><br><span class="line">* 基本设定 </span><br><span class="line">xml_tab m1 m2 m3 m4, replace</span><br></pre></td></tr></table></figure>
+<h3 id="6-2-4-outreg-2">6.2.4 outreg2</h3>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">outreg2 [varlist] [estlist] using filename [, options] [: command]</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">* 前期准备 </span><br><span class="line">sysuse nlsw88, clear</span><br><span class="line">tab race, gen (d_race)</span><br><span class="line">  drop d_race1</span><br><span class="line">tab occu, gen (d_occu)</span><br><span class="line">  drop d_occu1</span><br><span class="line">reg wage hours ttl_exp married </span><br><span class="line">  est store m1</span><br><span class="line">reg wage hours ttl_exp married d_race*</span><br><span class="line">  est store m2</span><br><span class="line">reg wage hours ttl_exp married d_race* d_occu*   </span><br><span class="line">  est store m3</span><br><span class="line">* 在窗口显示结果 - seeout  </span><br><span class="line">outreg2 [m1 m2 m3] using tab01, see dta replace </span><br><span class="line">* 输出 word 文档 </span><br><span class="line">outreg2 [m1 m2 m3] using tab01, see word replace</span><br><span class="line">* 输出 excel 文档 </span><br><span class="line">outreg2 [m1 m2 m3] using tab01, see excel replace</span><br><span class="line">* 输出 tex 文档 </span><br><span class="line">outreg2 [m1 m2 m3] using tab01, see tex replace</span><br><span class="line">* 呈现 t 值与 p 值 </span><br><span class="line">outreg2 [m1 m2 m3] using tab01, word replace tstat  </span><br><span class="line">outreg2 [m1 m2 m3] using tab01, word replace pvalue //tstat, pvalue, ci, or beta 只能选一个 </span><br><span class="line">* 小数的显示方式 </span><br><span class="line">outreg2 [m1 m2 m3] using tab01, word replace tstat tdec (2)  //t-value 小数点后两位 </span><br><span class="line">outreg2 [m1 m2 m3] using tab01, word replace tstat rdec (3)  // R2 小数点后三位 </span><br><span class="line">* 新结果的追加 </span><br><span class="line">logit union wage married wage d_race* d_occu*</span><br><span class="line">est store logit                                   // 输出新结果 </span><br><span class="line">outreg2 [logit] using tab01, word append          // 追加新结果 </span><br><span class="line">* 有选择的呈现变量 </span><br><span class="line">outreg2 [m1 m2 m3] using tab01, word replace drop (d_occu*) </span><br><span class="line">* tips：(1) 亦可使用 keep () 选项筛选需要呈现的变量；（2) 使用 order () 选项可以改变变量的先后顺序 </span><br><span class="line">* 添加表格的标题 </span><br><span class="line">outreg2 [m1 m2 m3] using tab01, word replace title (&quot;&quot;) // 在双引号内填写标题 </span><br><span class="line">* 更改注释 </span><br><span class="line">outreg2 [m1 m2 m3] using tab01, word replace nonote addnote (&quot;&quot;， &quot;&quot;， &quot;&quot;) // ，表示分行呈现 </span><br></pre></td></tr></table></figure>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">
@@ -801,7 +833,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">120</span>
+                  <span class="site-state-item-count">121</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -823,7 +855,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">56</span>
+                  <span class="site-state-item-count">58</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -909,7 +941,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#stata-中的命令"><span class="nav-text">1. stata 中的命令</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#stata-中的命令结构"><span class="nav-text">1.1 stata 中的命令结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#通配符-和"><span class="nav-text">1.2 通配符：* 和？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自定义分行符"><span class="nav-text">1.3 自定义分行符</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#修改数据资料"><span class="nav-text">2. 修改数据资料</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#数学运算"><span class="nav-text">2.1 数学运算</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#关系运算符"><span class="nav-text">2.1.1 关系运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#逻辑运算符"><span class="nav-text">2.1.2 逻辑运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#算术运算符"><span class="nav-text">2.1.3 算术运算符</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#变量的创建和修改"><span class="nav-text">3. 变量的创建和修改</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#变量的类型"><span class="nav-text">3.1 变量的类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建新变量"><span class="nav-text">3.2 创建新变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改旧变量"><span class="nav-text">3.3 修改旧变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改观察值"><span class="nav-text">3.4 修改观察值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#删除变量和样本值"><span class="nav-text">3.5 删除变量和样本值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#移动变量窗口中变量的位置"><span class="nav-text">3.6 移动变量窗口中变量的位置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#克隆已有变量"><span class="nav-text">3.7 克隆已有变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#拆分变量"><span class="nav-text">3.8 拆分变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#样本值排序"><span class="nav-text">3.9 样本值排序</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#log-文件记录分析过程"><span class="nav-text">4. log 文件：记录分析过程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用-log-文件记录分析过程"><span class="nav-text">4.1 使用 log 文件记录分析过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#将-log-文件转换为网页"><span class="nav-text">4.2 将 log 文件转换为网页</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#编写-do-文档高效快捷地执行命令"><span class="nav-text">5. 编写 do 文档：高效快捷地执行命令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#输出"><span class="nav-text">6. 输出</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#统计表格矩阵的输出"><span class="nav-text">6.1 统计表格、矩阵的输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#估计结果的输出"><span class="nav-text">6.2 估计结果的输出</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#logout-命令"><span class="nav-text">6.2.1 logout 命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#esttab-命令呈现回归结果"><span class="nav-text">6.2.2 esttab 命令：呈现回归结果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#专业输出-excel-文档xml_tab"><span class="nav-text">6.2.3 专业输出 Excel 文档：xml_tab</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#outreg2"><span class="nav-text">6.2.4 outreg2</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-stata-zhong-de-ming-ling"><span class="nav-text">1. stata 中的命令</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-stata-zhong-de-ming-ling-jie-gou"><span class="nav-text">1.1 stata 中的命令结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-tong-pei-fu-he"><span class="nav-text">1.2 通配符：* 和？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-zi-ding-yi-fen-xing-fu"><span class="nav-text">1.3 自定义分行符</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-xiu-gai-shu-ju-zi-liao"><span class="nav-text">2. 修改数据资料</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-shu-xue-yun-suan"><span class="nav-text">2.1 数学运算</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-1-guan-xi-yun-suan-fu"><span class="nav-text">2.1.1 关系运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-2-luo-ji-yun-suan-fu"><span class="nav-text">2.1.2 逻辑运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-3-suan-zhu-yun-suan-fu"><span class="nav-text">2.1.3 算术运算符</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-bian-liang-de-chuang-jian-he-xiu-gai"><span class="nav-text">3. 变量的创建和修改</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-bian-liang-de-lei-xing"><span class="nav-text">3.1 变量的类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-chuang-jian-xin-bian-liang"><span class="nav-text">3.2 创建新变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-3-xiu-gai-jiu-bian-liang"><span class="nav-text">3.3 修改旧变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-4-xiu-gai-guan-cha-zhi"><span class="nav-text">3.4 修改观察值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-5-shan-chu-bian-liang-he-yang-ben-zhi"><span class="nav-text">3.5 删除变量和样本值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-6-yi-dong-bian-liang-chuang-kou-zhong-bian-liang-de-wei-zhi"><span class="nav-text">3.6 移动变量窗口中变量的位置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-7-ke-long-yi-you-bian-liang"><span class="nav-text">3.7 克隆已有变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-8-chai-fen-bian-liang"><span class="nav-text">3.8 拆分变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-9-yang-ben-zhi-pai-xu"><span class="nav-text">3.9 样本值排序</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-log-wen-jian-ji-lu-fen-xi-guo-cheng"><span class="nav-text">4. log 文件：记录分析过程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#4-1-shi-yong-log-wen-jian-ji-lu-fen-xi-guo-cheng"><span class="nav-text">4.1 使用 log 文件记录分析过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-2-jiang-log-wen-jian-zhuan-huan-wei-wang-ye"><span class="nav-text">4.2 将 log 文件转换为网页</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-bian-xie-do-wen-dang-gao-xiao-kuai-jie-di-zhi-xing-ming-ling"><span class="nav-text">5. 编写 do 文档：高效快捷地执行命令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6-shu-chu"><span class="nav-text">6. 输出</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#6-1-tong-ji-biao-ge-ju-zhen-de-shu-chu"><span class="nav-text">6.1 统计表格、矩阵的输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-2-gu-ji-jie-guo-de-shu-chu"><span class="nav-text">6.2 估计结果的输出</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#6-2-1-logout-ming-ling"><span class="nav-text">6.2.1 logout 命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-2-2-esttab-ming-ling-cheng-xian-hui-gui-jie-guo"><span class="nav-text">6.2.2 esttab 命令：呈现回归结果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-2-3-zhuan-ye-shu-chu-excel-wen-dang-xml-tab"><span class="nav-text">6.2.3 专业输出 Excel 文档：xml_tab</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-2-4-outreg-2"><span class="nav-text">6.2.4 outreg2</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -950,7 +982,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">75.2k</span>
+    <span title="Site words total count">75.8k</span>
   
 </div>
 

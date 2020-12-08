@@ -142,12 +142,12 @@
 
 
 
-<meta name="description" content="1. 使用 Matplotlib 绘图    在 Python 中，绘图主要使用 matplotlib 这个库，具体来说是 pylab 和 pyplot 这两个子库，它的绘图风格类似于 Matlab.">
+<meta name="description" content="1. 使用 Matplotlib 绘图    在 Python 中，绘图主要使用 matplotlib 这个库，具体来说是 pylab 和 pyplot 这两个子库，它的绘图风格类似于 Matlab.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="绘图">
 <meta property="og:url" content="http://zhouweidong.ml/2019/07/09/绘图/index.html">
 <meta property="og:site_name" content="周卫东的博客">
-<meta property="og:description" content="1. 使用 Matplotlib 绘图    在 Python 中，绘图主要使用 matplotlib 这个库，具体来说是 pylab 和 pyplot 这两个子库，它的绘图风格类似于 Matlab.">
+<meta property="og:description" content="1. 使用 Matplotlib 绘图    在 Python 中，绘图主要使用 matplotlib 这个库，具体来说是 pylab 和 pyplot 这两个子库，它的绘图风格类似于 Matlab.">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://blog-1258437747.cos.ap-chengdu.myqcloud.com/20190709214855.png">
 <meta property="og:image" content="https://blog-1258437747.cos.ap-chengdu.myqcloud.com/20190709214954.png">
@@ -155,7 +155,7 @@
 <meta property="og:updated_time" content="2020-09-03T13:48:00.004Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="绘图">
-<meta name="twitter:description" content="1. 使用 Matplotlib 绘图    在 Python 中，绘图主要使用 matplotlib 这个库，具体来说是 pylab 和 pyplot 这两个子库，它的绘图风格类似于 Matlab.">
+<meta name="twitter:description" content="1. 使用 Matplotlib 绘图    在 Python 中，绘图主要使用 matplotlib 这个库，具体来说是 pylab 和 pyplot 这两个子库，它的绘图风格类似于 Matlab.">
 <meta name="twitter:image" content="https://blog-1258437747.cos.ap-chengdu.myqcloud.com/20190709214855.png">
 
 
@@ -502,127 +502,137 @@
       
 
       
-        <h1 id="使用-matplotlib-绘图">1. 使用 Matplotlib 绘图</h1>
-<p>   在 Python 中，绘图主要使用 matplotlib 这个库，具体来说是 pylab 和 pyplot 这两个子库，它的绘图风格类似于 Matlab. <a id="more"></a></p>
-<h2 id="指定图的大小和进度">1.1 指定图的大小和进度</h2>
+        <h1 id="1-shi-yong-matplotlib-hui-tu">1. 使用 Matplotlib 绘图</h1>
+<p>   在 Python 中，绘图主要使用 matplotlib 这个库，具体来说是 pylab 和 pyplot 这两个子库，它的绘图风格类似于 Matlab.</p>
+<a id="more"></a>
+<h2 id="1-1-zhi-ding-tu-de-da-xiao-he-jin-du">1.1 指定图的大小和进度</h2>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">plt.figure (figsize=(长，宽), dpi = 精度) //</span><br></pre></td></tr></table></figure>
-<h2 id="建立多个子图">1.2 建立多个子图</h2>
+<h2 id="1-2-jian-li-duo-ge-zi-tu">1.2 建立多个子图</h2>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plt.subplot (行数，列数，图号) // 最后一个图的图号 = 行数 * 列数 </span><br></pre></td></tr></table></figure>
-<h2 id="图表类型">1.3 图表类型</h2>
+<h2 id="1-3-tu-biao-lei-xing">1.3 图表类型</h2>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">plt.scatter (横坐标数据，纵坐标数据，color=&apos; 颜色 & apos;, marker=&apos; 标记类型 & apos;) // 散点图 </span><br><span class="line">plt.plot (横坐标数据，纵坐标数据，color=&apos; 颜色 & apos;, linewidth = 线条宽度，linestyle=&apos; 线条类型 & apos;) // 折线图 </span><br><span class="line">plt.bar (横坐标数据，纵坐标数据，color=&apos; 颜色 & apos;, align=&apos;&apos;) // 垂直方向的条形图 </span><br><span class="line">plt.barh (横坐标数据，纵坐标数据，color=&apos; 颜色 & apos;, align=&apos;&apos;) // 水平方向的条形图 </span><br><span class="line">plt.pie (数据，explode = 偏移切片) // 饼图 </span><br></pre></td></tr></table></figure>
-<h2 id="颜色">1.4 颜色</h2>
+<h2 id="1-4-yan-se">1.4 颜色</h2>
 <p>   常用的内建颜色见下表：</p>
 <table>
 <thead>
-<tr class="header">
-<th style="text-align: center;">内建颜色</th>
-<th style="text-align: center;">对应字符</th>
+<tr>
+<th style="text-align:center">内建颜色</th>
+<th style="text-align:center">对应字符</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td style="text-align: center;">蓝色</td>
-<td style="text-align: center;">'b'</td>
+<tr>
+<td style="text-align:center">蓝色</td>
+<td style="text-align:center">‘b’</td>
 </tr>
-<tr class="even">
-<td style="text-align: center;">绿色</td>
-<td style="text-align: center;">'g'</td>
+<tr>
+<td style="text-align:center">绿色</td>
+<td style="text-align:center">‘g’</td>
 </tr>
-<tr class="odd">
-<td style="text-align: center;">红色</td>
-<td style="text-align: center;">'r'</td>
+<tr>
+<td style="text-align:center">红色</td>
+<td style="text-align:center">‘r’</td>
 </tr>
-<tr class="even">
-<td style="text-align: center;">青色</td>
-<td style="text-align: center;">'c'</td>
+<tr>
+<td style="text-align:center">青色</td>
+<td style="text-align:center">‘c’</td>
 </tr>
-<tr class="odd">
-<td style="text-align: center;">品红</td>
-<td style="text-align: center;">'m'</td>
+<tr>
+<td style="text-align:center">品红</td>
+<td style="text-align:center">‘m’</td>
 </tr>
-<tr class="even">
-<td style="text-align: center;">黄色</td>
-<td style="text-align: center;">'y'</td>
+<tr>
+<td style="text-align:center">黄色</td>
+<td style="text-align:center">‘y’</td>
 </tr>
-<tr class="odd">
-<td style="text-align: center;">黑色</td>
-<td style="text-align: center;">'k'</td>
+<tr>
+<td style="text-align:center">黑色</td>
+<td style="text-align:center">‘k’</td>
 </tr>
 </tbody>
 </table>
-<p>   除此之外，也可以使用 <a href="http://tool.oschina.net/commons?type=3" title="RGB 颜色" target="_blank" rel="noopener">RGB 颜色</a>。 ## 1.5 标记类型和线条类型 <img src="https://blog-1258437747.cos.ap-chengdu.myqcloud.com/20190709214855.png"> <img src="https://blog-1258437747.cos.ap-chengdu.myqcloud.com/20190709214954.png"> <img src="https://blog-1258437747.cos.ap-chengdu.myqcloud.com/20190709215009.png"> ## 1.6 设置标签 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">plt.xlabel (&quot; 横轴标签 & quot;)</span><br><span class="line">plt.ylabel (&quot; 纵轴标签 & quot;)</span><br></pre></td></tr></table></figure></p>
-<h2 id="设置刻度">1.6 设置刻度</h2>
+<p>   除此之外，也可以使用 <a href="http://tool.oschina.net/commons?type=3" title="RGB 颜色" target="_blank" rel="noopener">RGB 颜色</a>。</p>
+<h2 id="1-5-biao-ji-lei-xing-he-xian-tiao-lei-xing">1.5 标记类型和线条类型</h2>
+<p><img src="https://blog-1258437747.cos.ap-chengdu.myqcloud.com/20190709214855.png" alt=""><br>
+<img src="https://blog-1258437747.cos.ap-chengdu.myqcloud.com/20190709214954.png" alt=""><br>
+<img src="https://blog-1258437747.cos.ap-chengdu.myqcloud.com/20190709215009.png" alt=""></p>
+<h2 id="1-6-she-zhi-biao-qian">1.6 设置标签</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">plt.xlabel (&quot; 横轴标签 & quot;)</span><br><span class="line">plt.ylabel (&quot; 纵轴标签 & quot;)</span><br></pre></td></tr></table></figure>
+<h2 id="1-6-she-zhi-ke-du">1.6 设置刻度</h2>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">plt.xticks ([], []) // 设置横轴刻度 </span><br><span class="line">plt.yticks ([], []) // 设置纵轴刻度 </span><br></pre></td></tr></table></figure>
-<p>   基本示例： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">plt.xticks ([-1, 0, 1, 2, 3, 4, 5, 6], [&quot;-1m&quot;, &quot;0m&quot;, &quot;1m&quot;, &quot;2m&quot;, &quot;3m&quot;, &quot;4m&quot;, &quot;5m&quot;, &quot;6m&quot;])</span><br><span class="line">plt.yticks ([-2, 0, 2, 4, 6, 8, 10], [&quot;-2m&quot;, &quot;0m&quot;, &quot;2m&quot;, &quot;4m&quot;, &quot;6m&quot;, &quot;8m&quot;, &quot;10m&quot;])</span><br></pre></td></tr></table></figure></p>
-<h2 id="添加图例">1.6 添加图例</h2>
+<p>   基本示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">plt.xticks ([-1, 0, 1, 2, 3, 4, 5, 6], [&quot;-1m&quot;, &quot;0m&quot;, &quot;1m&quot;, &quot;2m&quot;, &quot;3m&quot;, &quot;4m&quot;, &quot;5m&quot;, &quot;6m&quot;])</span><br><span class="line">plt.yticks ([-2, 0, 2, 4, 6, 8, 10], [&quot;-2m&quot;, &quot;0m&quot;, &quot;2m&quot;, &quot;4m&quot;, &quot;6m&quot;, &quot;8m&quot;, &quot;10m&quot;])</span><br></pre></td></tr></table></figure>
+<h2 id="1-6-tian-jia-tu-li">1.6 添加图例</h2>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plt.legend (handles=[线段名], labels=[标签名], loc=&apos; 图例位置 & apos;)</span><br></pre></td></tr></table></figure>
 <table>
 <thead>
-<tr class="header">
-<th style="text-align: center;">位置 - 字符串</th>
-<th style="text-align: center;">位置 - 代码</th>
+<tr>
+<th style="text-align:center">位置 - 字符串</th>
+<th style="text-align:center">位置 - 代码</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td style="text-align: center;">'best'</td>
-<td style="text-align: center;">0</td>
+<tr>
+<td style="text-align:center">‘best’</td>
+<td style="text-align:center">0</td>
 </tr>
-<tr class="even">
-<td style="text-align: center;">'upper right'</td>
-<td style="text-align: center;">1</td>
+<tr>
+<td style="text-align:center">‘upper right’</td>
+<td style="text-align:center">1</td>
 </tr>
-<tr class="odd">
-<td style="text-align: center;">'upper left'</td>
-<td style="text-align: center;">2</td>
+<tr>
+<td style="text-align:center">‘upper left’</td>
+<td style="text-align:center">2</td>
 </tr>
-<tr class="even">
-<td style="text-align: center;">'lower left'</td>
-<td style="text-align: center;">3</td>
+<tr>
+<td style="text-align:center">‘lower left’</td>
+<td style="text-align:center">3</td>
 </tr>
-<tr class="odd">
-<td style="text-align: center;">'lower right'</td>
-<td style="text-align: center;">4</td>
+<tr>
+<td style="text-align:center">‘lower right’</td>
+<td style="text-align:center">4</td>
 </tr>
-<tr class="even">
-<td style="text-align: center;">'right'</td>
-<td style="text-align: center;">5</td>
+<tr>
+<td style="text-align:center">‘right’</td>
+<td style="text-align:center">5</td>
 </tr>
-<tr class="odd">
-<td style="text-align: center;">'center left'</td>
-<td style="text-align: center;">6</td>
+<tr>
+<td style="text-align:center">‘center left’</td>
+<td style="text-align:center">6</td>
 </tr>
-<tr class="even">
-<td style="text-align: center;">'center right'</td>
-<td style="text-align: center;">7</td>
+<tr>
+<td style="text-align:center">‘center right’</td>
+<td style="text-align:center">7</td>
 </tr>
-<tr class="odd">
-<td style="text-align: center;">'lower center'</td>
-<td style="text-align: center;">8</td>
+<tr>
+<td style="text-align:center">‘lower center’</td>
+<td style="text-align:center">8</td>
 </tr>
-<tr class="even">
-<td style="text-align: center;">'upper center'</td>
-<td style="text-align: center;">9</td>
+<tr>
+<td style="text-align:center">‘upper center’</td>
+<td style="text-align:center">9</td>
 </tr>
-<tr class="odd">
-<td style="text-align: center;">'center'</td>
-<td style="text-align: center;">10</td>
+<tr>
+<td style="text-align:center">‘center’</td>
+<td style="text-align:center">10</td>
 </tr>
 </tbody>
 </table>
-<h2 id="设置图标标题">1.7 设置图标标题</h2>
+<h2 id="1-7-she-zhi-tu-biao-biao-ti">1.7 设置图标标题</h2>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plt.title (&apos; 图标标题 & apos;)</span><br></pre></td></tr></table></figure>
-<h2 id="中文和负号">1.8 中文和负号</h2>
+<h2 id="1-8-zhong-wen-he-fu-hao">1.8 中文和负号</h2>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import matplotlib.font_manager as fm</span><br><span class="line">myfont = fm.FontProperties (fname=r&apos; 字体路径 + 字体文件名.ttf&apos;) # 设置字体 </span><br><span class="line">fontproperties=myfont #使用字体。方法是在中文后面紧跟: , fontproperties=myfont </span><br><span class="line">plt.rcParams [&apos;axes.unicode_minus&apos;] = False  # 用来正常显示负号 </span><br></pre></td></tr></table></figure>
-<h1 id="使用-pandas-绘图-1">2. 使用 Pandas 绘图 <a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></h1>
+<h1 id="2-shi-yong-pandas-hui-tu-sup-class-footnote-ref-a-href-fn-1-id-fnref-1-1-a-sup">2. 使用 Pandas 绘图 <sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup></h1>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line">DataFrame.plot (x=None, y=None, kind=&apos;line&apos;, ax=None, subplots=False, sharex=None, sharey=False, layout=None, figsize=None, use_index=True, title=None, grid=None, legend=True, style=None, logx=False, logy=False, loglog=False, xticks=None, yticks=None, xlim=None, ylim=None, rot=None, fontsize=None, colormap=None, table=False, yerr=None, xerr=None, secondary_y=False, sort_columns=False, **kwds)</span><br></pre></td></tr></table></figure>
-<p>   也可以结合 Matplotlib 进行绘图： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df.plot ()  # 折线图 </span><br><span class="line">plt.grid (linewidth=0.2, alpha=0.5)  # 结合 Matplotlib 编程 </span><br></pre></td></tr></table></figure></p>
-<h1 id="使用-seaborn-绘图">3. 使用 seaborn 绘图</h1>
+<p>   也可以结合 Matplotlib 进行绘图：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df.plot ()  # 折线图 </span><br><span class="line">plt.grid (linewidth=0.2, alpha=0.5)  # 结合 Matplotlib 编程 </span><br></pre></td></tr></table></figure>
+<h1 id="3-shi-yong-seaborn-hui-tu">3. 使用 seaborn 绘图</h1>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">import seaborn as sns</span><br><span class="line">sns.barplot (x=&quot;sepal_length&quot;,y=&quot;species&quot;,data=iris)   // 条形图 </span><br><span class="line">sns.distplot (iris [&quot;sepal_length&quot;])                    // 直方图 </span><br><span class="line">sns.pointplot (x=&quot;sepal_length&quot;,y=&quot;species&quot;,data=iris) // 折线图 </span><br><span class="line">sns.stripplot (x=&quot;sepal_length&quot;, y=&quot;species&quot;, data=iris, jitter=True, edgecolor=&quot;gray&quot;) // 散点图 </span><br><span class="line">sns.regplot (x=&quot;sepal_length&quot;,y=&quot;sepal_length&quot;,data=iris) // 带回归线的散点图 </span><br><span class="line">sns.boxplot (x=&quot;sepal_length&quot;,y=&quot;species&quot;,data=iris) // 箱形图 </span><br></pre></td></tr></table></figure>
+<hr class="footnotes-sep">
 <section class="footnotes">
-<hr>
-<ol>
-<li id="fn1"><p><a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.plot.html#pandas.DataFrame.plot" target="_blank" rel="noopener">Pandas 绘图</a> <a href="https://zhuanlan.zhihu.com/p/58410775" target="_blank" rel="noopener">大白话 Python 绘图系列: Pandas 篇</a><a href="#fnref1" class="footnote-back">↩</a></p></li>
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p><a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.plot.html#pandas.DataFrame.plot" target="_blank" rel="noopener">Pandas 绘图</a>                        <a href="https://zhuanlan.zhihu.com/p/58410775" target="_blank" rel="noopener">大白话 Python 绘图系列: Pandas 篇</a> <a href="#fnref1" class="footnote-backref">↩</a></p>
+</li>
 </ol>
 </section>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">
@@ -825,7 +835,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">120</span>
+                  <span class="site-state-item-count">121</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -847,7 +857,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">56</span>
+                  <span class="site-state-item-count">58</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -933,7 +943,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#使用-matplotlib-绘图"><span class="nav-text">1. 使用 Matplotlib 绘图</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#指定图的大小和进度"><span class="nav-text">1.1 指定图的大小和进度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#建立多个子图"><span class="nav-text">1.2 建立多个子图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#图表类型"><span class="nav-text">1.3 图表类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#颜色"><span class="nav-text">1.4 颜色</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置刻度"><span class="nav-text">1.6 设置刻度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加图例"><span class="nav-text">1.6 添加图例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置图标标题"><span class="nav-text">1.7 设置图标标题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#中文和负号"><span class="nav-text">1.8 中文和负号</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用-pandas-绘图-1"><span class="nav-text">2. 使用 Pandas 绘图 1</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用-seaborn-绘图"><span class="nav-text">3. 使用 seaborn 绘图</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-shi-yong-matplotlib-hui-tu"><span class="nav-text">1. 使用 Matplotlib 绘图</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-zhi-ding-tu-de-da-xiao-he-jin-du"><span class="nav-text">1.1 指定图的大小和进度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-jian-li-duo-ge-zi-tu"><span class="nav-text">1.2 建立多个子图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-tu-biao-lei-xing"><span class="nav-text">1.3 图表类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-4-yan-se"><span class="nav-text">1.4 颜色</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-5-biao-ji-lei-xing-he-xian-tiao-lei-xing"><span class="nav-text">1.5 标记类型和线条类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-6-she-zhi-biao-qian"><span class="nav-text">1.6 设置标签</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-6-she-zhi-ke-du"><span class="nav-text">1.6 设置刻度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-6-tian-jia-tu-li"><span class="nav-text">1.6 添加图例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-7-she-zhi-tu-biao-biao-ti"><span class="nav-text">1.7 设置图标标题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-8-zhong-wen-he-fu-hao"><span class="nav-text">1.8 中文和负号</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-shi-yong-pandas-hui-tu-sup-class-footnote-ref-a-href-fn-1-id-fnref-1-1-a-sup"><span class="nav-text">2. 使用 Pandas 绘图 [1]</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-shi-yong-seaborn-hui-tu"><span class="nav-text">3. 使用 seaborn 绘图</span></a></li></ol></div>
             
 
           </div>
@@ -974,7 +984,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">75.2k</span>
+    <span title="Site words total count">75.8k</span>
   
 </div>
 

@@ -129,7 +129,7 @@
 
 
 
-  <meta name="keywords" content="LeetCode,MySql,">
+  <meta name="keywords" content="MySql,LeetCode,">
 
 
 
@@ -143,7 +143,7 @@
 
 
 <meta name="description" content="第三天：">
-<meta name="keywords" content="LeetCode,MySql">
+<meta name="keywords" content="MySql,LeetCode">
 <meta property="og:type" content="article">
 <meta property="og:title" content="LeetCode MySql Day3">
 <meta property="og:url" content="http://zhouweidong.ml/2020/05/07/LeetCode-MySql-Day3/index.html">
@@ -523,30 +523,30 @@
       
         <p>   第三天：</p>
 <a id="more"></a>
-<h2 id="customers-who-never-order">183. Customers Who Never Order</h2>
+<h2 id="183-customers-who-never-order">183. Customers Who Never Order</h2>
 <p>  Suppose that a website contains two tables, the Customers table and the Orders table. Write a SQL query to find all customers who never order anything.</p>
 <p>  Table: Customers.</p>
 <table>
 <thead>
-<tr class="header">
+<tr>
 <th>Id</th>
 <th>Name</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td>1</td>
 <td>Joe</td>
 </tr>
-<tr class="even">
+<tr>
 <td>2</td>
 <td>Henry</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>3</td>
 <td>Sam</td>
 </tr>
-<tr class="even">
+<tr>
 <td>4</td>
 <td>Max</td>
 </tr>
@@ -555,17 +555,17 @@
 <p>  Table: Orders.</p>
 <table>
 <thead>
-<tr class="header">
+<tr>
 <th>Id</th>
 <th>CustomerId</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td>1</td>
 <td>3</td>
 </tr>
-<tr class="even">
+<tr>
 <td>2</td>
 <td>1</td>
 </tr>
@@ -574,15 +574,15 @@
 <p>Using the above tables as example, return the following:</p>
 <table>
 <thead>
-<tr class="header">
+<tr>
 <th>Customers</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td>Henry</td>
 </tr>
-<tr class="even">
+<tr>
 <td>Max</td>
 </tr>
 </tbody>
@@ -591,27 +591,27 @@
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">Name</span> <span class="keyword">as</span> Customers <span class="keyword">from</span> Customers <span class="keyword">where</span> <span class="keyword">Id</span> <span class="keyword">not</span> <span class="keyword">in</span> (<span class="keyword">select</span> CustimerId <span class="keyword">from</span> Orders);</span><br></pre></td></tr></table></figure>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> c.Name <span class="keyword">from</span> Customers c <span class="keyword">left</span> <span class="keyword">join</span> Orders o <span class="keyword">on</span> c.Id = o.CustormerId <span class="keyword">where</span> o.CustomerId <span class="keyword">is</span> <span class="literal">NULL</span>;</span><br></pre></td></tr></table></figure>
 <p>   前者的逻辑清晰，但对于大数据而言运算速度慢于后者。</p>
-<h2 id="delete-duplicate-emails">196. Delete Duplicate Emails</h2>
+<h2 id="196-delete-duplicate-emails">196. Delete Duplicate Emails</h2>
 <p>  Write a SQL query to delete all duplicate email entries in a table named Person, keeping only unique emails based on its smallest Id.</p>
 <table>
 <thead>
-<tr class="header">
+<tr>
 <th>Id</th>
 <th>Email</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td>1</td>
-<td>john@example.com</td>
+<td><a href="mailto:john@example.com" target="_blank" rel="noopener">john@example.com</a></td>
 </tr>
-<tr class="even">
+<tr>
 <td>2</td>
-<td>bob@example.com</td>
+<td><a href="mailto:bob@example.com" target="_blank" rel="noopener">bob@example.com</a></td>
 </tr>
-<tr class="odd">
+<tr>
 <td>3</td>
-<td>john@example.com</td>
+<td><a href="mailto:john@example.com" target="_blank" rel="noopener">john@example.com</a></td>
 </tr>
 </tbody>
 </table>
@@ -619,19 +619,19 @@
 <p>  For example, after running your query, the above Person table should have the following rows:</p>
 <table>
 <thead>
-<tr class="header">
+<tr>
 <th>Id</th>
 <th>Email</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td>1</td>
-<td>john@example.com</td>
+<td><a href="mailto:john@example.com" target="_blank" rel="noopener">john@example.com</a></td>
 </tr>
-<tr class="even">
+<tr>
 <td>2</td>
-<td>bob@example.com</td>
+<td><a href="mailto:bob@example.com" target="_blank" rel="noopener">bob@example.com</a></td>
 </tr>
 </tbody>
 </table>
@@ -717,9 +717,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/LeetCode/" rel="tag"><i class="fa fa-tag"></i> LeetCode</a>
-          
             <a href="/tags/MySql/" rel="tag"><i class="fa fa-tag"></i> MySql</a>
+          
+            <a href="/tags/LeetCode/" rel="tag"><i class="fa fa-tag"></i> LeetCode</a>
           
         </div>
       
@@ -848,7 +848,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">120</span>
+                  <span class="site-state-item-count">121</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -870,7 +870,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">56</span>
+                  <span class="site-state-item-count">58</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -956,7 +956,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#customers-who-never-order"><span class="nav-text">183. Customers Who Never Order</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#delete-duplicate-emails"><span class="nav-text">196. Delete Duplicate Emails</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#183-customers-who-never-order"><span class="nav-text">183. Customers Who Never Order</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#196-delete-duplicate-emails"><span class="nav-text">196. Delete Duplicate Emails</span></a></li></ol></div>
             
 
           </div>
@@ -997,7 +997,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">75.2k</span>
+    <span title="Site words total count">75.8k</span>
   
 </div>
 

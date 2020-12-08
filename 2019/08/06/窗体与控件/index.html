@@ -523,29 +523,38 @@
       
 
       
-        <p>   窗体是 vba 中十分有用的东西，利用它可以做出用户界面。 <a id="more"></a></p>
-<h1 id="操作用户窗体">1. 操作用户窗体</h1>
-<h2 id="创建用户窗体">1.1 创建用户窗体</h2>
+        <p>   窗体是 vba 中十分有用的东西，利用它可以做出用户界面。</p>
+<a id="more"></a>
+<h1 id="1-cao-zuo-yong-hu-chuang-ti">1. 操作用户窗体</h1>
+<h2 id="1-1-chuang-jian-yong-hu-chuang-ti">1.1 创建用户窗体</h2>
 <p>   在 VBA 中，只需在工程栏：右键：插入 - 用户窗体，即可插入一个用户窗体。</p>
-<h2 id="用户窗体的常见属性">1.2 用户窗体的常见属性</h2>
-<p>   在用户窗体上，右键：属性可以查看和修改用户窗体的属性。    用户窗体的常见属性包括：Caption - 标题、Visible - 可见性、Enabled - 可用性和 ShowModal - 显示模式。</p>
-<h2 id="用户窗体的常见方法">1.3 用户窗体的常见方法</h2>
+<h2 id="1-2-yong-hu-chuang-ti-de-chang-jian-shu-xing">1.2 用户窗体的常见属性</h2>
+<p>   在用户窗体上，右键：属性可以查看和修改用户窗体的属性。<br>
+   用户窗体的常见属性包括：Caption - 标题、Visible - 可见性、Enabled - 可用性和 ShowModal - 显示模式。</p>
+<h2 id="1-3-yong-hu-chuang-ti-de-chang-jian-fang-fa">1.3 用户窗体的常见方法</h2>
 <p>   用户窗体的常见方法包括：Show - 显示和 Hide - 隐藏。</p>
-<h2 id="用户窗体的常用事件">1.4 用户窗体的常用事件</h2>
+<h2 id="1-4-yong-hu-chuang-ti-de-chang-yong-shi-jian">1.4 用户窗体的常用事件</h2>
 <p>   用户窗体的常见事件包括：UserForm_Activate - 激活和 UserForm_QueryClose - 退出。</p>
-<h1 id="用户窗体中的控件">2. 用户窗体中的控件</h1>
-<h2 id="文本框控件textbox">2.1 文本框控件：TextBox</h2>
+<h1 id="2-yong-hu-chuang-ti-zhong-de-kong-jian">2. 用户窗体中的控件</h1>
+<h2 id="2-1-wen-ben-kuang-kong-jian-text-box">2.1 文本框控件：TextBox</h2>
 <p>   文本框控件的常用属性包括：Value - 返回值、Visible - 可见性、PasswordChar - 密码字符、Enabled - 可用性和 TabIndex - 按下 Tab 键时的切换顺序。</p>
-<h2 id="复选框控件checkbox">2.2 复选框控件：CheckBox</h2>
+<h2 id="2-2-fu-xuan-kuang-kong-jian-check-box">2.2 复选框控件：CheckBox</h2>
 <p>   复选框控件的常用属性包括：Value - 返回值、Visible - 可见性和 Enabled - 可用性。</p>
-<h2 id="复合框控件combobox">2.3 复合框控件：ComboBox</h2>
-<p>   复合框控件的常用属性包括：Enable - 可用性、Value - 返回值、Visible - 可见性和 List - 数据源列表。    复合框控件的常用方法包括：AddItem - 增加一个下拉项目、RemoveItem - 移除一个项目和 Clear。</p>
-<h2 id="列表框控件listbox">2.4 列表框控件：ListBox</h2>
-<p>   列表框控件的常用属性包括：Enable - 可用性、Value - 返回值、Visible - 可见性、ColumnCount - 列和 List - 数据源列表。    列表框控件的常用方法包括：AddItem - 增加一个下拉项目、RemoveItem - 移除一个项目和 Clear。</p>
-<h1 id="案例会员信息查询">3. 案例：会员信息查询</h1>
-<p>   首先，需要插入一个文本框、命令按钮和一个列表框，并且分别在右侧插入 label, 如下图所示。 <img src="https://blog-1258437747.cos.ap-chengdu.myqcloud.com/20190806110810.png">    然后，选中文本框：右键：查看代码，在右上角选中 change, 插入以下代码： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Dim arr ()</span><br><span class="line">If Len (TextBox1.Value) &gt;= 4 Then</span><br><span class="line">    Me.ListBox1.Clear</span><br><span class="line">    arr = Sheet1.Range (&quot;i2:i&quot; &amp; Sheet1.Range (&quot;a65536&quot;).End (xlUp).Row)</span><br><span class="line">    </span><br><span class="line">    For i = LBound (arr) To UBound (arr)</span><br><span class="line">        If InStr (arr (i, 1), Me.TextBox1.Value) &gt; 0 Then</span><br><span class="line">            Me.ListBox1.AddItem arr (i, 1)</span><br><span class="line">        End If</span><br><span class="line">    Next</span><br><span class="line">    If Me.ListBox1.ListCount &gt; 0 Then</span><br><span class="line">    Me.ListBox1.Visible = True</span><br><span class="line">    End If</span><br><span class="line">Else</span><br><span class="line">    Me.ListBox1.Clear</span><br><span class="line">    Me.ListBox1.Visible = False</span><br></pre></td></tr></table></figure></p>
-<p>   之后，选中列表框控件：右键：查看代码，在右上角选中 Click, 插入以下代码: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Me.TextBox1 = Me.ListBox1.Value</span><br><span class="line">Me.ListBox1.Visible = False</span><br></pre></td></tr></table></figure></p>
-<p>   上述两端代码实现了联想输入的功能，但并没有返回查询结果，接下来需要在标签栏中输入内容。为此，需要选中命令按钮：右键：查看代码，在右上角选中 Click, 插入以下代码: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">Dim rng As Range</span><br><span class="line"></span><br><span class="line">&apos; 用 find 方法做 </span><br><span class="line">Set rng = Sheet1.Range (&quot;i1:i1000&quot;).Find (Me.TextBox1.Value)</span><br><span class="line">If rng Is Nothing Then</span><br><span class="line">    MsgBox &quot; 无该用户 & quot;</span><br><span class="line">Else</span><br><span class="line">    Me.Label3.Caption = rng.Offset (0, -6)</span><br><span class="line">    Me.Label4.Caption = rng.Offset (0, -5)</span><br><span class="line">    Me.Label6.Caption = rng.Offset (0, -4)</span><br><span class="line">    Me.Label8.Caption = rng</span><br><span class="line">    Me.Label10.Caption = rng.Offset (0, -3)</span><br><span class="line">    Me.Label12.Caption = rng.Offset (0, -2)</span><br><span class="line">    Me.Label13.Caption = rng.Offset (0, -1)</span><br><span class="line">End If</span><br></pre></td></tr></table></figure></p>
+<h2 id="2-3-fu-he-kuang-kong-jian-combo-box">2.3 复合框控件：ComboBox</h2>
+<p>   复合框控件的常用属性包括：Enable - 可用性、Value - 返回值、Visible - 可见性和 List - 数据源列表。<br>
+   复合框控件的常用方法包括：AddItem - 增加一个下拉项目、RemoveItem - 移除一个项目和 Clear。</p>
+<h2 id="2-4-lie-biao-kuang-kong-jian-list-box">2.4 列表框控件：ListBox</h2>
+<p>   列表框控件的常用属性包括：Enable - 可用性、Value - 返回值、Visible - 可见性、ColumnCount - 列和 List - 数据源列表。<br>
+   列表框控件的常用方法包括：AddItem - 增加一个下拉项目、RemoveItem - 移除一个项目和 Clear。</p>
+<h1 id="3-an-li-hui-yuan-xin-xi-cha-xun">3. 案例：会员信息查询</h1>
+<p>   首先，需要插入一个文本框、命令按钮和一个列表框，并且分别在右侧插入 label, 如下图所示。<br>
+<img src="https://blog-1258437747.cos.ap-chengdu.myqcloud.com/20190806110810.png" alt=""><br>
+   然后，选中文本框：右键：查看代码，在右上角选中 change, 插入以下代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Dim arr ()</span><br><span class="line">If Len (TextBox1.Value) &gt;= 4 Then</span><br><span class="line">    Me.ListBox1.Clear</span><br><span class="line">    arr = Sheet1.Range (&quot;i2:i&quot; &amp; Sheet1.Range (&quot;a65536&quot;).End (xlUp).Row)</span><br><span class="line">    </span><br><span class="line">    For i = LBound (arr) To UBound (arr)</span><br><span class="line">        If InStr (arr (i, 1), Me.TextBox1.Value) &gt; 0 Then</span><br><span class="line">            Me.ListBox1.AddItem arr (i, 1)</span><br><span class="line">        End If</span><br><span class="line">    Next</span><br><span class="line">    If Me.ListBox1.ListCount &gt; 0 Then</span><br><span class="line">    Me.ListBox1.Visible = True</span><br><span class="line">    End If</span><br><span class="line">Else</span><br><span class="line">    Me.ListBox1.Clear</span><br><span class="line">    Me.ListBox1.Visible = False</span><br></pre></td></tr></table></figure>
+<p>   之后，选中列表框控件：右键：查看代码，在右上角选中 Click, 插入以下代码:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Me.TextBox1 = Me.ListBox1.Value</span><br><span class="line">Me.ListBox1.Visible = False</span><br></pre></td></tr></table></figure>
+<p>   上述两端代码实现了联想输入的功能，但并没有返回查询结果，接下来需要在标签栏中输入内容。为此，需要选中命令按钮：右键：查看代码，在右上角选中 Click, 插入以下代码:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">Dim rng As Range</span><br><span class="line"></span><br><span class="line">&apos; 用 find 方法做 </span><br><span class="line">Set rng = Sheet1.Range (&quot;i1:i1000&quot;).Find (Me.TextBox1.Value)</span><br><span class="line">If rng Is Nothing Then</span><br><span class="line">    MsgBox &quot; 无该用户 & quot;</span><br><span class="line">Else</span><br><span class="line">    Me.Label3.Caption = rng.Offset (0, -6)</span><br><span class="line">    Me.Label4.Caption = rng.Offset (0, -5)</span><br><span class="line">    Me.Label6.Caption = rng.Offset (0, -4)</span><br><span class="line">    Me.Label8.Caption = rng</span><br><span class="line">    Me.Label10.Caption = rng.Offset (0, -3)</span><br><span class="line">    Me.Label12.Caption = rng.Offset (0, -2)</span><br><span class="line">    Me.Label13.Caption = rng.Offset (0, -1)</span><br><span class="line">End If</span><br></pre></td></tr></table></figure>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">
       
     </div>
@@ -756,7 +765,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">120</span>
+                  <span class="site-state-item-count">121</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -778,7 +787,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">56</span>
+                  <span class="site-state-item-count">58</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -864,7 +873,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#操作用户窗体"><span class="nav-text">1. 操作用户窗体</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#创建用户窗体"><span class="nav-text">1.1 创建用户窗体</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用户窗体的常见属性"><span class="nav-text">1.2 用户窗体的常见属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用户窗体的常见方法"><span class="nav-text">1.3 用户窗体的常见方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用户窗体的常用事件"><span class="nav-text">1.4 用户窗体的常用事件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#用户窗体中的控件"><span class="nav-text">2. 用户窗体中的控件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#文本框控件textbox"><span class="nav-text">2.1 文本框控件：TextBox</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#复选框控件checkbox"><span class="nav-text">2.2 复选框控件：CheckBox</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#复合框控件combobox"><span class="nav-text">2.3 复合框控件：ComboBox</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#列表框控件listbox"><span class="nav-text">2.4 列表框控件：ListBox</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#案例会员信息查询"><span class="nav-text">3. 案例：会员信息查询</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-cao-zuo-yong-hu-chuang-ti"><span class="nav-text">1. 操作用户窗体</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-chuang-jian-yong-hu-chuang-ti"><span class="nav-text">1.1 创建用户窗体</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-yong-hu-chuang-ti-de-chang-jian-shu-xing"><span class="nav-text">1.2 用户窗体的常见属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-yong-hu-chuang-ti-de-chang-jian-fang-fa"><span class="nav-text">1.3 用户窗体的常见方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-4-yong-hu-chuang-ti-de-chang-yong-shi-jian"><span class="nav-text">1.4 用户窗体的常用事件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-yong-hu-chuang-ti-zhong-de-kong-jian"><span class="nav-text">2. 用户窗体中的控件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-wen-ben-kuang-kong-jian-text-box"><span class="nav-text">2.1 文本框控件：TextBox</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-fu-xuan-kuang-kong-jian-check-box"><span class="nav-text">2.2 复选框控件：CheckBox</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-fu-he-kuang-kong-jian-combo-box"><span class="nav-text">2.3 复合框控件：ComboBox</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4-lie-biao-kuang-kong-jian-list-box"><span class="nav-text">2.4 列表框控件：ListBox</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-an-li-hui-yuan-xin-xi-cha-xun"><span class="nav-text">3. 案例：会员信息查询</span></a></li></ol></div>
             
 
           </div>
@@ -905,7 +914,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">75.2k</span>
+    <span title="Site words total count">75.8k</span>
   
 </div>
 

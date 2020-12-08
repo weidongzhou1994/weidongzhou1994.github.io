@@ -523,12 +523,13 @@
       
 
       
-        <p>   甘特图是一个表示时间日程的进度图，以发明者亨利・劳伦斯・甘特的名字命名。 <a id="more"></a></p>
-<h1 id="普通甘特图的制作">1. 普通甘特图的制作</h1>
+        <p>   甘特图是一个表示时间日程的进度图，以发明者亨利・劳伦斯・甘特的名字命名。</p>
+<a id="more"></a>
+<h1 id="1-pu-tong-gan-te-tu-de-zhi-zuo">1. 普通甘特图的制作</h1>
 <p>   甘特图的制作思路是：利用堆积条形图的特性，将底部的条形 “隐身”，然后调整坐标轴的取值范围，达到 “悬空” 的效果。</p>
-<p>   例子：<img src="https://blog-1258437747.cos.ap-chengdu.myqcloud.com/20190626213647.png"></p>
+<p>   例子：<img src="https://blog-1258437747.cos.ap-chengdu.myqcloud.com/20190626213647.png" alt=""></p>
 <p>   制作步骤：1）选择数据，插入：堆积条形图；2） 将纵坐标轴的坐标轴选项设置为：逆序类别；3) 选中计划开始日的数据系列，设置数据系列格式：无填充，无边框线条，若有阴影，则设置为无阴影；4) 更改横坐标轴的值：在空白单元格处，通过将单元格格式从日期更改为常规，从而将开始日期与结束日期转化为数字格式，此处：2014/5/1：41760，2014/5/26：41785。</p>
-<h1 id="动态甘特图的制作">2. 动态甘特图的制作</h1>
+<h1 id="2-dong-tai-gan-te-tu-de-zhi-zuo">2. 动态甘特图的制作</h1>
 <p>   动态甘特图与普通甘特图的区别是数据源是动态的，制作步骤是：利用 if 函数拆分天数为：已完成和未完成，已完成 = IF ($B$12&lt;B2,0,IF ($B$12&gt;B2+C2,C2,$B$12-B2))，未完成 = C2-E2，然后用 = today () 控制 B12 的值。</p>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">
       
@@ -742,7 +743,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">120</span>
+                  <span class="site-state-item-count">121</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -764,7 +765,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">56</span>
+                  <span class="site-state-item-count">58</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -850,7 +851,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#普通甘特图的制作"><span class="nav-text">1. 普通甘特图的制作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#动态甘特图的制作"><span class="nav-text">2. 动态甘特图的制作</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-pu-tong-gan-te-tu-de-zhi-zuo"><span class="nav-text">1. 普通甘特图的制作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-dong-tai-gan-te-tu-de-zhi-zuo"><span class="nav-text">2. 动态甘特图的制作</span></a></li></ol></div>
             
 
           </div>
@@ -891,7 +892,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">75.2k</span>
+    <span title="Site words total count">75.8k</span>
   
 </div>
 

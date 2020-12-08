@@ -142,18 +142,18 @@
 
 
 
-<meta name="description" content="1. 字符串的格式化    在 Python 中，我们经常会输出类似 &apos; 亲爱的 xxx 你好！你 xx 月的话费是 xx，余额是 xx&apos; 之类的字符串，而 xxx 的内容都是根据变量变化的，如：">
+<meta name="description" content="1. 字符串的格式化    在 Python 中，我们经常会输出类似 ’ 亲爱的 xxx 你好！你 xx 月的话费是 xx，余额是 xx’ 之类的字符串，而 xxx 的内容都是根据变量变化的，如：">
 <meta name="keywords" content="Python,用Python玩转数据,基础知识">
 <meta property="og:type" content="article">
 <meta property="og:title" content="字符串">
 <meta property="og:url" content="http://zhouweidong.ml/2019/06/08/字符串/index.html">
 <meta property="og:site_name" content="周卫东的博客">
-<meta property="og:description" content="1. 字符串的格式化    在 Python 中，我们经常会输出类似 &apos; 亲爱的 xxx 你好！你 xx 月的话费是 xx，余额是 xx&apos; 之类的字符串，而 xxx 的内容都是根据变量变化的，如：">
+<meta property="og:description" content="1. 字符串的格式化    在 Python 中，我们经常会输出类似 ’ 亲爱的 xxx 你好！你 xx 月的话费是 xx，余额是 xx’ 之类的字符串，而 xxx 的内容都是根据变量变化的，如：">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2020-09-03T14:17:04.763Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="字符串">
-<meta name="twitter:description" content="1. 字符串的格式化    在 Python 中，我们经常会输出类似 &apos; 亲爱的 xxx 你好！你 xx 月的话费是 xx，余额是 xx&apos; 之类的字符串，而 xxx 的内容都是根据变量变化的，如：">
+<meta name="twitter:description" content="1. 字符串的格式化    在 Python 中，我们经常会输出类似 ’ 亲爱的 xxx 你好！你 xx 月的话费是 xx，余额是 xx’ 之类的字符串，而 xxx 的内容都是根据变量变化的，如：">
 
 
 
@@ -484,7 +484,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,782
+                  1,797
                 </span>
               
 
@@ -521,383 +521,381 @@
       
 
       
-        <h1 id="字符串的格式化">1. 字符串的格式化</h1>
-<p>   在 Python 中，我们经常会输出类似 ' 亲爱的 xxx 你好！你 xx 月的话费是 xx，余额是 xx' 之类的字符串，而 xxx 的内容都是根据变量变化的，如： <a id="more"></a> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&apos; 亲爱的 % s 你好！你 % s 月的话费是 % d，余额是 % d。&apos; %(&apos; 周卫东 & apos;, &apos;5&apos;, 39, 1)</span><br></pre></td></tr></table></figure></p>
+        <h1 id="1-zi-fu-chuan-de-ge-shi-hua">1. 字符串的格式化</h1>
+<p>   在 Python 中，我们经常会输出类似 ’ 亲爱的 xxx 你好！你 xx 月的话费是 xx，余额是 xx’ 之类的字符串，而 xxx 的内容都是根据变量变化的，如：</p>
+<a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&apos; 亲爱的 % s 你好！你 % s 月的话费是 % d，余额是 % d。&apos; %(&apos; 周卫东 & apos;, &apos;5&apos;, 39, 1)</span><br></pre></td></tr></table></figure>
 <p>   常用的格式符如下：</p>
 <table>
 <thead>
-<tr class="header">
-<th style="text-align: left;">符号</th>
-<th style="text-align: left;">描述</th>
+<tr>
+<th style="text-align:left">符号</th>
+<th style="text-align:left">描述</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td style="text-align: left;">      % c</td>
-<td style="text-align: left;"> 格式化字符及其 ASCII 码</td>
+<tr>
+<td style="text-align:left">% c</td>
+<td style="text-align:left">格式化字符及其 ASCII 码</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">      % s</td>
-<td style="text-align: left;"> 格式化字符串</td>
+<tr>
+<td style="text-align:left">% s</td>
+<td style="text-align:left">格式化字符串</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">      % d</td>
-<td style="text-align: left;"> 格式化整数</td>
+<tr>
+<td style="text-align:left">% d</td>
+<td style="text-align:left">格式化整数</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">      % u</td>
-<td style="text-align: left;"> 格式化无符号整型</td>
+<tr>
+<td style="text-align:left">% u</td>
+<td style="text-align:left">格式化无符号整型</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">      % o</td>
-<td style="text-align: left;"> 格式化无符号八进制数</td>
+<tr>
+<td style="text-align:left">% o</td>
+<td style="text-align:left">格式化无符号八进制数</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">      % x</td>
-<td style="text-align: left;"> 格式化无符号十六进制数</td>
+<tr>
+<td style="text-align:left">% x</td>
+<td style="text-align:left">格式化无符号十六进制数</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">      % X</td>
-<td style="text-align: left;"> 格式化无符号十六进制数（大写）</td>
+<tr>
+<td style="text-align:left">% X</td>
+<td style="text-align:left">格式化无符号十六进制数（大写）</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">      % f</td>
-<td style="text-align: left;"> 格式化浮点数字，可指定小数点后的精度</td>
+<tr>
+<td style="text-align:left">% f</td>
+<td style="text-align:left">格式化浮点数字，可指定小数点后的精度</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">      % e</td>
-<td style="text-align: left;"> 用科学计数法格式化浮点数</td>
+<tr>
+<td style="text-align:left">% e</td>
+<td style="text-align:left">用科学计数法格式化浮点数</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">      % E</td>
-<td style="text-align: left;"> 作用同 % e，用科学计数法格式化浮点数</td>
+<tr>
+<td style="text-align:left">% E</td>
+<td style="text-align:left">作用同 % e，用科学计数法格式化浮点数</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">      % g</td>
-<td style="text-align: left;"> % f 和 % e 的简写</td>
+<tr>
+<td style="text-align:left">% g</td>
+<td style="text-align:left">% f 和 % e 的简写</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">      % G</td>
-<td style="text-align: left;"> % F 和 % E 的简写</td>
+<tr>
+<td style="text-align:left">% G</td>
+<td style="text-align:left">% F 和 % E 的简写</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">      % p</td>
-<td style="text-align: left;"> 用十六进制数格式化变量的地址</td>
+<tr>
+<td style="text-align:left">% p</td>
+<td style="text-align:left">用十六进制数格式化变量的地址</td>
 </tr>
 </tbody>
 </table>
 <p>   除此之外，还有一些辅助格式化操作符的指令，如下所示：</p>
 <table>
 <thead>
-<tr class="header">
-<th style="text-align: left;">符号</th>
-<th style="text-align: left;">功能</th>
+<tr>
+<th style="text-align:left">符号</th>
+<th style="text-align:left">功能</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td style="text-align: left;">*</td>
-<td style="text-align: left;">定义宽度或者小数点精度</td>
+<tr>
+<td style="text-align:left">*</td>
+<td style="text-align:left">定义宽度或者小数点精度</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">-</td>
-<td style="text-align: left;">用做左对齐</td>
+<tr>
+<td style="text-align:left">-</td>
+<td style="text-align:left">用做左对齐</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">+</td>
-<td style="text-align: left;">在正数前面显示加号 ( + )</td>
+<tr>
+<td style="text-align:left">+</td>
+<td style="text-align:left">在正数前面显示加号 ( + )</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;"><sp></sp></td>
-<td style="text-align: left;">在正数前面显示空格</td>
+<tr>
+<td style="text-align:left"><sp></sp></td>
+<td style="text-align:left">在正数前面显示空格</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">#</td>
-<td style="text-align: left;">在八进制数前面显示零 ('0')，在十六进制前面显示 '0x' 或者 '0X'(取决于用的是 'x' 还是 'X')</td>
+<tr>
+<td style="text-align:left">#</td>
+<td style="text-align:left">在八进制数前面显示零 (‘0’)，在十六进制前面显示 ‘0x’ 或者 ‘0X’(取决于用的是 ‘x’ 还是 ‘X’)</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">0</td>
-<td style="text-align: left;">显示的数字前面填充 '0' 而不是默认的空格</td>
+<tr>
+<td style="text-align:left">0</td>
+<td style="text-align:left">显示的数字前面填充 ‘0’ 而不是默认的空格</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">%</td>
-<td style="text-align: left;">'%%' 输出一个单一的 '%'</td>
+<tr>
+<td style="text-align:left">%</td>
+<td style="text-align:left">‘%%’ 输出一个单一的 ‘%’</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">(var)</td>
-<td style="text-align: left;">映射变量 (字典参数)</td>
+<tr>
+<td style="text-align:left">(var)</td>
+<td style="text-align:left">映射变量 (字典参数)</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">m.n.</td>
-<td style="text-align: left;">m 是显示的最小总宽度，n 是小数点后的位数 (如果可用的话)</td>
+<tr>
+<td style="text-align:left">m.n.</td>
+<td style="text-align:left">m 是显示的最小总宽度，n 是小数点后的位数 (如果可用的话)</td>
 </tr>
 </tbody>
 </table>
-<h1 id="字符串的应用">2. 字符串的应用</h1>
+<h1 id="2-zi-fu-chuan-de-ying-yong">2. 字符串的应用</h1>
 <p>   字符串的内建函数如下：</p>
 <table>
-<colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
-</colgroup>
 <thead>
-<tr class="header">
-<th style="text-align: left;">方法</th>
-<th style="text-align: left;">描述</th>
+<tr>
+<th style="text-align:left">方法</th>
+<th style="text-align:left">描述</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td style="text-align: left;">string.capitalize ()</td>
-<td style="text-align: left;">把字符串的第一个字符大写</td>
+<tr>
+<td style="text-align:left">string.capitalize ()</td>
+<td style="text-align:left">把字符串的第一个字符大写</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">string.center (width)</td>
-<td style="text-align: left;">返回一个原字符串居中，并使用空格填充至长度 width 的新字符串</td>
+<tr>
+<td style="text-align:left">string.center (width)</td>
+<td style="text-align:left">返回一个原字符串居中，并使用空格填充至长度 width 的新字符串</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">string.count (str, beg=0, end=len (string))</td>
-<td style="text-align: left;">返回 str 在 string 里面出现的次数，如果 beg 或者 end 指定则返回指定范围内 str 出现的次数</td>
+<tr>
+<td style="text-align:left">string.count (str, beg=0, end=len (string))</td>
+<td style="text-align:left">返回 str 在 string 里面出现的次数，如果 beg 或者 end 指定则返回指定范围内 str 出现的次数</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">string.decode (encoding='UTF-8', errors='strict')</td>
-<td style="text-align: left;">以 encoding 指定的编码格式解码 string，如果出错默认报一个 ValueError 的 异 常 ， 除非 errors 指 定 的 是 'ignore' 或 者 'replace'</td>
+<tr>
+<td style="text-align:left">string.decode (encoding=‘UTF-8’, errors=‘strict’)</td>
+<td style="text-align:left">以 encoding 指定的编码格式解码 string，如果出错默认报一个 ValueError 的 异 常 ， 除非 errors 指 定 的 是 ‘ignore’ 或 者 ‘replace’</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">string.encode (encoding='UTF-8', errors='strict')</td>
-<td style="text-align: left;">以 encoding 指定的编码格式编码 string，如果出错默认报一个 ValueError 的异常，除非 errors 指定的是 'ignore' 或者 'replace'</td>
+<tr>
+<td style="text-align:left">string.encode (encoding=‘UTF-8’, errors=‘strict’)</td>
+<td style="text-align:left">以 encoding 指定的编码格式编码 string，如果出错默认报一个 ValueError 的异常，除非 errors 指定的是 ‘ignore’ 或者 ‘replace’</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">string.endswith (obj, beg=0, end=len (string))</td>
-<td style="text-align: left;">检查字符串是否以 obj 结束，如果 beg 或者 end 指定则检查指定的范围内是否以 obj 结束，如果是，返回 True, 否则返回 False.</td>
+<tr>
+<td style="text-align:left">string.endswith (obj, beg=0, end=len (string))</td>
+<td style="text-align:left">检查字符串是否以 obj 结束，如果 beg 或者 end 指定则检查指定的范围内是否以 obj 结束，如果是，返回 True, 否则返回 False.</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">string.expandtabs (tabsize=8)</td>
-<td style="text-align: left;">把字符串 string 中的 tab 符号转为空格，tab 符号默认的空格数是 8。</td>
+<tr>
+<td style="text-align:left">string.expandtabs (tabsize=8)</td>
+<td style="text-align:left">把字符串 string 中的 tab 符号转为空格，tab 符号默认的空格数是 8。</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">string.find (str, beg=0, end=len (string))</td>
-<td style="text-align: left;">检测 str 是否包含在 string 中，如果 beg 和 end 指定范围，则检查是否包含在指定范围内，如果是返回开始的索引值，否则返回 - 1</td>
+<tr>
+<td style="text-align:left">string.find (str, beg=0, end=len (string))</td>
+<td style="text-align:left">检测 str 是否包含在 string 中，如果 beg 和 end 指定范围，则检查是否包含在指定范围内，如果是返回开始的索引值，否则返回 - 1</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">string.format ()</td>
-<td style="text-align: left;">格式化字符串</td>
+<tr>
+<td style="text-align:left">string.format ()</td>
+<td style="text-align:left">格式化字符串</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">string.index (str, beg=0, end=len (string))</td>
-<td style="text-align: left;">跟 find () 方法一样，只不过如果 str 不在 string 中会报一个异常.</td>
+<tr>
+<td style="text-align:left">string.index (str, beg=0, end=len (string))</td>
+<td style="text-align:left">跟 find () 方法一样，只不过如果 str 不在 string 中会报一个异常.</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">string.isalnum ()</td>
-<td style="text-align: left;">如果 string 至少有一个字符并且所有字符都是字母或数字则返</td>
+<tr>
+<td style="text-align:left">string.isalnum ()</td>
+<td style="text-align:left">如果 string 至少有一个字符并且所有字符都是字母或数字则返</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;"></td>
-<td style="text-align: left;">回 True, 否则返回 False</td>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left">回 True, 否则返回 False</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">string.isalpha ()</td>
-<td style="text-align: left;">如果 string 至少有一个字符并且所有字符都是字母则返回 True,</td>
+<tr>
+<td style="text-align:left">string.isalpha ()</td>
+<td style="text-align:left">如果 string 至少有一个字符并且所有字符都是字母则返回 True,</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;"></td>
-<td style="text-align: left;">否则返回 False</td>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left">否则返回 False</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">string.isdecimal ()</td>
-<td style="text-align: left;">如果 string 只包含十进制数字则返回 True 否则返回 False.</td>
+<tr>
+<td style="text-align:left">string.isdecimal ()</td>
+<td style="text-align:left">如果 string 只包含十进制数字则返回 True 否则返回 False.</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">string.isdigit ()</td>
-<td style="text-align: left;">如果 string 只包含数字则返回 True 否则返回 False.</td>
+<tr>
+<td style="text-align:left">string.isdigit ()</td>
+<td style="text-align:left">如果 string 只包含数字则返回 True 否则返回 False.</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">string.islower ()</td>
-<td style="text-align: left;">如果 string 中包含至少一个区分大小写的字符，并且所有这些 (区分大小写的) 字符都是小写，则返回 True，否则返回 False</td>
+<tr>
+<td style="text-align:left">string.islower ()</td>
+<td style="text-align:left">如果 string 中包含至少一个区分大小写的字符，并且所有这些 (区分大小写的) 字符都是小写，则返回 True，否则返回 False</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">string.isnumeric ()</td>
-<td style="text-align: left;">如果 string 中只包含数字字符，则返回 True，否则返回 False</td>
+<tr>
+<td style="text-align:left">string.isnumeric ()</td>
+<td style="text-align:left">如果 string 中只包含数字字符，则返回 True，否则返回 False</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">string.isspace ()</td>
-<td style="text-align: left;">如果 string 中只包含空格，则返回 True，否则返回 False.</td>
+<tr>
+<td style="text-align:left">string.isspace ()</td>
+<td style="text-align:left">如果 string 中只包含空格，则返回 True，否则返回 False.</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">string.istitle ()</td>
-<td style="text-align: left;">如果 string 是标题化的 (见 title ()) 则返回 True，否则返回 False</td>
+<tr>
+<td style="text-align:left">string.istitle ()</td>
+<td style="text-align:left">如果 string 是标题化的 (见 title ()) 则返回 True，否则返回 False</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">string.isupper ()</td>
-<td style="text-align: left;">如果 string 中包含至少一个区分大小写的字符，并且所有这些 (区分大小写的) 字符都是大写，则返回 True，否则返回 False</td>
+<tr>
+<td style="text-align:left">string.isupper ()</td>
+<td style="text-align:left">如果 string 中包含至少一个区分大小写的字符，并且所有这些 (区分大小写的) 字符都是大写，则返回 True，否则返回 False</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">string.join (seq)</td>
-<td style="text-align: left;">以 string 作为分隔符，将 seq 中所有的元素 (的字符串表示) 合并为一个新的字符串</td>
+<tr>
+<td style="text-align:left">string.join (seq)</td>
+<td style="text-align:left">以 string 作为分隔符，将 seq 中所有的元素 (的字符串表示) 合并为一个新的字符串</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">string.ljust (width)</td>
-<td style="text-align: left;">返回一个原字符串左对齐，并使用空格填充至长度 width 的新字符串</td>
+<tr>
+<td style="text-align:left">string.ljust (width)</td>
+<td style="text-align:left">返回一个原字符串左对齐，并使用空格填充至长度 width 的新字符串</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">string.lower ()</td>
-<td style="text-align: left;">转换 string 中所有大写字符为小写.</td>
+<tr>
+<td style="text-align:left">string.lower ()</td>
+<td style="text-align:left">转换 string 中所有大写字符为小写.</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">string.lstrip ()</td>
-<td style="text-align: left;">截掉 string 左边的空格</td>
+<tr>
+<td style="text-align:left">string.lstrip ()</td>
+<td style="text-align:left">截掉 string 左边的空格</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">string.maketrans (intab, outtab])</td>
-<td style="text-align: left;">maketrans () 方法用于创建字符映射的转换表，对于接受两个参数的最简单的调用方式，第一个参数是字符串，表示需要转换的字符，第二个参数也是字符串表示转换的目标。</td>
+<tr>
+<td style="text-align:left">string.maketrans (intab, outtab])</td>
+<td style="text-align:left">maketrans () 方法用于创建字符映射的转换表，对于接受两个参数的最简单的调用方式，第一个参数是字符串，表示需要转换的字符，第二个参数也是字符串表示转换的目标。</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">max (str)</td>
-<td style="text-align: left;">返回字符串 str 中最大的字母。</td>
+<tr>
+<td style="text-align:left">max (str)</td>
+<td style="text-align:left">返回字符串 str 中最大的字母。</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">min (str)</td>
-<td style="text-align: left;">返回字符串 str 中最小的字母。</td>
+<tr>
+<td style="text-align:left">min (str)</td>
+<td style="text-align:left">返回字符串 str 中最小的字母。</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">string.partition (str)</td>
-<td style="text-align: left;">有点像 find () 和 split () 的结合体，从 str 出现的第一个位置起，把 字 符 串 string 分 成 一 个 3 元 素 的 元 组 (string_pre_str,str,string_post_str), 如果 string 中不包含 str 则 string_pre_str == string.</td>
+<tr>
+<td style="text-align:left">string.partition (str)</td>
+<td style="text-align:left">有点像 find () 和 split () 的结合体，从 str 出现的第一个位置起，把 字 符 串 string 分 成 一 个 3 元 素 的 元 组 (string_pre_str,str,string_post_str), 如果 string 中不包含 str 则 string_pre_str == string.</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">string.replace (str1, str2,  num=string.count (str1))</td>
-<td style="text-align: left;">把 string 中的 str1 替换成 str2, 如果 num 指定，则替换不超过 num 次.</td>
+<tr>
+<td style="text-align:left">string.replace (str1, str2,  num=string.count (str1))</td>
+<td style="text-align:left">把 string 中的 str1 替换成 str2, 如果 num 指定，则替换不超过 num 次.</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">string.rfind (str, beg=0,end=len (string) )</td>
-<td style="text-align: left;">类似于 find () 函数，不过是从右边开始查找.</td>
+<tr>
+<td style="text-align:left">string.rfind (str, beg=0,end=len (string) )</td>
+<td style="text-align:left">类似于 find () 函数，不过是从右边开始查找.</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">string.rindex ( str, beg=0,end=len (string))</td>
-<td style="text-align: left;">类似于 index ()，不过是从右边开始.</td>
+<tr>
+<td style="text-align:left">string.rindex ( str, beg=0,end=len (string))</td>
+<td style="text-align:left">类似于 index ()，不过是从右边开始.</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">string.rjust (width)</td>
-<td style="text-align: left;">返回一个原字符串右对齐，并使用空格填充至长度 width 的新字符串</td>
+<tr>
+<td style="text-align:left">string.rjust (width)</td>
+<td style="text-align:left">返回一个原字符串右对齐，并使用空格填充至长度 width 的新字符串</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">string.rpartition (str)</td>
-<td style="text-align: left;">类似于 partition () 函数，不过是从右边开始查找</td>
+<tr>
+<td style="text-align:left">string.rpartition (str)</td>
+<td style="text-align:left">类似于 partition () 函数，不过是从右边开始查找</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">string.rstrip ()</td>
-<td style="text-align: left;">删除 string 字符串末尾的空格.</td>
+<tr>
+<td style="text-align:left">string.rstrip ()</td>
+<td style="text-align:left">删除 string 字符串末尾的空格.</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">string.split (str=&quot;&quot;, num=string.count (str))</td>
-<td style="text-align: left;">以 str 为分隔符切片 string，如果 num 有指定值，则仅分隔 num+ 个子字符串</td>
+<tr>
+<td style="text-align:left">string.split (str=&quot;&quot;, num=string.count (str))</td>
+<td style="text-align:left">以 str 为分隔符切片 string，如果 num 有指定值，则仅分隔 num+ 个子字符串</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">string.splitlines ([keepends])</td>
-<td style="text-align: left;">按照行 ('', '', ') 分隔，返回一个包含各行作为元素的列表，如果参数 keepends 为 False，不包含换行符，如果为 True，则保留换行符。</td>
+<tr>
+<td style="text-align:left">string.splitlines ([keepends])</td>
+<td style="text-align:left">按照行 (’\r’, ‘\r\n’, \n’) 分隔，返回一个包含各行作为元素的列表，如果参数 keepends 为 False，不包含换行符，如果为 True，则保留换行符。</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">string.startswith (obj, beg=0,end=len (string))</td>
-<td style="text-align: left;">检查字符串是否是以 obj 开头，是则返回 True，否则返回 False。如果 beg 和 end 指定值，则在指定范围内检查.</td>
+<tr>
+<td style="text-align:left">string.startswith (obj, beg=0,end=len (string))</td>
+<td style="text-align:left">检查字符串是否是以 obj 开头，是则返回 True，否则返回 False。如果 beg 和 end 指定值，则在指定范围内检查.</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">string.strip ([obj])</td>
-<td style="text-align: left;">在 string 上执行 lstrip () 和 rstrip ()</td>
+<tr>
+<td style="text-align:left">string.strip ([obj])</td>
+<td style="text-align:left">在 string 上执行 lstrip () 和 rstrip ()</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">string.swapcase ()</td>
-<td style="text-align: left;">翻转 string 中的大小写</td>
+<tr>
+<td style="text-align:left">string.swapcase ()</td>
+<td style="text-align:left">翻转 string 中的大小写</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">string.title ()</td>
-<td style="text-align: left;">返回 &quot;标题化&quot; 的 string, 就是说所有单词都是以大写开始，其余字母均为小写 (见 istitle ())</td>
+<tr>
+<td style="text-align:left">string.title ()</td>
+<td style="text-align:left">返回 “标题化” 的 string, 就是说所有单词都是以大写开始，其余字母均为小写 (见 istitle ())</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">string.translate (str, del=&quot;&quot;)</td>
-<td style="text-align: left;">根据 str 给出的表 (包含 256 个字符) 转换 string 的字符，要过滤掉的字符放到 del 参数中</td>
+<tr>
+<td style="text-align:left">string.translate (str, del=&quot;&quot;)</td>
+<td style="text-align:left">根据 str 给出的表 (包含 256 个字符) 转换 string 的字符，要过滤掉的字符放到 del 参数中</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">string.upper ()</td>
-<td style="text-align: left;">转换 string 中的小写字母为大写</td>
+<tr>
+<td style="text-align:left">string.upper ()</td>
+<td style="text-align:left">转换 string 中的小写字母为大写</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">string.zfill (width)</td>
-<td style="text-align: left;">返回长度为 width 的字符串，原字符串 string 右对齐，前面填充 0</td>
+<tr>
+<td style="text-align:left">string.zfill (width)</td>
+<td style="text-align:left">返回长度为 width 的字符串，原字符串 string 右对齐，前面填充 0</td>
 </tr>
 </tbody>
 </table>
-<h1 id="转义符">3. 转义符</h1>
+<h1 id="3-zhuan-yi-fu">3. 转义符</h1>
 <p>   在需要在字符中使用特殊字符时，python 用反斜杠 (\) 转义字符。如下表：</p>
 <table>
 <thead>
-<tr class="header">
-<th style="text-align: left;">转义字符</th>
-<th style="text-align: left;">描述</th>
+<tr>
+<th style="text-align:left">转义字符</th>
+<th style="text-align:left">描述</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td style="text-align: left;">\(在行尾时)</td>
-<td style="text-align: left;">续行符</td>
+<tr>
+<td style="text-align:left">\(在行尾时)</td>
+<td style="text-align:left">续行符</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">\\</td>
-<td style="text-align: left;">反斜杠符号</td>
+<tr>
+<td style="text-align:left">\\</td>
+<td style="text-align:left">反斜杠符号</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">'</td>
-<td style="text-align: left;">单引号</td>
+<tr>
+<td style="text-align:left">’</td>
+<td style="text-align:left">单引号</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">&quot;</td>
-<td style="text-align: left;">双引号</td>
+<tr>
+<td style="text-align:left">&quot;</td>
+<td style="text-align:left">双引号</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;"></td>
-<td style="text-align: left;">响铃</td>
+<tr>
+<td style="text-align:left">\a</td>
+<td style="text-align:left">响铃</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;"></td>
-<td style="text-align: left;">退格 (Backspace)</td>
+<tr>
+<td style="text-align:left">\b</td>
+<td style="text-align:left">退格 (Backspace)</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;"></td>
-<td style="text-align: left;">转义</td>
+<tr>
+<td style="text-align:left">\e</td>
+<td style="text-align:left">转义</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">\000</td>
-<td style="text-align: left;">空</td>
+<tr>
+<td style="text-align:left">\000</td>
+<td style="text-align:left">空</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;"></td>
-<td style="text-align: left;">换行</td>
+<tr>
+<td style="text-align:left">\n</td>
+<td style="text-align:left">换行</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;"> 纵向制表符</td>
-<td style="text-align: left;"></td>
+<tr>
+<td style="text-align:left">\v</td>
+<td style="text-align:left">纵向制表符</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;"></td>
-<td style="text-align: left;">横向制表符</td>
+<tr>
+<td style="text-align:left">\t</td>
+<td style="text-align:left">横向制表符</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;"></td>
-<td style="text-align: left;">回车</td>
+<tr>
+<td style="text-align:left">\r</td>
+<td style="text-align:left">回车</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;"></td>
-<td style="text-align: left;">换页</td>
+<tr>
+<td style="text-align:left">\f</td>
+<td style="text-align:left">换页</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;"></td>
-<td style="text-align: left;">八进制数，yy 代表的字符，例如：12 代表换行</td>
+<tr>
+<td style="text-align:left">\oyy</td>
+<td style="text-align:left">八进制数，yy 代表的字符，例如：\o12 代表换行</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;"></td>
-<td style="text-align: left;">十六进制数，yy 代表的字符，例如：0a 代表换行</td>
+<tr>
+<td style="text-align:left">\xyy</td>
+<td style="text-align:left">十六进制数，yy 代表的字符，例如：\x0a 代表换行</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;"></td>
-<td style="text-align: left;">其它的字符以普通格式输出</td>
+<tr>
+<td style="text-align:left">\other</td>
+<td style="text-align:left">其它的字符以普通格式输出</td>
 </tr>
 </tbody>
 </table>
@@ -1111,7 +1109,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">120</span>
+                  <span class="site-state-item-count">121</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1133,7 +1131,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">56</span>
+                  <span class="site-state-item-count">58</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -1219,7 +1217,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#字符串的格式化"><span class="nav-text">1. 字符串的格式化</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#字符串的应用"><span class="nav-text">2. 字符串的应用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#转义符"><span class="nav-text">3. 转义符</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-zi-fu-chuan-de-ge-shi-hua"><span class="nav-text">1. 字符串的格式化</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-zi-fu-chuan-de-ying-yong"><span class="nav-text">2. 字符串的应用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-zhuan-yi-fu"><span class="nav-text">3. 转义符</span></a></li></ol></div>
             
 
           </div>
@@ -1260,7 +1258,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">75.2k</span>
+    <span title="Site words total count">75.8k</span>
   
 </div>
 
