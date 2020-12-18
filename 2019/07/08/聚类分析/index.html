@@ -484,7 +484,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  510
+                  452
                 </span>
               
 
@@ -523,18 +523,17 @@
       
         <p>   聚类分析是对没有目标变量的数据集根据数据的相似性给出 “自然的” 分组，目标是类内对象相似性尽量大，类间对象相似性尽量小。</p>
 <a id="more"></a>
-<h1 id="1-ju-lei-fen-xi-k-means-suan-fa-sup-class-footnote-ref-a-href-fn-1-id-fnref-1-1-a-sup">1. 聚类分析：K-Means 算法 <sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup></h1>
+<h1 id="聚类分析k-means-算法-1">1. 聚类分析：K-Means 算法 <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></h1>
 <p>  K-Means 算法的主要步骤如下：<br></p>
 <p>  1. 选择 K 个对象作为每个类的初始质心，然后计算其它每个对象与每个质心的距离，与距离最小的质心归为一类。<br></p>
 <p>  2. 指派到一个质心的对象集合为一个类，更新每个类的质心。<br></p>
 <p>  3. 重复上述指派和更新质心的步骤，直至类不发生变化为止。<br></p>
-<h1 id="2-yong-python-shi-xian-ju-lei-fen-xi">2. 用 python 实现聚类分析</h1>
+<h1 id="用-python-实现聚类分析">2. 用 python 实现聚类分析</h1>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"># encoding: utf-8</span><br><span class="line">import numpy as np</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">from sklearn.cluster import KMeans</span><br><span class="line"></span><br><span class="line"># 读取原始数据 </span><br><span class="line">X = []</span><br><span class="line">f = open (&apos;D:/ 代码 / 数据 / City.txt&apos;)</span><br><span class="line">for v in f:</span><br><span class="line">    X.append ([float (v.split ()[2][2:6]),float (v.split ()[3][2:8])])</span><br><span class="line"></span><br><span class="line"># 转化为 numpy array</span><br><span class="line">X = np.array (X)</span><br><span class="line">print (X)</span><br><span class="line"></span><br><span class="line"># 类簇的数量 </span><br><span class="line">n_clusters = 5</span><br><span class="line"> </span><br><span class="line"># 开始调用函数聚类 </span><br><span class="line">cls = KMeans (n_clusters).fit (X)</span><br><span class="line"> </span><br><span class="line"># 输出 X 中每项所属分类的一个列表 </span><br><span class="line">print (cls.labels_)</span><br><span class="line"> </span><br><span class="line"># 画图 </span><br><span class="line">markers = [&apos;*&apos;,&apos;o&apos;,&apos;+&apos;,&apos;s&apos;,&apos;v&apos;]</span><br><span class="line"> </span><br><span class="line">for i in range (n_clusters):</span><br><span class="line">    members = cls.labels_ == i#members 是布尔数组 </span><br><span class="line">    # array ([False, False, False, False, False, False, False, False, False,</span><br><span class="line">    #    False, False, False, False, False, False, False, False, False,</span><br><span class="line">    #    False, False,  True, False, False, False, False, False, False,</span><br><span class="line">    #    False,  True,  True,  True,  True, False, False,  True,  True,</span><br><span class="line">    #     True, False,  True, False,  True,  True,  True,  True,  True,</span><br><span class="line">    #     True, False, False, False, False,  True,  True,  True, False,</span><br><span class="line">    #    False, False, False,  True,  True,  True,  True,  True,  True,</span><br><span class="line">    #    ...])</span><br><span class="line">    plt.scatter (X [members,0],X [members,1],s = 60,marker = markers [i],c = &apos;b&apos;,alpha=0.5)# 画与 menbers 数组中匹配的点 </span><br><span class="line"> </span><br><span class="line">plt.title (&apos;China&apos;)</span><br><span class="line">plt.show ()</span><br><span class="line">print (X)</span><br></pre></td></tr></table></figure>
-<hr class="footnotes-sep">
-<section class="footnotes">
-<ol class="footnotes-list">
-<li id="fn1" class="footnote-item"><p>[聚类分析](<a href="https://zh.wikipedia.org/wiki/%25" target="_blank" rel="noopener">https://zh.wikipedia.org/wiki/%</a> E8%81%9A% E7% B1% BB% E5%88%86% E6%9E%90#% E7% BB%93% E6%9E%84% E6%80% A7% E8%81%9A% E7% B1% BB “聚类分析”)：[K-Means 算法](<a href="https://zh.wikipedia.org/wiki/K-%25" target="_blank" rel="noopener">https://zh.wikipedia.org/wiki/K-%</a> E5% B9% B3% E5%9D%87% E7% AE%97% E6% B3%95 “K-Means 算法”) <a href="#fnref1" class="footnote-backref">↩</a></p>
-</li>
+<section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1" role="doc-endnote"><p><a href="https://zh.wikipedia.org/wiki/%%20E8%81%9A%%20E7%%20B1%%20BB%%20E5%88%86%%20E6%9E%90#%%20E7%%20BB%93%%20E6%9E%84%%20E6%80%%20A7%%20E8%81%9A%%20E7%%20B1%%20BB" title="聚类分析" target="_blank" rel="noopener">聚类分析</a>：<a href="https://zh.wikipedia.org/wiki/K-%%20E5%%20B9%%20B3%%20E5%9D%87%%20E7%%20AE%97%%20E6%%20B3%95" title="K-Means 算法" target="_blank" rel="noopener">K-Means 算法</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">
@@ -747,7 +746,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">121</span>
+                  <span class="site-state-item-count">124</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -855,7 +854,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-ju-lei-fen-xi-k-means-suan-fa-sup-class-footnote-ref-a-href-fn-1-id-fnref-1-1-a-sup"><span class="nav-text">1. 聚类分析：K-Means 算法 [1]</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-yong-python-shi-xian-ju-lei-fen-xi"><span class="nav-text">2. 用 python 实现聚类分析</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#聚类分析k-means-算法-1"><span class="nav-text">1. 聚类分析：K-Means 算法 1</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#用-python-实现聚类分析"><span class="nav-text">2. 用 python 实现聚类分析</span></a></li></ol></div>
             
 
           </div>
@@ -896,7 +895,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">75.8k</span>
+    <span title="Site words total count">76.0k</span>
   
 </div>
 

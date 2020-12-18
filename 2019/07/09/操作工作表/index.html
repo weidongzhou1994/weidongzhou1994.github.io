@@ -142,18 +142,18 @@
 
 
 
-<meta name="description" content="1. Worksheets 工作表对象    对于 Worksheet 工作表对象而言，可以执行动作或呈现属性，前者包括 select、add、delete 和 copy; 后者包括 count 和 name，二者都是通过：工作表对象。动作 / 属性执行的。">
+<meta name="description" content="1. Worksheets 工作表对象    对于 Worksheet 工作表对象而言，可以执行动作或呈现属性，前者包括 select、add、delete 和 copy; 后者包括 count 和 name，二者都是通过：工作表对象。动作 / 属性执行的。">
 <meta name="keywords" content="Excel,VBA,基本操作">
 <meta property="og:type" content="article">
 <meta property="og:title" content="操作工作表">
 <meta property="og:url" content="http://zhouweidong.ml/2019/07/09/操作工作表/index.html">
 <meta property="og:site_name" content="周卫东的博客">
-<meta property="og:description" content="1. Worksheets 工作表对象    对于 Worksheet 工作表对象而言，可以执行动作或呈现属性，前者包括 select、add、delete 和 copy; 后者包括 count 和 name，二者都是通过：工作表对象。动作 / 属性执行的。">
+<meta property="og:description" content="1. Worksheets 工作表对象    对于 Worksheet 工作表对象而言，可以执行动作或呈现属性，前者包括 select、add、delete 和 copy; 后者包括 count 和 name，二者都是通过：工作表对象。动作 / 属性执行的。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2020-09-03T13:51:47.390Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="操作工作表">
-<meta name="twitter:description" content="1. Worksheets 工作表对象    对于 Worksheet 工作表对象而言，可以执行动作或呈现属性，前者包括 select、add、delete 和 copy; 后者包括 count 和 name，二者都是通过：工作表对象。动作 / 属性执行的。">
+<meta name="twitter:description" content="1. Worksheets 工作表对象    对于 Worksheet 工作表对象而言，可以执行动作或呈现属性，前者包括 select、add、delete 和 copy; 后者包括 count 和 name，二者都是通过：工作表对象。动作 / 属性执行的。">
 
 
 
@@ -521,21 +521,19 @@
       
 
       
-        <h1 id="1-worksheets-gong-zuo-biao-dui-xiang">1. Worksheets 工作表对象</h1>
-<p>   对于 Worksheet 工作表对象而言，可以执行动作或呈现属性，前者包括 select、add、delete 和 copy; 后者包括 count 和 name，二者都是通过：工作表对象。动作 / 属性执行的。</p>
-<a id="more"></a>
-<h1 id="2-application-zhu-cheng-xu-dui-xiang">2. Application 主程序对象</h1>
-<p>   在 VBA 中，为了优化代码，可以关闭屏幕更新，只需执行如下代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Application.ScreenUpdating = False    &apos; 关闭屏幕更新 </span><br><span class="line">Application.ScreenUpdating = True     &apos; 开启屏幕更新。tips: 执行完代码后，重新开启屏幕更新， 避免以后出错。</span><br></pre></td></tr></table></figure>
-<p>   关闭弹出警告窗口只需执行以下代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Application.DisplayAlerts = False  &apos; 关闭弹出警告窗口 </span><br><span class="line">Application.DisplayAlerts = True   &apos; 开启弹出警告窗口。执行完代码后必须重新开启弹出警告窗口， 避免以后出错。</span><br></pre></td></tr></table></figure>
-<h1 id="3-cao-zuo-shi-li">3. 操作实例</h1>
-<h2 id="3-1-pi-liang-chuang-jian-gong-zuo-biao">3.1 批量创建工作表</h2>
+        <h1 id="worksheets-工作表对象">1. Worksheets 工作表对象</h1>
+<p>   对于 Worksheet 工作表对象而言，可以执行动作或呈现属性，前者包括 select、add、delete 和 copy; 后者包括 count 和 name，二者都是通过：工作表对象。动作 / 属性执行的。 <a id="more"></a></p>
+<h1 id="application-主程序对象">2. Application 主程序对象</h1>
+<p>   在 VBA 中，为了优化代码，可以关闭屏幕更新，只需执行如下代码： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Application.ScreenUpdating = False    &apos; 关闭屏幕更新 </span><br><span class="line">Application.ScreenUpdating = True     &apos; 开启屏幕更新。tips: 执行完代码后，重新开启屏幕更新， 避免以后出错。</span><br></pre></td></tr></table></figure></p>
+<p>   关闭弹出警告窗口只需执行以下代码： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Application.DisplayAlerts = False  &apos; 关闭弹出警告窗口 </span><br><span class="line">Application.DisplayAlerts = True   &apos; 开启弹出警告窗口。执行完代码后必须重新开启弹出警告窗口， 避免以后出错。</span><br></pre></td></tr></table></figure></p>
+<h1 id="操作实例">3. 操作实例</h1>
+<h2 id="批量创建工作表">3.1 批量创建工作表</h2>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Sub 批量创建工作表 ()</span><br><span class="line">Dim i As Integer</span><br><span class="line">For i = 1 To 31</span><br><span class="line">    Sheet1.Copy after:=Sheets (Sheets.Count)</span><br><span class="line">    Sheets (Sheets.Count).Name = &quot;5 月 & quot; &amp; i &amp; &quot; 日 & quot;</span><br><span class="line">    Sheets (Sheets.Count).Range (&quot;e5&quot;) = &quot;2016-5-&quot; &amp; i</span><br><span class="line">Next    </span><br><span class="line">End Sub</span><br></pre></td></tr></table></figure>
-<h2 id="3-2-duo-biao-qu-zhi-he-bing">3.2 多表取值合并</h2>
+<h2 id="多表取值合并">3.2 多表取值合并</h2>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Sub test ()</span><br><span class="line">Dim i As Integer</span><br><span class="line"></span><br><span class="line">For i = 2 To Sheets.Count</span><br><span class="line">    Sheet1.Range (&quot;b&quot; &amp; i + 8) = Sheets (i).Range (&quot;e5&quot;)</span><br><span class="line">    Sheet1.Range (&quot;c&quot; &amp; i + 8) = Sheets (i).Range (&quot;e6&quot;)</span><br><span class="line">    Sheet1.Range (&quot;d&quot; &amp; i + 8) = Sheets (i).Range (&quot;e44&quot;)</span><br><span class="line"></span><br><span class="line">Next</span><br><span class="line">End Sub</span><br></pre></td></tr></table></figure>
-<h2 id="3-3-chu-li-kao-sheng-cheng-ji-biao">3.3 处理考生成绩表</h2>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">Sub 处理考生成绩表 ()</span><br><span class="line">Dim i As Integer</span><br><span class="line">Dim j As Integer</span><br><span class="line"></span><br><span class="line">For j = 1 To Sheets.Count</span><br><span class="line"></span><br><span class="line">    For i = 100 To 2 Step -1</span><br><span class="line">        If Sheets (j).Range (&quot;e&quot; &amp; i) = &quot; 男 & quot; Then</span><br><span class="line">            Sheets (j).Range (&quot;f&quot; &amp; i) = &quot; 先生 & quot;</span><br><span class="line">        Else</span><br><span class="line">            Sheets (j).Range (&quot;f&quot; &amp; i) = &quot; 女士 & quot;</span><br><span class="line">        End If</span><br><span class="line">        </span><br><span class="line">        If Sheets (j).Range (&quot;b&quot; &amp; i) = &quot; 理工 & quot; Then</span><br><span class="line">            Sheets (j).Range (&quot;c&quot; &amp; i) = &quot;LG&quot;</span><br><span class="line">        ElseIf Sheets (j).Range (&quot;b&quot; &amp; i) = &quot; 文科 & quot; Then</span><br><span class="line">            Sheets (j).Range (&quot;c&quot; &amp; i) = &quot;WK&quot;</span><br><span class="line">        Else</span><br><span class="line">            Sheets (j).Range (&quot;c&quot; &amp; i) = &quot;CJ&quot;</span><br><span class="line">        End If</span><br><span class="line">        </span><br><span class="line">        If Sheets (j).Range (&quot;d&quot; &amp; i) = &quot;&quot; Then</span><br><span class="line">            Sheets (j).Range (&quot;d&quot; &amp; i).EntireRow.Delete</span><br><span class="line">        End If</span><br><span class="line">    Next</span><br><span class="line"></span><br><span class="line">Next</span><br><span class="line"></span><br><span class="line">End Sub</span><br></pre></td></tr></table></figure><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">
+<h2 id="处理考生成绩表">3.3 处理考生成绩表</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">Sub 处理考生成绩表 ()</span><br><span class="line">Dim i As Integer</span><br><span class="line">Dim j As Integer</span><br><span class="line"></span><br><span class="line">For j = 1 To Sheets.Count</span><br><span class="line"></span><br><span class="line">    For i = 100 To 2 Step -1</span><br><span class="line">        If Sheets (j).Range (&quot;e&quot; &amp; i) = &quot; 男 & quot; Then</span><br><span class="line">            Sheets (j).Range (&quot;f&quot; &amp; i) = &quot; 先生 & quot;</span><br><span class="line">        Else</span><br><span class="line">            Sheets (j).Range (&quot;f&quot; &amp; i) = &quot; 女士 & quot;</span><br><span class="line">        End If</span><br><span class="line">        </span><br><span class="line">        If Sheets (j).Range (&quot;b&quot; &amp; i) = &quot; 理工 & quot; Then</span><br><span class="line">            Sheets (j).Range (&quot;c&quot; &amp; i) = &quot;LG&quot;</span><br><span class="line">        ElseIf Sheets (j).Range (&quot;b&quot; &amp; i) = &quot; 文科 & quot; Then</span><br><span class="line">            Sheets (j).Range (&quot;c&quot; &amp; i) = &quot;WK&quot;</span><br><span class="line">        Else</span><br><span class="line">            Sheets (j).Range (&quot;c&quot; &amp; i) = &quot;CJ&quot;</span><br><span class="line">        End If</span><br><span class="line">        </span><br><span class="line">        If Sheets (j).Range (&quot;d&quot; &amp; i) = &quot;&quot; Then</span><br><span class="line">            Sheets (j).Range (&quot;d&quot; &amp; i).EntireRow.Delete</span><br><span class="line">        End If</span><br><span class="line">    Next</span><br><span class="line"></span><br><span class="line">Next</span><br><span class="line"></span><br><span class="line">End Sub</span><br></pre></td></tr></table></figure>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">
       
     </div>
 
@@ -745,7 +743,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">121</span>
+                  <span class="site-state-item-count">124</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -853,7 +851,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-worksheets-gong-zuo-biao-dui-xiang"><span class="nav-text">1. Worksheets 工作表对象</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-application-zhu-cheng-xu-dui-xiang"><span class="nav-text">2. Application 主程序对象</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-cao-zuo-shi-li"><span class="nav-text">3. 操作实例</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-pi-liang-chuang-jian-gong-zuo-biao"><span class="nav-text">3.1 批量创建工作表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-duo-biao-qu-zhi-he-bing"><span class="nav-text">3.2 多表取值合并</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-3-chu-li-kao-sheng-cheng-ji-biao"><span class="nav-text">3.3 处理考生成绩表</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#worksheets-工作表对象"><span class="nav-text">1. Worksheets 工作表对象</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#application-主程序对象"><span class="nav-text">2. Application 主程序对象</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#操作实例"><span class="nav-text">3. 操作实例</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#批量创建工作表"><span class="nav-text">3.1 批量创建工作表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多表取值合并"><span class="nav-text">3.2 多表取值合并</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#处理考生成绩表"><span class="nav-text">3.3 处理考生成绩表</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -894,7 +892,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">75.8k</span>
+    <span title="Site words total count">76.0k</span>
   
 </div>
 

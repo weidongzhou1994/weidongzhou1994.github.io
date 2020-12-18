@@ -142,18 +142,18 @@
 
 
 
-<meta name="description" content="在 Python 的代码中，经常会出现一行代码：if _name_ == ‘_main_’:，这一行代码该如何理解？">
+<meta name="description" content="在 Python 的代码中，经常会出现一行代码：if __name__ == &apos;__main__&apos;:，这一行代码该如何理解？">
 <meta name="keywords" content="Python,用Python玩转数据,问题">
 <meta property="og:type" content="article">
 <meta property="og:title" content="一行代码:if __name__ == &quot;__main__&quot;">
 <meta property="og:url" content="http://zhouweidong.ml/2019/06/24/一行代码/index.html">
 <meta property="og:site_name" content="周卫东的博客">
-<meta property="og:description" content="在 Python 的代码中，经常会出现一行代码：if _name_ == ‘_main_’:，这一行代码该如何理解？">
+<meta property="og:description" content="在 Python 的代码中，经常会出现一行代码：if __name__ == &apos;__main__&apos;:，这一行代码该如何理解？">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2020-09-03T14:06:04.529Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="一行代码:if __name__ == &quot;__main__&quot;">
-<meta name="twitter:description" content="在 Python 的代码中，经常会出现一行代码：if _name_ == ‘_main_’:，这一行代码该如何理解？">
+<meta name="twitter:description" content="在 Python 的代码中，经常会出现一行代码：if __name__ == &apos;__main__&apos;:，这一行代码该如何理解？">
 
 
 
@@ -521,25 +521,17 @@
       
 
       
-        <p>   在 Python 的代码中，经常会出现一行代码：if _<em>name</em>_ == ‘_<em>main</em>_’:，这一行代码该如何理解？</p>
-<a id="more"></a>
-<h1 id="1-han-yi">1. 含义</h1>
+        <p>   在 Python 的代码中，经常会出现一行代码：if __name__ == '__main__':，这一行代码该如何理解？ <a id="more"></a></p>
+<h1 id="含义">1. 含义</h1>
 <p>  <strong>name</strong> 是当前模块名，当模块被直接运行时模块名为 <strong>main</strong> 。这句话的意思就是，当模块被直接运行时，以下代码块将被运行，当模块是被导入时，代码块不被运行。</p>
-<h1 id="2-yi-ge-jian-dan-de-shi-li">2. 一个简单的示例</h1>
-<p>   首先，我们创建一个 <a href="http://const.py" target="_blank" rel="noopener">const.py</a> 文件，内容如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">PI = 3.14</span><br><span class="line">def main ():</span><br><span class="line">    print &quot;PI:&quot;, PI</span><br><span class="line">main ()</span><br></pre></td></tr></table></figure>
-<p>   直接在 python 执行这个文件 (python <a href="http://const.py" target="_blank" rel="noopener">const.py</a>), 会输出：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PI: 3.14</span><br></pre></td></tr></table></figure>
-<p>   然后，我们再新建一个文件： <a href="http://area.py" target="_blank" rel="noopener">area.py</a>，用到 <a href="http://const.py" target="_blank" rel="noopener">const.py</a> 文件中的 PI 变量，从 <a href="http://const.py" target="_blank" rel="noopener">const.py</a> 中把 PI 变量导入到 <a href="http://area.py" target="_blank" rel="noopener">area.py</a> 中：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">from const import PI</span><br><span class="line">def calc_round_area (radius):</span><br><span class="line">    return PI * (radius ** 2)</span><br><span class="line">def main ():</span><br><span class="line">    print &quot;round area: &quot;, calc_round_area (2)</span><br><span class="line">main ()</span><br></pre></td></tr></table></figure>
-<p>   接着，运行 <a href="http://area.py" target="_blank" rel="noopener">area.py</a>，输出结果：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">PI: 3.14</span><br><span class="line">round area:  12.56</span><br></pre></td></tr></table></figure>
-<p>   但是，我们并不想 <a href="http://const.py" target="_blank" rel="noopener">const.py</a> 中的 main () 函数被运行，此时 if _<em>name</em>_ == ‘_<em>main</em>_’ 就派上了用场。将 <a href="http://const.py" target="_blank" rel="noopener">const.py</a> 修改为：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">PI = 3.14</span><br><span class="line">def main ():</span><br><span class="line">    print &quot;PI:&quot;, PI</span><br><span class="line">if __name__ == &quot;__main__&quot;:</span><br><span class="line">main ()</span><br></pre></td></tr></table></figure>
-<p>   再运行 <a href="http://area.py" target="_blank" rel="noopener">area.py</a>，输出如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">round area:  12.56</span><br></pre></td></tr></table></figure>
-<p>   运行 <a href="http://area.py" target="_blank" rel="noopener">area.py</a>, 仍会输出结果：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PI: 3.14</span><br></pre></td></tr></table></figure>
+<h1 id="一个简单的示例">2. 一个简单的示例</h1>
+<p>   首先，我们创建一个 const.py 文件，内容如下： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">PI = 3.14</span><br><span class="line">def main ():</span><br><span class="line">    print &quot;PI:&quot;, PI</span><br><span class="line">main ()</span><br></pre></td></tr></table></figure></p>
+<p>   直接在 python 执行这个文件 (python const.py), 会输出： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PI: 3.14</span><br></pre></td></tr></table></figure></p>
+<p>   然后，我们再新建一个文件： area.py，用到 const.py 文件中的 PI 变量，从 const.py 中把 PI 变量导入到 area.py 中： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">from const import PI</span><br><span class="line">def calc_round_area (radius):</span><br><span class="line">    return PI * (radius ** 2)</span><br><span class="line">def main ():</span><br><span class="line">    print &quot;round area: &quot;, calc_round_area (2)</span><br><span class="line">main ()</span><br></pre></td></tr></table></figure></p>
+<p>   接着，运行 area.py，输出结果： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">PI: 3.14</span><br><span class="line">round area:  12.56</span><br></pre></td></tr></table></figure></p>
+<p>   但是，我们并不想 const.py 中的 main () 函数被运行，此时 if __name__ == '__main__' 就派上了用场。将 const.py 修改为： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">PI = 3.14</span><br><span class="line">def main ():</span><br><span class="line">    print &quot;PI:&quot;, PI</span><br><span class="line">if __name__ == &quot;__main__&quot;:</span><br><span class="line">main ()</span><br></pre></td></tr></table></figure></p>
+<p>   再运行 area.py，输出如下： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">round area:  12.56</span><br></pre></td></tr></table></figure></p>
+<p>   运行 area.py, 仍会输出结果： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PI: 3.14</span><br></pre></td></tr></table></figure></p>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">
       
     </div>
@@ -750,7 +742,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">121</span>
+                  <span class="site-state-item-count">124</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -858,7 +850,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-han-yi"><span class="nav-text">1. 含义</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-yi-ge-jian-dan-de-shi-li"><span class="nav-text">2. 一个简单的示例</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#含义"><span class="nav-text">1. 含义</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#一个简单的示例"><span class="nav-text">2. 一个简单的示例</span></a></li></ol></div>
             
 
           </div>
@@ -899,7 +891,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">75.8k</span>
+    <span title="Site words total count">76.0k</span>
   
 </div>
 

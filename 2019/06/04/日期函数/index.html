@@ -142,18 +142,18 @@
 
 
 
-<meta name="description" content="1. 日期和时间    将分钟转换为小时">
+<meta name="description" content="1. 日期和时间    将分钟转换为小时">
 <meta name="keywords" content="Excel,王佩丰,Excle1800分钟,入门">
 <meta property="og:type" content="article">
 <meta property="og:title" content="第十四讲 日期函数">
 <meta property="og:url" content="http://zhouweidong.ml/2019/06/04/日期函数/index.html">
 <meta property="og:site_name" content="周卫东的博客">
-<meta property="og:description" content="1. 日期和时间    将分钟转换为小时">
+<meta property="og:description" content="1. 日期和时间    将分钟转换为小时">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2020-09-03T14:28:40.663Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="第十四讲 日期函数">
-<meta name="twitter:description" content="1. 日期和时间    将分钟转换为小时">
+<meta name="twitter:description" content="1. 日期和时间    将分钟转换为小时">
 
 
 
@@ -521,187 +521,193 @@
       
 
       
-        <h1 id="1-ri-qi-he-shi-jian">1. 日期和时间</h1>
-<p>   将分钟转换为小时</p>
-<a id="more"></a>
+        <h1 id="日期和时间">1. 日期和时间</h1>
+<p>   将分钟转换为小时 <a id="more"></a></p>
 <table>
 <thead>
-<tr>
-<th style="text-align:center">开始时间</th>
-<th style="text-align:center">分钟</th>
-<th style="text-align:center">结束时间 (公式)</th>
-<th style="text-align:center">结束时间 (数值)</th>
-<th style="text-align:center">结束时间 (单元格格式 - 时间)</th>
+<tr class="header">
+<th style="text-align: center;">开始时间</th>
+<th style="text-align: center;">分钟</th>
+<th style="text-align: center;">结束时间 (公式)</th>
+<th style="text-align: center;">结束时间 (数值)</th>
+<th style="text-align: center;">结束时间 (单元格格式 - 时间)</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:center">9:00</td>
-<td style="text-align:center">90</td>
-<td style="text-align:center">=D4+E4/24/60</td>
-<td style="text-align:center">0.4375</td>
-<td style="text-align:center">10:30</td>
+<tr class="odd">
+<td style="text-align: center;">9:00</td>
+<td style="text-align: center;">90</td>
+<td style="text-align: center;">=D4+E4/24/60</td>
+<td style="text-align: center;">0.4375</td>
+<td style="text-align: center;">10:30</td>
 </tr>
-<tr>
-<td style="text-align:center">12:20</td>
-<td style="text-align:center">70</td>
-<td style="text-align:center">=D5+E5/24/60</td>
-<td style="text-align:center">0.5625</td>
-<td style="text-align:center">13:30</td>
+<tr class="even">
+<td style="text-align: center;">12:20</td>
+<td style="text-align: center;">70</td>
+<td style="text-align: center;">=D5+E5/24/60</td>
+<td style="text-align: center;">0.5625</td>
+<td style="text-align: center;">13:30</td>
 </tr>
-<tr>
-<td style="text-align:center">18:40</td>
-<td style="text-align:center">150</td>
-<td style="text-align:center">=D6+E6/24/60</td>
-<td style="text-align:center">0.8819444</td>
-<td style="text-align:center">21:10</td>
+<tr class="odd">
+<td style="text-align: center;">18:40</td>
+<td style="text-align: center;">150</td>
+<td style="text-align: center;">=D6+E6/24/60</td>
+<td style="text-align: center;">0.8819444</td>
+<td style="text-align: center;">21:10</td>
 </tr>
 </tbody>
 </table>
 <p>   将小时转换为分钟</p>
 <table>
 <thead>
-<tr>
-<th style="text-align:center">开始时间</th>
-<th style="text-align:center">结束时间</th>
-<th style="text-align:center">持续时间 (分钟)(公式)</th>
-<th style="text-align:center">持续时间 (分钟)(常规)</th>
+<tr class="header">
+<th style="text-align: center;">开始时间</th>
+<th style="text-align: center;">结束时间</th>
+<th style="text-align: center;">持续时间 (分钟)(公式)</th>
+<th style="text-align: center;">持续时间 (分钟)(常规)</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:center">9:00</td>
-<td style="text-align:center">12:00</td>
-<td style="text-align:center">=(E9-D9)*60*24</td>
-<td style="text-align:center">180</td>
+<tr class="odd">
+<td style="text-align: center;">9:00</td>
+<td style="text-align: center;">12:00</td>
+<td style="text-align: center;">=(E9-D9)*60*24</td>
+<td style="text-align: center;">180</td>
 </tr>
-<tr>
-<td style="text-align:center">12:20</td>
-<td style="text-align:center">18:00</td>
-<td style="text-align:center">=(E10-D10)*60*24</td>
-<td style="text-align:center">340</td>
+<tr class="even">
+<td style="text-align: center;">12:20</td>
+<td style="text-align: center;">18:00</td>
+<td style="text-align: center;">=(E10-D10)*60*24</td>
+<td style="text-align: center;">340</td>
 </tr>
-<tr>
-<td style="text-align:center">18:40</td>
-<td style="text-align:center">20:30</td>
-<td style="text-align:center">=(E11-D11)*60*24</td>
-<td style="text-align:center">110</td>
+<tr class="odd">
+<td style="text-align: center;">18:40</td>
+<td style="text-align: center;">20:30</td>
+<td style="text-align: center;">=(E11-D11)*60*24</td>
+<td style="text-align: center;">110</td>
 </tr>
 </tbody>
 </table>
 <p>   将天数转换为日期</p>
 <table>
 <thead>
-<tr>
-<th style="text-align:center">开始日期</th>
-<th style="text-align:center">天数</th>
-<th style="text-align:center">结束日期 (公式)</th>
-<th style="text-align:center">结束日期 (数值)</th>
-<th style="text-align:center">结束日期 (单元格格式 - 时间)</th>
+<tr class="header">
+<th style="text-align: center;">开始日期</th>
+<th style="text-align: center;">天数</th>
+<th style="text-align: center;">结束日期 (公式)</th>
+<th style="text-align: center;">结束日期 (数值)</th>
+<th style="text-align: center;">结束日期 (单元格格式 - 时间)</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:center">2013/6/16</td>
-<td style="text-align:center">70</td>
-<td style="text-align:center">=D14+E14</td>
-<td style="text-align:center">41511</td>
-<td style="text-align:center">2013/8/25</td>
+<tr class="odd">
+<td style="text-align: center;">2013/6/16</td>
+<td style="text-align: center;">70</td>
+<td style="text-align: center;">=D14+E14</td>
+<td style="text-align: center;">41511</td>
+<td style="text-align: center;">2013/8/25</td>
 </tr>
-<tr>
-<td style="text-align:center">2012/8/8</td>
-<td style="text-align:center">90</td>
-<td style="text-align:center">=D15+E15</td>
-<td style="text-align:center">41219</td>
-<td style="text-align:center">2012/11/6</td>
+<tr class="even">
+<td style="text-align: center;">2012/8/8</td>
+<td style="text-align: center;">90</td>
+<td style="text-align: center;">=D15+E15</td>
+<td style="text-align: center;">41219</td>
+<td style="text-align: center;">2012/11/6</td>
 </tr>
 </tbody>
 </table>
 <p>   将日期转换为天数</p>
 <table>
 <thead>
-<tr>
-<th style="text-align:center">开始日期</th>
-<th style="text-align:center">结束日期</th>
-<th style="text-align:center">间隔天数</th>
-<th style="text-align:center">间隔天数 (常规)</th>
+<tr class="header">
+<th style="text-align: center;">开始日期</th>
+<th style="text-align: center;">结束日期</th>
+<th style="text-align: center;">间隔天数</th>
+<th style="text-align: center;">间隔天数 (常规)</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:center">2013/6/16</td>
-<td style="text-align:center">2013/8/24</td>
-<td style="text-align:center">=E18-D18</td>
-<td style="text-align:center">69</td>
+<tr class="odd">
+<td style="text-align: center;">2013/6/16</td>
+<td style="text-align: center;">2013/8/24</td>
+<td style="text-align: center;">=E18-D18</td>
+<td style="text-align: center;">69</td>
 </tr>
-<tr>
-<td style="text-align:center">2012/8/8</td>
-<td style="text-align:center">2013/1/1</td>
-<td style="text-align:center">=E19-D19</td>
-<td style="text-align:center">146</td>
+<tr class="even">
+<td style="text-align: center;">2012/8/8</td>
+<td style="text-align: center;">2013/1/1</td>
+<td style="text-align: center;">=E19-D19</td>
+<td style="text-align: center;">146</td>
 </tr>
 </tbody>
 </table>
-<h1 id="2-tui-suan-ri-qi">2. 推算日期</h1>
+<h1 id="推算日期">2. 推算日期</h1>
 <p>   计算本月第几天的日期：=date (year (),month (),day ())</p>
 <table>
 <thead>
-<tr>
-<th style="text-align:center">开始日期</th>
-<th style="text-align:center">本月最后一天</th>
+<tr class="header">
+<th style="text-align: center;">开始日期</th>
+<th style="text-align: center;">本月最后一天</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:center">2013/6/16</td>
-<td style="text-align:center">=DATE (YEAR (B13),MONTH (B13)+1,0)</td>
+<tr class="odd">
+<td style="text-align: center;">2013/6/16</td>
+<td style="text-align: center;">=DATE (YEAR (B13),MONTH (B13)+1,0)</td>
 </tr>
-<tr>
-<td style="text-align:center">2012/8/8</td>
-<td style="text-align:center">=DATE (YEAR (B13),MONTH (B13)+1,1)</td>
+<tr class="even">
+<td style="text-align: center;">2012/8/8</td>
+<td style="text-align: center;">=DATE (YEAR (B13),MONTH (B13)+1,1)</td>
 </tr>
-<tr>
-<td style="text-align:center">2008/2/11</td>
-<td style="text-align:center">=DATE (YEAR (B13),MONTH (B13)+1,2)</td>
+<tr class="odd">
+<td style="text-align: center;">2008/2/11</td>
+<td style="text-align: center;">=DATE (YEAR (B13),MONTH (B13)+1,2)</td>
 </tr>
-<tr>
-<td style="text-align:center">2009/2/11</td>
-<td style="text-align:center">=DATE (YEAR (B13),MONTH (B13)+1,3)</td>
+<tr class="even">
+<td style="text-align: center;">2009/2/11</td>
+<td style="text-align: center;">=DATE (YEAR (B13),MONTH (B13)+1,3)</td>
 </tr>
 </tbody>
 </table>
 <p>   计算本月有多少天：=day (year (),month ()+1,0)</p>
 <table>
 <thead>
-<tr>
-<th style="text-align:center">开始日期</th>
-<th style="text-align:center">本月天数</th>
+<tr class="header">
+<th style="text-align: center;">开始日期</th>
+<th style="text-align: center;">本月天数</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:center">2013/6/16</td>
-<td style="text-align:center">=DAY (DATE (YEAR (B21),MONTH (B21)+1,0))</td>
+<tr class="odd">
+<td style="text-align: center;">2013/6/16</td>
+<td style="text-align: center;">=DAY (DATE (YEAR (B21),MONTH (B21)+1,0))</td>
 </tr>
-<tr>
-<td style="text-align:center">2012/8/8</td>
-<td style="text-align:center">=DAY (DATE (YEAR (B21),MONTH (B21)+1,1))</td>
+<tr class="even">
+<td style="text-align: center;">2012/8/8</td>
+<td style="text-align: center;">=DAY (DATE (YEAR (B21),MONTH (B21)+1,1))</td>
 </tr>
-<tr>
-<td style="text-align:center">2008/2/11</td>
-<td style="text-align:center">=DAY (DATE (YEAR (B21),MONTH (B21)+1,2))</td>
+<tr class="odd">
+<td style="text-align: center;">2008/2/11</td>
+<td style="text-align: center;">=DAY (DATE (YEAR (B21),MONTH (B21)+1,2))</td>
 </tr>
-<tr>
-<td style="text-align:center">2009/2/11</td>
-<td style="text-align:center">=DAY (DATE (YEAR (B21),MONTH (B21)+1,3))</td>
+<tr class="even">
+<td style="text-align: center;">2009/2/11</td>
+<td style="text-align: center;">=DAY (DATE (YEAR (B21),MONTH (B21)+1,3))</td>
 </tr>
 </tbody>
 </table>
-<h1 id="3-ji-suan-liang-ge-ri-qi-zhi-jian-de-jian-ge">3. 计算两个日期之间的间隔</h1>
+<h1 id="计算两个日期之间的间隔">3. 计算两个日期之间的间隔</h1>
 <p>   计算两个日期之间的间隔需要使用的函数为：=datedir (前，后，间隔单位）</p>
 <table>
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th>入职日期</th>
 <th>离职日期</th>
 <th>间隔</th>
@@ -710,32 +716,32 @@
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td>2002/9/10</td>
 <td>2008/7/5</td>
 <td>5 年 9 月 25 天</td>
 <td>ym</td>
-<td>=DATEDIF (B13,C13,“y”)&amp;“年”&amp;DATEDIF (B13,C13,“ym”)&amp;“月”&amp;DATEDIF (B13,C13,“md”)&amp;“天”</td>
+<td>=DATEDIF (B13,C13,"y")&amp;"年"&amp;DATEDIF (B13,C13,"ym")&amp;"月"&amp;DATEDIF (B13,C13,"md")&amp;"天"</td>
 </tr>
-<tr>
+<tr class="even">
 <td>2004/5/16</td>
 <td>2009/2/21</td>
 <td>4 年 9 月 5 天</td>
 <td>md</td>
-<td>=DATEDIF (B14,C14,“y”)&amp;“年”&amp;DATEDIF (B14,C14,“ym”)&amp;“月”&amp;DATEDIF (B14,C14,“md”)&amp;“天”</td>
+<td>=DATEDIF (B14,C14,"y")&amp;"年"&amp;DATEDIF (B14,C14,"ym")&amp;"月"&amp;DATEDIF (B14,C14,"md")&amp;"天"</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>2010/5/16</td>
 <td>2010/9/10</td>
 <td>0 年 3 月 25 天</td>
 <td>yd</td>
-<td>=DATEDIF (B15,C15,“y”)&amp;“年”&amp;DATEDIF (B15,C15,“ym”)&amp;“月”&amp;DATEDIF (B15,C15,“md”)&amp;“天”</td>
+<td>=DATEDIF (B15,C15,"y")&amp;"年"&amp;DATEDIF (B15,C15,"ym")&amp;"月"&amp;DATEDIF (B15,C15,"md")&amp;"天"</td>
 </tr>
 </tbody>
 </table>
-<h1 id="4-xing-qi-ji-suan">4. 星期计算</h1>
+<h1 id="星期计算">4. 星期计算</h1>
 <p>   第几周：=WEEKNUM (值，返回类型)；周几：=WEEKDAY (值，返回类型)</p>
-<h1 id="5-zheng-rong-han-shu">5. 整容函数</h1>
+<h1 id="整容函数">5. 整容函数</h1>
 <p>   利用 text 函数可以转换单元格的格式：=TEXT（值，转换类型）。</p>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">
       
@@ -949,7 +955,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">121</span>
+                  <span class="site-state-item-count">124</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1057,7 +1063,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-ri-qi-he-shi-jian"><span class="nav-text">1. 日期和时间</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-tui-suan-ri-qi"><span class="nav-text">2. 推算日期</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-ji-suan-liang-ge-ri-qi-zhi-jian-de-jian-ge"><span class="nav-text">3. 计算两个日期之间的间隔</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-xing-qi-ji-suan"><span class="nav-text">4. 星期计算</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-zheng-rong-han-shu"><span class="nav-text">5. 整容函数</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#日期和时间"><span class="nav-text">1. 日期和时间</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#推算日期"><span class="nav-text">2. 推算日期</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#计算两个日期之间的间隔"><span class="nav-text">3. 计算两个日期之间的间隔</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#星期计算"><span class="nav-text">4. 星期计算</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#整容函数"><span class="nav-text">5. 整容函数</span></a></li></ol></div>
             
 
           </div>
@@ -1098,7 +1104,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">75.8k</span>
+    <span title="Site words total count">76.0k</span>
   
 </div>
 

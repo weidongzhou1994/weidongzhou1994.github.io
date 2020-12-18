@@ -129,7 +129,7 @@
 
 
 
-  <meta name="keywords" content="MySql,LeetCode,">
+  <meta name="keywords" content="LeetCode,MySql,">
 
 
 
@@ -143,7 +143,7 @@
 
 
 <meta name="description" content="从今天开始练习 MySql：">
-<meta name="keywords" content="MySql,LeetCode">
+<meta name="keywords" content="LeetCode,MySql">
 <meta property="og:type" content="article">
 <meta property="og:title" content="LeetCode MySql Day1">
 <meta property="og:url" content="http://zhouweidong.ml/2020/04/30/LeetCode-MySql-Day1/index.html">
@@ -523,25 +523,25 @@
       
         <p>   从今天开始练习 MySql：</p>
 <a id="more"></a>
-<h2 id="175-combine-two-tables">175. Combine Two Tables</h2>
+<h2 id="combine-two-tables">175. Combine Two Tables</h2>
 <p>  Table: Person</p>
 <table>
 <thead>
-<tr>
+<tr class="header">
 <th>Column Name</th>
 <th>Type</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td>PersonId</td>
 <td>int</td>
 </tr>
-<tr>
+<tr class="even">
 <td>FirstName</td>
 <td>varchar</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>LastName</td>
 <td>varchar</td>
 </tr>
@@ -551,25 +551,25 @@
 <p>  Table: Address</p>
 <table>
 <thead>
-<tr>
+<tr class="header">
 <th>Column Name</th>
 <th>Type</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td>AddressId</td>
 <td>int</td>
 </tr>
-<tr>
+<tr class="even">
 <td>PersonId</td>
 <td>int</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>City</td>
 <td>varchar</td>
 </tr>
-<tr>
+<tr class="even">
 <td>State</td>
 <td>varchar</td>
 </tr>
@@ -578,32 +578,30 @@
 <p>AddressId is the primary key column for this table.</p>
 <p>  Write a SQL query for a report that provides the following information for each person in the Person table, regardless if there is an address for each of those people:</p>
 <p>FirstName, LastName, City, State</p>
-<p>  Data:</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;"headers": &#123;"Person": ["PersonId", "LastName", "FirstName"], "Address": ["AddressId", "PersonId", "City", "State"]&#125;, "rows": &#123;"Person": [[1, "Wang", "Allen"]], "Address": [[1, 2, "New York City", "New York"]]&#125;&#125;</span><br></pre></td></tr></table></figure>
+<p>  Data: <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;"headers": &#123;"Person": ["PersonId", "LastName", "FirstName"], "Address": ["AddressId", "PersonId", "City", "State"]&#125;, "rows": &#123;"Person": [[1, "Wang", "Allen"]], "Address": [[1, 2, "New York City", "New York"]]&#125;&#125;</span><br></pre></td></tr></table></figure></p>
 <p>   比较一下两个答案：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> FirstName, LastName, City, State <span class="keyword">from</span> Person, Address <span class="keyword">where</span> Person.PersonId=Address.PersonId;</span><br></pre></td></tr></table></figure>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> p.FirstName, p.LastName, a.City, a.State  <span class="keyword">from</span> Person p <span class="keyword">left</span> <span class="keyword">join</span> Address a <span class="keyword">on</span> p.PersonId = a.PersonId;</span><br></pre></td></tr></table></figure>
-<p>   前者不返回任何值，后者只返回 Person 中的值，原因很简单：where 相当于 full join , 返回符合要求的值；left join … … on 返回左表中的值和符合要求的右表中的值。<br>
-   补充知识：在 select 语句中，可以临时给表起别名： 表名 [as] 表别名。（[] 表示内容可省略）</p>
-<h2 id="176-second-highest-salary">176. Second Highest Salary</h2>
+<p>   前者不返回任何值，后者只返回 Person 中的值，原因很简单：where 相当于 full join , 返回符合要求的值；left join … … on 返回左表中的值和符合要求的右表中的值。    补充知识：在 select 语句中，可以临时给表起别名： 表名 [as] 表别名。（[] 表示内容可省略）</p>
+<h2 id="second-highest-salary">176. Second Highest Salary</h2>
 <p>  Write a SQL query to get the second highest salary from the Employee table.</p>
 <table>
 <thead>
-<tr>
+<tr class="header">
 <th>Id</th>
 <th>Salary</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td>1</td>
 <td>100</td>
 </tr>
-<tr>
+<tr class="even">
 <td>2</td>
 <td>200</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>3</td>
 <td>300</td>
 </tr>
@@ -612,12 +610,12 @@
 <p>  For example, given the above Employee table, the query should return 200 as the second highest salary. If there is no second highest salary, then the query should return null.</p>
 <table>
 <thead>
-<tr>
+<tr class="header">
 <th>SecondHighestSalary</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td>200</td>
 </tr>
 </tbody>
@@ -702,9 +700,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/MySql/" rel="tag"><i class="fa fa-tag"></i> MySql</a>
-          
             <a href="/tags/LeetCode/" rel="tag"><i class="fa fa-tag"></i> LeetCode</a>
+          
+            <a href="/tags/MySql/" rel="tag"><i class="fa fa-tag"></i> MySql</a>
           
         </div>
       
@@ -833,7 +831,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">121</span>
+                  <span class="site-state-item-count">124</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -941,7 +939,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#175-combine-two-tables"><span class="nav-text">175. Combine Two Tables</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#176-second-highest-salary"><span class="nav-text">176. Second Highest Salary</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#combine-two-tables"><span class="nav-text">175. Combine Two Tables</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#second-highest-salary"><span class="nav-text">176. Second Highest Salary</span></a></li></ol></div>
             
 
           </div>
@@ -982,7 +980,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">75.8k</span>
+    <span title="Site words total count">76.0k</span>
   
 </div>
 
