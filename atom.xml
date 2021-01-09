@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://zhouweidong.ml/"/>
-  <updated>2021-01-03T15:45:50.995Z</updated>
+  <updated>2021-01-09T15:51:51.959Z</updated>
   <id>http://zhouweidong.ml/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Excel 复杂业务查询</title>
+    <link href="http://zhouweidong.ml/2021/01/09/Excel-%E5%A4%8D%E6%9D%82%E4%B8%9A%E5%8A%A1%E6%9F%A5%E8%AF%A2/"/>
+    <id>http://zhouweidong.ml/2021/01/09/Excel-复杂业务查询/</id>
+    <published>2021-01-09T14:50:06.000Z</published>
+    <updated>2021-01-09T15:51:51.959Z</updated>
+    
+    <content type="html"><![CDATA[<p>   面试题：利用下拉框选择机构名称、利率档、期限等条件，查询出相应的费用。</p><a id="more"></a><p><img src="https://picgo-1258437747.cos.ap-nanjing.myqcloud.com/20210109225303.png"></p><h1 id="制作联动下拉列表">制作联动下拉列表</h1><p>   制作下拉列表可以借助数据有效性，具体步骤见下图：</p><p><img src="https://picgo-1258437747.cos.ap-nanjing.myqcloud.com/20210109225732.png"></p><p>   具体到本案例中，首先需要找到机构名称和利率档的非重复值，可以利用高级筛选，步骤见下图：</p><p><img src="https://picgo-1258437747.cos.ap-nanjing.myqcloud.com/20210109230109.png"></p><p>   筛选结果见下图：</p><p><img src="https://picgo-1258437747.cos.ap-nanjing.myqcloud.com/20210109230409.png"></p><p>   需要转换成下图的格式：</p><p><img src="https://picgo-1258437747.cos.ap-nanjing.myqcloud.com/20210109230729.png"></p><p>   然后利用公式 - 定义的名称，对区域进行定义，具体步骤见下图：</p><p><img src="https://picgo-1258437747.cos.ap-nanjing.myqcloud.com/20210109233052.png"></p><p>   同理，可以分别将各机构的利率档定义为 A 机构、B 机构和 C 机构。</p><p>   为了实现 <a href="https://jingyan.baidu.com/article/7c6fb42802525a80642c9034.html" target="_blank" rel="noopener"></a>，需要将序列的名称用公式定义：</p><p><img src="https://picgo-1258437747.cos.ap-nanjing.myqcloud.com/20210109233319.png"></p><h1 id="查询费用">查询费用</h1><p>   查询费用即根据条件在区域内匹配值，可以利用 index+match，index 的作用是在区域内选择指定位置的数，具体参数见下图：</p><p><img src="https://picgo-1258437747.cos.ap-nanjing.myqcloud.com/20210109233534.png"></p><p>   区域是确定的，变化的是行号和列号，需要借助 match 进行匹配：</p><p><img src="https://picgo-1258437747.cos.ap-nanjing.myqcloud.com/20210109233654.png"></p><p>   首先是列号，比较简单：MATCH (I3&amp;"期费用",A1:E1,0)。</p><p>   然后是行号，稍微复杂，有两个条件，对应两个区域，条件和条件间、区域和区域间用 &amp; 进行连接：MATCH (I1&amp;I2, A:A&amp;B:B,0)。</p><p>   总结可得公式为：INDEX (A:E, MATCH (I1&amp;I2, A:A&amp;B:B,0), MATCH (I3&amp;"期费用",A1:E1,0))，值得注意的是，这是一个数组公式，输入公式后，按住 ctrl_shift+enter 公式才会生效。</p><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;   面试题：利用下拉框选择机构名称、利率档、期限等条件，查询出相应的费用。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Excel" scheme="http://zhouweidong.ml/categories/Excel/"/>
+    
+    
+      <category term="Excel" scheme="http://zhouweidong.ml/tags/Excel/"/>
+    
+      <category term="面试题" scheme="http://zhouweidong.ml/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
+    
+  </entry>
   
   <entry>
     <title>会员价值分析</title>
@@ -431,24 +455,6 @@
       <category term="Pandas" scheme="http://zhouweidong.ml/tags/Pandas/"/>
     
       <category term="lambda" scheme="http://zhouweidong.ml/tags/lambda/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>粉笔模考经验总结</title>
-    <link href="http://zhouweidong.ml/2020/04/01/%E7%B2%89%E7%AC%94%E6%A8%A1%E8%80%83%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93/"/>
-    <id>http://zhouweidong.ml/2020/04/01/粉笔模考经验总结/</id>
-    <published>2020-04-01T01:41:50.000Z</published>
-    <updated>2020-04-01T04:15:59.385Z</updated>
-    
-    <content type="html"><![CDATA[<div id="hbe-security">  <div class="hbe-input-container">  <input type="password" class="hbe-form-control" id="pass" placeholder="Please enter the password to read the blog." />    <label for="pass">Please enter the password to read the blog.</label>    <div class="bottom-line"></div>  </div></div><div id="decryptionError" style="display: none;">Incorrect Password!</div><div id="noContentError" style="display: none;">No content to display!</div><div id="encrypt-blog" style="display:none">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</div><script src="/lib/crypto-js.js"></script><script src="/lib/blog-encrypt.js"></script><link href="/css/blog-encrypt.css" rel="stylesheet" type="text/css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
-    
-    <summary type="html">
-    
-      The article has been encrypted, please enter your password to view.&lt;br&gt;
-    
-    </summary>
-    
     
   </entry>
   
