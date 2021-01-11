@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://zhouweidong.ml/"/>
-  <updated>2021-01-09T15:51:51.959Z</updated>
+  <updated>2021-01-11T15:05:52.805Z</updated>
   <id>http://zhouweidong.ml/</id>
   
   <author>
@@ -15,6 +15,135 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>如何分析交易量增加的原因？</title>
+    <link href="http://zhouweidong.ml/2021/01/11/%E5%A6%82%E4%BD%95%E5%88%86%E6%9E%90%E4%BA%A4%E6%98%93%E9%87%8F%E5%A2%9E%E5%8A%A0%E7%9A%84%E5%8E%9F%E5%9B%A0%EF%BC%9F/"/>
+    <id>http://zhouweidong.ml/2021/01/11/如何分析交易量增加的原因？/</id>
+    <published>2021-01-11T14:10:33.000Z</published>
+    <updated>2021-01-11T15:05:52.805Z</updated>
+    
+    <content type="html"><![CDATA[<p>   面试题：根据下面的业务数据，进行分析并得出观点。</p><table><thead><tr class="header"><th style="text-align: center;">日期</th><th style="text-align: center;">交易量</th><th style="text-align: center;">交易笔数</th><th style="text-align: center;">客户数</th><th style="text-align: center;">新客户数</th><th style="text-align: center;">新客户交易笔数</th><th style="text-align: center;">新客户交易量</th></tr></thead><tbody><tr class="odd"><td style="text-align: center;">2020/4/1</td><td style="text-align: center;">594.7</td><td style="text-align: center;">16.8</td><td style="text-align: center;">13.5</td><td style="text-align: center;">1.9</td><td style="text-align: center;">2.2</td><td style="text-align: center;">65.9</td></tr><tr class="even"><td style="text-align: center;">2020/4/2</td><td style="text-align: center;">601.9</td><td style="text-align: center;">17.0</td><td style="text-align: center;">13.5</td><td style="text-align: center;">4.0</td><td style="text-align: center;">4.7</td><td style="text-align: center;">133.8</td></tr><tr class="odd"><td style="text-align: center;">2020/4/3</td><td style="text-align: center;">607.2</td><td style="text-align: center;">17.4</td><td style="text-align: center;">13.8</td><td style="text-align: center;">4.4</td><td style="text-align: center;">4.4</td><td style="text-align: center;">132.8</td></tr><tr class="even"><td style="text-align: center;">2020/4/4</td><td style="text-align: center;">632.1</td><td style="text-align: center;">17.9</td><td style="text-align: center;">14.1</td><td style="text-align: center;">4.8</td><td style="text-align: center;">4.8</td><td style="text-align: center;">162.5</td></tr><tr class="odd"><td style="text-align: center;">2020/4/5</td><td style="text-align: center;">685.4</td><td style="text-align: center;">19.1</td><td style="text-align: center;">15.0</td><td style="text-align: center;">6.1</td><td style="text-align: center;">6.1</td><td style="text-align: center;">192.8</td></tr><tr class="even"><td style="text-align: center;">2020/4/6</td><td style="text-align: center;">756.6</td><td style="text-align: center;">18.7</td><td style="text-align: center;">14.9</td><td style="text-align: center;">5.3</td><td style="text-align: center;">5.3</td><td style="text-align: center;">217.5</td></tr><tr class="odd"><td style="text-align: center;">2020/4/7</td><td style="text-align: center;">753.4</td><td style="text-align: center;">18.2</td><td style="text-align: center;">14.5</td><td style="text-align: center;">4.1</td><td style="text-align: center;">4.1</td><td style="text-align: center;">164.7</td></tr><tr class="even"><td style="text-align: center;">2020/4/8</td><td style="text-align: center;">640.3</td><td style="text-align: center;">18.8</td><td style="text-align: center;">14.6</td><td style="text-align: center;">4.7</td><td style="text-align: center;">4.7</td><td style="text-align: center;">164.8</td></tr><tr class="odd"><td style="text-align: center;">2020/4/9</td><td style="text-align: center;">1236.2</td><td style="text-align: center;">39.6</td><td style="text-align: center;">23.9</td><td style="text-align: center;">18.8</td><td style="text-align: center;">18.8</td><td style="text-align: center;">412.2</td></tr><tr class="even"><td style="text-align: center;">2020/4/10</td><td style="text-align: center;">664.6</td><td style="text-align: center;">19.7</td><td style="text-align: center;">15.3</td><td style="text-align: center;">4.4</td><td style="text-align: center;">4.4</td><td style="text-align: center;">145.8</td></tr></tbody></table><a id="more"></a><h1 id="明确要解决的问题">明确要解决的问题</h1><h2 id="第一步明确数据的来源和验证其准确性">第一步：明确数据的来源和验证其准确性</h2><p>   可以从时间、地点、数据来源三个维度验证数据的准确性：</p><ul><li>时间：2020.4.1~2020.4.10</li><li>地点：全网销售</li><li>数据来源：后台导出，数据准确。</li></ul><h2 id="第二步可视化相关数据">第二步：可视化相关数据</h2><p><img src="https://picgo-1258437747.cos.ap-nanjing.myqcloud.com/20210111222241.png"></p><p>   从折线图可知：9 号交易量骤然增加，其余日期交易量相差不大，比较平稳。</p><p><img src="https://picgo-1258437747.cos.ap-nanjing.myqcloud.com/20210111222620.png"></p><p>   排除数据异常问题，可以进一步获取上月同期和上年同期的交易量：</p><p><img src="https://picgo-1258437747.cos.ap-nanjing.myqcloud.com/20210111222931.png"></p><h1 id="分析问题出现的原因">分析问题出现的原因</h1><p>   分析问题出现的原因，可以对指标进行多维度拆解：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">graph LR</span><br><span class="line">A (交易量) --&gt; B (交易笔数)</span><br><span class="line">A (交易量) --&gt; C (单均交易金额)</span><br><span class="line">B (交易笔数) --&gt; D1 (新客户交易笔数)</span><br><span class="line">B (交易笔数) --&gt; D2 (老客户交易笔数)</span><br></pre></td></tr></table></figure><p>   根据指标的拆解，可以做出如下假设：</p><ul><li>假设 1：单均交易金额增加导致 9 号交易量增加。</li><li>假设 2：新客户交易笔数增加导致 9 号交易量增加。</li><li>假设 3：老客户交易笔数增加导致 9 号交易量增加。</li></ul><p>   单均交易金额 = 交易量 / 交易笔数</p><figure><img src="https://picgo-1258437747.cos.ap-nanjing.myqcloud.com/20210111225431.png" alt="20210111225431"><figcaption aria-hidden="true">20210111225431</figcaption></figure><p>   可以看到：9 号单均交易金额骤然下降，与交易量骤增的形势正好相反，假设 1 不成立。</p><p>   交易笔数 = 新客户交易笔数 + 老客户交易笔数</p><figure><img src="https://picgo-1258437747.cos.ap-nanjing.myqcloud.com/20210111230048.png" alt="20210111230048"><figcaption aria-hidden="true">20210111230048</figcaption></figure><p>   可以看到：新客户交易笔数和老客户交易笔数在 9 号同时骤然增加，与交易量的走势相符，表明假设 2 和假设 3 正确。</p><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;   面试题：根据下面的业务数据，进行分析并得出观点。&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr class=&quot;header&quot;&gt;
+&lt;th style=&quot;text-align: center;&quot;&gt;日期&lt;/th&gt;
+&lt;th style=&quot;text-align: center;&quot;&gt;交易量&lt;/th&gt;
+&lt;th style=&quot;text-align: center;&quot;&gt;交易笔数&lt;/th&gt;
+&lt;th style=&quot;text-align: center;&quot;&gt;客户数&lt;/th&gt;
+&lt;th style=&quot;text-align: center;&quot;&gt;新客户数&lt;/th&gt;
+&lt;th style=&quot;text-align: center;&quot;&gt;新客户交易笔数&lt;/th&gt;
+&lt;th style=&quot;text-align: center;&quot;&gt;新客户交易量&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr class=&quot;odd&quot;&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;2020/4/1&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;594.7&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;16.8&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;13.5&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;1.9&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;2.2&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;65.9&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&quot;even&quot;&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;2020/4/2&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;601.9&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;17.0&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;13.5&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;4.0&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;4.7&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;133.8&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&quot;odd&quot;&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;2020/4/3&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;607.2&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;17.4&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;13.8&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;4.4&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;4.4&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;132.8&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&quot;even&quot;&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;2020/4/4&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;632.1&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;17.9&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;14.1&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;4.8&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;4.8&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;162.5&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&quot;odd&quot;&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;2020/4/5&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;685.4&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;19.1&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;15.0&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;6.1&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;6.1&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;192.8&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&quot;even&quot;&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;2020/4/6&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;756.6&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;18.7&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;14.9&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;5.3&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;5.3&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;217.5&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&quot;odd&quot;&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;2020/4/7&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;753.4&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;18.2&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;14.5&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;4.1&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;4.1&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;164.7&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&quot;even&quot;&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;2020/4/8&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;640.3&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;18.8&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;14.6&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;4.7&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;4.7&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;164.8&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&quot;odd&quot;&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;2020/4/9&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;1236.2&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;39.6&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;23.9&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;18.8&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;18.8&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;412.2&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&quot;even&quot;&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;2020/4/10&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;664.6&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;19.7&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;15.3&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;4.4&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;4.4&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;145.8&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+    
+    </summary>
+    
+      <category term="数据分析" scheme="http://zhouweidong.ml/categories/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/"/>
+    
+    
+      <category term="面试题" scheme="http://zhouweidong.ml/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
+    
+      <category term="数据分析" scheme="http://zhouweidong.ml/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/"/>
+    
+  </entry>
   
   <entry>
     <title>Excel 复杂业务查询</title>
@@ -431,30 +560,6 @@
     
     </summary>
     
-    
-  </entry>
-  
-  <entry>
-    <title>lambda 函数</title>
-    <link href="http://zhouweidong.ml/2020/04/13/lambda-%E5%87%BD%E6%95%B0/"/>
-    <id>http://zhouweidong.ml/2020/04/13/lambda-函数/</id>
-    <published>2020-04-13T03:33:31.000Z</published>
-    <updated>2020-04-13T09:19:44.122Z</updated>
-    
-    <content type="html"><![CDATA[<p>  lambda 函数是 python 数据分析中比较常用的一个函数，属于匿名函数，即无需声明函数名称。<br></p><a id="more"></a><p>   简单示例如下：<br> <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">lambda</span> v: len (v)</span><br></pre></td></tr></table></figure></p><p>   在 lambda 函数中，冒号前面填写参数，冒号后面填写表达式，表达式的结果就是返回值，即：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">f</span><span class="params">(v)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> len (v)</span><br></pre></td></tr></table></figure><p>   明显，因为返回值只能是一个，所以 lambda 函数只能有一个表达式。</p><p>  lambda 函数还可以进一步与 map () 函数和 filter () 函数结合：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">data [<span class="string">""</span>] = data [<span class="string">""</span>].map (<span class="keyword">lambda</span> x: x**<span class="number">2</span>)</span><br><span class="line">data [<span class="string">""</span>] = data [<span class="string">""</span>].filter (<span class="keyword">lambda</span> x: x%<span class="number">2</span> == <span class="number">0</span>)</span><br></pre></td></tr></table></figure><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;  lambda 函数是 python 数据分析中比较常用的一个函数，属于匿名函数，即无需声明函数名称。&lt;br&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="数据分析" scheme="http://zhouweidong.ml/categories/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/"/>
-    
-    
-      <category term="Pandas" scheme="http://zhouweidong.ml/tags/Pandas/"/>
-    
-      <category term="lambda" scheme="http://zhouweidong.ml/tags/lambda/"/>
     
   </entry>
   
