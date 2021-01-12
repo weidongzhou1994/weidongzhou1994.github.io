@@ -498,13 +498,15 @@
       
 
       
-        <h1 id="创建自定义函数">1. 创建自定义函数</h1>
+        <h1 id="1-chuang-jian-zi-ding-yi-han-shu">1. 创建自定义函数</h1>
 <a id="more"></a>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Function zmj (x)</span><br><span class="line">    zmj = x / 6.03 - x * 0.03</span><br><span class="line">End Fuction</span><br><span class="line">Function ch (str As String)</span><br><span class="line">If str = &quot; 男 & quot; Then</span><br><span class="line">    ch = &quot; 先生 & quot;</span><br><span class="line">Else</span><br><span class="line">    ch = &quot; 女士 & quot;</span><br><span class="line">End If</span><br><span class="line">End Function</span><br><span class="line">Function jqzf (str As String, str1 As String, i As Integer)</span><br><span class="line">jqzf = Split (str, str1)(i - 1)</span><br><span class="line">End Function</span><br></pre></td></tr></table></figure>
-<h1 id="创建带参数的过程">2. 创建带参数的过程</h1>
+<h1 id="2-chuang-jian-dai-can-shu-de-guo-cheng">2. 创建带参数的过程</h1>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Sub cjb (str As String)</span><br><span class="line">Dim sht As Worksheet</span><br><span class="line">For Each sht In Sheets</span><br><span class="line">    If sht.Name = str Then</span><br><span class="line">        k = 1</span><br><span class="line">    End If</span><br><span class="line">Next</span><br><span class="line">If k = 0 Then</span><br><span class="line">    Sheets.Add after:=Sheets (Sheets.Count)</span><br><span class="line">    Sheets (Sheets.Count).Name = str</span><br><span class="line">End If</span><br><span class="line">End Sub</span><br></pre></td></tr></table></figure>
-<h1 id="加载宏让-vba-代码运行在所有文件中">3. 加载宏：让 VBA 代码运行在所有文件中</h1>
-<p>   第一步：把代码放在代码库中。把带有 VBA 代码的 excel 工作簿保存为 Excel 加载宏的文档类型，此时会有指定的文档保存位置，不要修改。    第二步：告诉 Excel 每次打开文档都加载这个宏。点击开发工具 - 加载项：Excel 加载项，选择要添加的宏，勾选即可。    第三步：设置宏按钮。点击文件 - 选项：快速访问工具栏，左侧 - 从下列位置选择命令：宏，添加到右侧即可。</p>
+<h1 id="3-jia-zai-hong-rang-vba-dai-ma-yun-xing-zai-suo-you-wen-jian-zhong">3. 加载宏：让 VBA 代码运行在所有文件中</h1>
+<p>   第一步：把代码放在代码库中。把带有 VBA 代码的 excel 工作簿保存为 Excel 加载宏的文档类型，此时会有指定的文档保存位置，不要修改。<br>
+   第二步：告诉 Excel 每次打开文档都加载这个宏。点击开发工具 - 加载项：Excel 加载项，选择要添加的宏，勾选即可。<br>
+   第三步：设置宏按钮。点击文件 - 选项：快速访问工具栏，左侧 - 从下列位置选择命令：宏，添加到右侧即可。</p>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">
       
     </div>
@@ -705,7 +707,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">128</span>
+                  <span class="site-state-item-count">129</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -716,7 +718,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-count">23</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -727,7 +729,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-count">60</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -813,7 +815,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#创建自定义函数"><span class="nav-text">1. 创建自定义函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#创建带参数的过程"><span class="nav-text">2. 创建带参数的过程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#加载宏让-vba-代码运行在所有文件中"><span class="nav-text">3. 加载宏：让 VBA 代码运行在所有文件中</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-chuang-jian-zi-ding-yi-han-shu"><span class="nav-text">1. 创建自定义函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-chuang-jian-dai-can-shu-de-guo-cheng"><span class="nav-text">2. 创建带参数的过程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-jia-zai-hong-rang-vba-dai-ma-yun-xing-zai-suo-you-wen-jian-zhong"><span class="nav-text">3. 加载宏：让 VBA 代码运行在所有文件中</span></a></li></ol></div>
             
 
           </div>
@@ -854,7 +856,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">79.0k</span>
+    <span title="Site words total count">79.5k</span>
   
 </div>
 

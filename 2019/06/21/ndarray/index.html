@@ -142,18 +142,18 @@
 
 
 
-<meta name="description" content="1. 什么是数组    数组数据结构（英语：array data structure），简称数组（英语：Array），是由相同类型的元素（element）的集合所组成的数据结构。">
+<meta name="description" content="1. 什么是数组    数组数据结构（英语：array data structure），简称数组（英语：Array），是由相同类型的元素（element）的集合所组成的数据结构。">
 <meta name="keywords" content="Python,用Python玩转数据,多维数组">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ndarray">
 <meta property="og:url" content="http://zhouweidong.ml/2019/06/21/ndarray/index.html">
 <meta property="og:site_name" content="周卫东的博客">
-<meta property="og:description" content="1. 什么是数组    数组数据结构（英语：array data structure），简称数组（英语：Array），是由相同类型的元素（element）的集合所组成的数据结构。">
+<meta property="og:description" content="1. 什么是数组    数组数据结构（英语：array data structure），简称数组（英语：Array），是由相同类型的元素（element）的集合所组成的数据结构。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2020-09-03T14:11:51.161Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ndarray">
-<meta name="twitter:description" content="1. 什么是数组    数组数据结构（英语：array data structure），简称数组（英语：Array），是由相同类型的元素（element）的集合所组成的数据结构。">
+<meta name="twitter:description" content="1. 什么是数组    数组数据结构（英语：array data structure），简称数组（英语：Array），是由相同类型的元素（element）的集合所组成的数据结构。">
 
 
 
@@ -521,30 +521,37 @@
       
 
       
-        <h1 id="什么是数组">1. 什么是数组</h1>
-<p>   数组数据结构（英语：array data structure），简称数组（英语：Array），是由相同类型的元素（element）的集合所组成的数据结构。 <a id="more"></a></p>
-<p>   最简单的数据结构类型是一维数组，如 list = [1, 2, 3, 4]；二维数组则对应着数学上的矩阵概念，如 <span class="math display">\[
-a = 
-\left [ \begin {matrix}
-        3&amp; 6&amp; 2  \\\\
-        0&amp; 1&amp; -4 \\\\
-        2&amp; -1&amp; 0 \\\\
-\end {matrix} \right]
-\]</span></p>
+        <h1 id="1-shi-yao-shi-shu-zu">1. 什么是数组</h1>
+<p>   数组数据结构（英语：array data structure），简称数组（英语：Array），是由相同类型的元素（element）的集合所组成的数据结构。</p>
+<a id="more"></a>
+<p>   最简单的数据结构类型是一维数组，如 list = [1, 2, 3, 4]；二维数组则对应着数学上的矩阵概念，如<br>
+$$<br>
+a =<br>
+\left [ \begin {matrix}<br>
+3&amp; 6&amp; 2  \\<br>
+0&amp; 1&amp; -4 \\<br>
+2&amp; -1&amp; 0 \\<br>
+\end {matrix} \right]<br>
+$$</p>
 <p>   在 Python 中，上述矩阵可以表示为：a = np.array ([[3, 6, 2], [6, 1, -4], [2, -1, 0]])</p>
-<h1 id="多维数组的创建">2. 多维数组的创建</h1>
-<p>   在 Python 中，多维数组的创建一般需要借助 numpy 的 array 模块。实例如下： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">from numpy import *</span><br><span class="line">aAarray = array ([1, 2, 3])</span><br></pre></td></tr></table></figure></p>
-<p>  numpy 内部提供了许多创建多维数组的函数，如：array,arrange,ones,zeros 等。<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
-<h1 id="ndarray-的基本运算符">3. ndarray 的基本运算符</h1>
-<p>  ndarray 的基本运算符包括 add ()，subtract ()，multiply () 和 divide ()，实例如下： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; from numpy import *</span><br><span class="line">&gt;&gt;&gt; aArray = array ([(5, 5, 5), (5, 5, 5)])</span><br><span class="line">&gt;&gt;&gt; bArray = array ([(2, 2, 2), (2, 2, 2)])</span><br><span class="line">&gt;&gt;&gt; cArray = multiply (aArray, bArray)</span><br><span class="line">&gt;&gt;&gt; cArray</span><br><span class="line">array ([[10, 10, 10],</span><br><span class="line">       [10, 10, 10]])</span><br><span class="line">&gt;&gt;&gt; cArray = add (aArray, bArray)</span><br><span class="line">&gt;&gt;&gt; aArray</span><br><span class="line">array ([[7, 7, 7],</span><br><span class="line">       [7, 7, 7]])</span><br><span class="line">&gt;&gt;&gt; aArray &gt; 5 #每个元素是否大于 5</span><br><span class="line">array ([[ True,  True,  True],</span><br><span class="line">       [ True,  True,  True]], dtype=bool)</span><br></pre></td></tr></table></figure></p>
-<h1 id="ndarray-的内建函数">4. ndarray 的内建函数</h1>
-<p>  ndarray 有很多内建函数，如 fromfunction。fromfunction 的作用是从函数中创建数组，实例如下： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">from numpy import *</span><br><span class="line">def fun (x, y):</span><br><span class="line">    return (x + 1)*(y + 1)</span><br><span class="line">arr = fromfunction (fun, (9, 9))</span><br><span class="line">print (arr)</span><br></pre></td></tr></table></figure></p>
-<p>   除了一般的内建函数，ndarray 还有一种能对数组的每个元素进行操作的函数，称为 ufunc 函数。<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
-<section class="footnotes" role="doc-endnotes">
-<hr>
-<ol>
-<li id="fn1" role="doc-endnote"><p><a href="http://www.zmonster.me/2016/02/25/creation-and-io-of-ndarray.html" title="多维数组的创建" target="_blank" rel="noopener">多维数组的创建</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2" role="doc-endnote"><p><a href="https://zhuanlan.zhihu.com/p/33468084" title="Python-NumPy 模块的通用函数" target="_blank" rel="noopener">Python-NumPy 模块的通用函数</a><a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<h1 id="2-duo-wei-shu-zu-de-chuang-jian">2. 多维数组的创建</h1>
+<p>   在 Python 中，多维数组的创建一般需要借助 numpy 的 array 模块。实例如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">from numpy import *</span><br><span class="line">aAarray = array ([1, 2, 3])</span><br></pre></td></tr></table></figure>
+<p>  numpy 内部提供了许多创建多维数组的函数，如：array,arrange,ones,zeros 等。<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup></p>
+<h1 id="3-ndarray-de-ji-ben-yun-suan-fu">3. ndarray 的基本运算符</h1>
+<p>  ndarray 的基本运算符包括 add ()，subtract ()，multiply () 和 divide ()，实例如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; from numpy import *</span><br><span class="line">&gt;&gt;&gt; aArray = array ([(5, 5, 5), (5, 5, 5)])</span><br><span class="line">&gt;&gt;&gt; bArray = array ([(2, 2, 2), (2, 2, 2)])</span><br><span class="line">&gt;&gt;&gt; cArray = multiply (aArray, bArray)</span><br><span class="line">&gt;&gt;&gt; cArray</span><br><span class="line">array ([[10, 10, 10],</span><br><span class="line">       [10, 10, 10]])</span><br><span class="line">&gt;&gt;&gt; cArray = add (aArray, bArray)</span><br><span class="line">&gt;&gt;&gt; aArray</span><br><span class="line">array ([[7, 7, 7],</span><br><span class="line">       [7, 7, 7]])</span><br><span class="line">&gt;&gt;&gt; aArray &gt; 5 #每个元素是否大于 5</span><br><span class="line">array ([[ True,  True,  True],</span><br><span class="line">       [ True,  True,  True]], dtype=bool)</span><br></pre></td></tr></table></figure>
+<h1 id="4-ndarray-de-nei-jian-han-shu">4. ndarray 的内建函数</h1>
+<p>  ndarray 有很多内建函数，如 fromfunction。fromfunction 的作用是从函数中创建数组，实例如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">from numpy import *</span><br><span class="line">def fun (x, y):</span><br><span class="line">    return (x + 1)*(y + 1)</span><br><span class="line">arr = fromfunction (fun, (9, 9))</span><br><span class="line">print (arr)</span><br></pre></td></tr></table></figure>
+<p>   除了一般的内建函数，ndarray 还有一种能对数组的每个元素进行操作的函数，称为 ufunc 函数。<sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup></p>
+<hr class="footnotes-sep">
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p><a href="http://www.zmonster.me/2016/02/25/creation-and-io-of-ndarray.html" title="多维数组的创建" target="_blank" rel="noopener">多维数组的创建</a> <a href="#fnref1" class="footnote-backref">↩</a></p>
+</li>
+<li id="fn2" class="footnote-item"><p><a href="https://zhuanlan.zhihu.com/p/33468084" title="Python-NumPy 模块的通用函数" target="_blank" rel="noopener">Python-NumPy 模块的通用函数</a> <a href="#fnref2" class="footnote-backref">↩</a></p>
+</li>
 </ol>
 </section>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">
@@ -757,7 +764,7 @@ a =
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">128</span>
+                  <span class="site-state-item-count">129</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -768,7 +775,7 @@ a =
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-count">23</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -779,7 +786,7 @@ a =
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-count">60</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -865,7 +872,7 @@ a =
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#什么是数组"><span class="nav-text">1. 什么是数组</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#多维数组的创建"><span class="nav-text">2. 多维数组的创建</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ndarray-的基本运算符"><span class="nav-text">3. ndarray 的基本运算符</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ndarray-的内建函数"><span class="nav-text">4. ndarray 的内建函数</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-shi-yao-shi-shu-zu"><span class="nav-text">1. 什么是数组</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-duo-wei-shu-zu-de-chuang-jian"><span class="nav-text">2. 多维数组的创建</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-ndarray-de-ji-ben-yun-suan-fu"><span class="nav-text">3. ndarray 的基本运算符</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-ndarray-de-nei-jian-han-shu"><span class="nav-text">4. ndarray 的内建函数</span></a></li></ol></div>
             
 
           </div>
@@ -906,7 +913,7 @@ a =
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">79.0k</span>
+    <span title="Site words total count">79.5k</span>
   
 </div>
 

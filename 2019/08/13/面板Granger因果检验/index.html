@@ -498,29 +498,49 @@
       
 
       
-        <h1 id="dumitrescu-hurlin-检验">1. Dumitrescu-Hurlin 检验</h1>
+        <h1 id="1-dumitrescu-hurlin-jian-yan">1. Dumitrescu-Hurlin 检验</h1>
 <a id="more"></a>
-<h2 id="granger-因果检验的基本思想">1.1 Granger 因果检验的基本思想</h2>
-<p>  Granger 于 1969 年开创性地提出一种分析时间序列数据因果关系的方法，基本思想是：在控制 <span class="math inline">\(y\)</span> 的滞后项 (过去值) 的情况下，如果 <span class="math inline">\(x\)</span> 的滞后项仍然有助于解释 <span class="math inline">\(y\)</span> 的当期值的变动，则认为 <span class="math inline">\(x\)</span> 对 <span class="math inline">\(y\)</span> 产生因果影响。    基本模型如下： <span class="math display">\[y_t = \alpha + \sum_{k=1}^{K}\gamma_ty_{t-k} + \sum_{k=1}^{K}\beta_kx_{t-k} + \varepsilon_t,  t = 1, … … ,T \tag1\]</span>    检验的原假设是： <span class="math display">\[H_0 : \beta_1 = … =\beta_K = 0\]</span>    构造 F 统计量进行检验。如果 F 检验拒绝 <span class="math inline">\(H_0\)</span>，则认为存在因果关系，即 <span class="math inline">\(x\)</span> 是 <span class="math inline">\(y\)</span> 的 Granger 因。</p>
-<h2 id="dumitrescu-hurlin-的拓展">1.2 Dumitrescu-Hurlin 的拓展</h2>
-<p>  Dumitrescu-Hurlin 于 2012 年在此基础上进行了拓展，提供了一个检验面板数据因果关系的方法。基本模型如下： <span class="math display">\[y_{i,t} = \alpha_i + \sum_{k=1}^{K}\gamma_{ik} y_{i,t-k} + \sum_{k=1}^{K}\beta_{ik} x_{i,t-k} + \varepsilon_{i,t} \tag2\]</span>    其中，<span class="math inline">\(i = 1,… …,N; t = 1,… …,T\)</span>。<span class="math inline">\(x_{i,t}\)</span> 和 <span class="math inline">\(y_{i,t}\)</span> 是两个平稳序列在个体 <span class="math inline">\(i\)</span> 和时间 <span class="math inline">\(t\)</span> 上的观测值。    原假设认为面板中的所有个体都不存在因果关系： <span class="math display">\[H_0 = \beta_{i1} = … = \beta_{ik} = 0 \qquad \forall i = 1,\ldots,N_1 \tag3\]</span>    备择假设为部分（不是所有的）个体存在因果关系： <span class="math display">\[H_1:\beta {i1} = \ldots = \beta_{iK} = 0 \qquad \forall i = 1,\ldots,N_1 \\\\
-\beta_{i1} \neq 0 or \ldots or \beta_{iK} \neq 0 \qquad \forall i = N_1+1,\ldots,N\]</span>    其中，<span class="math inline">\(N_1 \in [0,N-1]\)</span>。</p>
-<h3 id="实现方法">1.2.1 实现方法</h3>
-<p>  Dumitrescu-Hurlin 提出运行包含在 (1) 式中的 N 个独立回归，执行 k 个线性假设的 F 检验来获得 Wald 统计量：<span class="math inline">\(W_i\)</span>，最后计算 Wald 统计量的平均值：<span class="math inline">\(\overline {W} = \frac {1}{N}\sum_{i=1}^{N} W_i\)</span>。    但是，拒绝 <span class="math inline">\(H_0\)</span> 并不排除一些个体的非因果关系，Dumitrescu-Hurlin 使用蒙特卡罗模拟（Monte Carlo Simulation）发现 W 的渐进表现良好，可以用来检测面板因果关系。    在 Wald 统计量：<span class="math inline">\(W_i\)</span> 是独立同分布的假设下，当 <span class="math inline">\(T \to \infty\)</span> 和 <span class="math inline">\(N \to \infty\)</span> 时，标准化的统计 <span class="math inline">\(\widetilde {Z}\)</span> 服从下面的正态分布： <span class="math display">\[\overline {Z} = \sqrt {\frac {N}{2K}}\times (\overline {W}-K) \quad \frac {d}{T,N \to \infty} \to N (0,1) \tag4\]</span>    并且，对一个 T&gt;5+3K 的固定的 T 维度来说，最大标准统计量 Z 服从以下正态分布： <span class="math display">\[\widetilde {Z} = \sqrt {\frac {N}{2K}\times\frac {T-3K-5}{T-2K-3}}\times (\frac {T-3K-3}{T-3K-1}\times\overline {W}-K) \quad \\\\
-\frac {d}{T,N \to \infty} \to N (0,1) \tag5\]</span>    原假设 (3) 的检验也是基于 <span class="math inline">\(\overline {Z}\)</span> 和 <span class="math inline">\(\widetilde {Z}\)</span>， 如果这些值大于标准值，则拒绝原假设：<span class="math inline">\(H_0\)</span>，认为 Granger 因果存在。</p>
-<h3 id="滞后阶数的选择">1.2.2 滞后阶数的选择</h3>
-<p>   选择滞后阶数 k 的一个方法是根据信息准则（AIC/BIC/HQIC），但这意味着 <span class="math inline">\(K_{max}^{3}\)</span> 时间序列在整个滞后选择过程中被忽略掉了；另一个需要考虑的现实问题是面板数据中的横截面依赖性。为此， Dumitrescu 和 Hurlin 提出了 bootstrapped 临界值，计算步骤如下：</p>
-<p>   第一步：通过拟合模型（2），根据（4）和（5）的定义获得 <span class="math inline">\(\overline {Z}\)</span> 和 <span class="math inline">\(\widetilde {Z}\)</span>。</p>
-<p>   第二步：在 <span class="math inline">\(H_{0}:y_{i,t} = \alpha_{i}^{0} + \sum_{k=1}^{K}\gamma_{ik}^{0} y_{i,t-k} + \varepsilon_{i,t}\)</span> 假设下拟合模型，得到残差矩阵：<span class="math inline">\(\widehat {\varepsilon}(T-K) \times N\)</span>。</p>
-<p>   第三步：重新抽取矩阵 <span class="math inline">\(\hat {\varepsilon}\)</span>，形成 <span class="math inline">\(\widehat {\varepsilon}(T-K) \times N\)</span>。</p>
-<p>   第四步：随机抽取 <span class="math inline">\((y_{1}^{\star},\ldots,y_{K}^{\star})^{\prime}\)</span>，令 <span class="math inline">\(y_{t}^{\star}=(y_{1,t}^{\star},y_{2,t}^{\star}, \ldots, y_{N,t}^{\star})\)</span>, 其中 <span class="math inline">\(k\)</span> 为可重复的连续时间序列。</p>
-<p>   第五步：根据 <span class="math inline">\(k\)</span> 期随机抽取，构建重抽样序列: <a href="https://cdn.mathpix.com/snip/images/2zu5GVVnKtSaDN3MqVmbfPUpXhatVHhV9ipIsbAkziM.original.fullsize.png" target="_blank" rel="noopener"></a></p>
-<p>   第六步：拟合模型 <span class="math inline">\(y_{i,t}^{\star} = \alpha_{i}^{b}+\sum_{k=1}^{K}\gamma_{ik}^{b} y_{i,t-k}^{\star} + \sum_{k=1}^{K}\beta_{ik}^{b} x_{i,t-k} + \varepsilon_{i,t}\)</span>，计算 <span class="math inline">\(\overline {Z}^{b}\)</span> 和 <span class="math inline">\(\widetilde {Z}^{b}\)</span>。</p>
-<p>   第七步：重复步骤 3-6 ，根据 <span class="math inline">\(\overline {Z}^{b}\)</span> 和 <span class="math inline">\(\widetilde {Z}^{b}\)</span> 的分布，计算 P 值、和 <span class="math inline">\(\overline {Z}^{b}\)</span> 和 <span class="math inline">\(\widetilde {Z}^{b}\)</span> 的标准值。</p>
-<h1 id="stata-实现xtgcause-命令">2. Stata 实现：xtgcause 命令</h1>
+<h2 id="1-1-granger-yin-guo-jian-yan-de-ji-ben-si-xiang">1.1 Granger 因果检验的基本思想</h2>
+<p>  Granger 于 1969 年开创性地提出一种分析时间序列数据因果关系的方法，基本思想是：在控制 $y$ 的滞后项 (过去值) 的情况下，如果 $x$ 的滞后项仍然有助于解释 $y$ 的当期值的变动，则认为 $x$ 对 $y$ 产生因果影响。<br>
+   基本模型如下：<br>
+$$y_t = \alpha + \sum_{k=1}^{K}\gamma_ty_{t-k} + \sum_{k=1}^{K}\beta_kx_{t-k} + \varepsilon_t,  t = 1, … … ,T \tag1$$<br>
+   检验的原假设是：<br>
+$$H_0 : \beta_1 = … =\beta_K = 0$$<br>
+   构造 F 统计量进行检验。如果 F 检验拒绝 $H_0$，则认为存在因果关系，即 $x$ 是 $y$ 的 Granger 因。</p>
+<h2 id="1-2-dumitrescu-hurlin-de-tuo-zhan">1.2 Dumitrescu-Hurlin 的拓展</h2>
+<p>  Dumitrescu-Hurlin 于 2012 年在此基础上进行了拓展，提供了一个检验面板数据因果关系的方法。基本模型如下：<br>
+$$y_{i,t} = \alpha_i + \sum_{k=1}^{K}\gamma_{ik} y_{i,t-k} + \sum_{k=1}^{K}\beta_{ik} x_{i,t-k} + \varepsilon_{i,t} \tag2$$<br>
+   其中，$i = 1,… …,N; t = 1,… …,T$。$x_{i,t}$ 和 $y_{i,t}$ 是两个平稳序列在个体 $i$ 和时间 $t$ 上的观测值。<br>
+   原假设认为面板中的所有个体都不存在因果关系：<br>
+$$H_0 = \beta_{i1} = … = \beta_{ik} = 0 \qquad \forall i = 1,\ldots,N_1 \tag3$$<br>
+   备择假设为部分（不是所有的）个体存在因果关系：<br>
+$$H_1:\beta {i1} = \ldots = \beta_{iK} = 0 \qquad \forall i = 1,\ldots,N_1 \\<br>
+\beta_{i1} \neq 0 or \ldots or \beta_{iK} \neq 0 \qquad \forall i = N_1+1,\ldots,N$$<br>
+   其中，$N_1 \in [0,N-1]$。</p>
+<h3 id="1-2-1-shi-xian-fang-fa">1.2.1 实现方法</h3>
+<p>  Dumitrescu-Hurlin 提出运行包含在 (1) 式中的 N 个独立回归，执行 k 个线性假设的 F 检验来获得 Wald 统计量：$W_i$，最后计算 Wald 统计量的平均值：$\overline {W} = \frac {1}{N}\sum_{i=1}^{N} W_i$。<br>
+   但是，拒绝 $H_0$ 并不排除一些个体的非因果关系，Dumitrescu-Hurlin 使用蒙特卡罗模拟（Monte Carlo Simulation）发现 W 的渐进表现良好，可以用来检测面板因果关系。<br>
+   在 Wald 统计量：$W_i$ 是独立同分布的假设下，当 $T \to \infty$ 和 $N \to \infty$ 时，标准化的统计 $\widetilde {Z}$ 服从下面的正态分布：<br>
+$$\overline {Z} = \sqrt {\frac {N}{2K}}\times (\overline {W}-K) \quad \frac {d}{T,N \to \infty} \to N (0,1) \tag4$$<br>
+   并且，对一个 T&gt;5+3K 的固定的 T 维度来说，最大标准统计量 Z 服从以下正态分布：<br>
+$$\widetilde {Z} = \sqrt {\frac {N}{2K}\times\frac {T-3K-5}{T-2K-3}}\times (\frac {T-3K-3}{T-3K-1}\times\overline {W}-K) \quad \\<br>
+\frac {d}{T,N \to \infty} \to N (0,1) \tag5$$<br>
+   原假设 (3) 的检验也是基于 $\overline {Z}$ 和 $\widetilde {Z}$， 如果这些值大于标准值，则拒绝原假设：$H_0$，认为 Granger 因果存在。</p>
+<h3 id="1-2-2-zhi-hou-jie-shu-de-xuan-ze">1.2.2 滞后阶数的选择</h3>
+<p>   选择滞后阶数 k 的一个方法是根据信息准则（AIC/BIC/HQIC），但这意味着 $K_{max}^{3}$ 时间序列在整个滞后选择过程中被忽略掉了；另一个需要考虑的现实问题是面板数据中的横截面依赖性。为此， Dumitrescu 和 Hurlin 提出了 bootstrapped 临界值，计算步骤如下：</p>
+<p>   第一步：通过拟合模型（2），根据（4）和（5）的定义获得 $\overline {Z}$ 和 $\widetilde {Z}$。</p>
+<p>   第二步：在 $H_{0}:y_{i,t} = \alpha_{i}^{0} + \sum_{k=1}^{K}\gamma_{ik}^{0} y_{i,t-k} + \varepsilon_{i,t}$ 假设下拟合模型，得到残差矩阵：$\widehat {\varepsilon}(T-K) \times N$。</p>
+<p>   第三步：重新抽取矩阵 $\hat {\varepsilon}$，形成 $\widehat {\varepsilon}(T-K) \times N$。</p>
+<p>   第四步：随机抽取 $(y_{1}^{\star},\ldots,y_{K}^{\star})^{\prime}$，令 $y_{t}^{\star}=(y_{1,t}^{\star},y_{2,t}^{\star}, \ldots, y_{N,t}^{\star})$, 其中 $k$ 为可重复的连续时间序列。</p>
+<p>   第五步：根据 $k$ 期随机抽取，构建重抽样序列:<br>
+<a href="https://cdn.mathpix.com/snip/images/2zu5GVVnKtSaDN3MqVmbfPUpXhatVHhV9ipIsbAkziM.original.fullsize.png" target="_blank" rel="noopener"></a></p>
+<p>   第六步：拟合模型 $y_{i,t}^{\star} = \alpha_{i}^{b}+\sum_{k=1}^{K}\gamma_{ik}^{b} y_{i,t-k}^{\star} + \sum_{k=1}^{K}\beta_{ik}^{b} x_{i,t-k} + \varepsilon_{i,t}$，计算 $\overline {Z}^{b}$ 和 $\widetilde {Z}^{b}$。</p>
+<p>   第七步：重复步骤 3-6 ，根据 $\overline {Z}^{b}$ 和 $\widetilde {Z}^{b}$ 的分布，计算 P 值、和 $\overline {Z}^{b}$ 和 $\widetilde {Z}^{b}$ 的标准值。</p>
+<h1 id="2-stata-shi-xian-xtgcause-ming-ling">2. Stata 实现：xtgcause 命令</h1>
 <figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xtgcause depvar indepvar [<span class="keyword">if</span>] [<span class="keyword">in</span>], [lags (lags_spec) <span class="keyword">regress</span> <span class="keyword">bootstrap</span> breps (#) blevel (#) blength (#) seed (#) nodots] <span class="comment">// 基本语法 </span></span><br></pre></td></tr></table></figure>
 <figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">* 导入和设定数据 </span></span><br><span class="line"><span class="keyword">insheet</span> using <span class="string">"http://www.execandshare.org/execandshare/htdocs/data/MetaSite/upload/companionSite51/data/data-demo.csv"</span>, delimiter (<span class="string">","</span>)  <span class="keyword">clear</span> </span><br><span class="line"><span class="keyword">split</span> x, <span class="keyword">parse</span>(`=<span class="built_in">char</span>(9)') <span class="keyword">destring</span></span><br><span class="line"><span class="keyword">split</span> y, <span class="keyword">parse</span>(`=<span class="built_in">char</span>(9)') <span class="keyword">destring</span></span><br><span class="line"><span class="keyword">drop</span> x <span class="built_in">y</span></span><br><span class="line"><span class="keyword">gen</span> t = _n</span><br><span class="line"><span class="keyword">reshape</span> long x y, <span class="built_in">i</span>(t) <span class="built_in">j</span>(id)</span><br><span class="line"><span class="keyword">xtset</span> id t    <span class="comment">// 设定为面板数据 </span></span><br><span class="line">xtgcause y x</span><br><span class="line"><span class="comment">* Wald 统计量 </span></span><br><span class="line"><span class="keyword">matrix</span> Wi_PVi = <span class="built_in">r</span>(Wi), <span class="built_in">r</span>(PVi)</span><br><span class="line"><span class="keyword">matrix</span> <span class="keyword">list</span> Wi_PVi</span><br><span class="line"><span class="comment">* 设定滞后阶数为 2</span></span><br><span class="line">xtgcause y x, lags (2)</span><br><span class="line"><span class="comment">* 基于 Bootstrap 的标准误 </span></span><br><span class="line">xtgcause y x, <span class="keyword">bootstrap</span> lags (1) breps (100) seed (20190802)</span><br></pre></td></tr></table></figure>
-<p>   一个实例 - Paramati, Ummalla 和 Apergis (2016)： <figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">* 导入和设定数据 </span></span><br><span class="line">import excel <span class="string">"Data.xlsx"</span>, <span class="keyword">clear</span> first cellrange (A1:J461) sheet (LN-EU)</span><br><span class="line"><span class="keyword">xtset</span> ID <span class="built_in">Year</span></span><br></pre></td></tr></table></figure></p>
+<p>   一个实例 - Paramati, Ummalla 和 Apergis (2016)：</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">* 导入和设定数据 </span></span><br><span class="line">import excel <span class="string">"Data.xlsx"</span>, <span class="keyword">clear</span> first cellrange (A1:J461) sheet (LN-EU)</span><br><span class="line"><span class="keyword">xtset</span> ID <span class="built_in">Year</span></span><br></pre></td></tr></table></figure>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">
       
     </div>
@@ -721,7 +741,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">128</span>
+                  <span class="site-state-item-count">129</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -732,7 +752,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-count">23</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -743,7 +763,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-count">60</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -829,7 +849,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#dumitrescu-hurlin-检验"><span class="nav-text">1. Dumitrescu-Hurlin 检验</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#granger-因果检验的基本思想"><span class="nav-text">1.1 Granger 因果检验的基本思想</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dumitrescu-hurlin-的拓展"><span class="nav-text">1.2 Dumitrescu-Hurlin 的拓展</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#实现方法"><span class="nav-text">1.2.1 实现方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#滞后阶数的选择"><span class="nav-text">1.2.2 滞后阶数的选择</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#stata-实现xtgcause-命令"><span class="nav-text">2. Stata 实现：xtgcause 命令</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-dumitrescu-hurlin-jian-yan"><span class="nav-text">1. Dumitrescu-Hurlin 检验</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-granger-yin-guo-jian-yan-de-ji-ben-si-xiang"><span class="nav-text">1.1 Granger 因果检验的基本思想</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-dumitrescu-hurlin-de-tuo-zhan"><span class="nav-text">1.2 Dumitrescu-Hurlin 的拓展</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-1-shi-xian-fang-fa"><span class="nav-text">1.2.1 实现方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-2-zhi-hou-jie-shu-de-xuan-ze"><span class="nav-text">1.2.2 滞后阶数的选择</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-stata-shi-xian-xtgcause-ming-ling"><span class="nav-text">2. Stata 实现：xtgcause 命令</span></a></li></ol></div>
             
 
           </div>
@@ -870,7 +890,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">79.0k</span>
+    <span title="Site words total count">79.5k</span>
   
 </div>
 

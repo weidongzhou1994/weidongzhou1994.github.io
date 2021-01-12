@@ -502,36 +502,36 @@
       
         <p>   第 8 天：</p>
 <a id="more"></a>
-<p>  Write a SQL query to rank scores. If there is a tie between two scores, both should have the same ranking. Note that after a tie, the next ranking number should be the next consecutive integer value. In other words, there should be no "holes" between ranks.</p>
+<p>  Write a SQL query to rank scores. If there is a tie between two scores, both should have the same ranking. Note that after a tie, the next ranking number should be the next consecutive integer value. In other words, there should be no “holes” between ranks.</p>
 <table>
 <thead>
-<tr class="header">
+<tr>
 <th>Id</th>
 <th>Score</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td>1</td>
 <td>3.50</td>
 </tr>
-<tr class="even">
+<tr>
 <td>2</td>
 <td>3.65</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>3</td>
 <td>4.00</td>
 </tr>
-<tr class="even">
+<tr>
 <td>4</td>
 <td>3.85</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>5</td>
 <td>4.00</td>
 </tr>
-<tr class="even">
+<tr>
 <td>6</td>
 <td>3.65</td>
 </tr>
@@ -540,33 +540,33 @@
 <p>  For example, given the above Scores table, your query should generate the following report (order by highest score):</p>
 <table>
 <thead>
-<tr class="header">
+<tr>
 <th>score</th>
 <th>Rank</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td>4.00</td>
 <td>1</td>
 </tr>
-<tr class="even">
+<tr>
 <td>4.00</td>
 <td>1</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>3.85</td>
 <td>2</td>
 </tr>
-<tr class="even">
+<tr>
 <td>3.65</td>
 <td>3</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>3.65</td>
 <td>3</td>
 </tr>
-<tr class="even">
+<tr>
 <td>3.50</td>
 <td>4</td>
 </tr>
@@ -576,7 +576,7 @@
 <p>   解决方案：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> score, <span class="keyword">dense_rank</span>() <span class="keyword">over</span>(<span class="keyword">order</span> <span class="keyword">by</span> score <span class="keyword">desc</span>) <span class="keyword">as</span> <span class="string">'Rank'</span> <span class="keyword">from</span> Scores</span><br></pre></td></tr></table></figure>
 <p>   知识点：</p>
-<p><img src="https://picgo-1258437747.cos.ap-nanjing.myqcloud.com/20200906224250.png"></p>
+<p><img src="https://picgo-1258437747.cos.ap-nanjing.myqcloud.com/20200906224250.png" alt=""></p>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">
       
     </div>
@@ -768,7 +768,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">128</span>
+                  <span class="site-state-item-count">129</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -779,7 +779,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-count">23</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -790,7 +790,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-count">60</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -901,7 +901,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">79.0k</span>
+    <span title="Site words total count">79.5k</span>
   
 </div>
 

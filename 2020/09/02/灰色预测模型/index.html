@@ -461,7 +461,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  507
+                  499
                 </span>
               
 
@@ -498,35 +498,40 @@
       
 
       
-        <p>   灰色预测模型是在样本较小、信息不完全的情况下，通过挖掘数据的特征进行预测的方法。<br> <a id="more"></a>    首先需要由原始数据序列计算一次累加序列：<br></p>
+        <p>   灰色预测模型是在样本较小、信息不完全的情况下，通过挖掘数据的特征进行预测的方法。<br></p>
+<a id="more"></a>
+<p>   首先需要由原始数据序列计算一次累加序列：<br></p>
 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x0 &lt;- seq (<span class="number">1</span>, <span class="number">9</span>)</span><br><span class="line">x1 &lt;- cumsum (x)</span><br></pre></td></tr></table></figure>
-<p>   然后，需要建立矩阵 <span class="math display">\[\pmb {B}=\left [\begin {array}{cc}
-  -\frac {1}{2}[x^{(1)}(2)+x^{(1)}(1)]&amp;1\\
-  \vdots&amp;\vdots\\
-  -\frac {1}{2}[x^{(1)}(k)+x^{(1)}(k-1)]&amp;1  
-\end {array}\right]
-\]</span> 和 <span class="math display">\[\pmb {y}=\left [\begin {array}{c}
-  x^{0}_{2}\\
-  \vdots \\
-  x^{0}_{k}
-\end {array}\right]
-\]</span></p>
+<p>   然后，需要建立矩阵<br>
+$$\pmb {B}=\left [\begin {array}{cc}<br>
+-\frac {1}{2}[x^{(1)}(2)+x^{(1)}(1)]&amp;1\<br>
+\vdots&amp;\vdots\<br>
+-\frac {1}{2}[x^{(1)}(k)+x^{(1)}(k-1)]&amp;1<br>
+\end {array}\right]<br>
+$$<br>
+和<br>
+$$\pmb {y}=\left [\begin {array}{c}<br>
+x^{0}<em>{2}\<br>
+\vdots \<br>
+x^{0}</em>{k}<br>
+\end {array}\right]<br>
+$$</p>
 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">B = matrix (data = <span class="number">1</span>, nrow = (length (x1) - <span class="number">1</span>), ncol = <span class="number">2</span>)</span><br><span class="line"><span class="keyword">for</span> (i <span class="keyword">in</span> <span class="number">1</span>:(length (x1) - <span class="number">1</span>)) &#123;</span><br><span class="line">    B [i, <span class="number">1</span>] = (x1 [i] + x1 [i+<span class="number">1</span>])*(-<span class="number">1.0</span>)/<span class="number">2</span></span><br><span class="line">&#125;</span><br><span class="line">y = as.matrix (x0 [<span class="number">2</span>:length (x0)])</span><br></pre></td></tr></table></figure>
-<p>   之后，可以由 <span class="math inline">\(\hat {U} = (\pmb {B}^{T}\pmb {B})^{-1}\pmb {B}^{T}\pmb {y}=\left [\begin {array}{c} \hat {a} \\ \hat {u} \end {array}\right]\)</span>, 求出 <span class="math inline">\(\hat {a}\)</span> 和 <span class="math inline">\(\hat {u}\)</span>：</p>
+<p>   之后，可以由 $\hat {U} = (\pmb {B}^{T}\pmb {B})^{-1}\pmb {B}^{T}\pmb {y}=\left [\begin {array}{c} \hat {a} \ \hat {u} \end {array}\right]$, 求出 $\hat {a}$ 和 $\hat {u}$：</p>
 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">BT = t (B)</span><br><span class="line">a = sovle (BT %*% B) %*% BT %*% y</span><br></pre></td></tr></table></figure>
-<p>   最后，把 <span class="math inline">\(\hat {a}\)</span> 和 <span class="math inline">\(\hat {u}\)</span> 代入时间响应方程：</p>
-<p><span class="math display">\[
-x^{(1)}(k+1) = [x^{(1)}_{1} - \frac {\hat {u}}{\hat {a}}] e^{-\hat {a} k} + \frac {\hat {u}}{\hat {a}}
-\]</span></p>
+<p>   最后，把 $\hat {a}$ 和 $\hat {u}$ 代入时间响应方程：</p>
+<p>$$<br>
+x^{(1)}(k+1) = [x^{(1)}_{1} - \frac {\hat {u}}{\hat {a}}] e^{-\hat {a} k} + \frac {\hat {u}}{\hat {a}}<br>
+$$</p>
 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">k &lt;- rep (<span class="number">1</span>, length)</span><br><span class="line">xk &lt;- rep (<span class="number">1</span>,(length (x0)+n))</span><br><span class="line"><span class="keyword">for</span> (i <span class="keyword">in</span> <span class="number">1</span>:length (x0)+n) &#123;</span><br><span class="line">    u = a [<span class="number">2</span>]/a [<span class="number">1</span>]</span><br><span class="line">    xk [i] = (x1 [<span class="number">1</span>] - u)*exp ((-<span class="number">1</span>)*a [<span class="number">1</span>]*(k [i])) + u</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>   此时得到的结果是拟合值 <span class="math inline">\(\hat {x}^{1}_{i}\)</span> ，需要利用后减运算还原为模型的拟合值 <span class="math inline">\(\hat {x}^{0}_{i}\)</span>：</p>
+<p>   此时得到的结果是拟合值 $\hat {x}^{1}<em>{i}$ ，需要利用后减运算还原为模型的拟合值 $\hat {x}^{0}</em>{i}$：</p>
 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">xhat &lt;- rep (<span class="number">1</span>, length (xk))</span><br><span class="line"><span class="keyword">for</span> (i <span class="keyword">in</span> <span class="number">1</span>:legth (xk)) &#123;</span><br><span class="line">    <span class="keyword">if</span> (i == <span class="number">1</span>) &#123;</span><br><span class="line">        xhat [i] = x0 [<span class="number">1</span>]</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        xhat [i] = xk [i] - xk [i-<span class="number">1</span>]</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>   得出拟合值后，需要评价一下模型的精度，主要评价指标有：</p>
 <ul>
-<li>残差：<span class="math inline">\(e (k)=x^{(0)}_{k}-\hat {x}^{(0)}_{k}\)</span>。</li>
-<li>相对残差：<span class="math inline">\(e (k)=\frac {x^{(0)}_{k}-\hat {x}^{(0)}_{k}}{x^{(0)}_{k}}\)</span>。</li>
-<li>均方差比（后残差比值）：<span class="math inline">\(C=\frac {S_{2}}{S_{1}}=\frac {\sqrt {\frac {1}{N}\sum_{k=1}^{N}[x^{(0)}_k-\bar {X}]^{2}}}{\sqrt {\frac {1}{N-1}\sum_{k=2}^{N}[E (k)-\bar {E}]^{2}}}\)</span>，小于 0.35 表示模型精度相对比较好。</li>
-<li>小误差概率：<span class="math inline">\(P = P {|E (k)-\bar {E}|&lt;0.6745S_{1}}\)</span>，大于 0.95 表示模型精度相对比较好。</li>
+<li>残差：$e (k)=x^{(0)}<em>{k}-\hat {x}^{(0)}</em>{k}$。</li>
+<li>相对残差：$e (k)=\frac {x^{(0)}<em>{k}-\hat {x}^{(0)}</em>{k}}{x^{(0)}_{k}}$。</li>
+<li>均方差比（后残差比值）：$C=\frac {S_{2}}{S_{1}}=\frac {\sqrt {\frac {1}{N}\sum_{k=1}^{N}[x^{(0)}<em>k-\bar {X}]^{2}}}{\sqrt {\frac {1}{N-1}\sum</em>{k=2}^{N}[E (k)-\bar {E}]^{2}}}$，小于 0.35 表示模型精度相对比较好。</li>
+<li>小误差概率：$P = P {|E (k)-\bar {E}|&lt;0.6745S_{1}}$，大于 0.95 表示模型精度相对比较好。</li>
 </ul>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">
       
@@ -719,7 +724,7 @@ x^{(1)}(k+1) = [x^{(1)}_{1} - \frac {\hat {u}}{\hat {a}}] e^{-\hat {a} k} + \fra
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">128</span>
+                  <span class="site-state-item-count">129</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -730,7 +735,7 @@ x^{(1)}(k+1) = [x^{(1)}_{1} - \frac {\hat {u}}{\hat {a}}] e^{-\hat {a} k} + \fra
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-count">23</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -741,7 +746,7 @@ x^{(1)}(k+1) = [x^{(1)}_{1} - \frac {\hat {u}}{\hat {a}}] e^{-\hat {a} k} + \fra
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-count">60</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -852,7 +857,7 @@ x^{(1)}(k+1) = [x^{(1)}_{1} - \frac {\hat {u}}{\hat {a}}] e^{-\hat {a} k} + \fra
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">79.0k</span>
+    <span title="Site words total count">79.5k</span>
   
 </div>
 

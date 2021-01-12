@@ -521,17 +521,25 @@
       
 
       
-        <p>  PIL (Python Image Library) 是 Python 平台处理图片的事实标准，兼具强大的功能和简洁的 API。 <a id="more"></a> # 1. <a href="https://pillow.readthedocs.io/en/stable/reference/Image." title="Image 类" target="_blank" rel="noopener">Image 类</a></p>
+        <p>  PIL (Python Image Library) 是 Python 平台处理图片的事实标准，兼具强大的功能和简洁的 API。</p>
+<a id="more"></a>
+<h1 id="1-a-href-https-pillow-readthedocs-io-en-stable-reference-image-title-image-lei-image-lei-a">1. <a href="https://pillow.readthedocs.io/en/stable/reference/Image." title="Image 类" target="_blank" rel="noopener">Image 类</a></h1>
 <p>  Image 类包含了 PIL 的主要功能，如打开图片、旋转图片以及使用外部查看器显示图片，还可以创建图片的缩略图。</p>
-<p>   打开图片的实例如下： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">from PIL import Image</span><br><span class="line">im = Image.open (&quot; 图片名.jpg&quot;)</span><br></pre></td></tr></table></figure></p>
-<p>   旋转图片的实例如下： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">im.rotate (角度).show ()</span><br></pre></td></tr></table></figure></p>
-<p>  Image 类还可以使用给定的模式和大小创建新图像，实例如下： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PIL.Image.new（模式，大小，颜色 = 0 ）</span><br></pre></td></tr></table></figure></p>
-<h1 id="imagedraw-模块">2. ImageDraw 模块</h1>
-<p>  ImageDraw 模块为 Image 对象提供简单的 2D 图像，可以使用此模块创建新图像，注释或润饰现有图像，以及动态生成图形以供 Web 使用，实例如下： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">from PIL import Image, ImageDraw</span><br><span class="line">draw = ImageDraw.Draw (img)</span><br></pre></td></tr></table></figure></p>
-<h1 id="imagefont-模块与-imagedraw.tex-方法">3. ImageFont 模块与 ImageDraw.tex 方法</h1>
-<p>   该 ImageFont 模块定义了一个具有相同名称的类。此类的实例存储位图字体，并与该 PIL.ImageDraw.Draw.text () 方法一起使用，实例如下： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">from PIL import ImageFont, ImageDraw</span><br><span class="line">draw = ImageDraw.Draw (img)</span><br><span class="line">font = ImageFont.truetype (路径 + 文件名 - 带后缀， size=)        # use a truetype font</span><br><span class="line">font = ImageFont.load (&quot;arial.pil&quot;)                         # use a bitmap font</span><br><span class="line">draw.text ((宽，高), &quot;Hello, World!&quot;, font=font)</span><br></pre></td></tr></table></figure></p>
-<h1 id="imagecolor-模块">4. ImageColor 模块</h1>
-<p>   该 ImageColor 模块包含从 CSS3 样式颜色说明符到 RGB 元组的颜色表和转换器，实例如下： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">from PIL import ImageColor   </span><br><span class="line"># getrgb (color)      </span><br><span class="line">print (ImageColor.getrgb (&quot;silver&quot;)) #(192,192,192)</span><br><span class="line">print (ImageColor.getrgb (&quot;#f35772&quot;)) #(243,87,114)</span><br><span class="line">print (ImageColor.getrgb (&quot;hsl (137,20%,50%)&quot;))  #(102, 153, 116)</span><br><span class="line">#getcolor (color, mode)</span><br><span class="line">print (ImageColor.getcolor (&quot;red&quot;,&quot;RGBA&quot;))  #(255, 0, 0, 255)</span><br><span class="line">print (ImageColor.getcolor (&quot;red&quot;,&quot;P&quot;)) #(255, 0, 0)</span><br><span class="line">print (ImageColor.getcolor (&quot;red&quot;,&quot;L&quot;))  #76</span><br><span class="line">print (ImageColor.getcolor (&quot;red&quot;,&quot;1&quot;))   #76</span><br></pre></td></tr></table></figure></p>
+<p>   打开图片的实例如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">from PIL import Image</span><br><span class="line">im = Image.open (&quot; 图片名.jpg&quot;)</span><br></pre></td></tr></table></figure>
+<p>   旋转图片的实例如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">im.rotate (角度).show ()</span><br></pre></td></tr></table></figure>
+<p>  Image 类还可以使用给定的模式和大小创建新图像，实例如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PIL.Image.new（模式，大小，颜色 = 0 ）</span><br></pre></td></tr></table></figure>
+<h1 id="2-image-draw-mo-kuai">2. ImageDraw 模块</h1>
+<p>  ImageDraw 模块为 Image 对象提供简单的 2D 图像，可以使用此模块创建新图像，注释或润饰现有图像，以及动态生成图形以供 Web 使用，实例如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">from PIL import Image, ImageDraw</span><br><span class="line">draw = ImageDraw.Draw (img)</span><br></pre></td></tr></table></figure>
+<h1 id="3-image-font-mo-kuai-yu-image-draw-tex-fang-fa">3. ImageFont 模块与 ImageDraw.tex 方法</h1>
+<p>   该 ImageFont 模块定义了一个具有相同名称的类。此类的实例存储位图字体，并与该 PIL.ImageDraw.Draw.text () 方法一起使用，实例如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">from PIL import ImageFont, ImageDraw</span><br><span class="line">draw = ImageDraw.Draw (img)</span><br><span class="line">font = ImageFont.truetype (路径 + 文件名 - 带后缀， size=)        # use a truetype font</span><br><span class="line">font = ImageFont.load (&quot;arial.pil&quot;)                         # use a bitmap font</span><br><span class="line">draw.text ((宽，高), &quot;Hello, World!&quot;, font=font)</span><br></pre></td></tr></table></figure>
+<h1 id="4-image-color-mo-kuai">4. ImageColor 模块</h1>
+<p>   该 ImageColor 模块包含从 CSS3 样式颜色说明符到 RGB 元组的颜色表和转换器，实例如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">from PIL import ImageColor   </span><br><span class="line"># getrgb (color)      </span><br><span class="line">print (ImageColor.getrgb (&quot;silver&quot;)) #(192,192,192)</span><br><span class="line">print (ImageColor.getrgb (&quot;#f35772&quot;)) #(243,87,114)</span><br><span class="line">print (ImageColor.getrgb (&quot;hsl (137,20%,50%)&quot;))  #(102, 153, 116)</span><br><span class="line">#getcolor (color, mode)</span><br><span class="line">print (ImageColor.getcolor (&quot;red&quot;,&quot;RGBA&quot;))  #(255, 0, 0, 255)</span><br><span class="line">print (ImageColor.getcolor (&quot;red&quot;,&quot;P&quot;)) #(255, 0, 0)</span><br><span class="line">print (ImageColor.getcolor (&quot;red&quot;,&quot;L&quot;))  #76</span><br><span class="line">print (ImageColor.getcolor (&quot;red&quot;,&quot;1&quot;))   #76</span><br></pre></td></tr></table></figure>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">
       
     </div>
@@ -742,7 +750,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">128</span>
+                  <span class="site-state-item-count">129</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -753,7 +761,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-count">23</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -764,7 +772,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-count">60</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -850,7 +858,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#imagedraw-模块"><span class="nav-text">2. ImageDraw 模块</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#imagefont-模块与-imagedraw.tex-方法"><span class="nav-text">3. ImageFont 模块与 ImageDraw.tex 方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#imagecolor-模块"><span class="nav-text">4. ImageColor 模块</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-a-href-https-pillow-readthedocs-io-en-stable-reference-image-title-image-lei-image-lei-a"><span class="nav-text">1. Image 类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-image-draw-mo-kuai"><span class="nav-text">2. ImageDraw 模块</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-image-font-mo-kuai-yu-image-draw-tex-fang-fa"><span class="nav-text">3. ImageFont 模块与 ImageDraw.tex 方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-image-color-mo-kuai"><span class="nav-text">4. ImageColor 模块</span></a></li></ol></div>
             
 
           </div>
@@ -891,7 +899,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">79.0k</span>
+    <span title="Site words total count">79.5k</span>
   
 </div>
 

@@ -498,19 +498,21 @@
       
 
       
-        <p>   在 Python 爬虫中，经常涉及编码的问题，尤其是处理中文字符串。 <a id="more"></a></p>
-<h1 id="编码和解码encode-和-decode">1. 编码和解码:encode 和 decode</h1>
-<p>   一个简单的实例： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">In [1]: &quot; 爬虫 & quot;.encode (&quot;utf-8&quot;)  </span><br><span class="line">Out [1]: b&apos;\xe7\x88\xac\xe8\x99\xab&apos;</span><br><span class="line">In [2]: b&apos;\xe7\x88\xac\xe8\x99\xab&apos;.decode (&quot;utf-8&quot;)</span><br><span class="line">Out [2]: &apos; 爬虫 & apos;</span><br></pre></td></tr></table></figure></p>
-<p>   从上述简单的实例可以看出：encode:str<span class="math inline">\(\to\)</span>bytes,decode:bytes<span class="math inline">\(\to\)</span>str。</p>
-<h1 id="应用网络爬虫">2. 应用：网络爬虫</h1>
-<h2 id="response-对象的两种属性text-和-content">2.1 response 对象的两种属性：text 和 content</h2>
+        <p>   在 Python 爬虫中，经常涉及编码的问题，尤其是处理中文字符串。</p>
+<a id="more"></a>
+<h1 id="1-bian-ma-he-jie-ma-encode-he-decode">1. 编码和解码:encode 和 decode</h1>
+<p>   一个简单的实例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">In [1]: &quot; 爬虫 & quot;.encode (&quot;utf-8&quot;)  </span><br><span class="line">Out [1]: b&apos;\xe7\x88\xac\xe8\x99\xab&apos;</span><br><span class="line">In [2]: b&apos;\xe7\x88\xac\xe8\x99\xab&apos;.decode (&quot;utf-8&quot;)</span><br><span class="line">Out [2]: &apos; 爬虫 & apos;</span><br></pre></td></tr></table></figure>
+<p>   从上述简单的实例可以看出：encode:str$\to$bytes,decode:bytes$\to$str。</p>
+<h1 id="2-ying-yong-wang-luo-pa-chong">2. 应用：网络爬虫</h1>
+<h2 id="2-1-response-dui-xiang-de-liang-chong-shu-xing-text-he-content">2.1 response 对象的两种属性：text 和 content</h2>
 <p>   在 Python 爬虫中，使用 response = requests.get (url) 获取网站的 response 之后，还可以通过 response.text 和 response.content 两种方法分别获取 response 的不同属性，前者返回的是处理过的 Unicode 型的字符串数据，而后者返回的是 bytes 型的二进制数据。因此，前者多用于读取文本数据，后者多用于图片、文件等数据类型。</p>
-<h2 id="延伸针对不同类型的数据选择写入数据方法">2.2 延伸：针对不同类型的数据选择写入数据方法</h2>
+<h2 id="2-2-yan-shen-zhen-dui-bu-tong-lei-xing-de-shu-ju-xuan-ze-xie-ru-shu-ju-fang-fa">2.2 延伸：针对不同类型的数据选择写入数据方法</h2>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 一般格式 </span></span><br><span class="line"><span class="keyword">with</span> open (<span class="string">' 文件路径 / 文件名。文件格式 '</span>, <span class="string">' 文件打开方式 '</span>, encoding = <span class="string">''</span>) <span class="keyword">as</span> f:</span><br><span class="line">    f.write ()</span><br><span class="line"><span class="comment"># 写入 </span></span><br><span class="line"><span class="keyword">with</span> open (<span class="string">' 文件路径 / 文件名。文件格式 '</span>, <span class="string">'w'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    f.write (写入内容)</span><br><span class="line"><span class="comment"># 写入二进制数据 </span></span><br><span class="line"><span class="keyword">with</span> open (<span class="string">' 文件路径 / 文件名。文件格式 '</span>, <span class="string">'wb'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    f.write (response.content)</span><br></pre></td></tr></table></figure>
-<h2 id="案例">2.3 案例</h2>
+<h2 id="2-3-an-li">2.3 案例</h2>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests <span class="comment"># 导入 requests 模块 </span></span><br><span class="line">url=<span class="string">"http://vip.stock.finance.sina.com.cn/corp/go.php/vCI_CorpManager/stockid/000001.phtml"</span></span><br><span class="line">text=requests.get (url).text<span class="comment"># 通过 requests 模块的 get 方式将源代码赋给 text</span></span><br><span class="line">print (text)</span><br><span class="line"><span class="comment"># 结果出现中文乱码 </span></span><br><span class="line">byte=text.decode (encoding=<span class="string">"gb18030"</span>,errors=<span class="string">"strict"</span>)</span><br><span class="line">print (byte)</span><br><span class="line"><span class="comment"># 报错：AttributeError:'str' object has no attribute'decode'</span></span><br><span class="line">content=requests.get (url).content<span class="comment"># 将源代码的编码字节赋给 content</span></span><br><span class="line">byte=content.decode (encoding=<span class="string">"gb18030"</span>,errors=<span class="string">"strict"</span>)</span><br><span class="line">print (byte)</span><br></pre></td></tr></table></figure>
 <hr>
-<ol type="1">
+<ol>
 <li><a href="https://www.jianshu.com/p/78eb306c06ac" target="_blank" rel="noopener">python - with xxx as xxxx 语法了解</a></li>
 <li><a href="https://www.jianshu.com/p/8b976fa2ce30" target="_blank" rel="noopener">【python】文件打开方式</a></li>
 <li><a href="https://www.liaoxuefeng.com/wiki/1016959663602400/1017075323632896" target="_blank" rel="noopener">字符串和编码</a></li>
@@ -716,7 +718,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">128</span>
+                  <span class="site-state-item-count">129</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -727,7 +729,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-count">23</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -738,7 +740,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-count">60</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -824,7 +826,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#编码和解码encode-和-decode"><span class="nav-text">1. 编码和解码:encode 和 decode</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#应用网络爬虫"><span class="nav-text">2. 应用：网络爬虫</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#response-对象的两种属性text-和-content"><span class="nav-text">2.1 response 对象的两种属性：text 和 content</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#延伸针对不同类型的数据选择写入数据方法"><span class="nav-text">2.2 延伸：针对不同类型的数据选择写入数据方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#案例"><span class="nav-text">2.3 案例</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-bian-ma-he-jie-ma-encode-he-decode"><span class="nav-text">1. 编码和解码:encode 和 decode</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-ying-yong-wang-luo-pa-chong"><span class="nav-text">2. 应用：网络爬虫</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-response-dui-xiang-de-liang-chong-shu-xing-text-he-content"><span class="nav-text">2.1 response 对象的两种属性：text 和 content</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-yan-shen-zhen-dui-bu-tong-lei-xing-de-shu-ju-xuan-ze-xie-ru-shu-ju-fang-fa"><span class="nav-text">2.2 延伸：针对不同类型的数据选择写入数据方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-an-li"><span class="nav-text">2.3 案例</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -865,7 +867,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">79.0k</span>
+    <span title="Site words total count">79.5k</span>
   
 </div>
 

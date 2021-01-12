@@ -521,21 +521,26 @@
       
 
       
-        <h1 id="爬虫的工作原理和步骤">1. 爬虫的工作原理和步骤</h1>
+        <h1 id="1-pa-chong-de-gong-zuo-yuan-li-he-bu-zou">1. 爬虫的工作原理和步骤</h1>
 <a id="more"></a>
 <p>   爬虫的工作原理和步骤是：</p>
 <p>   第一， 确认你抓取的目标 url 是哪一个。</p>
 <p>   第二， 使用 python 代码发送请求获取数据。</p>
 <p>   第三， 解析获取到的数据。此时，可能发现原有的目标 url 不适合， 找到新的目标 url 回到第一步。</p>
 <p>   第四， 数据持久化， 将数据存储到本地。</p>
-<h1 id="一个实例">2. 一个实例</h1>
+<h1 id="2-yi-ge-shi-li">2. 一个实例</h1>
 <p>   目标：将百度搜索中美女搜索结果的网页下载到本地</p>
-<p>   第一步：确认抓取的目标 url: https://www.baidu.com/s?wd = 美女</p>
-<p>   第二步：使用 python 代码发送请求获取数据。在这里，使用到的第三方库是 urllib, 模块是 request。 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">import urllib.request</span><br><span class="line">def get_baidu_meinv ():</span><br><span class="line">    url = &quot;https://www.baidu.com/s?wd=&quot;  </span><br><span class="line">    name = &quot; 美女 & quot;</span><br><span class="line">    final_url = url + name</span><br><span class="line">    print (final_url)</span><br><span class="line">    response = urllib.request.urlopen (final_url) </span><br><span class="line">get_baidu_meinv ()</span><br></pre></td></tr></table></figure></p>
-<p>   此时，返回了如下错误提示： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UnicodeEncodeError: &apos;ascii&apos; codec can&apos;t encode characters in position 10-11: ordinal not in range (128)</span><br></pre></td></tr></table></figure></p>
-<p>   由如上错误信息可知是编码问题，解决方法如下： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import urllib.parse</span><br><span class="line">import string</span><br><span class="line">encode_new_url = urllib.parse.quote (final_url, safe = string.printable)</span><br><span class="line">response = urllib.request.urlopen (encode_new_url)</span><br></pre></td></tr></table></figure></p>
-<p>   第三步：解析获取到的数据： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">data = response.read ().decode ()</span><br><span class="line">print (data)</span><br></pre></td></tr></table></figure></p>
-<p>   第四步：数据持久化，将数据下载到本地： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">with open (&quot;D:\ 代码 \ 爬虫 \day01\02-baidu - 美女.html&quot;, &quot;w&quot;, encoding=&quot;utf-8&quot;) as f:</span><br><span class="line">    f.write (data)</span><br></pre></td></tr></table></figure></p>
+<p>   第一步：确认抓取的目标 url: <a href="https://www.baidu.com/s?wd" target="_blank" rel="noopener">https://www.baidu.com/s?wd</a> = 美女</p>
+<p>   第二步：使用 python 代码发送请求获取数据。在这里，使用到的第三方库是 urllib, 模块是 request。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">import urllib.request</span><br><span class="line">def get_baidu_meinv ():</span><br><span class="line">    url = &quot;https://www.baidu.com/s?wd=&quot;  </span><br><span class="line">    name = &quot; 美女 & quot;</span><br><span class="line">    final_url = url + name</span><br><span class="line">    print (final_url)</span><br><span class="line">    response = urllib.request.urlopen (final_url) </span><br><span class="line">get_baidu_meinv ()</span><br></pre></td></tr></table></figure>
+<p>   此时，返回了如下错误提示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UnicodeEncodeError: &apos;ascii&apos; codec can&apos;t encode characters in position 10-11: ordinal not in range (128)</span><br></pre></td></tr></table></figure>
+<p>   由如上错误信息可知是编码问题，解决方法如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import urllib.parse</span><br><span class="line">import string</span><br><span class="line">encode_new_url = urllib.parse.quote (final_url, safe = string.printable)</span><br><span class="line">response = urllib.request.urlopen (encode_new_url)</span><br></pre></td></tr></table></figure>
+<p>   第三步：解析获取到的数据：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">data = response.read ().decode ()</span><br><span class="line">print (data)</span><br></pre></td></tr></table></figure>
+<p>   第四步：数据持久化，将数据下载到本地：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">with open (&quot;D:\ 代码 \ 爬虫 \day01\02-baidu - 美女.html&quot;, &quot;w&quot;, encoding=&quot;utf-8&quot;) as f:</span><br><span class="line">    f.write (data)</span><br></pre></td></tr></table></figure>
 <hr>
 <p><a href="https://www.cnblogs.com/ymjyqsx/p/6554817.html" target="_blank" rel="noopener">python 文件读写，以后就用 with open 语句</a></p>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">
@@ -748,7 +753,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">128</span>
+                  <span class="site-state-item-count">129</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -759,7 +764,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-count">23</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -770,7 +775,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-count">60</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -856,7 +861,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#爬虫的工作原理和步骤"><span class="nav-text">1. 爬虫的工作原理和步骤</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#一个实例"><span class="nav-text">2. 一个实例</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-pa-chong-de-gong-zuo-yuan-li-he-bu-zou"><span class="nav-text">1. 爬虫的工作原理和步骤</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-yi-ge-shi-li"><span class="nav-text">2. 一个实例</span></a></li></ol></div>
             
 
           </div>
@@ -897,7 +902,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">79.0k</span>
+    <span title="Site words total count">79.5k</span>
   
 </div>
 

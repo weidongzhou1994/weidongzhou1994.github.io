@@ -523,21 +523,26 @@
       
 
       
-        <h1 id="单元格的常见表示方式">1. 单元格的常见表示方式</h1>
+        <h1 id="1-dan-yuan-ge-de-chang-jian-biao-shi-fang-shi">1. 单元格的常见表示方式</h1>
 <a id="more"></a>
-<p>   在 VBA 代码中，常用的表示单元格的方法如下: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[A1]</span><br><span class="line">Range (&quot;A1&quot;)</span><br><span class="line">Cells (1,1)</span><br></pre></td></tr></table></figure></p>
-<h1 id="单元格的常用操作">2. 单元格的常用操作</h1>
-<p>   针对单元格的对象，有以下操作： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Select: 选中单元格 </span><br><span class="line">Delete：删除单元格 </span><br><span class="line">Copy：复制单元格 </span><br><span class="line">ClearContents：清空单元格内容 </span><br></pre></td></tr></table></figure></p>
-<p>   针对单元格的属性，有以下操作: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Value: 单元格的值 </span><br><span class="line">Text：单元格的文本内容 </span><br><span class="line">Row：行号 </span><br><span class="line">Column：列号 </span><br><span class="line">Entire row: 整行 </span><br><span class="line">Offset: 偏移 </span><br></pre></td></tr></table></figure></p>
-<h1 id="实例拆分工作表">3. 实例：拆分工作表</h1>
-<p>   任务：将下表按部门进行拆分 <img src="https://blog-1258437747.cos.ap-chengdu.myqcloud.com/20190721163324.png"> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Sub 用循环拆分 ()</span><br><span class="line"></span><br><span class="line">Dim i, j As Integer</span><br><span class="line"></span><br><span class="line">For i = 2 To Sheet1.Range (&quot;a65535&quot;).End (xlUp).Row</span><br><span class="line">    j = Sheets (Sheet1.Range (&quot;d&quot; &amp; i).Value).Range (&quot;a65535&quot;).End (xlUp).Row + 1</span><br><span class="line">    Sheet1.Range (&quot;a&quot; &amp; i).EntireRow.Copy Sheets (Sheet1.Range (&quot;d&quot; &amp; i).Value).Range (&quot;a&quot; &amp; j)</span><br><span class="line">Next</span><br><span class="line"></span><br><span class="line">End Sub</span><br></pre></td></tr></table></figure></p>
+<p>   在 VBA 代码中，常用的表示单元格的方法如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[A1]</span><br><span class="line">Range (&quot;A1&quot;)</span><br><span class="line">Cells (1,1)</span><br></pre></td></tr></table></figure>
+<h1 id="2-dan-yuan-ge-de-chang-yong-cao-zuo">2. 单元格的常用操作</h1>
+<p>   针对单元格的对象，有以下操作：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Select: 选中单元格 </span><br><span class="line">Delete：删除单元格 </span><br><span class="line">Copy：复制单元格 </span><br><span class="line">ClearContents：清空单元格内容 </span><br></pre></td></tr></table></figure>
+<p>   针对单元格的属性，有以下操作:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Value: 单元格的值 </span><br><span class="line">Text：单元格的文本内容 </span><br><span class="line">Row：行号 </span><br><span class="line">Column：列号 </span><br><span class="line">Entire row: 整行 </span><br><span class="line">Offset: 偏移 </span><br></pre></td></tr></table></figure>
+<h1 id="3-shi-li-chai-fen-gong-zuo-biao">3. 实例：拆分工作表</h1>
+<p>   任务：将下表按部门进行拆分<br>
+<img src="https://blog-1258437747.cos.ap-chengdu.myqcloud.com/20190721163324.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Sub 用循环拆分 ()</span><br><span class="line"></span><br><span class="line">Dim i, j As Integer</span><br><span class="line"></span><br><span class="line">For i = 2 To Sheet1.Range (&quot;a65535&quot;).End (xlUp).Row</span><br><span class="line">    j = Sheets (Sheet1.Range (&quot;d&quot; &amp; i).Value).Range (&quot;a65535&quot;).End (xlUp).Row + 1</span><br><span class="line">    Sheet1.Range (&quot;a&quot; &amp; i).EntireRow.Copy Sheets (Sheet1.Range (&quot;d&quot; &amp; i).Value).Range (&quot;a&quot; &amp; j)</span><br><span class="line">Next</span><br><span class="line"></span><br><span class="line">End Sub</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Sub 用筛选拆分 ()</span><br><span class="line">Dim i As Integer</span><br><span class="line">Dim sht As Worksheet</span><br><span class="line"></span><br><span class="line">i = Sheet1.Range (&quot;a65535&quot;).End (xlUp).Row</span><br><span class="line">For Each sht In Worksheets</span><br><span class="line">    If sht.Name &lt;&gt; 数据 Then</span><br><span class="line">    </span><br><span class="line">        Sheet1.Range (&quot;a1:f&quot; &amp; i).AutoFilter field:=4, Criteria1:=&quot;=&quot; &amp; sht.Name</span><br><span class="line">        Sheet1.Range (&quot;a1:f&quot; &amp; i).Copy sht.Range (&quot;a1&quot;)</span><br><span class="line">    </span><br><span class="line">    End If</span><br><span class="line">Next</span><br><span class="line"></span><br><span class="line">Sheet1.Range (&quot;a1:f&quot; &amp; i).AutoFilter</span><br><span class="line">End Sub</span><br></pre></td></tr></table></figure>
-<h1 id="实例-按需拆分工作表">4. 实例： 按需拆分工作表</h1>
+<h1 id="4-shi-li-an-xu-chai-fen-gong-zuo-biao">4. 实例： 按需拆分工作表</h1>
 <p>   前述 VBA 代码只能按第四列进行筛选和拆分，但实际工作情况更为复杂一些，需要按需进行筛选和拆分，代码如下:</p>
 <pre><code>Sub cfsj ()
 Dim sht As Worksheet
 Dim k, i, j As Integer
-Dim irow As Integer &#39; 这个说的是一共多少行
+Dim irow As Integer ' 这个说的是一共多少行
 
 Dim l As Integer
 
@@ -559,7 +564,7 @@ If Sheets.Count &gt; 1 Then
 
 End If
 
-&#39; 拆分表
+' 拆分表
 For i = 2 To irow
     k = 0
     For Each sht In Sheets
@@ -575,7 +580,7 @@ For i = 2 To irow
     End If
 
 Next
-&#39; 拷贝数据
+' 拷贝数据
 
 For j = 2 To Sheets.Count
     Sheet1.Range (&quot;a1:f&quot; &amp; irow).AutoFilter Field:=4, Criteria1:=Sheets (j).Name
@@ -588,7 +593,8 @@ Selection.AutoFilter
 MsgBox &quot;主人，数据已经做好了&quot;
 
 
-End Sub</code></pre>
+End Sub
+</code></pre>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">
       
     </div>
@@ -799,7 +805,7 @@ End Sub</code></pre>
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">128</span>
+                  <span class="site-state-item-count">129</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -810,7 +816,7 @@ End Sub</code></pre>
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-count">23</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -821,7 +827,7 @@ End Sub</code></pre>
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-count">60</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -907,7 +913,7 @@ End Sub</code></pre>
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#单元格的常见表示方式"><span class="nav-text">1. 单元格的常见表示方式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#单元格的常用操作"><span class="nav-text">2. 单元格的常用操作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实例拆分工作表"><span class="nav-text">3. 实例：拆分工作表</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实例-按需拆分工作表"><span class="nav-text">4. 实例： 按需拆分工作表</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-dan-yuan-ge-de-chang-jian-biao-shi-fang-shi"><span class="nav-text">1. 单元格的常见表示方式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-dan-yuan-ge-de-chang-yong-cao-zuo"><span class="nav-text">2. 单元格的常用操作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-shi-li-chai-fen-gong-zuo-biao"><span class="nav-text">3. 实例：拆分工作表</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-shi-li-an-xu-chai-fen-gong-zuo-biao"><span class="nav-text">4. 实例： 按需拆分工作表</span></a></li></ol></div>
             
 
           </div>
@@ -948,7 +954,7 @@ End Sub</code></pre>
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">79.0k</span>
+    <span title="Site words total count">79.5k</span>
   
 </div>
 

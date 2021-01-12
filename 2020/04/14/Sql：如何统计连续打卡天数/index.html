@@ -500,55 +500,55 @@
       
         <p>   在实际的工作情境中，统计员工的连续打卡天数是一个十分重要的应用。</p>
 <a id="more"></a>
-<h1 id="创建示例数据">创建示例数据</h1>
+<h1 id="chuang-jian-shi-li-shu-ju">创建示例数据</h1>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="string">`打卡`</span> (uid <span class="built_in">INT</span>(<span class="number">5</span>), tdate <span class="built_in">date</span>, is_flag <span class="built_in">INT</span>(<span class="number">1</span>));</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="string">`打卡`</span></span><br><span class="line"><span class="keyword">VALUES</span></span><br><span class="line">	( <span class="string">'1'</span>, <span class="string">'2020/2/1'</span>, <span class="string">'1'</span> ),</span><br><span class="line">	( <span class="string">'1'</span>, <span class="string">'2020/2/2'</span>, <span class="string">'0'</span> ),</span><br><span class="line">	( <span class="string">'1'</span>, <span class="string">'2020/2/3'</span>, <span class="string">'1'</span> ),</span><br><span class="line">	( <span class="string">'1'</span>, <span class="string">'2020/2/4'</span>, <span class="string">'1'</span> ),</span><br><span class="line">	( <span class="string">'1'</span>, <span class="string">'2020/2/5'</span>, <span class="string">'0'</span> ),</span><br><span class="line">	( <span class="string">'1'</span>, <span class="string">'2020/2/6'</span>, <span class="string">'1'</span> ),</span><br><span class="line">	( <span class="string">'1'</span>, <span class="string">'2020/2/7'</span>, <span class="string">'1'</span> ),</span><br><span class="line">	( <span class="string">'1'</span>, <span class="string">'2020/2/8'</span>, <span class="string">'1'</span> ),</span><br><span class="line">	( <span class="string">'2'</span>, <span class="string">'2020/2/1'</span>, <span class="string">'1'</span> ),</span><br><span class="line">	( <span class="string">'2'</span>, <span class="string">'2020/2/2'</span>, <span class="string">'0'</span> ),</span><br><span class="line">	( <span class="string">'2'</span>, <span class="string">'2020/2/3'</span>, <span class="string">'0'</span> ),</span><br><span class="line">	( <span class="string">'2'</span>, <span class="string">'2020/2/4'</span>, <span class="string">'1'</span> ),</span><br><span class="line">	( <span class="string">'2'</span>, <span class="string">'2020/2/5'</span>, <span class="string">'1'</span> ),</span><br><span class="line">	( <span class="string">'2'</span>, <span class="string">'2020/2/6'</span>, <span class="string">'1'</span> ),</span><br><span class="line">	( <span class="string">'2'</span>, <span class="string">'2020/2/7'</span>, <span class="string">'1'</span> ),</span><br><span class="line">	( <span class="string">'2'</span>, <span class="string">'2020/2/8'</span>, <span class="string">'1'</span> );</span><br></pre></td></tr></table></figure>
-<h1 id="统计连续打卡天数">统计连续打卡天数</h1>
+<h1 id="tong-ji-lian-xu-da-qia-tian-shu">统计连续打卡天数</h1>
 <p>   总体思路是：首先，判断今日是否打卡；然后，判断是否是连续打卡；最后，统计连续打卡天数。</p>
-<h2 id="判断今日是否打卡">判断今日是否打卡</h2>
+<h2 id="pan-duan-jin-ri-shi-fou-da-qia">判断今日是否打卡</h2>
 <p>   提取打卡的数据可以用 where is_flag = 1:</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">	uid,</span><br><span class="line">	tdate,</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">	<span class="string">`打卡`</span> </span><br><span class="line"><span class="keyword">WHERE</span></span><br><span class="line">	is_flag = <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
-<h2 id="判断是否是连续打卡">判断是否是连续打卡</h2>
+<h2 id="pan-duan-shi-fou-shi-lian-xu-da-qia">判断是否是连续打卡</h2>
 <p>   如果是连续打卡，明显日期应该是等差序列，多个等差序列和其公差相同的另一个等差序列相减，则同一等差序列与这个等差序列的差必然相同，简单的例子如下：</p>
 <table>
 <thead>
-<tr class="header">
+<tr>
 <th>x</th>
 <th>y</th>
 <th>x-y</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td>1</td>
 <td>1</td>
 <td>0</td>
 </tr>
-<tr class="even">
+<tr>
 <td>2</td>
 <td>2</td>
 <td>0</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>4</td>
 <td>3</td>
 <td>1</td>
 </tr>
-<tr class="even">
+<tr>
 <td>5</td>
 <td>4</td>
 <td>1</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>6</td>
 <td>5</td>
 <td>1</td>
 </tr>
-<tr class="even">
+<tr>
 <td>8</td>
 <td>6</td>
 <td>2</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>9</td>
 <td>7</td>
 <td>2</td>
@@ -560,7 +560,7 @@
 <p>   在这里，使用 <figure class="highlight plain"><figcaption><span>over ()```方法生成连续数列：</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">|uid|tdate|date_rank|</span><br><span class="line">|--|--|--|</span><br><span class="line">|1|2020/2/1|1|</span><br><span class="line">|1|2020/2/3|2|</span><br><span class="line">|1|2020/2/4|3|</span><br><span class="line">|1|2020/2/6|4|</span><br><span class="line">|1|2020/2/7|5|</span><br><span class="line">|1|2020/2/8|6|</span><br><span class="line">|2|2020/2/1|1|</span><br><span class="line">|2|2020/2/4|2|</span><br><span class="line">|2|2020/2/5|3|</span><br><span class="line">|2|2020/2/6|4|</span><br><span class="line">|2|2020/2/7|5|</span><br><span class="line">|2|2020/2/8|6|</span><br><span class="line"></span><br><span class="line">```sql</span><br><span class="line">SELECT</span><br><span class="line">	uid,</span><br><span class="line">	tdate,</span><br><span class="line">	date_rank,</span><br><span class="line">	( date_format ( tdate, &quot;% e&quot; )- date_rank ) AS day_cha </span><br><span class="line">FROM</span><br><span class="line">	( SELECT uid, tdate, row_number () over ( PARTITION BY uid ORDER BY tdate ) date_rank FROM `打卡` WHERE is_flag = 1 ) t1</span><br></pre></td></tr></table></figure></p>
 <table>
 <thead>
-<tr class="header">
+<tr>
 <th>uid</th>
 <th>tdate</th>
 <th>date_rank</th>
@@ -568,73 +568,73 @@
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td>1</td>
 <td>2020/2/1</td>
 <td>1</td>
 <td>0</td>
 </tr>
-<tr class="even">
+<tr>
 <td>1</td>
 <td>2020/2/3</td>
 <td>2</td>
 <td>1</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>1</td>
 <td>2020/2/4</td>
 <td>3</td>
 <td>1</td>
 </tr>
-<tr class="even">
+<tr>
 <td>1</td>
 <td>2020/2/6</td>
 <td>4</td>
 <td>2</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>1</td>
 <td>2020/2/7</td>
 <td>5</td>
 <td>2</td>
 </tr>
-<tr class="even">
+<tr>
 <td>1</td>
 <td>2020/2/8</td>
 <td>6</td>
 <td>2</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>2</td>
 <td>2020/2/1</td>
 <td>1</td>
 <td>0</td>
 </tr>
-<tr class="even">
+<tr>
 <td>2</td>
 <td>2020/2/4</td>
 <td>2</td>
 <td>2</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>2</td>
 <td>2020/2/5</td>
 <td>3</td>
 <td>2</td>
 </tr>
-<tr class="even">
+<tr>
 <td>2</td>
 <td>2020/2/6</td>
 <td>4</td>
 <td>2</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>2</td>
 <td>2020/2/7</td>
 <td>5</td>
 <td>2</td>
 </tr>
-<tr class="even">
+<tr>
 <td>2</td>
 <td>2020/2/8</td>
 <td>6</td>
@@ -642,50 +642,49 @@
 </tr>
 </tbody>
 </table>
-<h2 id="统计连续打卡天数-1">统计连续打卡天数</h2>
+<h2 id="tong-ji-lian-xu-da-qia-tian-shu-1">统计连续打卡天数</h2>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">	uid,</span><br><span class="line">	day_cha,</span><br><span class="line">	<span class="keyword">count</span>( tdate ) flag_days </span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">	(</span><br><span class="line">	<span class="keyword">SELECT</span></span><br><span class="line">		uid,</span><br><span class="line">		tdate,</span><br><span class="line">		date_rank,</span><br><span class="line">		( <span class="keyword">date_format</span>( tdate, <span class="string">"% e"</span> )- date_rank ) <span class="keyword">AS</span> day_cha </span><br><span class="line">	<span class="keyword">FROM</span></span><br><span class="line">		( <span class="keyword">SELECT</span> uid, tdate, row_number () <span class="keyword">over</span> ( <span class="keyword">PARTITION</span> <span class="keyword">BY</span> uid <span class="keyword">ORDER</span> <span class="keyword">BY</span> tdate ) date_rank <span class="keyword">FROM</span> <span class="string">`打卡`</span> <span class="keyword">WHERE</span> is_flag = <span class="number">1</span> ) t1 </span><br><span class="line">	) t2 </span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span></span><br><span class="line">	uid,</span><br><span class="line">	day_cha</span><br></pre></td></tr></table></figure>
 <table>
 <thead>
-<tr class="header">
+<tr>
 <th>uid</th>
 <th>day_cha</th>
 <th>flag_days</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td>1</td>
 <td>0</td>
 <td>1</td>
 </tr>
-<tr class="even">
+<tr>
 <td>1</td>
 <td>1</td>
 <td>2</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>1</td>
 <td>2</td>
 <td>3</td>
 </tr>
-<tr class="even">
+<tr>
 <td>2</td>
 <td>0</td>
 <td>1</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>2</td>
 <td>2</td>
 <td>5</td>
 </tr>
 </tbody>
 </table>
-<h2 id="区分概念最近连续打卡天数和最长连续打卡天数">区分概念：最近连续打卡天数和最长连续打卡天数</h2>
+<h2 id="qu-fen-gai-nian-zui-jin-lian-xu-da-qia-tian-shu-he-zui-chang-lian-xu-da-qia-tian-shu">区分概念：最近连续打卡天数和最长连续打卡天数</h2>
 <p>   最长连续打卡天数就是取连续打卡天数的最大值：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">	uid,</span><br><span class="line">	day_cha,</span><br><span class="line">	<span class="keyword">count</span>( tdate ) flag_days </span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">	(</span><br><span class="line">	<span class="keyword">SELECT</span></span><br><span class="line">		uid,</span><br><span class="line">		tdate,</span><br><span class="line">		date_rank,</span><br><span class="line">		( <span class="keyword">date_format</span>( tdate, <span class="string">"% e"</span> )- date_rank ) <span class="keyword">AS</span> day_cha </span><br><span class="line">	<span class="keyword">FROM</span></span><br><span class="line">		( <span class="keyword">SELECT</span> uid, tdate, row_number () <span class="keyword">over</span> ( <span class="keyword">PARTITION</span> <span class="keyword">BY</span> uid <span class="keyword">ORDER</span> <span class="keyword">BY</span> tdate ) date_rank <span class="keyword">FROM</span> <span class="string">`打卡`</span> <span class="keyword">WHERE</span> is_flag = <span class="number">1</span> ) t1 </span><br><span class="line">	) t2 </span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span></span><br><span class="line">	uid,</span><br><span class="line">	day_cha</span><br></pre></td></tr></table></figure>
 <p>   最近连续打卡天数是去连续打卡天数的末尾值：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">
       
     </div>
 
@@ -885,7 +884,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">128</span>
+                  <span class="site-state-item-count">129</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -896,7 +895,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-count">23</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -907,7 +906,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-count">60</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -993,7 +992,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#创建示例数据"><span class="nav-text">创建示例数据</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#统计连续打卡天数"><span class="nav-text">统计连续打卡天数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#判断今日是否打卡"><span class="nav-text">判断今日是否打卡</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#判断是否是连续打卡"><span class="nav-text">判断是否是连续打卡</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#统计连续打卡天数-1"><span class="nav-text">统计连续打卡天数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#区分概念最近连续打卡天数和最长连续打卡天数"><span class="nav-text">区分概念：最近连续打卡天数和最长连续打卡天数</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#chuang-jian-shi-li-shu-ju"><span class="nav-text">创建示例数据</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#tong-ji-lian-xu-da-qia-tian-shu"><span class="nav-text">统计连续打卡天数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#pan-duan-jin-ri-shi-fou-da-qia"><span class="nav-text">判断今日是否打卡</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pan-duan-shi-fou-shi-lian-xu-da-qia"><span class="nav-text">判断是否是连续打卡</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tong-ji-lian-xu-da-qia-tian-shu-1"><span class="nav-text">统计连续打卡天数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#qu-fen-gai-nian-zui-jin-lian-xu-da-qia-tian-shu-he-zui-chang-lian-xu-da-qia-tian-shu"><span class="nav-text">区分概念：最近连续打卡天数和最长连续打卡天数</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -1034,7 +1033,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">79.0k</span>
+    <span title="Site words total count">79.5k</span>
   
 </div>
 

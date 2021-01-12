@@ -521,8 +521,10 @@
       
 
       
-        <p>   在实证经济学中，一个重要的问题是探究不同的解释变量 (explanatory variable) 对被解释变量 (dependent variable) 的方差的具体贡献程度，这就是相对重要性分析。 <a id="more"></a> # 1. domin 命令 <figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"># 基本语法 </span><br><span class="line">domin depvar indepvars [<span class="keyword">if</span>] [<span class="keyword">in</span>] [weight], sets ((<span class="keyword">varlist</span>) (<span class="keyword">varlist</span>) ...)</span><br><span class="line"># 实证运用：两变量情形 </span><br><span class="line"><span class="keyword">sysuse</span> <span class="string">"auto.dta"</span>, <span class="keyword">clear</span></span><br><span class="line"><span class="keyword">list</span> <span class="keyword">in</span> 1/10</span><br><span class="line">domin price weight length </span><br><span class="line"># 实证运用：多变量情形 </span><br><span class="line"><span class="keyword">sysuse</span> <span class="string">"nlsw88.dta"</span>, <span class="keyword">clear</span></span><br><span class="line"><span class="keyword">list</span> wage age hours tenure married <span class="keyword">in</span> 1/10</span><br><span class="line"><span class="keyword">reg</span> wage age hours tenure married</span><br><span class="line">domin wage age hours tenure married</span><br><span class="line">domin wage age hours tenure married, sets ((i.occupation) (i.industry) (i.race))</span><br></pre></td></tr></table></figure></p>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">
+        <p>   在实证经济学中，一个重要的问题是探究不同的解释变量 (explanatory variable) 对被解释变量 (dependent variable) 的方差的具体贡献程度，这就是相对重要性分析。</p>
+<a id="more"></a>
+<h1 id="1-domin-ming-ling">1. domin 命令</h1>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"># 基本语法 </span><br><span class="line">domin depvar indepvars [<span class="keyword">if</span>] [<span class="keyword">in</span>] [weight], sets ((<span class="keyword">varlist</span>) (<span class="keyword">varlist</span>) ...)</span><br><span class="line"># 实证运用：两变量情形 </span><br><span class="line"><span class="keyword">sysuse</span> <span class="string">"auto.dta"</span>, <span class="keyword">clear</span></span><br><span class="line"><span class="keyword">list</span> <span class="keyword">in</span> 1/10</span><br><span class="line">domin price weight length </span><br><span class="line"># 实证运用：多变量情形 </span><br><span class="line"><span class="keyword">sysuse</span> <span class="string">"nlsw88.dta"</span>, <span class="keyword">clear</span></span><br><span class="line"><span class="keyword">list</span> wage age hours tenure married <span class="keyword">in</span> 1/10</span><br><span class="line"><span class="keyword">reg</span> wage age hours tenure married</span><br><span class="line">domin wage age hours tenure married</span><br><span class="line">domin wage age hours tenure married, sets ((i.occupation) (i.industry) (i.race))</span><br></pre></td></tr></table></figure><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">
       
     </div>
 
@@ -705,8 +707,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -723,7 +734,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">128</span>
+                  <span class="site-state-item-count">129</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -734,7 +745,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-count">23</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -745,7 +756,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-count">60</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -822,6 +833,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-domin-ming-ling"><span class="nav-text">1. domin 命令</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
         <div class="back-to-top">
@@ -856,7 +883,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">79.0k</span>
+    <span title="Site words total count">79.5k</span>
   
 </div>
 

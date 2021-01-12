@@ -142,18 +142,18 @@
 
 
 
-<meta name="description" content="1. 序列的类型    序列的类型包括：字符串、列表、元组和由元组组成的列表。">
+<meta name="description" content="1. 序列的类型    序列的类型包括：字符串、列表、元组和由元组组成的列表。">
 <meta name="keywords" content="Python,用Python玩转数据,基础知识">
 <meta property="og:type" content="article">
 <meta property="og:title" content="序列">
 <meta property="og:url" content="http://zhouweidong.ml/2019/06/07/序列/index.html">
 <meta property="og:site_name" content="周卫东的博客">
-<meta property="og:description" content="1. 序列的类型    序列的类型包括：字符串、列表、元组和由元组组成的列表。">
+<meta property="og:description" content="1. 序列的类型    序列的类型包括：字符串、列表、元组和由元组组成的列表。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2020-09-03T14:30:45.187Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="序列">
-<meta name="twitter:description" content="1. 序列的类型    序列的类型包括：字符串、列表、元组和由元组组成的列表。">
+<meta name="twitter:description" content="1. 序列的类型    序列的类型包括：字符串、列表、元组和由元组组成的列表。">
 
 
 
@@ -521,44 +521,47 @@
       
 
       
-        <h1 id="序列的类型">1. 序列的类型</h1>
-<p>   序列的类型包括：字符串、列表、元组和由元组组成的列表。 <a id="more"></a></p>
-<h1 id="序列的访问">2. 序列的访问</h1>
-<p>   在 Python 中，可以一次访问一个或多个元素。对于多个元素的访问，可以使用切片的方法。以列表为例： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; L = [&apos;Michael&apos;, &apos;Sarah&apos;, &apos;Tracy&apos;, &apos;Bob&apos;, &apos;Jack&apos;]</span><br><span class="line">&gt;&gt;&gt; L [0:3]</span><br><span class="line">[&apos;Michael&apos;, &apos;Sarah&apos;, &apos;Tracy&apos;]</span><br></pre></td></tr></table></figure></p>
+        <h1 id="1-xu-lie-de-lei-xing">1. 序列的类型</h1>
+<p>   序列的类型包括：字符串、列表、元组和由元组组成的列表。</p>
+<a id="more"></a>
+<h1 id="2-xu-lie-de-fang-wen">2. 序列的访问</h1>
+<p>   在 Python 中，可以一次访问一个或多个元素。对于多个元素的访问，可以使用切片的方法。以列表为例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; L = [&apos;Michael&apos;, &apos;Sarah&apos;, &apos;Tracy&apos;, &apos;Bob&apos;, &apos;Jack&apos;]</span><br><span class="line">&gt;&gt;&gt; L [0:3]</span><br><span class="line">[&apos;Michael&apos;, &apos;Sarah&apos;, &apos;Tracy&apos;]</span><br></pre></td></tr></table></figure>
 <p>   其中，第一个数代表开始取数的位置，也传达了取数的方向（从前往后还是从后往前），第二个数代表最后取数的位置，即从前往后（从后往前）数第几个。</p>
-<p>   进一步地，还可以有第三个参数，表示每几个取一个，实例如下： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; L = list (range (100))</span><br><span class="line">&gt;&gt;&gt; L</span><br><span class="line">[0, 1, 2, 3, ..., 99]</span><br><span class="line">&gt;&gt;&gt; L [::5]</span><br><span class="line">[0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95]</span><br></pre></td></tr></table></figure></p>
-<h1 id="与序列相关的操作">3. 与序列相关的操作</h1>
-<h2 id="标准类型运算符">3.1 标准类型运算符</h2>
-<h3 id="值比较">3.1.1 值比较</h3>
+<p>   进一步地，还可以有第三个参数，表示每几个取一个，实例如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; L = list (range (100))</span><br><span class="line">&gt;&gt;&gt; L</span><br><span class="line">[0, 1, 2, 3, ..., 99]</span><br><span class="line">&gt;&gt;&gt; L [::5]</span><br><span class="line">[0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95]</span><br></pre></td></tr></table></figure>
+<h1 id="3-yu-xu-lie-xiang-guan-de-cao-zuo">3. 与序列相关的操作</h1>
+<h2 id="3-1-biao-zhun-lei-xing-yun-suan-fu">3.1 标准类型运算符</h2>
+<h3 id="3-1-1-zhi-bi-jiao">3.1.1 值比较</h3>
 <table>
 <thead>
-<tr class="header">
+<tr>
 <th>&lt;</th>
 <th>&gt;</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td>&lt;=</td>
 <td>&gt;=</td>
 </tr>
-<tr class="even">
+<tr>
 <td>`==</td>
 <td></td>
 </tr>
-<tr class="odd">
+<tr>
 <td>!=</td>
 <td>&lt;&gt;</td>
 </tr>
 </tbody>
 </table>
-<h3 id="布尔运算">3.1.2 布尔运算</h3>
+<h3 id="3-1-2-bu-er-yun-suan">3.1.2 布尔运算</h3>
 <p>  not、and 和 or</p>
-<h3 id="对象身份比较">3.1.3 对象身份比较</h3>
+<h3 id="3-1-3-dui-xiang-shen-fen-bi-jiao">3.1.3 对象身份比较</h3>
 <p>  is 和 is not</p>
-<h2 id="序列类型运算符">3.2 序列类型运算符</h2>
+<h2 id="3-2-xu-lie-lei-xing-yun-suan-fu">3.2 序列类型运算符</h2>
 <p>   获取、重复、连接和判断。</p>
-<h2 id="内建函数">3.3 内建函数</h2>
+<h2 id="3-3-nei-jian-han-shu">3.3 内建函数</h2>
 <p>   序列类型转换工厂函数主要包括：list ()、str ()、tuple ()、unicode () 和 basestring。</p>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">
       
@@ -770,7 +773,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">128</span>
+                  <span class="site-state-item-count">129</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -781,7 +784,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-count">23</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -792,7 +795,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-count">60</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -878,7 +881,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#序列的类型"><span class="nav-text">1. 序列的类型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#序列的访问"><span class="nav-text">2. 序列的访问</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#与序列相关的操作"><span class="nav-text">3. 与序列相关的操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#标准类型运算符"><span class="nav-text">3.1 标准类型运算符</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#值比较"><span class="nav-text">3.1.1 值比较</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#布尔运算"><span class="nav-text">3.1.2 布尔运算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对象身份比较"><span class="nav-text">3.1.3 对象身份比较</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#序列类型运算符"><span class="nav-text">3.2 序列类型运算符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内建函数"><span class="nav-text">3.3 内建函数</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-xu-lie-de-lei-xing"><span class="nav-text">1. 序列的类型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-xu-lie-de-fang-wen"><span class="nav-text">2. 序列的访问</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-yu-xu-lie-xiang-guan-de-cao-zuo"><span class="nav-text">3. 与序列相关的操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-biao-zhun-lei-xing-yun-suan-fu"><span class="nav-text">3.1 标准类型运算符</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-1-zhi-bi-jiao"><span class="nav-text">3.1.1 值比较</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-2-bu-er-yun-suan"><span class="nav-text">3.1.2 布尔运算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-3-dui-xiang-shen-fen-bi-jiao"><span class="nav-text">3.1.3 对象身份比较</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-xu-lie-lei-xing-yun-suan-fu"><span class="nav-text">3.2 序列类型运算符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-3-nei-jian-han-shu"><span class="nav-text">3.3 内建函数</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -919,7 +922,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">79.0k</span>
+    <span title="Site words total count">79.5k</span>
   
 </div>
 
