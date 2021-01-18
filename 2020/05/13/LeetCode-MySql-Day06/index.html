@@ -523,13 +523,13 @@
       
         <p>   第六天：</p>
 <a id="more"></a>
-<h2 id="627-swap-salary">627. Swap Salary</h2>
+<h2 id="swap-salary">627. Swap Salary</h2>
 <p>  Given a table <code>salary</code>, such as the one below, that has m=male and f=female values. Swap all f and m values (i.e., change all f values to m and vice versa) with a <strong>single update statement</strong> and no intermediate temp table.</p>
 <p>  Note that you must write a single update statement, <strong>DO NOT</strong> write any select statement for this problem.</p>
 <p>  <strong>Example:</strong></p>
 <table>
 <thead>
-<tr>
+<tr class="header">
 <th>id</th>
 <th>name</th>
 <th>sex</th>
@@ -537,25 +537,25 @@
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td>1</td>
 <td>A</td>
 <td>m</td>
 <td>2500</td>
 </tr>
-<tr>
+<tr class="even">
 <td>2</td>
 <td>B</td>
 <td>f</td>
 <td>1500</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>3</td>
 <td>C</td>
 <td>m</td>
 <td>5500</td>
 </tr>
-<tr>
+<tr class="even">
 <td>4</td>
 <td>D</td>
 <td>f</td>
@@ -566,7 +566,7 @@
 <p>  After running your <strong>update</strong> statement, the above salary table should have the following rows:</p>
 <table>
 <thead>
-<tr>
+<tr class="header">
 <th>id</th>
 <th>name</th>
 <th>sex</th>
@@ -574,25 +574,25 @@
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td>1</td>
 <td>A</td>
 <td>f</td>
 <td>2500</td>
 </tr>
-<tr>
+<tr class="even">
 <td>2</td>
 <td>B</td>
 <td>m</td>
 <td>1500</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>3</td>
 <td>C</td>
 <td>f</td>
 <td>5500</td>
 </tr>
-<tr>
+<tr class="even">
 <td>4</td>
 <td>D</td>
 <td>m</td>
@@ -604,26 +604,26 @@
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">update</span> salary <span class="keyword">set</span> sex = (<span class="keyword">case</span> <span class="keyword">when</span> sex = <span class="string">"f"</span> <span class="keyword">then</span> <span class="string">"m"</span> <span class="keyword">else</span> <span class="string">"f"</span> <span class="keyword">end</span>);</span><br></pre></td></tr></table></figure>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">update</span> salary <span class="keyword">set</span> sex = <span class="built_in">char</span>(<span class="keyword">ASCII</span>(<span class="string">'f'</span>) ^ <span class="keyword">ASCII</span>(<span class="string">'m'</span>) ^ <span class="keyword">ASCII</span>(sex));</span><br></pre></td></tr></table></figure>
 <p>   解法一：利用条件表达式函数 case when … … then … … else … … end，相当于 if … … else 。</p>
-<p>   解法二：利用 XOR (异或) 运算符和 ASCII 编码进行转换：f 和  m 的 ASCII 编码值分别为 102 和 109 ，XOR 运算符 (^) 的作用是舍去二进制的进位，具体而言：首先将十进制转换为二进制，即 bin (102)=0b1100110，bin (109)=0b1101101，易知 0b1100110^0b110110 = 0b1011 ，再将二进制转换为十进制，即 int (str (1011), 2) = 11，同理可知 11^102=109 和 11^109 = 102 。</p>
-<h2 id="1179-reformat-department-table">1179. Reformat Department Table</h2>
+<p>   解法二：利用 XOR (异或) 运算符和 ASCII 编码进行转换：f 和 m 的 ASCII 编码值分别为 102 和 109 ，XOR 运算符 (^) 的作用是舍去二进制的进位，具体而言：首先将十进制转换为二进制，即 bin (102)=0b1100110，bin (109)=0b1101101，易知 0b1100110^0b110110 = 0b1011 ，再将二进制转换为十进制，即 int (str (1011), 2) = 11，同理可知 11^102=109 和 11^109 = 102 。</p>
+<h2 id="reformat-department-table">1179. Reformat Department Table</h2>
 <p>  Table: <code>Department</code></p>
 <table>
 <thead>
-<tr>
+<tr class="header">
 <th>Column Name</th>
 <th>Type</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td>id</td>
 <td>int</td>
 </tr>
-<tr>
+<tr class="even">
 <td>revenue</td>
 <td>int</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>month</td>
 <td>varchar</td>
 </tr>
@@ -631,40 +631,40 @@
 </table>
 <p>  (id, month) is the primary key of this table.</p>
 <p>  The table has information about the revenue of each department per month.</p>
-<p>  The month has values in [“Jan”,“Feb”,“Mar”,“Apr”,“May”,“Jun”,“Jul”,“Aug”,“Sep”,“Oct”,“Nov”,“Dec”].</p>
+<p>  The month has values in ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"].</p>
 <p>  Write an SQL query to reformat the table such that there is a department id column and a revenue column <strong>for each month</strong>.</p>
 <p>  The query result format is in the following example:</p>
 <p>  Department table:</p>
 <table>
 <thead>
-<tr>
+<tr class="header">
 <th>id</th>
 <th>revenue</th>
 <th>month</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td>1</td>
 <td>8000</td>
 <td>Jan</td>
 </tr>
-<tr>
+<tr class="even">
 <td>2</td>
 <td>9000</td>
 <td>Jan</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>3</td>
 <td>10000</td>
 <td>Feb</td>
 </tr>
-<tr>
+<tr class="even">
 <td>1</td>
 <td>7000</td>
 <td>Feb</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>1</td>
 <td>6000</td>
 <td>Mar</td>
@@ -674,38 +674,38 @@
 <p>  Result table:</p>
 <table>
 <thead>
-<tr>
+<tr class="header">
 <th>id</th>
 <th>Jan_Revenue</th>
 <th>Feb_Revenue</th>
 <th>Mar_Revenue</th>
-<th>…</th>
+<th>...</th>
 <th>Dec_Revenue</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td>1</td>
 <td>8000</td>
 <td>7000</td>
 <td>6000</td>
-<td>…</td>
+<td>...</td>
 <td>null</td>
 </tr>
-<tr>
+<tr class="even">
 <td>2</td>
 <td>9000</td>
 <td>null</td>
 <td>null</td>
-<td>…</td>
+<td>...</td>
 <td>null</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>3</td>
 <td>null</td>
 <td>10000</td>
 <td>null</td>
-<td>…</td>
+<td>...</td>
 <td>null</td>
 </tr>
 </tbody>
@@ -921,7 +921,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">129</span>
+                  <span class="site-state-item-count">130</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1029,7 +1029,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#627-swap-salary"><span class="nav-text">627. Swap Salary</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1179-reformat-department-table"><span class="nav-text">1179. Reformat Department Table</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#swap-salary"><span class="nav-text">627. Swap Salary</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#reformat-department-table"><span class="nav-text">1179. Reformat Department Table</span></a></li></ol></div>
             
 
           </div>

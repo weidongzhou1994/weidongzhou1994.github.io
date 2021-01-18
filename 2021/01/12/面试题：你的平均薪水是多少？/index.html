@@ -525,170 +525,170 @@
 <a id="more"></a>
 <table>
 <thead>
-<tr>
-<th style="text-align:center">雇员编号</th>
-<th style="text-align:center">部门编号</th>
-<th style="text-align:center">薪水</th>
+<tr class="header">
+<th style="text-align: center;">雇员编号</th>
+<th style="text-align: center;">部门编号</th>
+<th style="text-align: center;">薪水</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:center">10001</td>
-<td style="text-align:center">1</td>
-<td style="text-align:center">60117</td>
+<tr class="odd">
+<td style="text-align: center;">10001</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">60117</td>
 </tr>
-<tr>
-<td style="text-align:center">10002</td>
-<td style="text-align:center">2</td>
-<td style="text-align:center">92102</td>
+<tr class="even">
+<td style="text-align: center;">10002</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">92102</td>
 </tr>
-<tr>
-<td style="text-align:center">10003</td>
-<td style="text-align:center">2</td>
-<td style="text-align:center">86074</td>
+<tr class="odd">
+<td style="text-align: center;">10003</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">86074</td>
 </tr>
-<tr>
-<td style="text-align:center">10004</td>
-<td style="text-align:center">1</td>
-<td style="text-align:center">66596</td>
+<tr class="even">
+<td style="text-align: center;">10004</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">66596</td>
 </tr>
-<tr>
-<td style="text-align:center">10005</td>
-<td style="text-align:center">1</td>
-<td style="text-align:center">66961</td>
+<tr class="odd">
+<td style="text-align: center;">10005</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">66961</td>
 </tr>
-<tr>
-<td style="text-align:center">10006</td>
-<td style="text-align:center">2</td>
-<td style="text-align:center">81046</td>
+<tr class="even">
+<td style="text-align: center;">10006</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">81046</td>
 </tr>
-<tr>
-<td style="text-align:center">10007</td>
-<td style="text-align:center">2</td>
-<td style="text-align:center">94333</td>
+<tr class="odd">
+<td style="text-align: center;">10007</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">94333</td>
 </tr>
-<tr>
-<td style="text-align:center">10008</td>
-<td style="text-align:center">1</td>
-<td style="text-align:center">75286</td>
+<tr class="even">
+<td style="text-align: center;">10008</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">75286</td>
 </tr>
-<tr>
-<td style="text-align:center">10009</td>
-<td style="text-align:center">2</td>
-<td style="text-align:center">85994</td>
+<tr class="odd">
+<td style="text-align: center;">10009</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">85994</td>
 </tr>
-<tr>
-<td style="text-align:center">10010</td>
-<td style="text-align:center">1</td>
-<td style="text-align:center">76884</td>
+<tr class="even">
+<td style="text-align: center;">10010</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">76884</td>
 </tr>
 </tbody>
 </table>
 <p>   解题思路：分部门查询最高薪水和最低薪水，然后去掉。</p>
-<h1 id="cha-xun-zui-gao-xin-shui-he-zui-di-xin-shui">查询最高薪水和最低薪水</h1>
+<h1 id="查询最高薪水和最低薪水">查询最高薪水和最低薪水</h1>
 <p>   查询最高和最低薪水可以利用窗口函数 rank ()：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">	*,</span><br><span class="line">	<span class="keyword">rank</span> () <span class="keyword">over</span> ( <span class="keyword">PARTITION</span> <span class="keyword">BY</span> department_id <span class="keyword">ORDER</span> <span class="keyword">BY</span> salary ) rank_1,</span><br><span class="line">	<span class="keyword">rank</span> () <span class="keyword">over</span> ( <span class="keyword">PARTITION</span> <span class="keyword">BY</span> department_id <span class="keyword">ORDER</span> <span class="keyword">BY</span> salary <span class="keyword">DESC</span> ) rank_2 </span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">	data_test.salary_table</span><br></pre></td></tr></table></figure>
 <table>
 <thead>
-<tr>
-<th style="text-align:center">employee_id</th>
-<th style="text-align:center">department_id</th>
-<th style="text-align:center">salary</th>
-<th style="text-align:center">rank_1</th>
-<th style="text-align:center">rank_2</th>
+<tr class="header">
+<th style="text-align: center;">employee_id</th>
+<th style="text-align: center;">department_id</th>
+<th style="text-align: center;">salary</th>
+<th style="text-align: center;">rank_1</th>
+<th style="text-align: center;">rank_2</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:center">10010</td>
-<td style="text-align:center">1</td>
-<td style="text-align:center">76884</td>
-<td style="text-align:center">5</td>
-<td style="text-align:center">1</td>
+<tr class="odd">
+<td style="text-align: center;">10010</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">76884</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">1</td>
 </tr>
-<tr>
-<td style="text-align:center">10008</td>
-<td style="text-align:center">1</td>
-<td style="text-align:center">75286</td>
-<td style="text-align:center">4</td>
-<td style="text-align:center">2</td>
+<tr class="even">
+<td style="text-align: center;">10008</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">75286</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">2</td>
 </tr>
-<tr>
-<td style="text-align:center">10005</td>
-<td style="text-align:center">1</td>
-<td style="text-align:center">66961</td>
-<td style="text-align:center">3</td>
-<td style="text-align:center">3</td>
+<tr class="odd">
+<td style="text-align: center;">10005</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">66961</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">3</td>
 </tr>
-<tr>
-<td style="text-align:center">10004</td>
-<td style="text-align:center">1</td>
-<td style="text-align:center">66596</td>
-<td style="text-align:center">2</td>
-<td style="text-align:center">4</td>
+<tr class="even">
+<td style="text-align: center;">10004</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">66596</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">4</td>
 </tr>
-<tr>
-<td style="text-align:center">10001</td>
-<td style="text-align:center">1</td>
-<td style="text-align:center">60117</td>
-<td style="text-align:center">1</td>
-<td style="text-align:center">5</td>
+<tr class="odd">
+<td style="text-align: center;">10001</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">60117</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">5</td>
 </tr>
-<tr>
-<td style="text-align:center">10007</td>
-<td style="text-align:center">2</td>
-<td style="text-align:center">94333</td>
-<td style="text-align:center">5</td>
-<td style="text-align:center">1</td>
+<tr class="even">
+<td style="text-align: center;">10007</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">94333</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">1</td>
 </tr>
-<tr>
-<td style="text-align:center">10002</td>
-<td style="text-align:center">2</td>
-<td style="text-align:center">92102</td>
-<td style="text-align:center">4</td>
-<td style="text-align:center">2</td>
+<tr class="odd">
+<td style="text-align: center;">10002</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">92102</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">2</td>
 </tr>
-<tr>
-<td style="text-align:center">10003</td>
-<td style="text-align:center">2</td>
-<td style="text-align:center">86074</td>
-<td style="text-align:center">3</td>
-<td style="text-align:center">3</td>
+<tr class="even">
+<td style="text-align: center;">10003</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">86074</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">3</td>
 </tr>
-<tr>
-<td style="text-align:center">10009</td>
-<td style="text-align:center">2</td>
-<td style="text-align:center">85994</td>
-<td style="text-align:center">2</td>
-<td style="text-align:center">4</td>
+<tr class="odd">
+<td style="text-align: center;">10009</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">85994</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">4</td>
 </tr>
-<tr>
-<td style="text-align:center">10006</td>
-<td style="text-align:center">2</td>
-<td style="text-align:center">81046</td>
-<td style="text-align:center">1</td>
-<td style="text-align:center">5</td>
+<tr class="even">
+<td style="text-align: center;">10006</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">81046</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">5</td>
 </tr>
 </tbody>
 </table>
-<h1 id="qu-chu-zui-gao-xin-shui-he-zui-di-xin-shui">去除最高薪水和最低薪水</h1>
+<h1 id="去除最高薪水和最低薪水">去除最高薪水和最低薪水</h1>
 <p>   利用子查询 + where 语句：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">	department_id,</span><br><span class="line">	<span class="keyword">AVG</span>(salary) avg_salary</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">	(<span class="keyword">SELECT</span></span><br><span class="line">		*,</span><br><span class="line">			<span class="keyword">rank</span> () <span class="keyword">over</span> ( <span class="keyword">PARTITION</span> <span class="keyword">BY</span> department_id <span class="keyword">ORDER</span> <span class="keyword">BY</span> salary ) rank_1,</span><br><span class="line">		<span class="keyword">rank</span> () <span class="keyword">over</span> ( <span class="keyword">PARTITION</span> <span class="keyword">BY</span> department_id <span class="keyword">ORDER</span> <span class="keyword">BY</span> salary <span class="keyword">DESC</span> ) rank_2 </span><br><span class="line">	<span class="keyword">FROM</span></span><br><span class="line">		data_test.salary_table) t</span><br><span class="line"><span class="keyword">WHERE</span></span><br><span class="line">	t.rank_1 &gt; <span class="number">1</span> <span class="keyword">and</span> t.rank_2 &gt; <span class="number">1</span></span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span></span><br><span class="line">	department_id</span><br></pre></td></tr></table></figure>
 <table>
 <thead>
-<tr>
-<th style="text-align:center">department_id</th>
-<th style="text-align:center">avg_salary</th>
+<tr class="header">
+<th style="text-align: center;">department_id</th>
+<th style="text-align: center;">avg_salary</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:center">1</td>
-<td style="text-align:center">69614.3333</td>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">69614.3333</td>
 </tr>
-<tr>
-<td style="text-align:center">2</td>
-<td style="text-align:center">88056.6667</td>
+<tr class="even">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">88056.6667</td>
 </tr>
 </tbody>
 </table>
@@ -696,19 +696,19 @@
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">	department_id,</span><br><span class="line">	<span class="keyword">FORMAT</span>(<span class="keyword">AVG</span>(salary), <span class="number">0</span>) avg_salary</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">	(<span class="keyword">SELECT</span></span><br><span class="line">		*,</span><br><span class="line">			<span class="keyword">rank</span> () <span class="keyword">over</span> ( <span class="keyword">PARTITION</span> <span class="keyword">BY</span> department_id <span class="keyword">ORDER</span> <span class="keyword">BY</span> salary ) rank_1,</span><br><span class="line">		<span class="keyword">rank</span> () <span class="keyword">over</span> ( <span class="keyword">PARTITION</span> <span class="keyword">BY</span> department_id <span class="keyword">ORDER</span> <span class="keyword">BY</span> salary <span class="keyword">DESC</span> ) rank_2 </span><br><span class="line">	<span class="keyword">FROM</span></span><br><span class="line">		data_test.salary_table) t</span><br><span class="line"><span class="keyword">WHERE</span></span><br><span class="line">	t.rank_1 &gt; <span class="number">1</span> <span class="keyword">and</span> t.rank_2 &gt; <span class="number">1</span></span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span></span><br><span class="line">	department_id</span><br></pre></td></tr></table></figure>
 <table>
 <thead>
-<tr>
-<th style="text-align:center">department_id</th>
-<th style="text-align:center">avg_salary</th>
+<tr class="header">
+<th style="text-align: center;">department_id</th>
+<th style="text-align: center;">avg_salary</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:center">1</td>
-<td style="text-align:center">69614</td>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">69614</td>
 </tr>
-<tr>
-<td style="text-align:center">2</td>
-<td style="text-align:center">88057</td>
+<tr class="even">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">88057</td>
 </tr>
 </tbody>
 </table>
@@ -833,6 +833,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2021/01/17/数据挖掘面试题/" rel="prev" title="数据挖掘面试题">
+                数据挖掘面试题 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -916,7 +920,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">129</span>
+                  <span class="site-state-item-count">130</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1024,7 +1028,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#cha-xun-zui-gao-xin-shui-he-zui-di-xin-shui"><span class="nav-text">查询最高薪水和最低薪水</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#qu-chu-zui-gao-xin-shui-he-zui-di-xin-shui"><span class="nav-text">去除最高薪水和最低薪水</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#查询最高薪水和最低薪水"><span class="nav-text">查询最高薪水和最低薪水</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#去除最高薪水和最低薪水"><span class="nav-text">去除最高薪水和最低薪水</span></a></li></ol></div>
             
 
           </div>

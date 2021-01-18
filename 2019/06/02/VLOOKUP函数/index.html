@@ -521,17 +521,16 @@
       
 
       
-        <h1 id="1-vlookup-han-shu-de-ji-ben-yu-fa">1. VLOOKUP 函数的基本语法</h1>
+        <h1 id="vlookup-函数的基本语法">1. VLOOKUP 函数的基本语法</h1>
 <a id="more"></a>
-<p>  VLOOKUP 函数的基本语法是：=VLOOKUP (lookup_value,table_array,col_index_num,[range_lookup])<br>
-。其中，lookup_value 是要寻找的值，table_array 是以寻找值的列开始，包含填入值所在列的区域范围，col_index_num 是填入值所在的列在区域范围内排在第几列，[range_lookup] 则包含两个值：1 和 0，其中 1 代表模糊查找，0 代表精确查找。</p>
-<h1 id="2-vlookup-han-shu-zhong-shi-yong-tong-pei-fu">2. VLOOKUP 函数中使用通配符</h1>
-<p>   当所要查找的值和所选区域范围的值相比，并不完全，如红星和红星有限公司，这时可以使用通配符 *,=VLOOKUP (lookup_value&amp;&quot;*&quot;,table_array,col_index_num,[range_lookup])。</p>
-<h1 id="3-vlookup-han-shu-de-mo-hu-cha-zhao">3. VLOOKUP 函数的模糊查找</h1>
+<p>  VLOOKUP 函数的基本语法是：=VLOOKUP (lookup_value,table_array,col_index_num,[range_lookup]) 。其中，lookup_value 是要寻找的值，table_array 是以寻找值的列开始，包含填入值所在列的区域范围，col_index_num 是填入值所在的列在区域范围内排在第几列，[range_lookup] 则包含两个值：1 和 0，其中 1 代表模糊查找，0 代表精确查找。</p>
+<h1 id="vlookup-函数中使用通配符">2. VLOOKUP 函数中使用通配符</h1>
+<p>   当所要查找的值和所选区域范围的值相比，并不完全，如红星和红星有限公司，这时可以使用通配符 *,=VLOOKUP (lookup_value&amp;"*",table_array,col_index_num,[range_lookup])。</p>
+<h1 id="vlookup-函数的模糊查找">3. VLOOKUP 函数的模糊查找</h1>
 <p>   模糊匹配意味着表里没有但还是要找接近的，但是模糊查找仍然有一定的规则：小于等于自己的最大值。</p>
-<h1 id="4-shi-yong-isna-han-shu-chu-li-shu-zi-ge-shi-yin-qi-de-cuo-wu">4. 使用 isna 函数处理数字格式引起的错误</h1>
-<p>   寻找值和匹配值的数字格式可能不一致，如数值格式和文本格式，此时 Excel 会显示 N/A。因此，要想解决数字格式不一致的问题，必须统一格式。此时，可以使用 isna 函数，基本语法结构为 = IF (ISNA (VLOOKUP (lookup_value+0/*1,table_array,col_index_num,[range_lookup])),VLOOKUP (lookup_value&amp;&quot;&quot;,table_array,col_index_num,[range_lookup]))。</p>
-<h1 id="5-hlookvp-han-shu">5. HLOOKVP 函数</h1>
+<h1 id="使用-isna-函数处理数字格式引起的错误">4. 使用 isna 函数处理数字格式引起的错误</h1>
+<p>   寻找值和匹配值的数字格式可能不一致，如数值格式和文本格式，此时 Excel 会显示 N/A。因此，要想解决数字格式不一致的问题，必须统一格式。此时，可以使用 isna 函数，基本语法结构为 = IF (ISNA (VLOOKUP (lookup_value+0/*1,table_array,col_index_num,[range_lookup])),VLOOKUP (lookup_value&amp;"",table_array,col_index_num,[range_lookup]))。</p>
+<h1 id="hlookvp-函数">5. HLOOKVP 函数</h1>
 <p>   当 EXCEL 的数据结构呈现横排时，可以使用 HLOOKUP 函数，同 VLOOKUP 函数一致，只是将第几列改为第几行。</p>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">
       
@@ -745,7 +744,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">129</span>
+                  <span class="site-state-item-count">130</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -853,7 +852,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-vlookup-han-shu-de-ji-ben-yu-fa"><span class="nav-text">1. VLOOKUP 函数的基本语法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-vlookup-han-shu-zhong-shi-yong-tong-pei-fu"><span class="nav-text">2. VLOOKUP 函数中使用通配符</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-vlookup-han-shu-de-mo-hu-cha-zhao"><span class="nav-text">3. VLOOKUP 函数的模糊查找</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-shi-yong-isna-han-shu-chu-li-shu-zi-ge-shi-yin-qi-de-cuo-wu"><span class="nav-text">4. 使用 isna 函数处理数字格式引起的错误</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-hlookvp-han-shu"><span class="nav-text">5. HLOOKVP 函数</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#vlookup-函数的基本语法"><span class="nav-text">1. VLOOKUP 函数的基本语法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#vlookup-函数中使用通配符"><span class="nav-text">2. VLOOKUP 函数中使用通配符</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#vlookup-函数的模糊查找"><span class="nav-text">3. VLOOKUP 函数的模糊查找</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用-isna-函数处理数字格式引起的错误"><span class="nav-text">4. 使用 isna 函数处理数字格式引起的错误</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#hlookvp-函数"><span class="nav-text">5. HLOOKVP 函数</span></a></li></ol></div>
             
 
           </div>

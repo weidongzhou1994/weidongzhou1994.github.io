@@ -521,26 +521,22 @@
       
 
       
-        <h1 id="1-wei-shi-yao-xu-yao-zi-dian">1. 为什么需要字典？</h1>
+        <h1 id="为什么需要字典">1. 为什么需要字典？</h1>
 <a id="more"></a>
-<h2 id="1-1-wei-shi-yao-yao-shi-yong-zi-dian">1.1 为什么要使用字典？</h2>
-<p>   一个简单的例子：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;dict = &#123;&apos;a&apos;: 1, &apos;b&apos;: 2, &apos;c&apos;: &apos;3&apos;&#125;</span><br><span class="line">&gt;&gt;&gt; dict [&apos;b&apos;]</span><br><span class="line">&apos;2&apos;</span><br></pre></td></tr></table></figure>
-<h2 id="1-2-shi-yao-shi-zi-dian">1.2 什么是字典？</h2>
+<h2 id="为什么要使用字典">1.1 为什么要使用字典？</h2>
+<p>   一个简单的例子： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;dict = &#123;&apos;a&apos;: 1, &apos;b&apos;: 2, &apos;c&apos;: &apos;3&apos;&#125;</span><br><span class="line">&gt;&gt;&gt; dict [&apos;b&apos;]</span><br><span class="line">&apos;2&apos;</span><br></pre></td></tr></table></figure></p>
+<h2 id="什么是字典">1.2 什么是字典？</h2>
 <p>   字典是一种映射类型，使用键 - 值（key-value）存储，其中值（value）可以取任何数据类型，但键（key）必须是不可变的，如字符串，数字或元组。</p>
-<h2 id="1-3-zen-yang-chuang-jian-zi-dian">1.3 怎样创建字典？</h2>
-<p>   创建字典的方法有两种：一是，直接创建；二是，利用 dict 函数创建。实例如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;alnfo = &#123;&apos;Wangdachui&apos;:3000, &apos;Niuyun&apos;:2000, &apos;Linling&apos;:4500, &apos;Tianqi&apos;:8000&#125;</span><br><span class="line">&gt;&gt;&gt;info =[(&apos;Wangdachui&apos;:3000), (&apos;Niuyun&apos;:2000), (&apos;Linling&apos;:4500), (&apos;Tianqi&apos;:8000)]</span><br><span class="line">&gt;&gt;&gt;blnfo = dict (info)</span><br><span class="line">&gt;&gt;&gt;clnfo = dict ([[&apos;Wangdachui&apos;:3000], [&apos;Niuyun&apos;:2000], [&apos;Linling&apos;:4500], [&apos;Tianqi&apos;:8000]])</span><br><span class="line">&gt;&gt;&gt;dlnfo = dict (&apos;Wangdachui&apos;:3000, &apos;Niuyun&apos;:2000, &apos;Linling&apos;:4500, &apos;Tianqi&apos;:8000)</span><br><span class="line">&gt;&gt;&gt;d1 = dict (((&apos;Wangdachui&apos;:3000), (&apos;Niuyun&apos;:2000), (&apos;Linling&apos;:4500), (&apos;Tianqi&apos;:8000)))</span><br></pre></td></tr></table></figure>
-<p>   创建一个新字典，值一样，键不同，如创建员工信息表时将所有员工的工资默认值设置为 3000，可以使用 dict.fromkeys (seq, val)，实例如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;aDict = dict.fromkeys ((&apos;Wangdachui&apos;, &apos;Niuyun&apos;, &apos;Linling&apos;, &apos;Tianqi&apos;), 3000)</span><br></pre></td></tr></table></figure>
-<h1 id="2-zi-dian-de-shi-yong">2. 字典的使用</h1>
-<h2 id="2-1-zi-dian-de-ji-ben-cao-zuo">2.1 字典的基本操作</h2>
-<p>   键值查找：alnfo[‘Niuyun’]; 键值更新：alnfo[‘Niuyun’] = 9999; 键值添加：alnfo[‘Fuyun’] = 100； 成员判断：‘Mayun’ in alnfo; 删除字典：del alnfo。</p>
-<h2 id="2-2-zi-dian-de-ge-shi-hua-zi-fu-chuan">2.2 字典的格式化字符串</h2>
+<h2 id="怎样创建字典">1.3 怎样创建字典？</h2>
+<p>   创建字典的方法有两种：一是，直接创建；二是，利用 dict 函数创建。实例如下： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;alnfo = &#123;&apos;Wangdachui&apos;:3000, &apos;Niuyun&apos;:2000, &apos;Linling&apos;:4500, &apos;Tianqi&apos;:8000&#125;</span><br><span class="line">&gt;&gt;&gt;info =[(&apos;Wangdachui&apos;:3000), (&apos;Niuyun&apos;:2000), (&apos;Linling&apos;:4500), (&apos;Tianqi&apos;:8000)]</span><br><span class="line">&gt;&gt;&gt;blnfo = dict (info)</span><br><span class="line">&gt;&gt;&gt;clnfo = dict ([[&apos;Wangdachui&apos;:3000], [&apos;Niuyun&apos;:2000], [&apos;Linling&apos;:4500], [&apos;Tianqi&apos;:8000]])</span><br><span class="line">&gt;&gt;&gt;dlnfo = dict (&apos;Wangdachui&apos;:3000, &apos;Niuyun&apos;:2000, &apos;Linling&apos;:4500, &apos;Tianqi&apos;:8000)</span><br><span class="line">&gt;&gt;&gt;d1 = dict (((&apos;Wangdachui&apos;:3000), (&apos;Niuyun&apos;:2000), (&apos;Linling&apos;:4500), (&apos;Tianqi&apos;:8000)))</span><br></pre></td></tr></table></figure></p>
+<p>   创建一个新字典，值一样，键不同，如创建员工信息表时将所有员工的工资默认值设置为 3000，可以使用 dict.fromkeys (seq, val)，实例如下： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;aDict = dict.fromkeys ((&apos;Wangdachui&apos;, &apos;Niuyun&apos;, &apos;Linling&apos;, &apos;Tianqi&apos;), 3000)</span><br></pre></td></tr></table></figure></p>
+<h1 id="字典的使用">2. 字典的使用</h1>
+<h2 id="字典的基本操作">2.1 字典的基本操作</h2>
+<p>   键值查找：alnfo['Niuyun']; 键值更新：alnfo['Niuyun'] = 9999; 键值添加：alnfo['Fuyun'] = 100； 成员判断：'Mayun' in alnfo; 删除字典：del alnfo。</p>
+<h2 id="字典的格式化字符串">2.2 字典的格式化字符串</h2>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;alnfo = &#123;&apos;Wangdachui&apos;:3000, &apos;Niuyun&apos;:2000, &apos;Linling&apos;:4500, &apos;Tianqi&apos;:8000&#125;</span><br><span class="line">&gt;&gt;&gt;for key in alnfo.keys ():</span><br><span class="line">       print (&apos;name = % s, salary = % s&apos;%(key, alnfo [key]))</span><br><span class="line">&gt;&gt;&gt;&quot;Niuyun&apos;s salary is %(Niuyun) s.&quot;% alnfo</span><br><span class="line">Niuyun&apos;s salary is 5000.</span><br></pre></td></tr></table></figure>
-<p>   输出模板的使用：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;alnfo = &#123;&apos;Wangdachui&apos;:3000, &apos;Niuyun&apos;:2000, &apos;Linling&apos;:4500, &apos;Tianqi&apos;:8000&#125;</span><br><span class="line">&gt;&gt;&gt;template = &apos;&apos;&apos;</span><br><span class="line">   Welcome to the pay wall.</span><br><span class="line">   Niuyun&apos;s salary is %(Niuyun) s.</span><br><span class="line">   Wangdachui&apos;s salary is %(Wangdachui) s.</span><br><span class="line">   &apos;&apos;&apos;</span><br><span class="line">&gt;&gt;&gt;print (template % alnfo)</span><br></pre></td></tr></table></figure>
-<h2 id="2-3-zi-dian-de-chang-yong-nei-jian-han-shu">2.3 字典的常用内建函数</h2>
+<p>   输出模板的使用： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;alnfo = &#123;&apos;Wangdachui&apos;:3000, &apos;Niuyun&apos;:2000, &apos;Linling&apos;:4500, &apos;Tianqi&apos;:8000&#125;</span><br><span class="line">&gt;&gt;&gt;template = &apos;&apos;&apos;</span><br><span class="line">   Welcome to the pay wall.</span><br><span class="line">   Niuyun&apos;s salary is %(Niuyun) s.</span><br><span class="line">   Wangdachui&apos;s salary is %(Wangdachui) s.</span><br><span class="line">   &apos;&apos;&apos;</span><br><span class="line">&gt;&gt;&gt;print (template % alnfo)</span><br></pre></td></tr></table></figure></p>
+<h2 id="字典的常用内建函数">2.3 字典的常用内建函数</h2>
 <p>   以列表返回一个字典所有的键：dict.keys ()；以列表返回字典中的所有值： dict.values ()。</p>
 <p>   通过键查找值： dict.get (key, default=None)，其种 default 的值默认为 None, 可省略。</p>
 <p>   两个字典合并，可以使用 dict.update (dict2)，把字典 dict2 的键 / 值对更新到 dict 里。</p>
@@ -755,7 +751,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">129</span>
+                  <span class="site-state-item-count">130</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -863,7 +859,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-wei-shi-yao-xu-yao-zi-dian"><span class="nav-text">1. 为什么需要字典？</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-wei-shi-yao-yao-shi-yong-zi-dian"><span class="nav-text">1.1 为什么要使用字典？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-shi-yao-shi-zi-dian"><span class="nav-text">1.2 什么是字典？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-zen-yang-chuang-jian-zi-dian"><span class="nav-text">1.3 怎样创建字典？</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-zi-dian-de-shi-yong"><span class="nav-text">2. 字典的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-zi-dian-de-ji-ben-cao-zuo"><span class="nav-text">2.1 字典的基本操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-zi-dian-de-ge-shi-hua-zi-fu-chuan"><span class="nav-text">2.2 字典的格式化字符串</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-zi-dian-de-chang-yong-nei-jian-han-shu"><span class="nav-text">2.3 字典的常用内建函数</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#为什么需要字典"><span class="nav-text">1. 为什么需要字典？</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么要使用字典"><span class="nav-text">1.1 为什么要使用字典？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是字典"><span class="nav-text">1.2 什么是字典？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#怎样创建字典"><span class="nav-text">1.3 怎样创建字典？</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#字典的使用"><span class="nav-text">2. 字典的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#字典的基本操作"><span class="nav-text">2.1 字典的基本操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字典的格式化字符串"><span class="nav-text">2.2 字典的格式化字符串</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字典的常用内建函数"><span class="nav-text">2.3 字典的常用内建函数</span></a></li></ol></li></ol></div>
             
 
           </div>

@@ -142,18 +142,18 @@
 
 
 
-<meta name="description" content="1. 文件的打开和关闭 1.1 文件的打开">
+<meta name="description" content="1. 文件的打开和关闭 1.1 文件的打开">
 <meta name="keywords" content="Python,用Python玩转数据,基础知识,数据获取">
 <meta property="og:type" content="article">
 <meta property="og:title" content="本地数据获取">
 <meta property="og:url" content="http://zhouweidong.ml/2019/06/05/本地数据获取/index.html">
 <meta property="og:site_name" content="周卫东的博客">
-<meta property="og:description" content="1. 文件的打开和关闭 1.1 文件的打开">
+<meta property="og:description" content="1. 文件的打开和关闭 1.1 文件的打开">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2020-09-03T14:30:14.994Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="本地数据获取">
-<meta name="twitter:description" content="1. 文件的打开和关闭 1.1 文件的打开">
+<meta name="twitter:description" content="1. 文件的打开和关闭 1.1 文件的打开">
 
 
 
@@ -484,7 +484,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,401
+                  1,399
                 </span>
               
 
@@ -521,15 +521,14 @@
       
 
       
-        <h1 id="1-wen-jian-de-da-kai-he-guan-bi">1. 文件的打开和关闭</h1>
-<h2 id="1-1-wen-jian-de-da-kai">1.1 文件的打开</h2>
+        <h1 id="文件的打开和关闭">1. 文件的打开和关闭</h1>
+<h2 id="文件的打开">1.1 文件的打开</h2>
 <a id="more"></a>
-<p>   在 Python 中，可以用 Python 内置的 open () 函数打开一个文件，并创建一个文件对象。open 函数基本的语法结构为：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">file object = open (file_name [, access_mode][, buffering])</span><br></pre></td></tr></table></figure>
+<p>   在 Python 中，可以用 Python 内置的 open () 函数打开一个文件，并创建一个文件对象。open 函数基本的语法结构为： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">file object = open (file_name [, access_mode][, buffering])</span><br></pre></td></tr></table></figure></p>
 <p>   其中，file_name 是一个包含文件名称的字符串；access_mode 决定了打开文件的模式，所有可取值如下：</p>
 <table>
 <thead>
-<tr>
+<tr class="header">
 <th>模式</th>
 <th>r</th>
 <th>r+</th>
@@ -540,7 +539,7 @@
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td>读</td>
 <td>+</td>
 <td>+</td>
@@ -549,7 +548,7 @@
 <td></td>
 <td>+</td>
 </tr>
-<tr>
+<tr class="even">
 <td>写</td>
 <td></td>
 <td>+</td>
@@ -558,7 +557,7 @@
 <td>+</td>
 <td>+</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>创建</td>
 <td></td>
 <td></td>
@@ -567,7 +566,7 @@
 <td>+</td>
 <td>+</td>
 </tr>
-<tr>
+<tr class="even">
 <td>覆盖</td>
 <td></td>
 <td></td>
@@ -576,7 +575,7 @@
 <td></td>
 <td></td>
 </tr>
-<tr>
+<tr class="odd">
 <td>指针在开始</td>
 <td>+</td>
 <td>+</td>
@@ -585,7 +584,7 @@
 <td></td>
 <td></td>
 </tr>
-<tr>
+<tr class="even">
 <td>指针在结尾</td>
 <td></td>
 <td></td>
@@ -598,101 +597,101 @@
 </table>
 <p>   具体的解释如下：</p>
 <table>
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
 <thead>
-<tr>
-<th style="text-align:left">模式</th>
-<th style="text-align:left">描述</th>
+<tr class="header">
+<th style="text-align: left;">模式</th>
+<th style="text-align: left;">描述</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:left">t</td>
-<td style="text-align:left">文本模式 (默认)。</td>
+<tr class="odd">
+<td style="text-align: left;">t</td>
+<td style="text-align: left;">文本模式 (默认)。</td>
 </tr>
-<tr>
-<td style="text-align:left">x</td>
-<td style="text-align:left">写模式，新建一个文件，如果该文件已存在则会报错。</td>
+<tr class="even">
+<td style="text-align: left;">x</td>
+<td style="text-align: left;">写模式，新建一个文件，如果该文件已存在则会报错。</td>
 </tr>
-<tr>
-<td style="text-align:left">b</td>
-<td style="text-align:left">二进制模式。</td>
+<tr class="odd">
+<td style="text-align: left;">b</td>
+<td style="text-align: left;">二进制模式。</td>
 </tr>
-<tr>
-<td style="text-align:left">+</td>
-<td style="text-align:left">打开一个文件进行更新 (可读可写)。</td>
+<tr class="even">
+<td style="text-align: left;">+</td>
+<td style="text-align: left;">打开一个文件进行更新 (可读可写)。</td>
 </tr>
-<tr>
-<td style="text-align:left">U</td>
-<td style="text-align:left">通用换行模式（不推荐）。</td>
+<tr class="odd">
+<td style="text-align: left;">U</td>
+<td style="text-align: left;">通用换行模式（不推荐）。</td>
 </tr>
-<tr>
-<td style="text-align:left">r</td>
-<td style="text-align:left">以只读方式打开文件。文件的指针将会放在文件的开头。这是默认模式。</td>
+<tr class="even">
+<td style="text-align: left;">r</td>
+<td style="text-align: left;">以只读方式打开文件。文件的指针将会放在文件的开头。这是默认模式。</td>
 </tr>
-<tr>
-<td style="text-align:left">rb</td>
-<td style="text-align:left">以二进制格式打开一个文件用于只读。文件指针将会放在文件的开头。这是默认模式。一般用于非文本文件如图片等。</td>
+<tr class="odd">
+<td style="text-align: left;">rb</td>
+<td style="text-align: left;">以二进制格式打开一个文件用于只读。文件指针将会放在文件的开头。这是默认模式。一般用于非文本文件如图片等。</td>
 </tr>
-<tr>
-<td style="text-align:left">r+</td>
-<td style="text-align:left">打开一个文件用于读写。文件指针将会放在文件的开头。</td>
+<tr class="even">
+<td style="text-align: left;">r+</td>
+<td style="text-align: left;">打开一个文件用于读写。文件指针将会放在文件的开头。</td>
 </tr>
-<tr>
-<td style="text-align:left">rb+</td>
-<td style="text-align:left">以二进制格式打开一个文件用于读写。文件指针将会放在文件的开头。一般用于非文本文件如图片等。</td>
+<tr class="odd">
+<td style="text-align: left;">rb+</td>
+<td style="text-align: left;">以二进制格式打开一个文件用于读写。文件指针将会放在文件的开头。一般用于非文本文件如图片等。</td>
 </tr>
-<tr>
-<td style="text-align:left">w</td>
-<td style="text-align:left">打开一个文件只用于写入。如果该文件已存在则打开文件，并从开头开始编辑，即原有内容会被删除。如果该文件不存在，创建新文件。</td>
+<tr class="even">
+<td style="text-align: left;">w</td>
+<td style="text-align: left;">打开一个文件只用于写入。如果该文件已存在则打开文件，并从开头开始编辑，即原有内容会被删除。如果该文件不存在，创建新文件。</td>
 </tr>
-<tr>
-<td style="text-align:left">wb</td>
-<td style="text-align:left">以二进制格式打开一个文件只用于写入。如果该文件已存在则打开文件，并从开头开始编辑，即原有内容会被删除。如果该文件不存在，创建新文件。一般用于非文本文件如图片等。</td>
+<tr class="odd">
+<td style="text-align: left;">wb</td>
+<td style="text-align: left;">以二进制格式打开一个文件只用于写入。如果该文件已存在则打开文件，并从开头开始编辑，即原有内容会被删除。如果该文件不存在，创建新文件。一般用于非文本文件如图片等。</td>
 </tr>
-<tr>
-<td style="text-align:left">w+</td>
-<td style="text-align:left">打开一个文件用于读写。如果该文件已存在则打开文件，并从开头开始编辑，即原有内容会被删除。如果该文件不存在，创建新文件。</td>
+<tr class="even">
+<td style="text-align: left;">w+</td>
+<td style="text-align: left;">打开一个文件用于读写。如果该文件已存在则打开文件，并从开头开始编辑，即原有内容会被删除。如果该文件不存在，创建新文件。</td>
 </tr>
-<tr>
-<td style="text-align:left">wb+</td>
-<td style="text-align:left">以二进制格式打开一个文件用于读写。如果该文件已存在则打开文件，并从开头开始编辑，即原有内容会被删除。如果该文件不存在，创建新文件。一般用于非文本文件如图片等。</td>
+<tr class="odd">
+<td style="text-align: left;">wb+</td>
+<td style="text-align: left;">以二进制格式打开一个文件用于读写。如果该文件已存在则打开文件，并从开头开始编辑，即原有内容会被删除。如果该文件不存在，创建新文件。一般用于非文本文件如图片等。</td>
 </tr>
-<tr>
-<td style="text-align:left">a</td>
-<td style="text-align:left">打开一个文件用于追加。如果该文件已存在，文件指针将会放在文件的结尾。也就是说，新的内容将会被写入到已有内容之后。如果该文件不存在，创建新文件进行写入。</td>
+<tr class="even">
+<td style="text-align: left;">a</td>
+<td style="text-align: left;">打开一个文件用于追加。如果该文件已存在，文件指针将会放在文件的结尾。也就是说，新的内容将会被写入到已有内容之后。如果该文件不存在，创建新文件进行写入。</td>
 </tr>
-<tr>
-<td style="text-align:left">ab</td>
-<td style="text-align:left">以二进制格式打开一个文件用于追加。如果该文件已存在，文件指针将会放在文件的结尾。也就是说，新的内容将会被写入到已有内容之后。如果该文件不存在，创建新文件进行写入。</td>
+<tr class="odd">
+<td style="text-align: left;">ab</td>
+<td style="text-align: left;">以二进制格式打开一个文件用于追加。如果该文件已存在，文件指针将会放在文件的结尾。也就是说，新的内容将会被写入到已有内容之后。如果该文件不存在，创建新文件进行写入。</td>
 </tr>
-<tr>
-<td style="text-align:left">a+</td>
-<td style="text-align:left">打开一个文件用于读写。如果该文件已存在，文件指针将会放在文件的结尾。文件打开时会是追加模式。如果该文件不存在，创建新文件用于读写。</td>
+<tr class="even">
+<td style="text-align: left;">a+</td>
+<td style="text-align: left;">打开一个文件用于读写。如果该文件已存在，文件指针将会放在文件的结尾。文件打开时会是追加模式。如果该文件不存在，创建新文件用于读写。</td>
 </tr>
-<tr>
-<td style="text-align:left">ab+</td>
-<td style="text-align:left">以二进制格式打开一个文件用于追加。如果该文件已存在，文件指针将会放在文件的结尾。如果该文件不存在，创建新文件用于读写。</td>
+<tr class="odd">
+<td style="text-align: left;">ab+</td>
+<td style="text-align: left;">以二进制格式打开一个文件用于追加。如果该文件已存在，文件指针将会放在文件的结尾。如果该文件不存在，创建新文件用于读写。</td>
 </tr>
 </tbody>
 </table>
 <p>  buffering 则决定了缓存的大小，0 代表无缓存，负值代表默认缓存值，大于 1 的整数代表缓存值的大小。</p>
-<h2 id="1-2-wen-jian-de-guan-bi">1.2 文件的关闭</h2>
+<h2 id="文件的关闭">1.2 文件的关闭</h2>
 <p>   在 Python 中，可以使用 fileObject.close () 刷新缓冲区里任何还没写入的信息，并关闭该文件，这之后便不能再进行写入。</p>
-<p>   当文件读写出错时，后面的 f.close () 就不会调用，为了保证无论是否出错都能正确地关闭文件，可以使用 try … finally 来实现：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">try:</span><br><span class="line">    f = open (&apos;/path/to/file&apos;, &apos;r&apos;)</span><br><span class="line">    print (f.read ())</span><br><span class="line">finally:</span><br><span class="line">    if f:</span><br><span class="line">        f.close ()</span><br></pre></td></tr></table></figure>
-<p>   但是，上述写法比较繁琐，以，Python 引入了 with 语句来自动帮我们调用 close () 方法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">with open (&apos;/path/to/file&apos;, &apos;r&apos;) as f:</span><br><span class="line">    print (f.read ())</span><br></pre></td></tr></table></figure>
+<p>   当文件读写出错时，后面的 f.close () 就不会调用，为了保证无论是否出错都能正确地关闭文件，可以使用 try ... finally 来实现： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">try:</span><br><span class="line">    f = open (&apos;/path/to/file&apos;, &apos;r&apos;)</span><br><span class="line">    print (f.read ())</span><br><span class="line">finally:</span><br><span class="line">    if f:</span><br><span class="line">        f.close ()</span><br></pre></td></tr></table></figure></p>
+<p>   但是，上述写法比较繁琐，以，Python 引入了 with 语句来自动帮我们调用 close () 方法： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">with open (&apos;/path/to/file&apos;, &apos;r&apos;) as f:</span><br><span class="line">    print (f.read ())</span><br></pre></td></tr></table></figure></p>
 <p>  ** 值得注意的是，上述的斜杠号都是反斜杠：/。**</p>
-<h1 id="2-wen-jian-de-du-xie">2. 文件的读写</h1>
-<h2 id="2-1-du-wen-jian">2.1 读文件</h2>
-<p>   在 Python 中，使用 read（）方法从一个打开的文件中读取一个字符串。基本的语法如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fileObject.read ([count])</span><br></pre></td></tr></table></figure>
+<h1 id="文件的读写">2. 文件的读写</h1>
+<h2 id="读文件">2.1 读文件</h2>
+<p>   在 Python 中，使用 read（）方法从一个打开的文件中读取一个字符串。基本的语法如下： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fileObject.read ([count])</span><br></pre></td></tr></table></figure></p>
 <p>  [count] 代表从已打开文件中读取的字节计数，默认值为读取文件的全部内容。</p>
-<h2 id="2-2-xie-wen-jian">2.2 写文件</h2>
-<p>   在 Python 中，可以使用 write () 函数将任何字符串写入一个打开的文件。但是，write () 函数不会在字符串的结尾添加换行符 (’\n’)，因此必须手动添加换行符 (’\n’)。实例如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/python</span><br><span class="line"># -*- coding: UTF-8 -*-</span><br><span class="line"> </span><br><span class="line"># 打开一个文件 </span><br><span class="line">fo = open (&quot;foo.txt&quot;, &quot;w&quot;)</span><br><span class="line">fo.write ( &quot;www.runoob.com!\nVery good site!\n&quot;)</span><br><span class="line"> </span><br><span class="line"># 关闭打开的文件 </span><br><span class="line">fo.close ()</span><br></pre></td></tr></table></figure>
-<p>   但是，值得注意的是：以 ‘w’ 模式写入文件时，如果文件已存在，会直接覆盖（相当于删掉后新写入一个文件）。如果我们希望追加到文件末尾怎么办？可以传入 ‘a’ 以追加（append）模式写入。</p>
-<h1 id="3-qi-ta-yu-wen-jian-xiang-guan-de-han-shu">3. 其他与文件相关的函数</h1>
+<h2 id="写文件">2.2 写文件</h2>
+<p>   在 Python 中，可以使用 write () 函数将任何字符串写入一个打开的文件。但是，write () 函数不会在字符串的结尾添加换行符 ('')，因此必须手动添加换行符 ('')。实例如下： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/python</span><br><span class="line"># -*- coding: UTF-8 -*-</span><br><span class="line"> </span><br><span class="line"># 打开一个文件 </span><br><span class="line">fo = open (&quot;foo.txt&quot;, &quot;w&quot;)</span><br><span class="line">fo.write ( &quot;www.runoob.com!\nVery good site!\n&quot;)</span><br><span class="line"> </span><br><span class="line"># 关闭打开的文件 </span><br><span class="line">fo.close ()</span><br></pre></td></tr></table></figure></p>
+<p>   但是，值得注意的是：以 'w' 模式写入文件时，如果文件已存在，会直接覆盖（相当于删掉后新写入一个文件）。如果我们希望追加到文件末尾怎么办？可以传入 'a' 以追加（append）模式写入。</p>
+<h1 id="其他与文件相关的函数">3. 其他与文件相关的函数</h1>
 <p>   为了正确地对文件读和写，可以使用 seek（offset [,from]）方法改变当前文件的位置。offset 变量表示要移动的字节数，from 变量指定开始移动字节的参考位置：0 - 文件头部，1 - 当前位置，2 - 文件尾部。</p>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">
       
@@ -906,7 +905,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">129</span>
+                  <span class="site-state-item-count">130</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1014,7 +1013,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-wen-jian-de-da-kai-he-guan-bi"><span class="nav-text">1. 文件的打开和关闭</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-wen-jian-de-da-kai"><span class="nav-text">1.1 文件的打开</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-wen-jian-de-guan-bi"><span class="nav-text">1.2 文件的关闭</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-wen-jian-de-du-xie"><span class="nav-text">2. 文件的读写</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-du-wen-jian"><span class="nav-text">2.1 读文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-xie-wen-jian"><span class="nav-text">2.2 写文件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-qi-ta-yu-wen-jian-xiang-guan-de-han-shu"><span class="nav-text">3. 其他与文件相关的函数</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#文件的打开和关闭"><span class="nav-text">1. 文件的打开和关闭</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#文件的打开"><span class="nav-text">1.1 文件的打开</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件的关闭"><span class="nav-text">1.2 文件的关闭</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#文件的读写"><span class="nav-text">2. 文件的读写</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#读文件"><span class="nav-text">2.1 读文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#写文件"><span class="nav-text">2.2 写文件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#其他与文件相关的函数"><span class="nav-text">3. 其他与文件相关的函数</span></a></li></ol></div>
             
 
           </div>

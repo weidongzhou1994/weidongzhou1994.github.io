@@ -533,29 +533,29 @@
       
         <p>   面试题：利用下拉框选择机构名称、利率档、期限等条件，查询出相应的费用。</p>
 <a id="more"></a>
-<p><img src="https://picgo-1258437747.cos.ap-nanjing.myqcloud.com/20210109225303.png" alt=""></p>
-<h1 id="zhi-zuo-lian-dong-xia-la-lie-biao">制作联动下拉列表</h1>
+<p><img src="https://picgo-1258437747.cos.ap-nanjing.myqcloud.com/20210109225303.png"></p>
+<h1 id="制作联动下拉列表">制作联动下拉列表</h1>
 <p>   制作下拉列表可以借助数据有效性，具体步骤见下图：</p>
-<p><img src="https://picgo-1258437747.cos.ap-nanjing.myqcloud.com/20210109225732.png" alt=""></p>
+<p><img src="https://picgo-1258437747.cos.ap-nanjing.myqcloud.com/20210109225732.png"></p>
 <p>   具体到本案例中，首先需要找到机构名称和利率档的非重复值，可以利用高级筛选，步骤见下图：</p>
-<p><img src="https://picgo-1258437747.cos.ap-nanjing.myqcloud.com/20210109230109.png" alt=""></p>
+<p><img src="https://picgo-1258437747.cos.ap-nanjing.myqcloud.com/20210109230109.png"></p>
 <p>   筛选结果见下图：</p>
-<p><img src="https://picgo-1258437747.cos.ap-nanjing.myqcloud.com/20210109230409.png" alt=""></p>
+<p><img src="https://picgo-1258437747.cos.ap-nanjing.myqcloud.com/20210109230409.png"></p>
 <p>   需要转换成下图的格式：</p>
-<p><img src="https://picgo-1258437747.cos.ap-nanjing.myqcloud.com/20210109230729.png" alt=""></p>
+<p><img src="https://picgo-1258437747.cos.ap-nanjing.myqcloud.com/20210109230729.png"></p>
 <p>   然后利用公式 - 定义的名称，对区域进行定义，具体步骤见下图：</p>
-<p><img src="https://picgo-1258437747.cos.ap-nanjing.myqcloud.com/20210109233052.png" alt=""></p>
+<p><img src="https://picgo-1258437747.cos.ap-nanjing.myqcloud.com/20210109233052.png"></p>
 <p>   同理，可以分别将各机构的利率档定义为 A 机构、B 机构和 C 机构。</p>
 <p>   为了实现 <a href="https://jingyan.baidu.com/article/7c6fb42802525a80642c9034.html" target="_blank" rel="noopener"></a>，需要将序列的名称用公式定义：</p>
-<p><img src="https://picgo-1258437747.cos.ap-nanjing.myqcloud.com/20210109233319.png" alt=""></p>
-<h1 id="cha-xun-fei-yong">查询费用</h1>
+<p><img src="https://picgo-1258437747.cos.ap-nanjing.myqcloud.com/20210109233319.png"></p>
+<h1 id="查询费用">查询费用</h1>
 <p>   查询费用即根据条件在区域内匹配值，可以利用 index+match，index 的作用是在区域内选择指定位置的数，具体参数见下图：</p>
-<p><img src="https://picgo-1258437747.cos.ap-nanjing.myqcloud.com/20210109233534.png" alt=""></p>
+<p><img src="https://picgo-1258437747.cos.ap-nanjing.myqcloud.com/20210109233534.png"></p>
 <p>   区域是确定的，变化的是行号和列号，需要借助 match 进行匹配：</p>
-<p><img src="https://picgo-1258437747.cos.ap-nanjing.myqcloud.com/20210109233654.png" alt=""></p>
-<p>   首先是列号，比较简单：MATCH (I3&amp;“期费用”,A1:E1,0)。</p>
+<p><img src="https://picgo-1258437747.cos.ap-nanjing.myqcloud.com/20210109233654.png"></p>
+<p>   首先是列号，比较简单：MATCH (I3&amp;"期费用",A1:E1,0)。</p>
 <p>   然后是行号，稍微复杂，有两个条件，对应两个区域，条件和条件间、区域和区域间用 &amp; 进行连接：MATCH (I1&amp;I2, A:A&amp;B:B,0)。</p>
-<p>   总结可得公式为：INDEX (A:E, MATCH (I1&amp;I2, A:A&amp;B:B,0), MATCH (I3&amp;“期费用”,A1:E1,0))，值得注意的是，这是一个数组公式，输入公式后，按住 ctrl_shift+enter 公式才会生效。</p>
+<p>   总结可得公式为：INDEX (A:E, MATCH (I1&amp;I2, A:A&amp;B:B,0), MATCH (I3&amp;"期费用",A1:E1,0))，值得注意的是，这是一个数组公式，输入公式后，按住 ctrl_shift+enter 公式才会生效。</p>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">
       
     </div>
@@ -764,7 +764,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">129</span>
+                  <span class="site-state-item-count">130</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -872,7 +872,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#zhi-zuo-lian-dong-xia-la-lie-biao"><span class="nav-text">制作联动下拉列表</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#cha-xun-fei-yong"><span class="nav-text">查询费用</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#制作联动下拉列表"><span class="nav-text">制作联动下拉列表</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#查询费用"><span class="nav-text">查询费用</span></a></li></ol></div>
             
 
           </div>
